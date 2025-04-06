@@ -1,0 +1,63 @@
+-- file_checksum: A0F57BDEF2CCC38D3D9C42086F8BDD0607F03DAF28F4AED9D0F1963FC53D3D8B
+prompt --application/shared_components/navigation/lists/reports_dg
+begin
+--   Manifest
+--     LIST: REPORTS_DG
+--   Manifest End
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2024.05.31'
+,p_release=>'24.1.7'
+,p_default_workspace_id=>32049826282261068
+,p_default_application_id=>2100
+,p_default_id_offset=>43721417861278263
+,p_default_owner=>'SERT_PUB'
+);
+wwv_flow_imp_shared.create_list(
+ p_id=>wwv_flow_imp.id(65843423135553318)
+,p_name=>'REPORTS_DG'
+,p_list_status=>'PUBLIC'
+,p_version_scn=>42118051673792
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(65844320652553345)
+,p_list_item_display_sequence=>10
+,p_list_item_link_text=>'Evaluation Summary Report'
+,p_list_item_link_target=>'f?p=&APP_ID.:302:&SESSION.:EVAL_SUMMARY_REPORT_DG:&DEBUG.::::'
+,p_list_item_icon=>'fa-tiles-2x2'
+,p_list_text_03=>'templates/GIS_Evaluation_Summary_Report_Template.docx'
+,p_list_text_04=>'EVAL_SUMMARY_REPORT_DG'
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(65844805032553345)
+,p_list_item_display_sequence=>20
+,p_list_item_link_text=>'Evaluation Detail Report'
+,p_list_item_link_target=>'f?p=&APP_ID.:302:&SESSION.:EVAL_DETAIL_REPORT_DG:&DEBUG.::::'
+,p_list_item_icon=>'fa-tiles-9'
+,p_list_text_03=>'templates/GIS_Evaluation_Detail_Report_Template.docx'
+,p_list_text_04=>'EVAL_DETAIL_REPORT_DG'
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(65843691857553337)
+,p_list_item_display_sequence=>30
+,p_list_item_link_text=>'Evaluation Exceptions Report'
+,p_list_item_link_target=>'f?p=&APP_ID.:302:&SESSION.:EVAL_EXCEPTION_REPORT_DG:&DEBUG.::::'
+,p_list_item_icon=>'fa-tiles-8'
+,p_list_text_03=>'templates/GIS_Evaluation_Exception_Report_Template.docx'
+,p_list_text_04=>'EVAL_EXCEPTION_REPORT_DG'
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(65844054060553343)
+,p_list_item_display_sequence=>40
+,p_list_item_link_text=>'Evaluation Attributes Master Report'
+,p_list_item_link_target=>'f?p=&APP_ID.:302:&SESSION.:EVAL_MASTER_REPORT_DG:&DEBUG.::::'
+,p_list_item_icon=>'fa-database'
+,p_list_text_03=>'templates/GIS_Attributes_Master_Report_Template.docx'
+,p_list_text_04=>'EVAL_MASTER_REPORT_DG'
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_imp.component_end;
+end;
+/

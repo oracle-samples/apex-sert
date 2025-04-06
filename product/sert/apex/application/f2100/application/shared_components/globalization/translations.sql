@@ -1,0 +1,18 @@
+-- file_checksum: 0AD5AD966D9482C3C3B291E65F13F6E37D57581D4C75C6249ED7DD31D89670AE
+prompt --application/shared_components/globalization/translations
+begin
+--   Manifest
+--     TRANSLATIONS: 2100
+--   Manifest End
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2024.05.31'
+,p_release=>'24.1.7'
+,p_default_workspace_id=>32049826282261068
+,p_default_application_id=>2100
+,p_default_id_offset=>43721417861278263
+,p_default_owner=>'SERT_PUB'
+);
+null;
+wwv_flow_imp.component_end;
+end;
+/

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:ora="http://www.oracle.com/xml/ns/dbchangelog-ext"
+   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+>
+  <includeAll
+    relativeToChangelogFile="true"
+    errorIfMissingOrEmpty="false"
+    path="package_spec"
+  />
+  <includeAll
+    relativeToChangelogFile="true"
+    errorIfMissingOrEmpty="false"
+    path="package_body"
+  />
+</databaseChangeLog>

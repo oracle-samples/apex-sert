@@ -1,0 +1,10 @@
+@genmerge_builder_urls.sql
+@genmerge_risks.sql
+@genmerge_rule_severity.sql
+@genmerge_categories.sql
+@genmerge_rule_criteria.sql
+@genmerge_shared_comp_views.sql
+@genmerge_prefs.sql
+@genmerge_rule_criteria_types.sql
+@genmerge_reserved_strings.sql
+@genmerge_rule_set_types.sql

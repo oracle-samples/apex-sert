@@ -1,0 +1,120 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ora="http://www.oracle.com/xml/ns/dbchangelog-ext"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.25.xsd"
+>
+
+  <changeSet id="apex_f2100" author="aes-ace" runOnChange="true">
+    <!-- SQL Block for Setting Workspace Name and Parsing Schema -->
+    <sql endDelimiter="/">
+--
+--    DESCRIPTION
+--      Shell Script used to install the eFramework APEX applications
+--    MODIFIED       (MM/DD/YYYY)
+--       tsthilaire  16-FEB-2014  - Created
+--       mipotter    05-nov-2021 - add workspace name parameter
+--       mzimon      18-MAY-2022   Unified for ADB and PDB.
+--       jlyle       27-MAY-2022 - Substitution variable and schema case bug fixes
+--
+-- Check if the application ID already exists for SERT
+DECLARE
+   l_default_app_id number := 2100;
+   l_workspace      varchar2(255) := upper('${sert_apex_workspace}');
+   l_apex_owner     varchar2(255);
+   l_app_alias      varchar2(255);
+   l_query          varchar2(4000);
+   l_app_id         number := to_number(coalesce('${sert_app_id}',0));
+   l_workspace_id   number;
+   l_app_id_check   NUMBER;
+   l_refcursor      SYS_REFCURSOR;
+
+   cursor c_app_id (p_alias varchar2, p_workspace_id number) is
+      select application_id
+      from apex_applications
+      where alias = p_alias
+      and workspace_id = p_workspace_id;
+
+
+BEGIN
+ -- First step, make sure we are in a clean state.
+  apex_application_install.clear_all;
+
+ -- grab the highest installed apex_owner schema name
+  select table_owner
+    into l_apex_owner
+    from all_synonyms
+    where synonym_name = 'APEX'
+    and owner = 'PUBLIC' ;
+
+  l_app_alias := 'APEX_SERT';
+
+  apex_application_install.set_application_alias(l_app_alias);
+
+ -- Get the Workspace Name ID value
+  select workspace_id
+    into   l_workspace_id
+    from   apex_workspaces
+    where  workspace = l_workspace;
+
+ -- Workspace Security
+  apex_application_install.set_workspace_id( l_workspace_id );
+
+  -- ----------------------------
+  -- checck for application ID migration/change
+  -- we will be using l_app_id later. for now this will inform whether the ID is changing
+  -- ----------------------------
+  open c_app_id (l_app_alias, l_workspace_id);
+  fetch c_app_id into l_app_id_check;
+  close c_app_id;
+  --  user has actually specified a defined APP_ID ( ie, is not null or 0)
+  -- AND we have an SERT App in the workspace
+  -- AND the app_id are different,
+  -- remove the application in prep for install with new ID
+  if (l_app_id > 0 and l_app_id_check is not null and l_app_id_check != l_app_id) then
+    -- we have an app to remove
+    -- workspace is set earlier...
+    apex_application_install.set_keep_sessions(false);
+    apex_application_install.remove_application(l_app_id_check);
+  end if;
+
+  -- at this point the App either doesn't Exist, or is the same as existing.
+
+
+
+  -- don't force an offset change
+  -- we only want to generate an offset if the chosen Application ID
+  -- is different from the ID in the import file.
+  -- SQLCL imports can fail when APP ID is changed, without generating new offset
+  if (coalesce(l_app_id,0) != l_default_app_id ) then
+    apex_application_install.generate_offset;
+  end if;
+
+ -- assign ID or auto generate
+  if l_app_id >= 1 then
+    -- ID given - use the one they provided
+    apex_application_install.set_application_id(l_app_id);
+  else
+    -- No ID given - auto generate or reuse existing if it exists...
+    -- l_app_id_check is already fetched
+    if l_app_id_check is not null then
+      apex_application_install.set_application_id(l_app_id_check);
+    else
+      apex_application_install.generate_application_id;
+    end if;
+  end if;
+
+  apex_application_install.set_schema('SERT_PUB');
+
+  exception when NO_DATA_FOUND then
+    -- dbms_output.put_line('ISSUE: The workspace ' || l_workspace || ' does not exist at this time.');
+    raise VALUE_ERROR;
+END;
+/
+    </sql>
+    <ora:runApexScript ownerName="aes-ace" sourceType="FILE" objectType="SCRIPT" objectName="f2000" relativeToChangelogFile="true" >
+        <ora:source> install.sql </ora:source>
+    </ora:runApexScript>
+    <rollback></rollback>
+  </changeSet>
+</databaseChangeLog>

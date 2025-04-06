@@ -1,0 +1,33 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ora="http://www.oracle.com/xml/ns/dbchangelog-ext"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.25.xsd"
+>
+
+  <changeSet id="apex_f1266" author="aes-ace" runOnChange="true">
+    <!-- precondition -->
+    <preConditions onFail="CONTINUE" onError="HALT">
+        <sqlCheck  expectedResult="Y">select gbu_core.ace_util_lb_precons.apex_lb_precon(p_application_id=>1266) v_result from dual</sqlCheck>
+    </preConditions>
+
+    <!-- SQL Block for Setting Workspace Name and Parsing Schema -->
+    <!-- remove block comment if this section is needed
+    <sql endDelimiter="/">
+        declare
+            c_workspace constant    varchar2(255)   := '#WORKSPACE_NAME#';
+            c_schema    constant    varchar2(255)   := upper('#SCHEMA_NAME#');
+        begin
+            apex_application_install.clear_all();
+            apex_application_install.set_workspace(c_workspace);
+            apex_application_install.set_schema(c_schema);
+        end;
+        /
+    </sql>
+    -->
+    <ora:runApexScript ownerName="aes-ace" sourceType="FILE" objectType="SCRIPT" objectName="f1266" relativeToChangelogFile="true" >
+        <ora:source> install.sql </ora:source>
+    </ora:runApexScript>
+    <rollback></rollback>
+  </changeSet>
+</databaseChangeLog>
