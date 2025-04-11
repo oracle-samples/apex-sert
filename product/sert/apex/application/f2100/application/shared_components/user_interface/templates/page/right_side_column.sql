@@ -1,4 +1,9 @@
 -- file_checksum: CDB792F9066492FF09885FF41539CBDD47EE2223C4D2B5908C688E21309CB5F6
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/page/right_side_column
 begin
 --   Manifest

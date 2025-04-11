@@ -1,4 +1,9 @@
 -- file_checksum: BF932B6C3EDF390299006705EF8EE8D41A68354325346698B33BF4F6A93944F2
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/logic/application_processes/set_evaluation_results_items
 begin
 --   Manifest

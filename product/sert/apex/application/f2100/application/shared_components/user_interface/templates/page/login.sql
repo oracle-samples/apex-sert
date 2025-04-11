@@ -1,4 +1,9 @@
 -- file_checksum: 3885D91EC462E58DEA195B837C9D85F0AEAF0E211D2DC1BBADAF6BBC04181DE4
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/page/login
 begin
 --   Manifest

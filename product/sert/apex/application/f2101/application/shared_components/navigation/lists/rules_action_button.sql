@@ -1,4 +1,9 @@
 -- file_checksum: EEF67015C526C9C2097BE7F89A09F26D3E711F527DC2F34746023BB1EB665BBF
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/navigation/lists/rules_action_button
 begin
 --   Manifest

@@ -1,4 +1,9 @@
 -- file_checksum: 22651D41AADB3287A251937B1BE1DC955808C957AF690DCF8706825252EF7673
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/region/inline_drawer
 begin
 --   Manifest

@@ -1,4 +1,9 @@
 -- file_checksum: 32421D108619AB34CF47CF71B609AEF644E25E202EB2C845AB83BA59571968E5
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/calendar/calendar
 begin
 --   Manifest

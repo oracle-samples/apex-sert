@@ -1,4 +1,9 @@
 -- file_checksum: ADADBAEE5DFEFF54544B47915C7578F6C195C9CFC4F4D93C5D4E1F1BFB61B52B
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/region/inline_dialog
 begin
 --   Manifest

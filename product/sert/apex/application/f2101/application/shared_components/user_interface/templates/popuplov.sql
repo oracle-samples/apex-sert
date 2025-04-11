@@ -1,4 +1,9 @@
 -- file_checksum: 922574C3ACA070A56D3FDCA040636958A945711FAE2B2E8FB362C5464004B100
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/popuplov
 begin
 --   Manifest

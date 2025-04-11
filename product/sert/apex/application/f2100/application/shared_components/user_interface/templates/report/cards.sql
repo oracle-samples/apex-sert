@@ -1,4 +1,9 @@
 -- file_checksum: BABDC0C67EB0DBA4ED9505E438C4EEB7B6B83CCC736AE6F5C0E0F38AFA555C4E
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/report/cards
 begin
 --   Manifest

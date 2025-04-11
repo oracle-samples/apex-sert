@@ -1,4 +1,9 @@
 -- file_checksum: 6823A3B745B50A0D2C0C5C2227188BE05F6C940BF1D71425C7EE3F57E7249BEA
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/plugins/dynamic_action/be_apexrnd_aop_da
 begin
 --   Manifest

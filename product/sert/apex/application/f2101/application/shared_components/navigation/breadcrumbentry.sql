@@ -1,4 +1,9 @@
 -- file_checksum: B168AD3BDFB68A29B4083AC2E733B45F9B3A2AF4CB388CE0DCA8FCC4D8073278
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/navigation/breadcrumbentry
 begin
 --   Manifest

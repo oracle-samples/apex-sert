@@ -1,4 +1,9 @@
 -- file_checksum: D5EDAB20925307D38149AF3A8BE953E26D7F8587B9AE3B82C2D51575782AFA2D
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/breadcrumb/breadcrumb
 begin
 --   Manifest

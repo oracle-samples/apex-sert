@@ -1,4 +1,9 @@
 -- file_checksum: 367B20EF1D6FDDD756361ED78A09EF6BCD7BE39AFDEE8F4812A4A7C0B99A96D6
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/files/is_evaluation_exception_report_template_docx
 begin
 --   Manifest

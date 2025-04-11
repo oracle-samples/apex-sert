@@ -1,4 +1,9 @@
 -- file_checksum: 2DC5D569D84759C208ABEB7997E22C2CFE8A08BD59E3F1C4355F1B5253CB3153
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/files/icons_app_icon_144_rounded_png
 begin
 --   Manifest

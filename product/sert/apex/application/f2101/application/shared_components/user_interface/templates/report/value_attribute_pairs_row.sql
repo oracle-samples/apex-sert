@@ -1,4 +1,9 @@
 -- file_checksum: 07AA704949C51562D533204A07795FF4046783909E199214D95527C3CBA26D41
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/report/value_attribute_pairs_row
 begin
 --   Manifest

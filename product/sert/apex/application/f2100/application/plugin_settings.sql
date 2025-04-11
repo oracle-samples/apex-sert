@@ -1,4 +1,9 @@
 -- file_checksum: B99AADF9BCA658536CAA0B9373698044C10735946A6D51EBC0AA69798E318AA0
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/plugin_settings
 begin
 wwv_flow_imp.component_begin (

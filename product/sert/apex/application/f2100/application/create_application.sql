@@ -1,4 +1,9 @@
 -- file_checksum: E062F11721D843E565250F411CDC45A1028860CC6717F02B14B4503A1CDBC6AC
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/create_application
 begin
 --   Manifest

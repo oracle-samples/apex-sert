@@ -1,4 +1,9 @@
 -- file_checksum: 98441531C86DA8F797D13A69AFF68282B2EFC434428698CC09E433D5437F4202
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/lovs/rules_lov
 begin
 --   Manifest

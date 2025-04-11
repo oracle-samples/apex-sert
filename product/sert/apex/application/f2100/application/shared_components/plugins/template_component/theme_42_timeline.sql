@@ -1,4 +1,9 @@
 -- file_checksum: CBC32A9D327E491C6507E065A1FCB5B7DB3913BAC356AE7A7465D2389912903A
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/plugins/template_component/theme_42_timeline
 begin
 --   Manifest

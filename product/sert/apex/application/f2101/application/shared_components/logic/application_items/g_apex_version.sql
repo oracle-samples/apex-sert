@@ -1,4 +1,9 @@
 -- file_checksum: 0BDA141727159FA7998ECAC74A23084864213FCDE847833C4B07EFE5C6309EEC
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/logic/application_items/g_apex_version
 begin
 --   Manifest

@@ -1,4 +1,9 @@
 -- file_checksum: 714C93D25B24191B7C17EBB407BE7CB11BD38146DC0D3BBD723D4E25075BE712
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/globalization/dyntranslations
 begin
 --   Manifest

@@ -1,4 +1,9 @@
 -- file_checksum: 1A7B6775D2F4E635826627E55BBF3FCA139FC174E48937A19E8B50090046799B
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/navigation/navigation_bar
 begin
 --   Manifest

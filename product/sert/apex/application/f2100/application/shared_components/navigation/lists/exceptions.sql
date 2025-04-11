@@ -1,4 +1,9 @@
 -- file_checksum: F83F2B4F055BCB64652D23EDEEC2123EF03BD36FC0F6718F804C479190507836
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/navigation/lists/exceptions
 begin
 --   Manifest

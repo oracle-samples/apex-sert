@@ -1,4 +1,9 @@
 -- file_checksum: E46B4CB14FEDB4AD514158F987D212B39F0BC8CF6A63895651AA827F2E060BD8
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/page/left_side_column
 begin
 --   Manifest

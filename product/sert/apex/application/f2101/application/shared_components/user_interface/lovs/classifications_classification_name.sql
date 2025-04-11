@@ -1,4 +1,9 @@
 -- file_checksum: CA6C31A4A997C1981F073C6F81B1DDE5744401365C9BDA9F3EDC0BC041A6A5B9
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/lovs/classifications_classification_name
 begin
 --   Manifest

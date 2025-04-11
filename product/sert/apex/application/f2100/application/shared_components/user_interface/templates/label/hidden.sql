@@ -1,4 +1,9 @@
 -- file_checksum: B174981B8F1C83CEFBDFEA86CB56F57508FB5E42D378E83C45FFAF82907A1431
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/label/hidden
 begin
 --   Manifest

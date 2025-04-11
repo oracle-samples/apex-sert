@@ -1,4 +1,9 @@
 -- file_checksum: 942FCF5EC231C5E8CB5F74FBA5CFEA983459823911784F27B4467AC969AF3A48
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/security/authentications/oracle_apex_accounts
 begin
 --   Manifest

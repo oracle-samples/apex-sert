@@ -1,4 +1,9 @@
 -- file_checksum: F4393E976370651F17F2E5907F5E479516D0A5EF4669D43067457280D47B5A5D
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/logic/application_computations/g_aop_url
 begin
 --   Manifest

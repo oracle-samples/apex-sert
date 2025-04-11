@@ -1,4 +1,9 @@
 -- file_checksum: 0F6026D52C203F258B1930403A12F858E4C55CEDA6C1AC4EA3C44DEF711B9F53
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/report/timeline
 begin
 --   Manifest

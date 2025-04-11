@@ -1,4 +1,9 @@
 -- file_checksum: 708301C17E8BD127762295B45D6B3ED6B730AB130DE4DEAC53C815BA7CBE5528
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/list/wizard_progress
 begin
 --   Manifest

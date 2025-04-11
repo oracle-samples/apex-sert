@@ -1,4 +1,9 @@
 -- file_checksum: 4E428D977245E0C9B2DF2C5D752DC317B7D6A43D91CEA40F92AB93EFA6975F31
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/page/drawer
 begin
 --   Manifest

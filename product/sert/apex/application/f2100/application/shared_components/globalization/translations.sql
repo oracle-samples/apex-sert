@@ -1,4 +1,9 @@
 -- file_checksum: 0AD5AD966D9482C3C3B291E65F13F6E37D57581D4C75C6249ED7DD31D89670AE
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/globalization/translations
 begin
 --   Manifest

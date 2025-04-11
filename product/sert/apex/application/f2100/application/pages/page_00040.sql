@@ -1,4 +1,9 @@
 -- file_checksum: 714A4D4A263E825148D9119D0CF2E15F2F53B3DC57D5EDCCAD98B6E0D0F49840
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/pages/page_00040
 begin
 --   Manifest

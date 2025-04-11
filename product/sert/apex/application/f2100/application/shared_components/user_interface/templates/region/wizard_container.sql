@@ -1,4 +1,9 @@
 -- file_checksum: 0372A9FBCE2C8B625CEAD16724F0E9269DBF9058AEF1524B93D4CD27AC985503
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/region/wizard_container
 begin
 --   Manifest

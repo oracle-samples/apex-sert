@@ -1,4 +1,9 @@
 -- file_checksum: D1966D5B6F8DAB36D4F3FB8ED8A4A7952124A8A69320BD3300E9A5ACF6815F01
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/list/top_navigation_tabs
 begin
 --   Manifest

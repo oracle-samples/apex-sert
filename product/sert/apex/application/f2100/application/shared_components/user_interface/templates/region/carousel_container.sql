@@ -1,4 +1,9 @@
 -- file_checksum: 49F6F6763301864F5ABB602BC07509413920CEEF60A448EC5817972C5B66CB0C
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/region/carousel_container
 begin
 --   Manifest

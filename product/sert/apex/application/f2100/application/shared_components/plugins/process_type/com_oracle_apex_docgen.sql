@@ -1,4 +1,9 @@
 -- file_checksum: 987BE6616549E76C80B4D342522EDA9CF6DAE17007ED0235F1E2E66EDC157617
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/plugins/process_type/com_oracle_apex_docgen
 begin
 --   Manifest

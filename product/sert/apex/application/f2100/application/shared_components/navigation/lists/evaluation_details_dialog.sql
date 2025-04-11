@@ -1,4 +1,9 @@
 -- file_checksum: 82E3339B76E5F2C5E4A6A387226DCEF8BCB383DB8840F3052C616F5FFC3A6BAA
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/navigation/lists/evaluation_details_dialog
 begin
 --   Manifest

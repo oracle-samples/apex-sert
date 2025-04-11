@@ -1,4 +1,9 @@
 -- file_checksum: 9046B35F82BF7513A46CCE87779F9705453F1DD6446019C898C17451BDA88721
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/region/interactive_report
 begin
 --   Manifest

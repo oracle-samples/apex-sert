@@ -1,4 +1,9 @@
 -- file_checksum: 09E003AD87CF614E59E3BF293B471AB38E0B350489E5A9A751414DCC8F7564DF
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/files/gis_exception_basic_docx
 begin
 --   Manifest

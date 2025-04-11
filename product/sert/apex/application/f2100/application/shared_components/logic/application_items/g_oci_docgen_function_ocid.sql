@@ -1,4 +1,9 @@
 -- file_checksum: 1E81D9B6CF7AB68A6266603CAC4FA2A4B6D8BCB74B7ABA42643C59670EAEE9B6
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/logic/application_items/g_oci_docgen_function_ocid
 begin
 --   Manifest

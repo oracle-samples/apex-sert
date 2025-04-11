@@ -1,4 +1,9 @@
 -- file_checksum: 5C14E5D8F75687B29D93BFA026FC2E61884C82896629D168A6F165BE63AF49E4
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/set_environment
 set define off verify off feedback off
 whenever sqlerror exit sql.sqlcode rollback

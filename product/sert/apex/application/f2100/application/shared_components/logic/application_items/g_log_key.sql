@@ -1,4 +1,9 @@
 -- file_checksum: 0D8B4C508FBB044D6D49FD716AA9496D81ED7E9C77A9949B820948EC45DA5C8F
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/logic/application_items/g_log_key
 begin
 --   Manifest

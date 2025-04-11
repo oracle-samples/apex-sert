@@ -1,4 +1,9 @@
 -- file_checksum: A1C7729DE5236454FC078F93E790667DC2B1272B41454C11DE91F6830793154D
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/plugins/template_component/theme_42_comments
 begin
 --   Manifest

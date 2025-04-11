@@ -1,4 +1,9 @@
 -- file_checksum: 3F1826B055677BBD686D08A09E6122DE59C4FEBB9FAB74E8E4C3924C0CB92520
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/template_opt_groups
 begin
 --   Manifest

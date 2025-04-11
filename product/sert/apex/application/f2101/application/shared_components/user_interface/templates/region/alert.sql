@@ -1,4 +1,9 @@
 -- file_checksum: 006FD23CEC82A0CE485BE4B917702956ADA5FD7C11BEC94E8CAD0A1843FB61AF
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/region/alert
 begin
 --   Manifest

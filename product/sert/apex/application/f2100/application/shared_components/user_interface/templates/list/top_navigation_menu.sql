@@ -1,4 +1,9 @@
 -- file_checksum: 2512F1294A487CD25376A7849C1137B2344F69587F5F2DB851554DF37285AA63
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/list/top_navigation_menu
 begin
 --   Manifest

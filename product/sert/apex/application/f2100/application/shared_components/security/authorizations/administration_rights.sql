@@ -1,4 +1,9 @@
 -- file_checksum: 02694DA1952824BEAF7189B8C5C197E01549C4FC359B7F96D0FC38574A2E582D
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/security/authorizations/administration_rights
 begin
 --   Manifest

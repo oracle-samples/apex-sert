@@ -1,4 +1,9 @@
 -- file_checksum: 24A4603E0FAAFF9F391B25C02BAB044E812915BEBAFDE1087C6F311F0191DE88
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/lovs/rules_lov_exceptions_ar
 begin
 --   Manifest

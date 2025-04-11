@@ -1,4 +1,9 @@
 -- file_checksum: 52142C982D8D4FA29DB950FEACBFBEF419F11AD02468521D936269DAB8D2E629
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/logic/application_computations/g_oci_region_name
 begin
 --   Manifest

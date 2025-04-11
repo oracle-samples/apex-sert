@@ -1,4 +1,9 @@
 -- file_checksum: CFDE40E47F8FC07F9E17F003C9FBC93BD0384A47C14F9427AC824DDE4BC8A158
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/list/top_navigation_mega_menu
 begin
 --   Manifest

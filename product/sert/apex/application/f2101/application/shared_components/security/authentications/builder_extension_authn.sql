@@ -1,4 +1,9 @@
 -- file_checksum: A48C8867B81E65672DF1838CBB083AEC8D88656DE33CAFF5DBE5CFCD557FCCD4
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/security/authentications/builder_extension_authn
 begin
 --   Manifest

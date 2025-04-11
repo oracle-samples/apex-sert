@@ -1,4 +1,9 @@
 -- file_checksum: E9AD896355ED058BF7679E154FE58F2FFC0B1236624CD07766ECFEE81874C336
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/files/gis_attributes_master_report_template_docx
 begin
 --   Manifest

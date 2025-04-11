@@ -1,4 +1,9 @@
 -- file_checksum: 25FF4CEE8EAE724DCF0D78EAC3F77BE019C93D48EF0582E05F1D297AB5B1626F
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/plugins/template_component/theme_42_content_row
 begin
 --   Manifest

@@ -1,4 +1,9 @@
 -- file_checksum: 71830C43FF62E75C560181986E7B963B2371BCCA1CD281C815E14913AF4C4163
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/logic/build_options
 begin
 --   Manifest

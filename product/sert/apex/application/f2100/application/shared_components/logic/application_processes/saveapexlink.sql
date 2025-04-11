@@ -1,4 +1,9 @@
 -- file_checksum: 684CB0C86F7EF173182DAA0EF53B5203EC2394366CAF38EF397466E52F7F08C8
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/logic/application_processes/saveapexlink
 begin
 --   Manifest

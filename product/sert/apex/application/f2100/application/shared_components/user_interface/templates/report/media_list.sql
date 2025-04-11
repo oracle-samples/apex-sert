@@ -1,4 +1,9 @@
 -- file_checksum: 3B5150DA998F62CA38312827BB894E38D5D80517D4231A9B898FAEA3E5072000
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/report/media_list
 begin
 --   Manifest

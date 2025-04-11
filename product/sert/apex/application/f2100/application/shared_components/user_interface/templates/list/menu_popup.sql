@@ -1,4 +1,9 @@
 -- file_checksum: FE66B3E4390D7F3322AEBF961DC5575B7F9C4D1D8023D7D8B3C6C9B3D19936FE
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/list/menu_popup
 begin
 --   Manifest

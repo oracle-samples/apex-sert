@@ -1,4 +1,9 @@
 -- file_checksum: 6445E8595DABA4E480353A470B9BA29806DEEACA800B9C9799520AB8F9D9E5B3
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/navigation/listentry
 begin
 --   Manifest

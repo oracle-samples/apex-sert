@@ -1,4 +1,9 @@
 -- file_checksum: CB2D3CDA9BF9D85D536FE1E5B161ACBA3E89AB2211B45A8AC600CD6E6DDA9E58
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/logic/application_computations/g_stale_eval
 begin
 --   Manifest

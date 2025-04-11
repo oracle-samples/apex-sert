@@ -1,4 +1,9 @@
 -- file_checksum: DC916B0BF136475729EA5098FD2F0FB7FE65DBE58976275FD19E7023AF956564
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/files/is_attributes_master_report_template_docx
 begin
 --   Manifest

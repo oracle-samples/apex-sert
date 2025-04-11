@@ -1,4 +1,9 @@
 -- file_checksum: 60CCE506CC70508F8618F1DA486681EB71B801896D2E31EC4407FBEF47C7D600
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/region/hero
 begin
 --   Manifest

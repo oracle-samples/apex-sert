@@ -1,4 +1,9 @@
 -- file_checksum: 2F57D6130FD6A1A083D2D4230BF8AEE95A0D64EBA73E86D4E3C7F020020F5F27
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/region/cards_container
 begin
 --   Manifest

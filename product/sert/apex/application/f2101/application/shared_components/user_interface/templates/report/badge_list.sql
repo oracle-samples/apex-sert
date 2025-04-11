@@ -1,4 +1,9 @@
 -- file_checksum: 84470CE1C9E28D8E8B822AD5C15153EDE71A7149FB3777D55185FA6B072C3FAB
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/report/badge_list
 begin
 --   Manifest

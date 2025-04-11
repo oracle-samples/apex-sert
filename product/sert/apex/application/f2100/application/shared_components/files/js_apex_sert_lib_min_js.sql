@@ -1,4 +1,9 @@
 -- file_checksum: 701D525AFA75FEF88FEDE00E10D87657A74904C91C33C76B92DFF4D0DF631B48
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/files/js_apex_sert_lib_min_js
 begin
 --   Manifest

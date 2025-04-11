@@ -1,4 +1,9 @@
 -- file_checksum: D98DA998709FE8ADECDF02C7AEC069BF93D7F7319689AB876869463986B2AB49
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/region/tabs_container
 begin
 --   Manifest

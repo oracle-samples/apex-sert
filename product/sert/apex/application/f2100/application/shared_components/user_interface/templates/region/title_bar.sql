@@ -1,4 +1,9 @@
 -- file_checksum: E18F6C8CA90D5F3FD882B6D1677B196FD8AC214D043E65F862E1C76678E9E4AB
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/region/title_bar
 begin
 --   Manifest

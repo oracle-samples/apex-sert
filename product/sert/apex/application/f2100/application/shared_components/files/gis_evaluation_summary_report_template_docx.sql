@@ -1,4 +1,9 @@
 -- file_checksum: 73EF9824D699AE89A8908C3D849C3FB0F0E7E042267AE979C85C0EBA6F25A337
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/files/gis_evaluation_summary_report_template_docx
 begin
 --   Manifest

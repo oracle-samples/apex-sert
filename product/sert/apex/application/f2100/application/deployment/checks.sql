@@ -1,4 +1,9 @@
 -- file_checksum: 081313C0A6E2B0F0656B7F4045E617BF67CBAE170798FF33280A8AF37BEEB153
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/deployment/checks
 begin
 --   Manifest

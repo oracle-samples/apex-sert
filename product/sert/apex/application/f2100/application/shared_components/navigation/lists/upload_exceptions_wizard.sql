@@ -1,4 +1,9 @@
 -- file_checksum: 9FD58CE782055FF4C377822424A17C664CB3BB670DE2AB677EE77BEF26433F86
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/navigation/lists/upload_exceptions_wizard
 begin
 --   Manifest

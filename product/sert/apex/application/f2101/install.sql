@@ -1,4 +1,9 @@
 prompt app_checksum: 66961CABE631C974C35EB9DB4647F7059BDA1FEF7FC5AE94D29DF8FC71255543
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 -- file_checksum: 8AB974387CE5D3769B4CE3AB30EC8458889D5F2C4FD0B00414C2BF9BD50B4016
 prompt --install
 @@application/set_environment.sql

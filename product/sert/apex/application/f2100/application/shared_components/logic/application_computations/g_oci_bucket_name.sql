@@ -1,4 +1,9 @@
 -- file_checksum: 613A6942EDC3180DA78A670FD1A5E52DECFCE488743B256520DAE1C75DBB10DF
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/logic/application_computations/g_oci_bucket_name
 begin
 --   Manifest

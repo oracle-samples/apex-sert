@@ -1,4 +1,9 @@
 -- file_checksum: 4E4BEE48F33E958FA3C27BA7325895FA9C32DA3933FF00BB91E4C26B5EB8E6DC
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/lovs/rule_set_types_rule_set_type_name
 begin
 --   Manifest

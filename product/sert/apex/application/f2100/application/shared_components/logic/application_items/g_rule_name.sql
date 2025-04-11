@@ -1,4 +1,9 @@
 -- file_checksum: 2EC3BE611C3CB90BF19D3A936F798545DB16733F5C0F5C64D2E37C435DBDD99B
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/logic/application_items/g_rule_name
 begin
 --   Manifest

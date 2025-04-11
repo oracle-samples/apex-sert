@@ -1,4 +1,9 @@
 -- file_checksum: D05EF1B106400693B2E02E1F6F75B165C6E15C67774D52BBD752E9AE7DBDFE40
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/delete_application
 begin
 wwv_flow_imp.component_begin (

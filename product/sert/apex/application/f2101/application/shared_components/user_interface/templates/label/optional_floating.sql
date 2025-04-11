@@ -1,4 +1,9 @@
 -- file_checksum: C18BB0FA45094F4BF5F38362A6B7E981A806FDD500C6271A10F5B9EA0A02AE1B
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/label/optional_floating
 begin
 --   Manifest

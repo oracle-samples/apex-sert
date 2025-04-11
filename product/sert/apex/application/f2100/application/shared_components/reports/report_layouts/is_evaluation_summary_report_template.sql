@@ -1,4 +1,9 @@
 -- file_checksum: 5CF08AF37684E87F229A47327EBF7B5F13A7B50A306BF6D071517629B104986D
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/reports/report_layouts/is_evaluation_summary_report_template
 begin
 --   Manifest

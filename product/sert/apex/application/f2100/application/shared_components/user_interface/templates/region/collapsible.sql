@@ -1,4 +1,9 @@
 -- file_checksum: 7338616FE83EF17DFAF159793FBF4C759015B06EED5905B967F0D5C5B34F5BFA
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 prompt --application/shared_components/user_interface/templates/region/collapsible
 begin
 --   Manifest
