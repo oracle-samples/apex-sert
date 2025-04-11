@@ -1,10 +1,10 @@
-prompt app_checksum: A8DE8BBED4F5C3F7AC002FEEB7A6F0FF1B5001D10D3AC3BDCEAD3CD7BB98E106
+prompt app_checksum: D00E3EB6FD74BEEADCC9BEE1CC5B1E0AA7CA72F760DD5C9030271CEFB30242C1
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 2F7D55795FF57DC1DF5E6444FBE55B78FF238CA12C516A1FD072C95C2C900765
+-- file_checksum: 62ED7E490C20168CEC03484EE414DF2199AE344B80A680043AB3F27E5754D707
 prompt --install
 @@application/set_environment.sql
 @@application/delete_application.sql
@@ -166,9 +166,10 @@ prompt --install
 @@application/shared_components/logic/build_options.sql
 @@application/shared_components/globalization/messages.sql
 @@application/shared_components/globalization/dyntranslations.sql
-@@application/shared_components/reports/report_layouts/is_evaluation_summary_report_template1.sql
-@@application/shared_components/reports/report_layouts/simple.sql
 @@application/shared_components/reports/report_layouts/is_evaluation_summary_report_template.sql
+@@application/shared_components/reports/report_layouts/is_evaluation_detail_report_template.sql
+@@application/shared_components/reports/report_layouts/is_evaluation_exception_report_template.sql
+@@application/shared_components/reports/report_layouts/is_attributes_master_report_template.sql
 @@application/shared_components/security/authentications/builder_extension_authn.sql
 @@application/shared_components/plugins/dynamic_action/be_apexrnd_aop_da.sql
 @@application/shared_components/plugins/template_component/theme_42_avatar.sql

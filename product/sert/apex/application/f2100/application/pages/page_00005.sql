@@ -1,9 +1,4 @@
--- file_checksum: 32F6894096F29051C044EEDA0BD938BEFFCC4ABACD2B30FDA36F892FCC94E3B6
--------------------------------------------------------------------------------
--- Copyright (c) 2024,2025 Oracle and/or its affiliates.
--- Licensed under the Universal Permissive License v 1.0 as shown
--- at https://oss.oracle.com/licenses/upl/
---------------------------------------------------------------------------------
+-- file_checksum: CB77F1A11CEDE6A4F479B8B29FA2A2458AF08575F0802D803CF6B34216A17774
 prompt --application/pages/page_00005
 begin
 --   Manifest
@@ -104,18 +99,41 @@ wwv_flow_imp_page.create_page_computation(
 ,p_computation_type=>'FUNCTION_BODY'
 ,p_computation_language=>'PLSQL'
 ,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'return (''This software is released under the MIT License',
+'return (''Copyright (c) 2024, 2025 Oracle and/or its affiliates.',
 '',
-'Copyright (c) 2024 The APEX-SERT Authors and Contributors',
+'The Universal Permissive License (UPL), Version 1.0',
 '',
-'Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modi'
-||'fy, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:',
+'Subject to the condition set forth below, permission is hereby granted to any',
+'person obtaining a copy of this software, associated documentation and/or data',
+'(collectively the "Software"), free of charge and under any and all copyright',
+'rights in the Software, and any and all patent rights owned or freely',
+'licensable by each licensor hereunder covering either (i) the unmodified',
+'Software as contributed to or provided by such licensor, or (ii) the Larger',
+'Works (as defined below), to deal in both',
 '',
-'The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.',
+'(a) the Software, and',
+'(b) any piece of software and/or hardware listed in the lrgrwrks.txt file if',
+'one is included with the Software (each a "Larger Work" to which the Software',
+'is contributed by such licensors),',
 '',
-'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDE'
-||'RS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.',
-''');'))
+'without restriction, including without limitation the rights to copy, create',
+'derivative works of, display, perform, and distribute the Software and make,',
+'use, sell, offer for sale, import, export, have made, and have sold the',
+'Software and the Larger Work(s), and to sublicense the foregoing rights on',
+'either these or other terms.',
+'',
+'This license is subject to the following condition:',
+'The above copyright notice and either this complete permission notice or at',
+'a minimum a reference to the UPL must be included in all copies or',
+'substantial portions of the Software.',
+'',
+'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR',
+'IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,',
+'FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE',
+'AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER',
+'LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,',
+'OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE',
+'SOFTWARE.'');'))
 );
 wwv_flow_imp_page.create_page_computation(
  p_id=>wwv_flow_imp.id(87114945127468157)

@@ -189,7 +189,11 @@ BEGIN
   if p_application_id_list is not null then
 
     --only 1 active rule set at a time
-    select rule_set_key into l_rule_set_key from sert_core.rule_sets where active_yn = 'Y';
+    select rule_set_key 
+    into l_rule_set_key 
+    from sert_core.rule_sets 
+    where active_yn = 'Y'
+    and apex_version = (select apex_version from sert_core.apex_version_v);
 
     --for every application id passed as a parameter
     for r_app_id in (

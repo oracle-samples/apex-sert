@@ -47,7 +47,7 @@ begin
 select pref_value into l_log_evals from prefs where pref_key = 'LOG_EVALUATIONS';
 
 -- log the value if logging is enabled
-if (l_log_evals = 'Y' and p_log_type in('EVAL','IMPORT','EXCEPTION_IMPORT','EXCEPTION_EXPORT') ) or p_log_type in ('ERROR','UNHANDLED')  then
+if (l_log_evals = 'Y' and p_log_type in('EVAL','IMPORT','EXCEPTION_IMPORT','EXCEPTION_EXPORT','IS_REPORT') ) or p_log_type in ('ERROR','UNHANDLED')  then
 
   insert into logs
     (

@@ -1,4 +1,4 @@
--- file_checksum: 71830C43FF62E75C560181986E7B963B2371BCCA1CD281C815E14913AF4C4163
+-- file_checksum: EE8800E2D03B340E47EBE07D7E289F62A175282E9A129D208A1499F63BCE13BD
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -39,6 +39,14 @@ wwv_flow_imp_shared.create_build_option(
 ,p_version_scn=>44528696674946
 ,p_default_on_export=>'INCLUDE'
 ,p_on_upgrade_keep_status=>true
+);
+wwv_flow_imp_shared.create_build_option(
+ p_id=>wwv_flow_imp.id(56752079131860347)
+,p_build_option_name=>'Deprecated'
+,p_build_option_status=>'EXCLUDE'
+,p_version_scn=>44559215634750
+,p_default_on_export=>'EXCLUDE'
+,p_build_option_comment=>'Object deprecated to be deleted, eg OCI Docgen plugin'
 );
 wwv_flow_imp_shared.create_build_option(
  p_id=>wwv_flow_imp.id(468161859695671137)

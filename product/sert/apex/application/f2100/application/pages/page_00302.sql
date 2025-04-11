@@ -1,4 +1,4 @@
--- file_checksum: 2C2EC908504AB027BC2A60A8B445542322DD796F6B4F65973A5BC25A575AC863
+-- file_checksum: 3E2ED4E7EE19FB0B3F43A9623F9FBC1C8E6569B39952BD3276DDE60DE5652555
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -27,6 +27,7 @@ wwv_flow_imp_page.create_page(
 ,p_step_template=>wwv_flow_imp.id(468189105088671207)
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
+,p_required_patch=>wwv_flow_imp.id(54925859627450308)
 ,p_protection_level=>'C'
 ,p_page_component_map=>'17'
 );
@@ -34,14 +35,13 @@ wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(128059977852043619)
 ,p_plug_name=>'IS Reports'
 ,p_region_template_options=>'#DEFAULT#:t-Region--removeHeader js-removeLandmark:t-Region--scrollBody'
-,p_component_template_options=>'#DEFAULT#:t-MediaList--showBadges:u-colors:t-MediaList--large force-fa-lg:t-MediaList--iconsRounded'
+,p_component_template_options=>'#DEFAULT#:t-MediaList--showBadges:u-colors:t-MediaList--iconsRounded'
 ,p_plug_template=>wwv_flow_imp.id(468265822494671277)
 ,p_plug_display_sequence=>60
 ,p_location=>null
 ,p_list_id=>wwv_flow_imp.id(65843423135553318)
 ,p_plug_source_type=>'NATIVE_LIST'
 ,p_list_template_id=>wwv_flow_imp.id(468521948494671332)
-,p_ai_enabled=>false
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(170518241235831842)
@@ -50,7 +50,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_template=>wwv_flow_imp.id(468194028275671212)
 ,p_plug_display_sequence=>50
 ,p_location=>null
-,p_plug_source=>'Report is generating and will automictically download when completed.  Please check your inbox for the password.'
+,p_plug_source=>'Report is generating and will automatically download when completed.  Please check your inbox for the password.'
 ,p_plug_display_condition_type=>'REQUEST_EQUALS_CONDITION'
 ,p_plug_display_when_condition=>'REPORTS_DG_HIDE'
 ,p_ai_enabled=>false
@@ -120,194 +120,200 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_04=>'Y'
 ,p_attribute_05=>'PLAIN'
 );
-wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(66483751791649517)
-,p_name=>'Evaluation Summary Report'
-,p_event_sequence=>10
-,p_bind_type=>'bind'
-,p_execution_type=>'IMMEDIATE'
-,p_bind_event_type=>'ready'
-,p_display_when_type=>'REQUEST_EQUALS_CONDITION'
-,p_display_when_cond=>'EVAL_SUMMARY_REPORT_AOP'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(66484245843649518)
-,p_event_id=>wwv_flow_imp.id(66483751791649517)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
-,p_name=>'Generate password and send email'
-,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
-,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'begin',
-'',
-'  :P302_PDF_PASS := dbms_random.string(''X'', 20);',
-'  :P302_PDF_FILENAME := ''GIS_application_evaluation_summary_report_''|| to_char(SYSDATE,''DDMMYYYYHH24MISS'');',
-'',
-'  sert_core.reports_pkg.send_password_email (',
-'    p_report_name  => ''Evaluation Summary Report'',',
-'    p_from         => :G_EMAIL_FROM,',
-'    p_filename     => :P302_PDF_FILENAME,',
-'    p_password     => :P302_PDF_PASS,',
-'    p_subj         => ''Report password'',',
-'    p_ws           => :G_WORKSPACE_NAME',
-'    );',
-'    ',
-'end;'))
-,p_attribute_03=>'P302_PDF_PASS,P302_PDF_FILENAME'
-,p_attribute_04=>'N'
-,p_attribute_05=>'PLSQL'
-,p_wait_for_result=>'Y'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(66484739905649519)
-,p_event_id=>wwv_flow_imp.id(66483751791649517)
-,p_event_result=>'TRUE'
-,p_action_sequence=>20
-,p_execute_on_page_init=>'N'
-,p_name=>'Report'
-,p_action=>'PLUGIN_BE.APEXRND.AOP_DA'
-,p_attribute_03=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'sert_core.aop_api_pkg.g_output_read_password := v(''P302_PDF_PASS'');',
-'sert_core.aop_api_pkg.g_output_filename := v(''P302_PDF_FILENAME'');'))
-,p_attribute_04=>'pdf'
-,p_attribute_05=>'SQL'
-,p_attribute_06=>'SQL'
-,p_attribute_09=>wwv_flow_string.join(wwv_flow_t_varchar2(
-' select ''docx'', blob_content ',
-' from apex_application_files ',
-' where filename = ''GIS_Evaluation_Summary_Report_Template.docx'' ',
-' and flow_id = :APP_ID'))
-,p_attribute_11=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select',
-'  ''file1'' as "filename",',
-'  cursor(',
-'    select',
-'      cursor (',
-'        select',
-'          ca.category_id,',
-'          ca.category_name, ',
-'          (select application_id || '' '' || application_name ',
-'           from apex_applications',
-'           where application_id = (select application_id from sert_core.evals where eval_id = :P10_EVAL_ID) ',
-'          ) application_name,  ',
-'          cursor(',
-'            select ',
-'              ca1.category_id, ',
-'              ca1.category_name,',
-'              er1.eval_result_id,',
-'              er1.rule_id,',
-'              er1.rule_name,',
-'              er1.description,',
-'              er1.component_name,',
-'              er1.application_id,',
-'              er1.eval_id, ',
-'              er1.eval_result_id,                  ',
-'              er1.result, ',
-'              er1.page_id, ',
-'              er1.component_id,',
-'              er1.component_name,',
-'              er1.item_name,',
-'              er1.current_value,',
-'              decode(er1.result,''FAIL'',NULL,er1.result) approved_flag',
-'              --ex1.exception justification,  @MZ issue here, as these 2 are not listed in eval_results_v',
-'              -- ex1.reason rejection',
-'            from',
-'               sert_core.eval_results_pub_v er1,',
-'               --sert_core.eval_results_v er2,  @MZ we prbably don''t need this ref here',
-'               sert_core.categories ca1',
-'            where 1=1 --er1.eval_result_id = er2.eval_result_id',
-'            and er1.category_key = ca.category_key',
-'            and er1.eval_id = :P10_EVAL_ID  --SYS_CONTEXT(''SV_SERT_CTX'', ''COLLECTION_ID'')',
-'            and er1.result not like ''%PASS%''',
-'            and er1.category_key = ca1.category_key',
-'            order by ca1.category_id, er1.rule_id',
-'          ) as "rule"',
-'        from sert_core.categories ca',
-'        /*',
-'        where exists',
-'        (select 1 from sert_core.eval_results er',
-'          where er.eval_id = :P10_EVAL_ID --SYS_CONTEXT(''SV_SERT_CTX'', ''COLLECTION_ID'') ',
-'          and er.category_key = ca.category_key   --no category_key in er',
-'          and er.result not like ''%PASS%'')',
-'        */',
-'        order by ca.category_id',
-'      ) as "category"',
-'    from dual',
-'  ) as "data"',
-'from dual'))
-,p_wait_for_result=>'Y'
-);
-wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(66486940314649521)
-,p_name=>'New'
-,p_event_sequence=>40
-,p_triggering_element_type=>'JAVASCRIPT_EXPRESSION'
-,p_triggering_element=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'if ( this.data.successMessage ) {',
-'apex.message.showPageSuccess(this.data.successMessage.text);',
-'}'))
-,p_bind_type=>'bind'
-,p_execution_type=>'IMMEDIATE'
-,p_bind_event_type=>'apexafterclosedialog'
-);
-wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(66482214044649516)
-,p_process_sequence=>20
-,p_process_point=>'AFTER_SUBMIT'
-,p_process_type=>'PLUGIN_COM.ORACLE.APEX.DOCGEN'
-,p_process_name=>'Evaluation Summary Report DG_BTN'
-,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select json_serialize( ',
-'            json_object(   ',
-'                    ''current_date''  value to_char(sysdate, ''DD MON YYYY''),',
-'                    ''category''      value',
-'                     json_arrayagg( ',
-'                        json_object(''category_id''   value cat.category_id,',
-'                                    ''category_name'' value cat.category_name,',
-'                                    ''application_name'' value eva.application_name,',
-'                                    ''rule'' value (',
-'                                    select',
-'                                    json_arrayagg(',
-'                                      json_object(''rule_id''   value ers1.rule_id,',
-'                                                  ''rule_name'' value ers1.rule_name,',
-'                                                  ''result''    value ers1.result,',
-'                                                  ''page_id''   value ers1.page_id, ',
-'                                                  ''component_name'' value ers1.component_name,',
-'                                                  ''current_value''  value ers1.current_value,',
-'                                                  ''region_name''  value ers1.region_name,',
-'                                                  ''column_name''  value ers1.column_name                                                ',
-'                                                 ) order by ers1.rule_name',
-'                                        returning clob)',
-'                                       from ',
-'                                         sert_core.eval_results_pub_v ers1,',
-'                                         sert_core.categories cat1',
-'                                       where ers1.category_key = cat.category_key',
-'                                       and ers1.eval_id = :P10_EVAL_ID',
-'                                       and ers1.result not like ''%PASS%''',
-'                                       and ers1.category_key = cat1.category_key',
-'                                       )',
-'                                      returning clob',
-'                                      ) order by cat.category_id',
-'                        returning clob)',
-'                returning clob) ',
-'        returning clob pretty) as report_data',
-'from sert_core.categories cat,',
-'     sert_core.evals_v eva',
-'--order by cat.category_id'))
-,p_attribute_02=>'GIS_Evaluation_Summary_Report_Template.docx'
-,p_attribute_03=>'GIS_Evaluation_Summary_Report.pdf'
-,p_error_display_location=>'INLINE_IN_NOTIFICATION'
-,p_process_when_type=>'NEVER'
-,p_process_success_message=>'Report successfully generated'
-,p_internal_uid=>22760796183371253
-);
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(66483002400649516)
-,p_process_sequence=>20
+,p_process_sequence=>1
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Evaluation Summary Report DG'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'DECLARE',
+'  l_document blob;',
+'  l_json     clob;',
+'  l_report_layout_static_id  VARCHAR2(100) := ''IS_EVALUATION_SUMMARY_REPORT_TEMPLATE'';',
+'  l_report_name VARCHAR2(100) := ''EVALUATION_SUMMARY_REPORT'';',
+'  l_error_message  VARCHAR2(32000);',
+'',
+'BEGIN',
+'',
+'  select sert_core.is_reports_api.evaluation_summary_report_json (',
+'           p_eval_id  => :P10_EVAL_ID,',
+'           p_app_id => :APP_ID)',
+'  into l_json',
+'  from dual;',
+'',
+'',
+'  if not sert_core.is_reports_api.report_generate (',
+'     p_application_id => :APP_ID,',
+'     p_data           => l_json,',
+'     p_report_layout_static_id => l_report_layout_static_id,',
+'     p_output_type    => apex_print.c_output_pdf ,',
+'     p_content_type   => ''application/pdf'',',
+'     p_report_name    => l_report_name,',
+'     p_error_message  => l_error_message',
+'     ) then',
+'',
+'    --report failed, check log table',
+'    apex_error.add_error (p_message => l_error_message,',
+'                          p_display_location => apex_error.c_inline_in_notification);',
+'',
+'  end if;',
+'',
+'END;'))
+,p_process_clob_language=>'PLSQL'
+,p_process_error_message=>'Report Failed'
+,p_process_when=>'EVAL_SUMMARY_REPORT_DG'
+,p_process_when_type=>'REQUEST_EQUALS_CONDITION'
+,p_process_success_message=>'Report successfully generated'
+,p_internal_uid=>22761584539371253
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(52392458358323216)
+,p_process_sequence=>2
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Evaluation Detail Report DG'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'DECLARE',
+'  l_document blob;',
+'  l_json     clob;',
+'  l_report_layout_static_id  VARCHAR2(100) := ''IS_EVALUATION_DETAIL_REPORT_TEMPLATE'';',
+'  l_report_name VARCHAR2(100) := ''EVALUATION_DETAIL_REPORT'';',
+'  l_error_message  VARCHAR2(32000);',
+'',
+'BEGIN',
+'',
+'  select sert_core.is_reports_api.evaluation_detail_report_json (',
+'           p_eval_id  => :P10_EVAL_ID,',
+'           p_app_id => :APP_ID)',
+'  into l_json',
+'  from dual;',
+'',
+'',
+'  if not sert_core.is_reports_api.report_generate (',
+'     p_application_id => :APP_ID,',
+'     p_data           => l_json,',
+'     p_report_layout_static_id => l_report_layout_static_id,',
+'     p_output_type    => apex_print.c_output_pdf ,',
+'     p_content_type   => ''application/pdf'',',
+'     p_report_name    => l_report_name,',
+'     p_error_message  => l_error_message',
+'     ) then',
+'',
+'    --report failed, check log table',
+'    apex_error.add_error (p_message => l_error_message,',
+'                          p_display_location => apex_error.c_inline_in_notification);',
+'',
+'  end if;',
+'',
+'END;'))
+,p_process_clob_language=>'PLSQL'
+,p_process_error_message=>'Report Failed'
+,p_process_when=>'EVAL_DETAIL_REPORT_DG'
+,p_process_when_type=>'REQUEST_EQUALS_CONDITION'
+,p_process_success_message=>'Report successfully generated'
+,p_internal_uid=>52392458358323216
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(52392535839323217)
+,p_process_sequence=>3
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Evaluation Exception Report DG'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'DECLARE',
+'  l_document blob;',
+'  l_json     clob;',
+'  l_report_layout_static_id  VARCHAR2(100) := ''IS_EVALUATION_EXCEPTION_REPORT_TEMPLATE'';',
+'  l_report_name VARCHAR2(100) := ''EVALUATION_EXCEPTION_REPORT'';',
+'  l_error_message  VARCHAR2(32000);',
+'',
+'BEGIN',
+'',
+'  select sert_core.is_reports_api.evaluation_exception_report_json (',
+'           p_eval_id  => :P10_EVAL_ID,',
+'           p_app_id => :APP_ID)',
+'  into l_json',
+'  from dual;',
+'',
+'',
+'  if not sert_core.is_reports_api.report_generate (',
+'     p_application_id => :APP_ID,',
+'     p_data           => l_json,',
+'     p_report_layout_static_id => l_report_layout_static_id,',
+'     p_output_type    => apex_print.c_output_pdf ,',
+'     p_content_type   => ''application/pdf'',',
+'     p_report_name    => l_report_name,',
+'     p_error_message  => l_error_message',
+'     ) then',
+'',
+'    --report failed, check log table',
+'    apex_error.add_error (p_message => l_error_message,',
+'                          p_display_location => apex_error.c_inline_in_notification);',
+'',
+'  end if;',
+'',
+'END;'))
+,p_process_clob_language=>'PLSQL'
+,p_process_error_message=>'Report Failed'
+,p_process_when=>'EVAL_EXCEPTION_REPORT_DG'
+,p_process_when_type=>'REQUEST_EQUALS_CONDITION'
+,p_process_success_message=>'Report successfully generated'
+,p_internal_uid=>52392535839323217
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(37983728839554137)
+,p_process_sequence=>4
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Attribute Master Report DG'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'DECLARE',
+'  l_document blob;',
+'  l_json     clob;',
+'  l_report_layout_static_id  VARCHAR2(100) := ''IS_ATTRIBUTES_MASTER_REPORT_TEMPLATE'';',
+'  l_report_name VARCHAR2(100) := ''ATTRIBUTES_MASTER_REPORT'';',
+'  l_error_message  VARCHAR2(32000);',
+'',
+'BEGIN',
+'',
+'  select sert_core.is_reports_api.attributes_master_report_json (',
+'           p_eval_id  => :P10_EVAL_ID,',
+'           p_app_id => :APP_ID)',
+'  into l_json',
+'  from dual;',
+'',
+'',
+'  if not sert_core.is_reports_api.report_generate (',
+'     p_application_id => :APP_ID,',
+'     p_data           => l_json,',
+'     p_report_layout_static_id => l_report_layout_static_id,',
+'     p_output_type    => apex_print.c_output_pdf ,',
+'     p_content_type   => ''application/pdf'',',
+'     p_report_name    => l_report_name,',
+'     p_error_message  => l_error_message',
+'     ) then',
+'',
+'    --report failed, check log table',
+'    apex_error.add_error (p_message => l_error_message,',
+'                          p_display_location => apex_error.c_inline_in_notification);',
+'',
+'  end if;',
+'',
+'END;'))
+,p_process_clob_language=>'PLSQL'
+,p_process_error_message=>'Report Failed'
+,p_process_when=>'EVAL_MASTER_REPORT_DG'
+,p_process_when_type=>'REQUEST_EQUALS_CONDITION'
+,p_process_success_message=>'Report successfully generated'
+,p_internal_uid=>37983728839554137
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(52392396004323215)
+,p_process_sequence=>40
 ,p_process_point=>'BEFORE_HEADER'
 ,p_process_type=>'PLUGIN_COM.ORACLE.APEX.DOCGEN'
-,p_process_name=>'Evaluation Summary Report DG'
+,p_process_name=>'Evaluation Summary Report DG_Plugin'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select json_serialize( ',
 '            json_object(   ',
@@ -349,17 +355,17 @@ wwv_flow_imp_page.create_page_process(
 '--order by cat.category_id'))
 ,p_attribute_02=>'IS_Evaluation_Summary_Report_Template.docx'
 ,p_attribute_03=>'IS_Evaluation_Summary_Report.pdf'
-,p_process_when=>'EVAL_SUMMARY_REPORT_DG'
-,p_process_when_type=>'REQUEST_EQUALS_CONDITION'
+,p_process_when_type=>'NEVER'
 ,p_process_success_message=>'Report successfully generated'
-,p_internal_uid=>22761584539371253
+,p_required_patch=>wwv_flow_imp.id(56752079131860347)
+,p_internal_uid=>52392396004323215
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(66483364267649517)
-,p_process_sequence=>30
+,p_process_sequence=>50
 ,p_process_point=>'BEFORE_HEADER'
 ,p_process_type=>'PLUGIN_COM.ORACLE.APEX.DOCGEN'
-,p_process_name=>'Evaluation Detail Report DG'
+,p_process_name=>'Evaluation Detail Report DG_Plugin'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select json_serialize( ',
 '            json_object(   ',
@@ -407,16 +413,16 @@ wwv_flow_imp_page.create_page_process(
 '--order by cat.category_id'))
 ,p_attribute_02=>'IS_Evaluation_Detail_Report_Template.docx'
 ,p_attribute_03=>'IS_Evaluation_Detail_Report.pdf'
-,p_process_when=>'EVAL_DETAIL_REPORT_DG'
-,p_process_when_type=>'REQUEST_EQUALS_CONDITION'
+,p_process_when_type=>'NEVER'
+,p_required_patch=>wwv_flow_imp.id(56752079131860347)
 ,p_internal_uid=>22761946406371254
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(66481415560649515)
-,p_process_sequence=>40
+,p_process_sequence=>60
 ,p_process_point=>'BEFORE_HEADER'
 ,p_process_type=>'PLUGIN_COM.ORACLE.APEX.DOCGEN'
-,p_process_name=>'Evaluation Exception Report DG'
+,p_process_name=>'Evaluation Exception Report DG_Plugin'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select json_serialize( ',
 '            json_object(   ',
@@ -471,16 +477,16 @@ wwv_flow_imp_page.create_page_process(
 '--            and er.result not like ''%PASS%'') '))
 ,p_attribute_02=>'IS_Evaluation_Exception_Report_Template.docx'
 ,p_attribute_03=>'IS_Application_Exceptions_Report.pdf'
-,p_process_when=>'EVAL_EXCEPTION_REPORT_DG'
-,p_process_when_type=>'REQUEST_EQUALS_CONDITION'
+,p_process_when_type=>'NEVER'
+,p_required_patch=>wwv_flow_imp.id(56752079131860347)
 ,p_internal_uid=>22759997699371252
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(66481722265649515)
-,p_process_sequence=>50
+,p_process_sequence=>80
 ,p_process_point=>'BEFORE_HEADER'
 ,p_process_type=>'PLUGIN_COM.ORACLE.APEX.DOCGEN'
-,p_process_name=>'Attribute Master Report DG'
+,p_process_name=>'Attribute Master Report DG_Plugin'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select json_serialize( ',
 '            json_object(   ',
@@ -513,8 +519,8 @@ wwv_flow_imp_page.create_page_process(
 'where eva.eval_id = :P10_EVAL_ID        '))
 ,p_attribute_02=>'IS_Attributes_Master_Report_Template.docx'
 ,p_attribute_03=>'IS_Attribute_Master_Report.pdf'
-,p_process_when=>'EVAL_MASTER_REPORT_DG'
-,p_process_when_type=>'REQUEST_EQUALS_CONDITION'
+,p_process_when_type=>'NEVER'
+,p_required_patch=>wwv_flow_imp.id(56752079131860347)
 ,p_internal_uid=>22760304404371252
 );
 wwv_flow_imp.component_end;
