@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ora="http://www.oracle.com/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+>
+
+  <!-- Product gadm -->
+  <includeAll
+    relativeToChangelogFile="true"
+    errorIfMissingOrEmpty="false"
+    path="sert/_dba"
+  />
+
+  <include
+    relativeToChangelogFile="true"
+    file="sert/sert_core/schema.xml"
+  />
+
+  <include
+    relativeToChangelogFile="true"
+    file="sert/sert_pub/schema.xml"
+  />
+
+
+  <!-- <changeSet id="0" author="liquify (generated)" runAlways="true" runOrder="last">
+    <sql dbms="oracle" endDelimiter="/" splitStatements="false" stripComments="true">
+      begin
+        dbms_utility.compile_schema(schema => 'SERT_CORE', compile_all => false);
+        dbms_utility.compile_schema(schema => 'SERT_PUB', compile_all => false);
+      end;
+      /
+    </sql>
+  </changeSet> -->
+  <include
+    context="@apex"
+    relativeToChangelogFile="true"
+    file="sert/apex/apexController.xml"
+  />
+
+  <includeAll
+    relativeToChangelogFile="true"
+    errorIfMissingOrEmpty="false"
+    path="sert/post_install"
+    minDepth="1"
+    maxDepth="1"
+  />
+
+
+</databaseChangeLog>

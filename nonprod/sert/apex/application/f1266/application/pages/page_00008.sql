@@ -1,0 +1,119 @@
+-- file_checksum: 3E13E3FACAB454C15E6D2E4FA1F3B105C244BBAEC1CD4750D6874232337FD9C1
+prompt --application/pages/page_00008
+begin
+--   Manifest
+--     PAGE: 00008
+--   Manifest End
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2024.05.31'
+,p_release=>'24.1.7'
+,p_default_workspace_id=>32049826282261068
+,p_default_application_id=>1266
+,p_default_id_offset=>11322785363014083
+,p_default_owner=>'SERT_CORE'
+);
+wwv_flow_imp_page.create_page(
+ p_id=>8
+,p_name=>'SV_CHK_DA_COND_NEVER'
+,p_alias=>'SV-CHK-DA-COND-NEVER'
+,p_step_title=>'SV_CHK_DA_COND_NEVER'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_page_component_map=>'11'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(20908638440862590)
+,p_plug_name=>'Info'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_imp.id(43728368363394113)
+,p_plug_display_sequence=>10
+,p_plug_source=>'Nothing to render on the page. This page is for testing dynamic actions.'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(20908074955862584)
+,p_name=>'daNoConditions'
+,p_event_sequence=>10
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'ready'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(20908097970862585)
+,p_event_id=>wwv_flow_imp.id(20908074955862584)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_name=>'actionNoConditions'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'void(0)'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(20908776394862591)
+,p_event_id=>wwv_flow_imp.id(20908074955862584)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'N'
+,p_name=>'actionConditionsExpression'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'void(0)'
+,p_server_condition_type=>'EXPRESSION'
+,p_server_condition_expr1=>'1=2'
+,p_server_condition_expr2=>'PLSQL'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(20908818757862592)
+,p_event_id=>wwv_flow_imp.id(20908074955862584)
+,p_event_result=>'TRUE'
+,p_action_sequence=>30
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'void(0)'
+,p_server_condition_type=>'NEVER'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(20908241059862586)
+,p_name=>'daConditionsExpress'
+,p_event_sequence=>20
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'ready'
+,p_display_when_type=>'EXPRESSION'
+,p_display_when_cond=>'1=2'
+,p_display_when_cond2=>'PLSQL'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(20908348542862587)
+,p_event_id=>wwv_flow_imp.id(20908241059862586)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_name=>'actionNoConditions'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'void(0)'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(20908421466862588)
+,p_name=>'daConditionsNever'
+,p_event_sequence=>30
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'ready'
+,p_display_when_type=>'NEVER'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(20908488561862589)
+,p_event_id=>wwv_flow_imp.id(20908421466862588)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_name=>'actionNoConditions'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'void(0)'
+);
+wwv_flow_imp.component_end;
+end;
+/
