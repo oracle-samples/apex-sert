@@ -189,9 +189,9 @@ BEGIN
   if p_application_id_list is not null then
 
     --only 1 active rule set at a time
-    select rule_set_key 
-    into l_rule_set_key 
-    from sert_core.rule_sets 
+    select rule_set_key
+    into l_rule_set_key
+    from sert_core.rule_sets
     where active_yn = 'Y'
     and apex_version = (select apex_version from sert_core.apex_version_v);
 
@@ -237,7 +237,7 @@ BEGIN
 
     --return evaluations summary results into a JSON array
     with json_v as (
-      select json_object ('applications' value json_arrayagg(json_doc)) json_doc,
+      select json_object ('applications' value json_arrayagg(json_doc) returning clob) json_doc,
              sum(json_value(json_doc, '$.failed_count')) as count_fail
       from sert_core.eval_results_summary_json_v
       where application_id in (
@@ -256,7 +256,7 @@ BEGIN
       )
      select json_mergepatch(json_v.json_doc,
                             json_object('result' value case when json_v.count_fail > 0 then 'fail' else 'pass' end,
-                                        'applications_failed' value apps_failed.app_fail_list)
+                                        'applications_failed' value apps_failed.app_fail_list) returning clob
                             pretty
                             )
     into l_clob
