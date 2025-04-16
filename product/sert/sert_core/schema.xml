@@ -92,27 +92,6 @@
         path="aop/"
     />
 
-    <changeSet id="aop_api22_pkg_wrapped_package_body" author="SERT" runOnChange="true">
-        <ora:runOracleScript objectName="aop_api22_pkg" ownerName="${sert_base_schema}" sourceType="FILE" relativeToChangelogFile="true">
-            <ora:source>aop_custom/aop_api22_pkg.wrapped</ora:source>
-        </ora:runOracleScript>
-    </changeSet>
-    <changeSet id="aop_convert22_pkg_wrapped_package_body" author="SERT" runOnChange="true">
-        <ora:runOracleScript objectName="aop_convert22_pkg" ownerName="${sert_base_schema}" sourceType="FILE" relativeToChangelogFile="true">
-            <ora:source>aop_custom/aop_convert22_pkg.wrapped</ora:source>
-        </ora:runOracleScript>
-    </changeSet>
-    <changeSet id="aop_modal_api_pkg_wrapped_package_body" author="SERT" runOnChange="true">
-        <ora:runOracleScript objectName="aop_modal_api_pkg" ownerName="${sert_base_schema}" sourceType="FILE" relativeToChangelogFile="true">
-            <ora:source>aop_custom/aop_modal_api_pkg.wrapped</ora:source>
-        </ora:runOracleScript>
-    </changeSet>
-    <changeSet id="aop_modal_pkg_wrapped_package_body" author="SERT" runOnChange="true">
-        <ora:runOracleScript objectName="aop_modal_pkg" ownerName="${sert_base_schema}" sourceType="FILE" relativeToChangelogFile="true">
-            <ora:source>aop_custom/aop_modal_pkg.wrapped</ora:source>
-        </ora:runOracleScript>
-    </changeSet>
-
   <includeAll
     relativeToChangelogFile="true"
     errorIfMissingOrEmpty="false"
