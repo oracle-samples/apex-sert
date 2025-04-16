@@ -1,4 +1,4 @@
--- file_checksum: 3E2ED4E7EE19FB0B3F43A9623F9FBC1C8E6569B39952BD3276DDE60DE5652555
+-- file_checksum: 3BE9CE8D70B064993C18CB5602DCFBD1856DEEC58563802CA593B5036A21FAC2
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -27,7 +27,7 @@ wwv_flow_imp_page.create_page(
 ,p_step_template=>wwv_flow_imp.id(468189105088671207)
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
-,p_required_patch=>wwv_flow_imp.id(54925859627450308)
+,p_required_patch=>wwv_flow_imp.id(54926183278448596)
 ,p_protection_level=>'C'
 ,p_page_component_map=>'17'
 );

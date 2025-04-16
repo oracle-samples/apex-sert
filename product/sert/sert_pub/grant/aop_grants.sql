@@ -7,10 +7,9 @@
 --changeset mzimon:aop_grants endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
 --preconditions onFail:MARK_RAN onError:HALT
 
-grant execute on sert_core.aop_api_pkg to sert_pub
-/
 grant select on sert_core.eval_results to sert_pub
 /
+-- used for summary report
 grant select on sert_core.categories to sert_pub
 /
 grant select on sert_core.evals to sert_pub
