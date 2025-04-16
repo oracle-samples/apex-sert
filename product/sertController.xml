@@ -20,11 +20,6 @@
 
   <include
     relativeToChangelogFile="true"
-    file="sert/sert_core/aop.xml"
-  />
-
-  <include
-    relativeToChangelogFile="true"
     file="sert/sert_pub/schema.xml"
   />
 
