@@ -12,27 +12,29 @@ This User Guide also covers the following processes that a user can do within AP
 
 [How to Run an Evaluation on an App](#33-evaluate-application)
 
-How to Download and Upload Exceptions
+[Filtering Issues](#4-evaluation-dashboard)
 
-How to Filter Issues By Page
+[How to Download and Upload Exceptions](#4431-download-exceptions)
 
-How to Edit/Fix an Issue directly in the builder
+[How to Edit/Fix an Issue directly in the builder](#431-smart-actions)
 
-How to Create an Exception for the Issue
+[How to Create an Exception for the Issue](#431-smart-actions)
 
-How to Create Exceptions in bulk for an attribute
+[How to Create Exceptions in bulk for a rule](#4433-bulk-exceptions)
 
-How to Edit or Delete an Exception
+[How to Edit or Delete an Exception](#443-exceptions)
 
-How to Approve or Reject an Exception(s)
+[How to Approve or Reject an Exception(s)](#4313-approvereject-exceptions)
 
+[How to View an Issue's Details](#43-dashboard-smart-search)
+
+[How to Look up Information on How to fix the Issue Step by Step](#431-smart-actions)
+
+<!--
 How to Add a Note to an Issue
 
-How to View an Issue's Details
-
 How to Check for more information on the issue
-
-How to Look up Information on How to fix the Issue Step by Step
+-->
 
 Refer to the APEX-SERT Administration Guide for information on administrative tasks that can be performed throughout the APEX-SERT, APEX-SERT Admin, and APEX Maintenance applications.
 
@@ -228,13 +230,6 @@ You have three Action buttons alongside the evaluation title
   * Schedule Evaluation - schedule an evaluation for a future time
   * Delete Evaluation - delete this evaluation
 
-The Evaluation results report uses the Smart-search feature of APEX, with built-in chips for:
-  * Result - Search by Result
-  * Page - filter on a specific page
-  * Rule - filter by Rule
-  * Category - filter by category of finding
-  * Raised by ( exception raised by)
-
 <img src="./images/sert-dash-search-l.gif" alt="GIF of Smart search using text searching" width=50% height=50%>
 
 
@@ -265,24 +260,105 @@ Use the dashboard to filter by Category
 
 ### 4.3 Risks
 
- Each rule is further assigned a *Risk* from the OWASP Top 10
+ Each rule is further assigned a *Risk* from the [OWASP Top 10](https://owasp.org/Top10/).
 
-### 4.3. Sidebar
+ We assign OWASP risks to allow the developer to better (and more consistently) judge the criticality of the finding.
+
+These risks are :
+1. A01-2021 - Broken Access Control
+1. A02-2021 - Cryptographic Failures
+1. A03-2021 - Injection
+1. A04-2021 - Insecure Design
+1. A05-2021 - Security Misconfiguration
+1. A06-2021 - Vulnerable and Outdated Components
+1. A07-2021 - Identification and Authentication Failures
+1. A08-2021 - Software and Data Integrity Failures
+1. A09-2021 - Security Logging and Monitoring Failures
+1. A10-2021 - Server-Side Request Forgery
+
+### 4.3 Dashboard Smart Search
+
+The Evaluation results report uses the Smart-search feature of APEX, with built-in chips for:
+  * Result - Search by Result
+  * Page - filter on a specific page
+  * Rule - filter by Rule
+  * Category - filter by category of finding
+  * Raised by ( exception raised by)
+
+click on the built-in chips to select a filter, or start typing and available filters will be presented for selection.
+
+It's also possible to simply enter text for a text based search.
+
+#### 4.3.1 Smart Actions
+Each finding is listed in the smart search, and has a contextualy action menu on the right.
+There are a number of actions available
+
+![SERT dashboard finding Actions](./images/sert-dashboard-actions.png)
+
+1. Result Details - Show full details of the finding for a deeper examination, along with background information and guidance on fixing the finding
+1.Comments - Enter comments on the finding for other reviewers or developers
+1. Exception - create or view the exception for the finding
+
+a sample of the result details is shown below
+
+<img src="./images/sert-result-details.png" alt="GIF of user launching SERT" width=25% height=25%>
+
+In this dialog you have all the information you need to determine your resolution to the finding.
+The details drawer provides the Page,Region, COlumn, Item information as relevant, along with the current value of the component, the associated Risk, and a URL to APEX help documentation.
+Two further tabs "About this Rule" and "How to fix" are provided to guide your next steps.
+
+On the footer of the drawer are 5 actions to allow the user to process the finding.
+
+1. Close - close the drawer
+1. APEX builder icon - open the APEX builder to directly edit the component in question
+1. Result details - show these details
+1. Comments - show any comments created against this finding
+1. Exception - show the exception on the finding, if any
+
+![image of the five actions on the Result detsails drawer](images/sert-result-details-footer.png)
+
+##### 4.3.1.2 Create/Edit Exception
+
+Once you have determined there is no *fix* for the finding, you can create an exception for it.
+ANy 2 developers in the workspace can create and approve an exception. the simple rule is: One cannot approve one's own exception. Any *other* developer can approve the exceptions your create.
+
+Any developer can withdraw and exception. and for stale  exceptions, any developer can withdraw, or resubmit the exception without change.
+
+##### 4.3.1.3 Approve/Reject Exceptions
+
+from the dashboard, click on the Approve/Reject button to go directly to the required drawer for action
+![approve/reject button on dashboard](./images/sert-approve-reject.png)
+
+Then, either approve the exception, or reject the exception with an associated *reason*.
+
+![image of approve/reject drawer](./images/sert-detail-reject-exception.png)
+
+##### 4.3.1.4 Create/Edit Comment
+COmments are intended to provide an ability to have some notes around a finding, as you work through resolving it.  This could revolve around possibilities for resolution, or draft exception reasoning.  Comments do not impact the flow of findings or exceptions
+
+### 4.4. Sidebar
 
 The left sidebar serves as a mini-dashboard within an Evaluation.
 
+1. the first section on top shows the overall scores for the evaluation, with badges showing the percentage scored including Aprpoved exceptions, then including Approved and Pending Exceptions, and finally the raw baseline score before any exceptions have been applied.
+1. The second region shows a vertical chart of Results by status. Clicking on a status will add a filter to the smart search.
+1. the final region is Failures by Category, helping users prioritise by type of finding.
 
+![image of the left sidebar showing approved/Pending/Raw scores, beneath that a Results by status chart, and beneath that a Failures by category chart](./images/apex-sert-left-sidebar.png)
 
-
-#### 4.3.1. Evaluation Scores
+#### 4.4.1. Section 1 Evaluation Scores
 
 
 Beginning at the top of the left side-bar are the three scores for the evaluation:
 
-Approved - The approved score is made up of a combination of the raw score plus any exceptions that have been both added and approved.
-Pending - The pending score is made up of a combination of the raw score plus any exceptions that have been added but not yet approved.
-Raw - The raw score represents the actual results of the evaluation. Any attribute that returned a FAIL deducts one point from the total possible raw score.
-When an evaluation is run, the three separate scores are generated. Each score is a percentage and represents the number of vulnerabilities detected, divided by the number of components evaluated. The more complex the application, the more components that will have to be evaluated. These scores are represented by the percentage of issues that have been identified and remedied by APEX-SERT. Immediately below the three percentage scores is the number of current and potential points for an evaluation.
+* Approved
+  - The approved score is made up of a combination of the raw score plus any exceptions that have been both added and approved.
+* Pending
+  - The pending score is made up of a combination of the raw score plus any exceptions that have been added but not yet approved.
+* Raw
+  - The raw score represents the actual results of the evaluation. Any attribute that returned a FAIL deducts one point from the total possible raw score.
+
+When an evaluation is run, the three separate scores are generated. Each score is a percentage and represents the number of vulnerabilities detected, divided by the number of components evaluated. The more complex the application, the more components that will have to be evaluated. These scores are represented by the percentage of issues that have been identified and remedied by APEX-SERT.
 
 As a first step, developers should examine the results and attempt to fix as many vulnerabilities as possible. When a group of vulnerabilities are fixed, the developer can re-evaluate the page or the entire application to update the scores.
 
@@ -292,115 +368,98 @@ Essentially, it should state why it is OK for a component to be configured the w
 
 For example, one of the attributes in APEX-SERT checks to ensure that all pages require authentication. However, if by design, there are several pages that are set to public, APEX-SERT will still fail those pages. Setting those pages to require authentication is not an option, as it would break the intended functionality of the application. In this case, the developer can create an exception and justify why it is OK that these pages failed the evaluation.
 
-#### 4.3.2. Reevaluate Entire Score
+> [!TIP]
+> Exceptions can be created in bulk - on a per rule basis to simplify such final sets of exceptions.
 
+#### 4.4.2. Evaluation
 
-This button will be available on all pages within the evaluation, and can be clicked after identified issues are fixed in the APEX application. After the button is a select list containing all Attribute Sets .
+The Evaluate button has a number of options
 
-Selecting any attribute set will re-evaluate the current application using that specific attribute set. This will be a full evaluation.
+1. -> Re-Evaluate
+This Action be available on the dashboard ithin the evaluation, and can be clicked after identified issues are fixed in the APEX application, or even to update the evaluation after a block of work has been completed/
 
-#### 4.3.3. App Deficiency Chart
+1. -> Evaluate in Background
+This action runs the full evaluation as an immediately submitted background job, freeing you up to continue working.
 
+1. -> Run Evaluation for Page
+Provides the option to just run all rules againsta single page in your application, making for a faster evaluation
 
-A small bar chart highlights the number of failures for each major classification, eg: Settings , Page/Report , XSS , SQLi and URL Tampering . Clicking on any of the bars in the chart will display a modal window summarizing the component attributes. Clicking on a Category will bring you to the Issues by Page.
+1. Schedule Evaluation
+Runa background evaluation at a time of your choosing
 
+1. Delete Evaluation
+Remove the evaluation and all it's exceptions
 
+#### 4.4.3. Exceptions
+The Exceptions actions button provides exception specific operations
+1. -> Download Exceptions
+1. -> Upload Exceptions
+1. -> Bulk Exceptions
+1. -> Bulk Approve/Reject Exceptions
 
-#### 4.3.4. Defects Chart
-
-The Defects Chart displays the different defect categories.
-
-
-
-Select a defect category group to see the failures for that category and their corresponding attributes. For example, select Page Access Protection to see the different attribute failures that fall underneath that category.
-
-
-
-#### 4.3.5. Importing & Exporting Exceptions
+#### 4.4.3.1. Download Exceptions
 
 This is a feature for environments where an application being evaluated is transferred across different Database instances, and reduces re-work in re-justifying exceptions already raised. A lot of work will go into developers entering, approving and/or rejecting exceptions. As applications move from the development server to the QA server, it is important to be able to move the exceptions in tandem with the applications. Thus, APEX-SERT provides the ability for an administrator to import and export exceptions, similar to how APEX applications are imported and exported.
 
-However, there are a couple of restrictions when importing and exporting exceptions: first of all, the source and target applications should be as similar as possible. If there are any differences between them and the exception from the source cannot be mapped to the target, it will be displayed in the exception report after the import completes. Second, the Attribute Set used must be the same in both applications. Currently it is not possible to export & import a group of exceptions from one attribute set to another.
+the `Download Exceptions` action will produce a JSON file containing all exceptions in the database, for the current evaluation
 
-#### 4.3.5.1. Export/Download Exceptions
+However, there are a some restrictions when importing and exporting exceptions
 
-To export exceptions, select the Download Exceptions item from the Evaluation Dashboard sidebar mini dashboard.
+##### 4.4.3.2. Import/Upload Exceptions
 
+Uploading exceptions in the UI is primarily designed to aid in transporting exceptions as an application is moved from one Environment to another.  In a carefully constructed set of environments, we may find that workspace ID and applicartion IDs are consistent in all environemnts, however, commonly, this is not the case, and workspace IDs or Application IDs change from Developer - QA - Production.
+the Upload wizard will attemp to manage such situations, byt recognising Workspace and Application ID changes, and provide an opportunity for the developer to cofirm these during the uplaod.
 
+from the home page, Select your desired evaluation by clicking on the `App ID: App Name link` in the evaluation report.
 
-Depending on your browser settings, the file may automatically download or you may be prompted for an action. If the later is the case, then select to save the file to your local disk.
+Now that you are in an active evaluation, you can use the Exceptions -> Upload Exceptions Action button menu to upload your JSON file of exceptions.
+Importing exceptions is a 3 step process
 
-#### 4.3.5.2. Import/Upload Exceptions
+1. Select a JSON file to upload via Drag and drop
+  ![step 1](./images/sert-upload-exceptions-step1.png)
+2. Review the uploaded exceptions
+  once uploaded, there are some rules that are applied:
+    1. Source and destination workspace ID differs:  You will be notified on import of this difference, but if you choose, exceptions will be mapped to the destinations workspace
+    1. Source and destination App ID differs:  you may not be able to keep the same ID.  You will be notified on import, and if you so choose, the upload will map the source App ID into the Destination App ID.
+    1. Rule Set or version differs: NO import will be allowed
+    1. Current value differs in Source and destination: This is a material difference in the value of the component: This makes the destination likely invalid, and import of the exceptions is blocked.  Re-import a current copy of your application and rescan to ensure finding values match.
+    ![step 1](./images/sert-upload-exceptions-step2.png)
+3. Upload the exceptions
+  the previewed exceptions will be attemped for uplaod.  NOTE: duplicate exceptions will be ignored, not updated.
 
-Next, switch to the target application. This can be a copy of the source application in the same workspace, a different workspace, or on a completely different server. Evaluate the target application, and once that is complete, select the Upload Exceptions item from the Evaluation Dashboard sidebar mini dashboard.
+At this point, imported exceptions are visible from APEX-SERT just like those entered into the application natively.
 
+##### 4.4.3.3. Bulk Exceptions
+APEX-SERT also allows the developer to raise bulk exceptions.  Exceptions can be raised individually, or for all Failures on a specific rule.
 
+First, select the `Rule` you wish to create bulk exceptions against.  The list of selectable rules shall have the number of findings, eg:  `Misconfiguration - Browser Cache (29)`
+once a rule is selected you will be presented with a mini-report of the findings for review.
 
-Click on Browse and locate the file that was just created. Also, decide if you want to purge any existing exceptions that exist for this application & attribute set. Setting this option to No may result in some exceptions not being successfully imported.
+Simply provide your justification as you would for any exception, and this is applied to all findings for the rule
 
-When you are ready, click Import to begin importing the exceptions. It will take from a few seconds to a couple of minutes to complete the import, as APEX-SERT will also perform a full evaluation of the application as part of the import process.
+![bulk exceptions with mini report](./images/sert-bulk-exception.png)
 
-Upon completion of the exception import, a report will display any exceptions that could not be imported.
+##### 4.4.4 Reports
 
-At this point, all exceptions should be imported and visible from APEX-SERT just like those entered into the application natively.
+Depending on what has been enabled in your application, you will have access to:
+1. AOP based reports
+1. DocGen Reports
+1. Interactive reports for built-in APEX functionality
 
-#### 4.3.6. Exception Statuses
-
-There is a card region relating to exceptions for the current evaluation, eg: Requested, Pending, Rejected and Stale Exceptions. Exceptions that are in an Approved state are not shown, since there is no need to actively monitor or handle them. This grid is a useful tool to see where there are exceptions that need to be approved or which are still pending from anywhere within the tool.
-
-
-
-Clicking on any quadrant in the grid will display the component attributes for that specific quadrant. You can then select the attribute to view the details further.
-
-
-
-## 5. Navigation Bar
-
-There is a navigation bar on the top of the page that appears on every page of the APEX-SERT application.
-
-
+AOP and DocGen report pages are only available and usable if  a) the system was installed with the options enabled, and b) the AOP server and DOcGen print server are correctly configured
 
 ### 5.1. Menu
 
-Selecting the menu icon will expand the available navigation tabs.
-
-
-
-These tabs - Home , Reports , Preferences , Scheduler, and Admin - will also be available on every page of APEX-SERT. Depending on which role your user is a member of will determine which tabs are displayed.
-
-
-
-Selecting a menu option will bring you to that corresponding section of APEX-SERT. Some menus - such as Scheduler and Admin - have sub-menus. Refer to GIU Scheduler and the APEX-SERT Administration Guide for more information.
-
-APEX-SERT makes use of breadcrumbs throughout the application. These breadcrumbs can be used to assist with navigation.
-
 ### 5.2. APEX-SERT
-
 
 Selecting APEX-SERT will return the user to the APEX-SERT Home page.
 
 ### 5.3. Logged in User
-The available options that display under the logged in user is dependent on the user's role.
+The available options that display under the logged in user are:
+* About
 
+  Displays the License text for the application
 
+* Close Window
 
-#### 5.3.1. APEX Builder
-
-Selecting APEX Builder will return the user to the APEX Builder. This requires logging in again to the Workspace.
-
-
-
-#### 5.3.2. APEX SERT Admin
-
-This option is only available for users with the Administrator role. Selecting APEX-SERT Admin will direct the user to the APEX-SERT Administration app. See APEX-SERT Administration Guide - DRAFT for more details.
-
-
-
-#### 5.3.3. Sign Out
-
-Selecting Sign Out will log you out of the APEX-SERT application.
-
-
-
-Issues By Page
-SERT Reports
+  Selecting Sign Out will log you out of the APEX-SERT application.
