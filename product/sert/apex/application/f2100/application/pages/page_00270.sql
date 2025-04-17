@@ -1,4 +1,4 @@
--- file_checksum: 5825CE61C1938BE1D008D0478157F87C3F38EFC35029C4BAA1C885686D7A88EC
+-- file_checksum: EE06F0390BBD1A4E21C693CB6F5D766DF5820DBDF435F0D897E028A9A315D262
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -21,12 +21,13 @@ wwv_flow_imp_page.create_page(
  p_id=>270
 ,p_name=>'Exception Details'
 ,p_alias=>'EXCEPTION-DETAILS1'
+,p_page_mode=>'MODAL'
 ,p_step_title=>'Exception Details'
 ,p_allow_duplicate_submissions=>'N'
 ,p_warn_on_unsaved_changes=>'N'
 ,p_autocomplete_on_off=>'OFF'
-,p_step_template=>wwv_flow_imp.id(468189105088671207)
-,p_page_template_options=>'#DEFAULT#'
+,p_step_template=>wwv_flow_imp.id(468163289284671148)
+,p_page_template_options=>'#DEFAULT#:js-dialog-class-t-Drawer--pullOutEnd:js-dialog-class-t-Drawer--xl:t-PageBody--noContentPadding'
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
@@ -34,8 +35,8 @@ wwv_flow_imp_page.create_page(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(76324239256040719)
 ,p_plug_name=>'Exception Details'
-,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
-,p_plug_template=>wwv_flow_imp.id(468265822494671277)
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(468199188089671222)
 ,p_plug_display_sequence=>40
 ,p_query_type=>'SQL'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -141,7 +142,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_db_column_name=>'APPLICATION_ID'
 ,p_display_order=>60
 ,p_column_identifier=>'F'
-,p_column_label=>'Application Id'
+,p_column_label=>'Application ID'
 ,p_column_type=>'NUMBER'
 ,p_heading_alignment=>'RIGHT'
 ,p_column_alignment=>'RIGHT'
@@ -152,7 +153,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_db_column_name=>'PAGE_ID'
 ,p_display_order=>70
 ,p_column_identifier=>'G'
-,p_column_label=>'Page Id'
+,p_column_label=>'Page ID'
 ,p_column_type=>'NUMBER'
 ,p_heading_alignment=>'RIGHT'
 ,p_column_alignment=>'RIGHT'
@@ -295,6 +296,18 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_break_enabled_on=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'APPLICATION_ID',
 'CATEGORY_NAME:APPLICATION_ID:CATEGORY_NAME:RULE_NAME'))
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(104515190656194118)
+,p_plug_name=>'Buttons'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(468201967560671224)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'REGION_POSITION_03'
+,p_location=>null
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(567191737003040088)
@@ -487,6 +500,18 @@ wwv_flow_imp_page.create_report_columns(
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
 ,p_include_in_export=>'Y'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(104515264725194119)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(104515190656194118)
+,p_button_name=>'CLOSE'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(468538954525671357)
+,p_button_image_alt=>'Close'
+,p_button_position=>'CLOSE'
+,p_warn_on_unsaved_changes=>null
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(49414569205768296)
@@ -711,6 +736,24 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(567170345286934611)
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(104515336945194120)
+,p_name=>'Close Dialog'
+,p_event_sequence=>110
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_imp.id(104515264725194119)
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'click'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(104515443545194121)
+,p_event_id=>wwv_flow_imp.id(104515336945194120)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_DIALOG_CLOSE'
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(49416009406768282)

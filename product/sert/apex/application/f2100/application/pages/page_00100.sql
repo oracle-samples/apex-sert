@@ -1,4 +1,4 @@
--- file_checksum: EBAE78EABDA4878BFB2A726C77E212D011CD69667242F8CD0AC58D1808BC7C12
+-- file_checksum: 8E6E7325CB2059366B77273A10A4572F9E69389D25C14B87BC832F41E43D7C9D
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -31,7 +31,7 @@ wwv_flow_imp_page.create_page(
 ''))
 ,p_inline_css=>'.t-AVPList-label { font-weight: bold; text-align:right; }'
 ,p_step_template=>wwv_flow_imp.id(468163289284671148)
-,p_page_template_options=>'#DEFAULT#:js-dialog-class-t-Drawer--pullOutEnd:js-dialog-class-t-Drawer--md:t-PageBody--noContentPadding'
+,p_page_template_options=>'#DEFAULT#:js-dialog-class-t-Drawer--pullOutEnd:js-dialog-class-t-Drawer--md'
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'03'

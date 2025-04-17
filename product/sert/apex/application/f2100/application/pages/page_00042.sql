@@ -1,4 +1,4 @@
--- file_checksum: F0D7A830E7AA40EF2A79F27119385C20F75550F929B08BB0239D0710632E47BA
+-- file_checksum: 3274B4E0A07DDCEAD3A33F214A3DC52ACC24F6754FCFB5F3887EE13DDB81B358
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -142,7 +142,7 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>7
 ,p_column_alias=>'PAGE_ID'
 ,p_column_display_sequence=>70
-,p_column_heading=>'Page Id'
+,p_column_heading=>'Page ID'
 ,p_use_as_row_header=>'N'
 ,p_column_alignment=>'RIGHT'
 ,p_heading_alignment=>'RIGHT'
@@ -155,7 +155,7 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>8
 ,p_column_alias=>'COMPONENT_ID'
 ,p_column_display_sequence=>170
-,p_column_heading=>'Component Id'
+,p_column_heading=>'Component ID'
 ,p_use_as_row_header=>'N'
 ,p_column_alignment=>'RIGHT'
 ,p_heading_alignment=>'RIGHT'
