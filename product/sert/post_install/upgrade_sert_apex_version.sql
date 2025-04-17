@@ -1,4 +1,9 @@
 --liquibase formatted sql
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 
 --changeset mipotter:check_upgrade_sert_apex_version endDelimiter:/ runOnChange:true runAlways:true rollbackEndDelimiter:/ stripComments:false
 declare

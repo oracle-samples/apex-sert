@@ -1,4 +1,4 @@
--- file_checksum: 7EB8B6C58FE979D4A40516E43C060006016B2E7CE500E2FB4E32FA2DA6D52C68
+-- file_checksum: CA2177A256053F4B1D196109A4C4339EC3D75CFA7762702F51C08B7778BACCD5
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -531,8 +531,9 @@ wwv_flow_imp_page.create_page_da_action(
 '  ,p_item_name        => :P20_ITEM_NAME',
 '  ,p_shared_comp_name => :P20_SHARED_COMP_NAME',
 '  ,p_comments         => :P20_COMMENTS',
+'  ,p_component_name   => :P20_COMPONENT_NAME',
 ');'))
-,p_attribute_02=>'P20_COMMENTS,P20_EVAL_RESULT_ID,P20_RULE_SET_ID,P20_RULE_ID,P20_WORKSPACE_ID,P20_APPLICATION_ID,P20_PAGE_ID,P20_COMPONENT_ID,P20_ITEM_NAME,P20_COLUMN_NAME,P20_SHARED_COMP_NAME'
+,p_attribute_02=>'P20_COMMENTS,P20_EVAL_RESULT_ID,P20_RULE_SET_ID,P20_RULE_ID,P20_WORKSPACE_ID,P20_APPLICATION_ID,P20_PAGE_ID,P20_COMPONENT_ID,P20_ITEM_NAME,P20_COLUMN_NAME,P20_SHARED_COMP_NAME,P20_COMPONENT_NAME'
 ,p_attribute_05=>'PLSQL'
 ,p_wait_for_result=>'Y'
 );

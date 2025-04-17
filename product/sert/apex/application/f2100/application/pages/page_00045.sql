@@ -1,4 +1,4 @@
--- file_checksum: E57DDC095C6D70846D3DFDC53352B33F97AB20795648DB0CDF9A3FF6E2B44BE4
+-- file_checksum: 9DE3B5894BBC21E330B01539DBE1A7F65C4CDCDEE60F827650174CBCF66ADD30
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -31,14 +31,72 @@ wwv_flow_imp_page.create_page(
 ,p_dialog_height=>'1000'
 ,p_dialog_width=>'1400'
 ,p_protection_level=>'C'
-,p_page_component_map=>'18'
+,p_page_component_map=>'23'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(104514702587194114)
+,p_plug_name=>'Statuts'
+,p_region_template_options=>'margin-bottom-md'
+,p_plug_template=>wwv_flow_imp.id(468206296054671228)
+,p_plug_display_sequence=>60
+,p_query_type=>'SQL'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select',
+'   1 as seq',
+'  ,''Imported Successfully'' as label',
+'  ,''fa fa-check'' as icon',
+'  ,''u-success'' as icon_class',
+'  ,:P45_IMPORT_SUCCESS as value  ',
+'from',
+'  dual',
+'union',
+'select',
+'   2 as seq',
+'  ,''Failed Imports'' as label',
+'  ,''fa fa-times'' as icon',
+'  ,''u-danger'' as icon_class',
+'  ,:P45_IMPORT_FAIL as value  ',
+'from',
+'  dual',
+'union',
+'select',
+'   3 as seq',
+'  ,''Duplicate Exceptions'' as label',
+'  ,''fa fa-copy'' as icon',
+'  ,''u-warning'' as icon_class',
+'  ,:P45_IMPORT_DUPLICATE as value  ',
+'from',
+'  dual',
+''))
+,p_lazy_loading=>false
+,p_plug_source_type=>'NATIVE_CARDS'
+,p_plug_query_num_rows_type=>'SCROLL'
+,p_show_total_row_count=>false
+,p_landmark_type=>'region'
+);
+wwv_flow_imp_page.create_card(
+ p_id=>wwv_flow_imp.id(104515006018194117)
+,p_region_id=>wwv_flow_imp.id(104514702587194114)
+,p_layout_type=>'GRID'
+,p_grid_column_count=>3
+,p_title_adv_formatting=>false
+,p_title_column_name=>'LABEL'
+,p_sub_title_adv_formatting=>false
+,p_body_adv_formatting=>false
+,p_second_body_adv_formatting=>false
+,p_icon_source_type=>'DYNAMIC_CLASS'
+,p_icon_class_column_name=>'ICON'
+,p_icon_css_classes=>'&ICON_CLASS.'
+,p_icon_position=>'START'
+,p_badge_column_name=>'VALUE'
+,p_media_adv_formatting=>false
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(426874714603579357)
 ,p_plug_name=>'Exception Upload Results'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(468256028801671271)
-,p_plug_display_sequence=>60
+,p_plug_display_sequence=>70
 ,p_query_type=>'SQL'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select',
@@ -126,7 +184,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_db_column_name=>'PAGE_ID'
 ,p_display_order=>30
 ,p_column_identifier=>'C'
-,p_column_label=>'Page Id'
+,p_column_label=>'Page ID'
 ,p_column_type=>'STRING'
 ,p_heading_alignment=>'LEFT'
 ,p_use_as_row_header=>'N'
@@ -281,48 +339,34 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P45_IMPORT_SUCCESS'
 ,p_item_sequence=>30
 ,p_use_cache_before_default=>'NO'
-,p_prompt=>'Import Success'
 ,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select count(*)',
 'from apex_collections',
 'where collection_name = ''EXCEPTIONS''',
 'and c001 = ''SUCCESS'''))
 ,p_source_type=>'QUERY'
-,p_display_as=>'NATIVE_DISPLAY_ONLY'
-,p_field_template=>wwv_flow_imp.id(468536483915671350)
-,p_item_template_options=>'#DEFAULT#'
+,p_display_as=>'NATIVE_HIDDEN'
 ,p_attribute_01=>'Y'
-,p_attribute_02=>'VALUE'
-,p_attribute_04=>'Y'
-,p_attribute_05=>'PLAIN'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(52392118276323213)
 ,p_name=>'P45_IMPORT_FAIL'
 ,p_item_sequence=>40
 ,p_use_cache_before_default=>'NO'
-,p_prompt=>'Import Fail'
 ,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select count(*)',
 'from apex_collections',
 'where collection_name = ''EXCEPTIONS''',
 'and c001 = ''FAIL'''))
 ,p_source_type=>'QUERY'
-,p_display_as=>'NATIVE_DISPLAY_ONLY'
-,p_begin_on_new_line=>'N'
-,p_field_template=>wwv_flow_imp.id(468536483915671350)
-,p_item_template_options=>'#DEFAULT#'
+,p_display_as=>'NATIVE_HIDDEN'
 ,p_attribute_01=>'Y'
-,p_attribute_02=>'VALUE'
-,p_attribute_04=>'Y'
-,p_attribute_05=>'PLAIN'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(52392220193323214)
 ,p_name=>'P45_IMPORT_DUPLICATE'
 ,p_item_sequence=>50
 ,p_use_cache_before_default=>'NO'
-,p_prompt=>'Duplicate Exceptions'
 ,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select count(*)',
 'from apex_collections',
@@ -330,14 +374,8 @@ wwv_flow_imp_page.create_page_item(
 'and c001 = ''FAIL''',
 'and c002 like ''%duplicate%'''))
 ,p_source_type=>'QUERY'
-,p_display_as=>'NATIVE_DISPLAY_ONLY'
-,p_begin_on_new_line=>'N'
-,p_field_template=>wwv_flow_imp.id(468536483915671350)
-,p_item_template_options=>'#DEFAULT#'
+,p_display_as=>'NATIVE_HIDDEN'
 ,p_attribute_01=>'Y'
-,p_attribute_02=>'VALUE'
-,p_attribute_04=>'Y'
-,p_attribute_05=>'PLAIN'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(51378960908441485)

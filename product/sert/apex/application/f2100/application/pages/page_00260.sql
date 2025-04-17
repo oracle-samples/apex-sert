@@ -1,4 +1,4 @@
--- file_checksum: B4E0BC0E72491926E5F31C6F20D6D336795D30608E2A1F855546BABF8BDA8476
+-- file_checksum: 188FF2B6035013612ED251548BA02CFCF5289D2BE1ECB1CF4C01AAF67FD3D843
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -21,12 +21,13 @@ wwv_flow_imp_page.create_page(
  p_id=>260
 ,p_name=>'Evaluation Summary'
 ,p_alias=>'EVALUATION-SUMMARY1'
+,p_page_mode=>'MODAL'
 ,p_step_title=>'Evaluation Summary'
 ,p_allow_duplicate_submissions=>'N'
 ,p_warn_on_unsaved_changes=>'N'
 ,p_autocomplete_on_off=>'OFF'
-,p_step_template=>wwv_flow_imp.id(468189105088671207)
-,p_page_template_options=>'#DEFAULT#'
+,p_step_template=>wwv_flow_imp.id(468163289284671148)
+,p_page_template_options=>'#DEFAULT#:js-dialog-class-t-Drawer--pullOutEnd:js-dialog-class-t-Drawer--xl'
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'04'
@@ -34,9 +35,9 @@ wwv_flow_imp_page.create_page(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(26933827005272229)
 ,p_plug_name=>'Summary'
-,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_region_template_options=>'#DEFAULT#'
 ,p_escape_on_http_output=>'Y'
-,p_plug_template=>wwv_flow_imp.id(468265822494671277)
+,p_plug_template=>wwv_flow_imp.id(468199188089671222)
 ,p_plug_display_sequence=>30
 ,p_location=>null
 ,p_plug_source_type=>'NATIVE_JET_CHART'

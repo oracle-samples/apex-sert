@@ -1,4 +1,9 @@
 --liquibase formatted sql
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 --changeset sert:import_sert_rule_allow-duplicate-submissions-24-1 stripComments:false endDelimiter:/ runOnChange:true
 begin
     sert_core.data_api.import_rule(
