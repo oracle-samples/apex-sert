@@ -4,8 +4,7 @@ do
   if [ 0 -eq $(grep  -c  "Universal Permissive License"  ${file} ) ]
   then
     ed -s ${file} <<<$'1r development/licence_snip.txt\nw'
-  else
-   echo "****** found license for ${file}"
+   echo "****** add license for ${file}"
   fi
 done
 # fix format trick
