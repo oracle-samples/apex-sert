@@ -33,8 +33,35 @@ end;
 
 --changeset mipotter:post_install_setup_builder_extension_grants endDelimiter:/ runOnChange:true runAlways:true rollbackEndDelimiter:/
 -- this can be enabled AFTER workspace parameter ALLOW_HOSTING_EXTENSIONS is set ( no automated until patch 24.1.2)
-BEGIN
-  sert_core.extension_xapi.grant_extension_workspace ( p_to_workspace =>'${sert_apex_workspace}' );
+-- BEGIN
+--   sert_core.extension_xapi.grant_extension_workspace ( p_to_workspace =>'${sert_apex_workspace}' );
+-- end;
+declare
+    l_sql varchar2(4000);
+    l_to_workspace varchar2(255) := 'SERT';
+begin
+  -- verify the to_workspace exists
+  if (apex_util.find_security_group_id(l_to_workspace) is null ) then
+  raise NO_DATA_FOUND;
+  end if;
+
+  for rec in
+    (select workspace from apex_workspaces aw
+      where aw.workspace <> upper(l_to_workspace)
+      and   not exists ( select workspace_name from apex_workspace_schemas ws
+                          where ws.workspace_name = aw.workspace and schema = apex_application.g_flow_schema_owner)
+      minus
+      select grantor_workspace workspace
+      from apex_workspace_extension_grant
+      where grantee_workspace = upper(l_to_workspace )
+    )
+  loop
+    --
+    -- apex_instance_admin.grant_extension_workspace ( p_from_workspace => rec.workspace,
+    --   p_to_workspace => upper(p_to_workspace),p_read_access => true, p_menu_label => 'APEX SERT');
+    apex_instance_admin.grant_extension_workspace ( p_from_workspace => rec.workspace,
+    p_to_workspace => upper(l_to_workspace),p_read_access => true, p_menu_label => 'APEX SERT');
+  end loop;
 end;
 /
 --rollback not required

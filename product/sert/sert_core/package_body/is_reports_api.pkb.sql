@@ -70,7 +70,6 @@ as
   end report_generate;
 
 
-
   ------------------------------------------------------------------------------
   function evaluation_summary_report_json (
     p_eval_id NUMBER,
@@ -104,7 +103,8 @@ as
                                                   'current_value'  value ers1.current_value,
                                                   'region_name'  value ers1.region_name,
                                                   'column_name'  value ers1.column_name                                                
-                                                 ) order by ers1.rule_name, ers1.page_id, ers1.result
+                                                  returning clob) 
+                                                  order by ers1.rule_name, ers1.page_id, ers1.result
                                         returning clob)
                                        from 
                                          sert_core.eval_results_pub_v ers1,
@@ -167,7 +167,8 @@ as
                                                   'current_value'  value ers1.current_value,
                                                   'region_name'  value ers1.region_name,
                                                   'column_name'  value ers1.column_name                                                
-                                                 ) order by ers1.page_id, ers1.result
+                                                  returning clob) 
+                                                  order by ers1.page_id, ers1.result
                                         returning clob) 
                                        from 
                                          sert_core.eval_results_pub_v ers1
@@ -237,7 +238,8 @@ as
                                                   'column_name'  value ers1.column_name,
                                                   'result' value ers1.result,
                                                   'current_value' value ers1.current_value
-                                                 )  order by ers1.page_id
+                                                  returning clob)  
+                                                  order by ers1.page_id
                                         returning clob
                                         )
                                        from 
@@ -299,7 +301,8 @@ end evaluation_exception_report_json;
                                       json_object('rule_id'   value rul1.rule_id,
                                                   'rule_name' value rul1.rule_name,
                                                   'rule_count' value count(*)
-                                                 ) order by rul1.rule_name
+                                                 returning clob) 
+                                                 order by rul1.rule_name
                                         returning clob)
                                        from 
                                          sert_core.rules rul1
@@ -322,7 +325,7 @@ end evaluation_exception_report_json;
     return l_json;
     
   end attributes_master_report_json;
-
+  
 
 end is_reports_api;
 /
