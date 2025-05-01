@@ -62,10 +62,6 @@ Oracle internal only:
 
 * [https://gbuconfluence.oraclecorp.com/display/CDSTS/Integrating+OCI+Document+Generator+Function](https://gbuconfluence.oraclecorp.com/display/CDSTS/Integrating+OCI+Document+Generator+Function)
 
-once you have a working DocGen service, you can set preferences in the APEX-SERT administration application by navigating to Setup → Preferences and providing the required data values.
-
-![image_here ](./#)
-
 #### 2.1.2. Resources
 
 In order to install APEX-SERT, you will need access to the following system resources:
@@ -88,28 +84,7 @@ For AUTONOMOUS, use DATA as your tablespace
 
 #### 2.2 Downloading
 
-#### 2.2.1 Download APEX-SERT
-
-Recent versions can be found here: <https://artifacthub-iad.oci.oraclecorp.com/artifactory/xgbu-ace-dev/sert/>
-
-for APEX 24.1, download the latest sert_24.1.N.zip file.
-
-for APEX 24.2 download the latest sert_24.2.N.zip file.
-
-once expanded/unzipped, the directory shall contain the following files and directories:
-
-```sh
-$ ls -l
-total 40
--rw-r--r--  1 mipotter  staff  1131 27 Sep 11:33 LICENSE.md
--rw-r--r--  1 mipotter  staff    36 27 Sep 11:33 README.md
--rw-r--r--  1 mipotter  staff   893  3 Oct 20:04 controller.xml
--rw-r--r--  1 mipotter  staff  1656 17 Sep 15:42 install.sql
-drwxr-xr-x@ 4 mipotter  staff   128 13 Sep 12:30 product
--rw-r--r--@ 1 mipotter  staff   819  3 Oct 21:13 sert.properties
-```
-
-#### 2.2.2 ACDC installing schema creation script
+#### 2.2.1 ACDC installing schema creation script
 
 Access the "acdc" setup scripts from the sert_latest.zip file, located in product/sert/pre-install/.  refer to the [README.md](README.md) for details of installation
 

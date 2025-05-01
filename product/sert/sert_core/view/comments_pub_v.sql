@@ -5,7 +5,7 @@
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
 
---changeset mipotter:create_view_sert_core.comments_pub_v_1721804356169 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ 
+--changeset mipotter:create_view_sert_core.comments_pub_v_1721804356169 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
 create or replace force view sert_core.comments_pub_v
 as
 select
@@ -28,6 +28,6 @@ select
 from
   comments_v c
 where
-  workspace_id = (select nv('WORKSPACE_ID') from dual)
+  workspace_id = (select nv('G_WORKSPACE_ID') from dual)
 /
 --rollback not required

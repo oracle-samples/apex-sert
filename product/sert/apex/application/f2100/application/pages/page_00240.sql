@@ -1,4 +1,4 @@
--- file_checksum: C46ADA36ACCD159CEE73D5E18A5BC9A7C0E26073B6FFC165A44970E0F156E0C7
+-- file_checksum: 0E8FBC4FD6D14EE5243B6FD11186E09B557A071BB3C2BA504B5242B4441AF44F
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -51,7 +51,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_template=>wwv_flow_imp.id(468194028275671212)
 ,p_plug_display_sequence=>40
 ,p_location=>null
-,p_plug_source=>'Report is generating and will automictically download when completed.  Please check your inbox for the password.'
+,p_plug_source=>'Report is generating and will automatically download when completed.  Please check your inbox for the password.'
 ,p_ai_enabled=>false
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'expand_shortcuts', 'N',

@@ -42,8 +42,9 @@ null;
   wwv_flow_api.set_security_group_id(10);
 
   -- Create the workspace
+  -- default workspace_id for development is 32049826282261068
   APEX_INSTANCE_ADMIN.ADD_WORKSPACE(
-      p_workspace_id        => 32049826282261068,
+      p_workspace_id        => to_number('${sert_apex_workspace_id}'),
       p_workspace           => l_workspace,
       p_primary_schema      => 'sert_pub'
       );
