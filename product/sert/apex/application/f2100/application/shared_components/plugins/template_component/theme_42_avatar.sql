@@ -1,4 +1,4 @@
--- file_checksum: 02B0B323C8FC1CA4269668D500D7736D0C1FC18367981838559EBF1C5E5A1700
+-- file_checksum: B177ECC1810413B8933055A4B4B8AC386E8B502003EA3454AAEBA4BD7E877A3F
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -35,10 +35,10 @@ wwv_flow_imp_shared.create_plugin(
 '{endif/}'))
 ,p_default_escape_mode=>'HTML'
 ,p_translate_this_template=>false
-,p_api_version=>2
+,p_api_version=>1
 ,p_standard_attributes=>'REGION_TEMPLATE'
 ,p_substitute_attributes=>true
-,p_version_scn=>133929266
+,p_version_scn=>44685798483540
 ,p_subscribe_plugin_settings=>true
 ,p_help_text=>'Display an image, icon, or initials. Available as a partial template to display a single row.'
 ,p_version_identifier=>'1.0'

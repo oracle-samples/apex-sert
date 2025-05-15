@@ -670,8 +670,10 @@ is
   l_exception_import_message VARCHAR2(10000);
   l_current_value VARCHAR2(1000);
   l_dest_component_not_found  VARCHAR2(1);  --YN
-
+  l_session_active  boolean := false;
 begin
+  -- verify a session exists
+  l_session_active := APEX_CUSTOM_AUTH.GET_SESSION_ID is not null;
 
   -- get the application_id for the specific evaluation
   if p_eval_id is not null then
@@ -680,21 +682,27 @@ begin
     select application_id, rule_set_key, apex_version, workspace_id
     into l_application_id, l_rule_set_key, l_apex_version, l_workspace_id
     from evals_v
-    where eval_id = p_eval_id;
+    where eval_id = p_eval_id;    
+    
   else
     -- The import was initiated from outside of APEX, we still expect a given export
     -- to be for only one applications/rule set, so use an agg query to get that
     -- info directly from the export JSON.
-    select any_value(application_id), any_value(rule_set_key), any_value(apex_version)
-    into l_application_id, l_rule_set_key, l_apex_version
+    select any_value(application_id), any_value(rule_set_key), any_value(workspace_id)
+    into l_application_id, l_rule_set_key, l_workspace_id
     from exceptions_from_json(p_exceptions => p_json_export_file);
+    
+    select sert_apex_version
+    into l_apex_version
+    from apex_version_v;    
+    
   end if;
 
   log_pkg.log(p_log => 'Uploading Exceptions for Application ' || l_application_id || ' - Rule Set ' || l_rule_set_key, p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
 
-
-  apex_collection.create_or_truncate_collection(p_collection_name => l_collection_name);
-
+  if(l_session_active ) then
+    apex_collection.create_or_truncate_collection(p_collection_name => l_collection_name);
+  end if;
 
   for x in (select * from exceptions_from_json(p_exceptions => p_json_export_file))
   loop
@@ -703,13 +711,12 @@ begin
 
     -- generate a checksum based on the data uploaded
 
-    if l_rule_set_key = x.rule_set_key and l_apex_version = x.apex_version then
+    if l_rule_set_key = x.rule_set_key then
 
       --this ora_hash is for exception itself
       select ora_hash
         (
         x.rule_key
-        || x.apex_version
         || x.page_id
         || x.component_name
         || x.column_name
@@ -736,13 +743,13 @@ begin
         into l_rule_set_id
         from rule_sets
         where rule_set_key = x.rule_set_key
-        and apex_version = x.apex_version;
+        and apex_version = l_apex_version;
 
         select rule_id
         into l_rule_id
         from rules
         where rule_key = x.rule_key
-        and apex_version = x.apex_version;
+        and apex_version = l_apex_version;
 
         l_dest_component_not_found := 'N';
 
@@ -750,9 +757,9 @@ begin
         --else recalc component_id.
         if x.component_id  is NULL and
            l_application_id = x.application_id and
-           l_application_id = x.workspace_id then
+           l_workspace_id = x.workspace_id then
 
-          --component_id is unchangd
+          --component_id is unchanged
           l_source_ora_hash := 1;
           l_dest_ora_hash := 1;
           l_dest_component_id := x.component_id;
@@ -763,7 +770,6 @@ begin
           --construct l_source_ora_hash
           select ora_hash(
             x.rule_key ||
-            x.apex_version ||
             x.page_id ||
             x.component_name ||
             x.column_name ||
@@ -778,8 +784,11 @@ begin
           begin
             select r.component_id,
                   ora_hash(
-                  (select rule_key from sert_core.rules where rule_id= r.rule_id and apex_version = l_apex_version) ||
-                  l_apex_version ||
+                  (select rule_key 
+                   from rules 
+                   where rule_id= r.rule_id 
+                   and apex_version = l_apex_version                 
+                  ) ||
                   r.page_id ||
                   r.component_name ||
                   r.column_name ||
@@ -796,7 +805,7 @@ begin
             and nvl(column_name,'N/A') = nvl(x.column_name,'N/A')
             and rule_set_id = l_rule_set_id
             and nvl(component_name,'N/A') = nvl(x.component_name,'N/A')
-            and rule_id = l_rule_id;
+            and rule_id = l_rule_id;            
 
           exception
             when no_data_found then
@@ -811,6 +820,8 @@ begin
                                    ' x.column_name:' || nvl(x.column_name,'N/A') ||
                                    ' l_rule_set_id: ' || l_rule_set_id ||
                                    ' l_rule_id: ' || l_rule_id ||
+                                   ' x.rule_key:' || x.rule_key ||
+                                   ' x.component_name:' || x.component_name ||                                    
                                    ' SQLERRM:' || SQLERRM
                           , p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
 
@@ -917,8 +928,10 @@ begin
 
           elsif nvl(x.current_value,'N/A') <> nvl(l_current_value,'N/A') then
             l_exception_import_message := 'Component checksum not matched. Current value for component differs.';
+            
           else
             l_exception_import_message := 'Component checksum not matched. ';
+            
           end if;
 
 
@@ -944,23 +957,24 @@ begin
                   p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
 
       l_exception_import_status := 'FAIL';
-      l_exception_import_message := 'Exception is for another application/rule set combination';
+      l_exception_import_message := 'Exception is for another rule set';
 
     end if; --rule_set_key and apex_version check
 
+    if (l_session_active ) then
 
-    apex_collection.add_member(p_collection_name => l_collection_name,
-                               p_c001 => l_exception_import_status,
-                               p_c002 => l_exception_import_message,
-                               p_c003 => x.page_id,
-                               p_c004 => x.column_name,
-                               p_c005 => x.item_name,
-                               p_c006 => x.shared_comp_name,
-                               p_c007 => x.component_name,
-                               p_c008 => x.current_value,
-                               p_c009 => x.reason
-                               );
-
+      apex_collection.add_member(p_collection_name => l_collection_name,
+                                p_c001 => l_exception_import_status,
+                                p_c002 => l_exception_import_message,
+                                p_c003 => x.page_id,
+                                p_c004 => x.column_name,
+                                p_c005 => x.item_name,
+                                p_c006 => x.shared_comp_name,
+                                p_c007 => x.component_name,
+                                p_c008 => x.current_value,
+                                p_c009 => x.reason
+                                );
+    end if;
   end loop;
 
 

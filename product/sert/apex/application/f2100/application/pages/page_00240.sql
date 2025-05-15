@@ -1,4 +1,4 @@
--- file_checksum: 0E8FBC4FD6D14EE5243B6FD11186E09B557A071BB3C2BA504B5242B4441AF44F
+-- file_checksum: 0494FBA829BE0E841599C9F2619A6F5DB766BBF8388655BE77954CC0898E12AD
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -178,18 +178,19 @@ wwv_flow_imp_page.create_page_da_action(
 '          ca.category_name, ',
 '          (select application_id || '' '' || application_name ',
 '           from apex_applications',
-'           where application_id = (select application_id from sert_core.evals where eval_id = :P10_EVAL_ID) ',
+'           where application_id = (select application_id from sert_core.evals_v where eval_id = :P10_EVAL_ID) ',
 '          ) application_name,  ',
 '          cursor(',
 '            select ru1.rule_name,',
 '                   ru1.rule_id,',
 '                   count(*) rule_count',
-'            from sert_core.rules ru1',
-'            where ru1.category_id = ca.category_id',
+'            from sert_core.rules_v ru1',
+'            where ru1.category_key = ca.category_key',
+'            and apex_version = :G_APEX_VERSION',
 '            group by ru1.rule_name, ru1.rule_id',
 '            order by ru1.rule_name',
 '          ) as "rule"',
-'        from sert_core.categories ca',
+'        from sert_core.categories_v ca',
 '        order by ca.category_id',
 '      ) as "category"',
 '    from dual',

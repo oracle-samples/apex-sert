@@ -1,4 +1,4 @@
--- file_checksum: A2B6E827E8FEB3E95C11828EA7DFCA3A8C1ED77920015203C9C037585E2C96E2
+-- file_checksum: F26A5ABF1F29000B3E07911F69809A643C8137A535C579A3BB7B70D46444E414
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -172,7 +172,7 @@ wwv_flow_imp_page.create_page_da_action(
 '          ru.fix,          ',
 '          (select application_id || '' '' || application_name ',
 '           from apex_applications',
-'           where application_id = (select application_id from sert_core.evals where eval_id = :P10_EVAL_ID) ',
+'           where application_id = (select application_id from sert_core.evals_v where eval_id = :P10_EVAL_ID) ',
 '          ) application_name,  ',
 '          cursor(',
 '            select ',
@@ -193,19 +193,18 @@ wwv_flow_imp_page.create_page_da_action(
 '            from',
 '               sert_core.eval_results_pub_v er1',
 '            where er1.category_key = ca.category_key',
-'            and er1.eval_id = :P10_EVAL_ID  --SYS_CONTEXT(''SV_SERT_CTX'', ''COLLECTION_ID'')',
+'            and er1.eval_id = :P10_EVAL_ID',
 '            and er1.rule_id = ru.rule_id',
 '            and er1.result not like ''%PASS%''',
 '            order by er1.rule_name',
 '          ) as "rule"',
 '        from ',
-'          sert_core.categories ca,',
-'          sert_core.rules ru',
-'        where 1=1',
-'        and ru.category_id = ca.category_id',
+'          sert_core.categories_v ca,',
+'          sert_core.rules_pub_v ru',
+'        where ru.category_key = ca.category_key',
 '        and exists',
-'        (select 1 from sert_core.eval_results er',
-'          where er.eval_id = :P10_EVAL_ID --SYS_CONTEXT(''SV_SERT_CTX'', ''COLLECTION_ID'') ',
+'        (select 1 from sert_core.eval_results_pub_v er',
+'          where er.eval_id = :P10_EVAL_ID',
 '          and er.rule_id = ru.rule_id',
 '          and er.result not like ''%PASS%'')',
 '        order by ca.category_id, ru.rule_name',
