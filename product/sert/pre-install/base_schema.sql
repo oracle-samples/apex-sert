@@ -5,6 +5,13 @@
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
 
+--changeset mipotter:sert_pub_create stripComments:false runOnChange:true runAlways:false endDelimiter:; rollbackEndDelimiter:;
+--preconditions onFail:MARK_RAN onError:HALT
+--precondition-sql-check expectedResult:0 select count(1) from all_users where username = 'SERT_PUB';
+create user sert_pub no authentication;
+--rollback not required
+
+
 --changeset mipotter:sert_core_create stripComments:false runOnChange:true runAlways:false endDelimiter:; rollbackEndDelimiter:;
 --preconditions onFail:MARK_RAN onError:HALT
 --precondition-sql-check expectedResult:0 select count(1) from all_users where username = 'SERT_CORE';

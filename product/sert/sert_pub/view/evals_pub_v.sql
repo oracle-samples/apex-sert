@@ -25,6 +25,7 @@ select
   ,eval_on_date
   ,eval_by
   ,eval_by_long
+  ,app_icon
   ,app_image
   ,summary
   ,job_name

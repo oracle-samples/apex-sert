@@ -86,12 +86,6 @@
     path="context"
   />
 
-    <!-- create AOP -->
-    <includeAll
-        relativeToChangelogFile="true"
-        path="aop/"
-    />
-
   <includeAll
     relativeToChangelogFile="true"
     errorIfMissingOrEmpty="false"

@@ -19,7 +19,7 @@ declare
     e_table_not_found exception;
     pragma exception_init(e_table_not_found, -00942);
   begin
-    execute immediate 'truncate table acdc.' || p_table;
+    execute immediate 'truncate table ' || p_table;
   -- if table doesnt exist, just continue without error
   exception when e_table_not_found then null;
   end clear_lb_table;

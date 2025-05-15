@@ -62,6 +62,8 @@ Oracle internal only:
 
 * [https://gbuconfluence.oraclecorp.com/display/CDSTS/Integrating+OCI+Document+Generator+Function](https://gbuconfluence.oraclecorp.com/display/CDSTS/Integrating+OCI+Document+Generator+Function)
 
+once you have a working DocGen service, you can set preferences in the APEX-SERT administration application by navigating to Setup → Preferences and providing the required data values.
+
 #### 2.1.2. Resources
 
 In order to install APEX-SERT, you will need access to the following system resources:
@@ -131,7 +133,7 @@ sert_admin_id = 2001
 sert_aop_url = https://localhost:8010
 # set an administrator email
 sert_admin_email_address = you@me.com
-sert_email_from = noreply@oracle.com
+sert_email_from = noreply@me.com
 # don't change sert_mode unless you know what it will do to you
 sert_mode = standalone
 

@@ -1,4 +1,4 @@
--- file_checksum: BECE348A9ABF620F5A62DC96D4254FDF516562CED8E236CA42AAC3606A3A5136
+-- file_checksum: 7528C7C5069675A704D86C6216B38D3A9ADA5695D652473B88126B71D55DA1F9
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -160,7 +160,6 @@ wwv_flow_imp_page.create_page_da_action(
 ' select ''docx'', blob_content ',
 ' from apex_application_files ',
 ' where filename = ''GIS_Evaluation_Exception_Report_Template.docx'' ',
-'-- where filename = ''GIS_exception_basic.docx'' ',
 ' and flow_id = :APP_ID'))
 ,p_attribute_11=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select',
@@ -175,7 +174,7 @@ wwv_flow_imp_page.create_page_da_action(
 '          crd.rule_name,        ',
 '          (select application_id || '' '' || application_name ',
 '           from apex_applications',
-'           where application_id = (select application_id from sert_core.evals where eval_id = :P10_EVAL_ID) ',
+'           where application_id = (select application_id from sert_core.evals_v where eval_id = :P10_EVAL_ID) ',
 '          ) application_name,  ',
 '          cursor(',
 '            select ',
@@ -213,7 +212,7 @@ wwv_flow_imp_page.create_page_da_action(
 '             er.rule_id,',
 '             er.rule_name',
 '           from',
-'             sert_core.categories ca,',
+'             sert_core.categories_v ca,',
 '             sert_core.eval_results_pub_v er',
 '           where er.eval_id = :P10_EVAL_ID ',
 '           and er.category_key = ca.category_key',

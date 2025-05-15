@@ -1,4 +1,4 @@
--- file_checksum: 6B36091A60FAE7AC12E0E813DC023B4679934A012EFB6CD47CF1C1490685DB57
+-- file_checksum: EA357CD31452CA074CE441806E51FDCD7B2DE39972DAAEC59A0ED6386D63A85D
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -25,6 +25,7 @@ wwv_flow_imp_page.create_page(
 ,p_allow_duplicate_submissions=>'N'
 ,p_warn_on_unsaved_changes=>'N'
 ,p_autocomplete_on_off=>'OFF'
+,p_javascript_code_onload=>'$(''.fa-user'').addClass(''fa-apex'').removeClass(''fa-user'');'
 ,p_page_template_options=>'#DEFAULT#:t-PageBody--noContentPadding'
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_page_component_map=>'13'
@@ -89,6 +90,11 @@ wwv_flow_imp_page.create_page_plug(
 '  ,null as actions',
 '  ,job_status',
 '  ,job_status_css ',
+'  ,case ',
+'    when app_icon is not null then ',
+'        ''r/'' || workspace || ''/'' || application_id || ''/files/static/v6/'' ||app_icon',
+'    else null',
+'   end as app_image2',
 '  ,app_image',
 '  ,approved_score as score',
 '  ,score_css',
@@ -112,8 +118,8 @@ wwv_flow_imp_page.create_page_plug(
 ,p_landmark_type=>'region'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'APPLY_THEME_COLORS', 'Y',
-  'AVATAR_IMAGE', '{"source":"URL_COLUMN","urlColumn":"APP_IMAGE"}',
-  'AVATAR_SHAPE', 't-Avatar--noShape',
+  'AVATAR_IMAGE', '{"source":"URL_COLUMN","urlColumn":"APP_IMAGE2"}',
+  'AVATAR_SHAPE', 't-Avatar--square',
   'AVATAR_TYPE', 'image',
   'BADGE_COL_WIDTH', 't-ContentRow-badge--sm',
   'BADGE_LABEL', 'SCORE',
@@ -153,6 +159,16 @@ wwv_flow_imp_page.create_region_column(
 ,p_data_type=>'VARCHAR2'
 ,p_session_state_data_type=>'VARCHAR2'
 ,p_display_sequence=>250
+,p_use_as_row_header=>false
+,p_is_primary_key=>false
+);
+wwv_flow_imp_page.create_region_column(
+ p_id=>wwv_flow_imp.id(62612774281786801)
+,p_name=>'APP_IMAGE2'
+,p_source_type=>'DB_COLUMN'
+,p_source_expression=>'APP_IMAGE2'
+,p_data_type=>'VARCHAR2'
+,p_display_sequence=>260
 ,p_use_as_row_header=>false
 ,p_is_primary_key=>false
 );

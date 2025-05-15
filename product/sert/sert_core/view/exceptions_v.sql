@@ -36,7 +36,6 @@ select
   ,ora_hash
     (
     r.rule_key
-    || rs.apex_version
     || e.page_id
     || e.component_name
     || e.column_name

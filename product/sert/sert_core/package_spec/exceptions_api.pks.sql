@@ -101,6 +101,12 @@ as
     );
 
 
+  procedure process_exceptions
+    (
+    p_json_export_file      in blob
+    ,p_eval_id              in number default null
+    );
+
 end exceptions_api;
 /
 --rollback not required

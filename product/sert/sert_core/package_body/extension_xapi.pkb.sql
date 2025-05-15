@@ -130,7 +130,6 @@ as
         -- apex_instance_admin.grant_extension_workspace ( p_from_workspace => rec.workspace,
         --   p_to_workspace => upper(p_to_workspace),p_read_access => true, p_menu_label => 'APEX SERT');
         l_sql:= 'apex_instance_admin.grant_extension_workspace( p_from_workspace => :from_workspace, p_to_workspace => upper(:to_workspace), p_read_access => true, p_menu_label => ''APEX SERT'');';
-        dbms_output.put_line (l_sql);
         execute immediate ( 'begin '||l_sql||' end;') using rec.workspace,p_to_workspace;
 
       end loop;
