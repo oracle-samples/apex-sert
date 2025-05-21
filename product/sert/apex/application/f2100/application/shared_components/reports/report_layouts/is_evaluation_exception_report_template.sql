@@ -1,4 +1,4 @@
--- file_checksum: AA2D00D6945DA0B0DB1BB921291223B9800DB5660EB4024292F03771D50B82B3
+-- file_checksum: 6D67C9B6924E96E1003D03E53782D7ACAC302542CCEF53B03E054828FDFBBFD7
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     REPORT LAYOUT: IS_Evaluation_Exception_Report_Template
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

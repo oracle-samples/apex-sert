@@ -1,4 +1,4 @@
--- file_checksum: 90B5C05C1496E6EF3F27A6F17DB60D2F3DDBADD0D0ABEC6A6C343F53B8E351F5
+-- file_checksum: 710E38B91C121382DB3C5B8534BA2A9E171F4F3D0A54183198A23A710D4CADCE
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     ROW TEMPLATE: BADGE_LIST
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

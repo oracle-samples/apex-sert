@@ -1,4 +1,4 @@
--- file_checksum: A4A6E763282CEC13D9663778369AB2332E5B63C39C49F65A5A59051E43557EDC
+-- file_checksum: 644953BCED331386139A4A58F9083EA0F5753044939E2579D94D5EC145856B3B
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     APPLICATION COMPUTATION: G_OCI_BUCKET_OUTPUT_FOLDER
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

@@ -1,4 +1,4 @@
--- file_checksum: 0372A9FBCE2C8B625CEAD16724F0E9269DBF9058AEF1524B93D4CD27AC985503
+-- file_checksum: E3865786F1F2681B8740C3F060225CEEA52DA9D371839EBC05C3CBD6B9A7FDA5
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     REGION TEMPLATE: WIZARD_CONTAINER
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

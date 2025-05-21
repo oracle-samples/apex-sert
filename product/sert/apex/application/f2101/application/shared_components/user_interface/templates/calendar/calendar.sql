@@ -1,4 +1,4 @@
--- file_checksum: 2EA11E14F8BB3B84D6273CC39C3740F7B5C3F6508648AD5FA73B103843E5500C
+-- file_checksum: 1E4D982333A5D6EA4A1C6738A761A23855659E7490ED7A478D2A00EE314515AA
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     CALENDAR TEMPLATES: CALENDAR
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

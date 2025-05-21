@@ -1,4 +1,4 @@
--- file_checksum: 5CB9322C685A1368159B277C8626DA8F5D3987745E8E79F588B0FA72A71EBA1A
+-- file_checksum: E8D60D9918CCE0CA55CCF887A52A9E2FDACD6436368D345CE50CF454D511C400
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     TEMPLATE: DRAWER
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

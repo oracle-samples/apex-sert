@@ -1,4 +1,4 @@
--- file_checksum: 5ED8B9BB3E5F10793D6374B0F6B2D80374C4A80980A3F3AE3A9F57646140020E
+-- file_checksum: 61DC226C3252BFF19C87F59AF9E57A2E22C77FF22984267D5D1AF65978BED808
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     PAGE: 02030
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
@@ -71,7 +71,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'RULE_NAME'
 ,p_column_display_sequence=>10
 ,p_column_heading=>'Rule'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -83,7 +82,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'RULE_KEY'
 ,p_column_display_sequence=>20
 ,p_column_heading=>'Key'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -95,7 +93,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'CATEGORY_NAME'
 ,p_column_display_sequence=>30
 ,p_column_heading=>'Category'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -107,7 +104,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'RISK'
 ,p_column_display_sequence=>60
 ,p_column_heading=>'Risk'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -119,7 +115,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'IMPACT'
 ,p_column_display_sequence=>40
 ,p_column_heading=>'Impact'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'

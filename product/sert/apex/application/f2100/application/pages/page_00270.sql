@@ -1,4 +1,4 @@
--- file_checksum: EE06F0390BBD1A4E21C693CB6F5D766DF5820DBDF435F0D897E028A9A315D262
+-- file_checksum: 309B635242722D1B61958E7ABBC697D14F95026B19C2AA419A9575ECCC57175B
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     PAGE: 00270
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -393,7 +393,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>1
 ,p_column_alias=>'EVAL_ID'
 ,p_column_display_sequence=>70
-,p_use_as_row_header=>'N'
 ,p_hidden_column=>'Y'
 ,p_derived_column=>'N'
 );
@@ -402,7 +401,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>2
 ,p_column_alias=>'JOB_STATUS'
 ,p_column_display_sequence=>10
-,p_use_as_row_header=>'N'
 ,p_column_html_expression=>wwv_flow_string.join(wwv_flow_t_varchar2(
 ' {with/}',
 '        LABEL:=JOB_STATUS',
@@ -422,7 +420,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'RULE_SET_NAME'
 ,p_column_display_sequence=>20
 ,p_column_heading=>'Rule Set'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -434,7 +431,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'APEX_VERSION'
 ,p_column_display_sequence=>30
 ,p_column_heading=>'Rules APEX Version'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -446,7 +442,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'EVAL_ON'
 ,p_column_display_sequence=>50
 ,p_column_heading=>'Evaluated on'
-,p_use_as_row_header=>'N'
 ,p_column_format=>'DD-MON-YYYY HH:MIPM'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
@@ -459,7 +454,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'EVAL_BY'
 ,p_column_display_sequence=>40
 ,p_column_heading=>'Evaluated by'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -470,7 +464,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>7
 ,p_column_alias=>'JOB_STATUS_CSS'
 ,p_column_display_sequence=>220
-,p_use_as_row_header=>'N'
 ,p_hidden_column=>'Y'
 ,p_derived_column=>'N'
 );
@@ -479,7 +472,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>8
 ,p_column_alias=>'APPLICATION_ID'
 ,p_column_display_sequence=>100
-,p_use_as_row_header=>'N'
 ,p_hidden_column=>'Y'
 ,p_derived_column=>'N'
 );
@@ -489,7 +481,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'SCHEDULE'
 ,p_column_display_sequence=>60
 ,p_column_heading=>'Schedule'
-,p_use_as_row_header=>'N'
 ,p_column_html_expression=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '{if SCHEDULE/}',
 '  #SCHEDULE#',
@@ -611,7 +602,8 @@ wwv_flow_imp_page.create_page_item(
 ,p_field_template=>wwv_flow_imp.id(468537787206671352)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_lov_display_extra=>'NO'
-,p_attribute_01=>'NONE'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(567559926520417544)
@@ -619,7 +611,8 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>10
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_protection_level=>'S'
-,p_attribute_01=>'Y'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'value_protected', 'Y')).to_clob
 ,p_ai_enabled=>false
 );
 wwv_flow_imp_page.create_page_da_event(
@@ -736,6 +729,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(567170345286934611)
+,p_attribute_01=>'N'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(104515336945194120)

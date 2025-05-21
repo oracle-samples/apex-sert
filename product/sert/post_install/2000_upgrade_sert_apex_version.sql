@@ -17,7 +17,7 @@ begin
   -- this should only run when the pref is not updated yet, once it matches it should no longer trigger.
   select
     substr(VERSION_NO, 1, instr(version_no,'.',1)+1) as apex_version,
-    (select pref_value from sert_core.prefs where pref_key = 'SERT_APEX_VERSION') as sert_apex_version,
+    (select to_number(pref_value,'99.9') from sert_core.prefs where pref_key = 'SERT_APEX_VERSION') as sert_apex_version,
     (select apex_version
       from sert_core.rule_sets where rule_Set_key = 'SERT-SECURITY' and active_yn = 'Y'
       and apex_version = (select substr(VERSION_NO, 1, instr(version_no,'.',1)+1) from apex_release)

@@ -1,4 +1,4 @@
--- file_checksum: C7C0DF666EA54B67B483BCEF6926E202ADCD12C800735F70EA35CB1AFE6E500C
+-- file_checksum: FCB6A8441C0E349A2372CAACFD7EA128B74EC580BC624726BD62F8AB49CDD77F
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     LIST: Manage Rules Action Button
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

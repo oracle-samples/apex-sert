@@ -1,4 +1,4 @@
--- file_checksum: 942FCF5EC231C5E8CB5F74FBA5CFEA983459823911784F27B4467AC969AF3A48
+-- file_checksum: BF1E444FE59795688F93073E4393E04676D8377D39BEBD6A8D2108D8D380747B
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     AUTHENTICATION: Oracle APEX Accounts
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

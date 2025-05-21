@@ -304,7 +304,7 @@ is
   l_rule_set_arr apex_application_global.vc_arr2;
 begin
 
--- copy the rule
+-- copy the rule if it does not exist in new version
 for x in (select * from rules where rule_id = p_rule_id)
 loop
   insert into rules
@@ -389,11 +389,122 @@ end if;
 
 end copy_rule;
 
+----------------------------------------------------------------------------------------------------------------------------
+-- PROCEDURE: C O P Y _ R U L E
+----------------------------------------------------------------------------------------------------------------------------
+-- Makes a copy of an existing rule
+----------------------------------------------------------------------------------------------------------------------------
+procedure upgrade_rule
+  (
+   p_rule_id   in out number
+  ,p_apex_version in varchar2
+  ,p_rule_sets in varchar2 default null
+  )
+is
+  l_rule_set_arr apex_application_global.vc_arr2;
+begin
+
+-- copy the rule if it does not exist in specified version
+--
+for x in (select *
+          from rules r1
+          where r1.rule_id = p_rule_id
+          and r1.internal_yn = 'N'
+          and r1.active_yn = 'Y'
+          and not exists (
+            select rule_id
+            from rules r2
+            where  r1.rule_key = r2.rule_key and r2.apex_version = p_apex_version
+            )
+         )
+loop
+
+  insert into rules
+  (
+     rule_name
+    ,rule_key
+    ,category_id
+    ,risk_id
+    ,rule_severity_id
+    ,rule_type
+    ,impact
+    ,apex_version
+    ,view_name
+    ,column_to_evaluate
+    ,component_id
+    ,component_name
+    ,column_name
+    ,item_name
+    ,shared_comp_name
+    ,operand
+    ,val_char
+    ,val_number
+    ,rule_criteria_type_id
+    ,case_sensitive_yn
+    ,additional_where
+    ,custom_query
+    ,active_yn
+    ,internal_yn
+    ,help_url
+    ,builder_url_id
+    ,info
+    ,fix
+    ,time_to_fix
+    ,description
+  )
+  values
+  (
+     x.rule_name
+    ,x.rule_key
+    ,x.category_id
+    ,x.risk_id
+    ,x.rule_severity_id
+    ,x.rule_type
+    ,x.impact
+    ,p_apex_version
+    ,x.view_name
+    ,x.column_to_evaluate
+    ,x.component_id
+    ,x.component_name
+    ,x.column_name
+    ,x.item_name
+    ,x.shared_comp_name
+    ,x.operand
+    ,x.val_char
+    ,x.val_number
+    ,x.rule_criteria_type_id
+    ,x.case_sensitive_yn
+    ,x.additional_where
+    ,x.custom_query
+    ,x.active_yn
+    ,x.internal_yn
+    ,x.help_url
+    ,x.builder_url_id
+    ,x.info
+    ,x.fix
+    ,x.time_to_fix
+    ,x.description
+  )
+  returning rule_id into p_rule_id;
+end loop;
+
+-- -- next, add to any rule sets that were selected
+if p_rule_sets is not null then
+
+  l_rule_set_arr := apex_string.string_to_table(p_rule_sets,':');
+  for x in 1..l_rule_set_arr.count
+  loop
+    insert into rule_set_rules (rule_set_id, rule_id) values (l_rule_set_arr(x), p_rule_id);
+  end loop;
+
+end if;
+
+end upgrade_rule;
 
 ----------------------------------------------------------------------------------------------------------------------------
 -- PROCEDURE: U P G R A D E _ R U L E S
 ----------------------------------------------------------------------------------------------------------------------------
--- Upgrades a rule by creating a copy and disabling the old one
+-- Upgrades a rules by creating a copy and disabling the old one
 ----------------------------------------------------------------------------------------------------------------------------
 procedure upgrade_rules
 is
@@ -401,17 +512,19 @@ is
   l_prev_apex_version number;
   l_rule_set_id       number;
   l_prev_rule_set_id  number;
+  l_src_rule_id       number;
   l_count             number;
 begin
   if l_apex_version is null then
+    -- look up the current APEX version
     select apex_version into l_apex_version from apex_version_v;
   end if;
-  -- get the latest version of APEX
-  select pref_value into l_prev_apex_version from prefs where pref_key = 'SERT_APEX_VERSION';
+  -- get the current sert_apex_version ( set in preferences)
+  select to_number(pref_value,'99.9') into l_prev_apex_version from prefs where pref_key = 'SERT_APEX_VERSION';
 
   -- Copy all Rules and associate them woth the new version of APEX IFF not already existing
-  -- this is done once for all exxisting rules to "upgrade anything not currently existing"
-  -- we should only attempt this if NO rules exist for the version.
+  -- this is done once for all existing rules to "upgrade anything not currently existing"
+  -- we only attempt this if NO rules exist for the version.
   select count(*) into l_count
   from rules
   where apex_version = l_apex_version;
@@ -491,7 +604,7 @@ begin
     ;
   end if; --l_count = 0
 
-  -- Copy the Rule Sets and associate them woth the new version of APEX
+  -- Copy the Rule Sets and associate them with the new version of APEX
   -- check if a ruleset exists already for the "current" APEX version - eg 24.2
   -- G_APEX_VERSION
   for rec in
@@ -529,15 +642,28 @@ begin
 
     -- we have inserted rec.rule_set_key for the new apex version
     -- get the old and new rule_set_id
+    -- new ruleset as the DEST
     select rule_set_id into l_rule_set_id from rule_sets where rule_set_key = rec.rule_set_key and apex_version = l_apex_version;
+    -- use old ruleset as the SOURCE
     select rule_set_id into l_prev_rule_set_id from rule_sets where rule_set_key = rec.rule_set_key and apex_version = l_prev_apex_version;
 
     -- Loop through and add the rules ( insert prev into current)
     -- at this point we are only aiming to map rules already existing in the current apex version
     -- these are already configured in install, or at the start of this function
-    for y in (select * from rule_set_rules where rule_set_id = l_prev_rule_set_id)
+    for y in (select rsr.rule_set_id, rsr.rule_id, rs.active_yn, rs.internal_yn
+              from rule_set_rules rsr, rule_sets rs
+              where rs.rule_set_id = rsr.rule_set_id
+              and rsr.rule_set_id = l_prev_rule_set_id)
     loop
-      -- insert rule_set_rule where the key matches the previous ruleset map, and exists as a rule in the new apex version
+      l_src_rule_id := y.rule_id;
+      -- at this point we have:
+      -- 1) migrated rules if NONE exist for the new apex_version ( this covers internal rules)
+      -- but we should help out and handle customer built rulesets and rules.
+      -- so for each active ruleset, we can migrate the rule if not existing, so that the insertion into rule_set_rules will succeeed
+      if ( y.internal_yn = 'N' ) then
+        upgrade_rule ( p_rule_id => y.rule_id , p_apex_version => l_apex_version);
+      end if;
+      -- we know the rule will hav e
       insert into rule_set_rules
         ( rule_set_id
          ,rule_id
@@ -546,8 +672,10 @@ begin
         ( l_rule_set_id
          ,(select rule_id from rules where rule_key = (select rule_key from rules where rule_id = y.rule_id) and apex_version = l_apex_version)
         );
+      update rules set active_yn = 'N' where rule_id = l_src_rule_id;
     end loop;
-
+    -- we have migrated the ruleset, deactivate the older one.
+    update rule_sets set active_yn = 'N' where rule_set_id = l_prev_rule_set_id;
 -- Loop through and copy Exceptions
     for exception_rec in (select * from exceptions where rule_set_id = l_prev_rule_set_id)
     loop

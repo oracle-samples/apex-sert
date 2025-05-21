@@ -1,4 +1,4 @@
--- file_checksum: A9B7B84201702D8C8413D2654438BBBD3C4D00BCF7C71255946664F5C5BD35B1
+-- file_checksum: 7A8E374710B8238AFA6DC198CE88CD5DC91B8213F2124904B3824B0DCABE08CF
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     REGION TEMPLATE: CARDS_CONTAINER
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

@@ -1,4 +1,4 @@
--- file_checksum: 8A40BF732D767CB6D4CFE31C2897FB3E792816C9F2122348A8B4711CD40C22E8
+-- file_checksum: 6B18F455A3FECA715337B140E57A44D7BF573D90BF7414A7DA2DAA714E7424BC
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     PAGE: 06000
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
@@ -78,7 +78,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'JOB_NAME'
 ,p_column_display_sequence=>10
 ,p_column_heading=>'Job Name'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -90,7 +89,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'REPEAT_INTERVAL'
 ,p_column_display_sequence=>20
 ,p_column_heading=>'Repeat Interval'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -102,7 +100,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'STATE'
 ,p_column_display_sequence=>30
 ,p_column_heading=>'State'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -114,7 +111,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'RUN_COUNT'
 ,p_column_display_sequence=>40
 ,p_column_heading=>'Run Count'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -126,7 +122,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'FAILURE_COUNT'
 ,p_column_display_sequence=>50
 ,p_column_heading=>'Failure Count'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -138,7 +133,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'RETRY_COUNT'
 ,p_column_display_sequence=>60
 ,p_column_heading=>'Retry Count'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -150,7 +144,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'LAST_START_DATE'
 ,p_column_display_sequence=>70
 ,p_column_heading=>'Last Start Date'
-,p_use_as_row_header=>'N'
 ,p_column_format=>'DD-MON-YYYY HH:MIPM'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
@@ -163,7 +156,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'NEXT_RUN_DATE'
 ,p_column_display_sequence=>80
 ,p_column_heading=>'Next Run Date'
-,p_use_as_row_header=>'N'
 ,p_column_format=>'DD-MON-YYYY HH:MIPM'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
@@ -175,7 +167,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>9
 ,p_column_alias=>'REMOVE'
 ,p_column_display_sequence=>90
-,p_use_as_row_header=>'N'
 ,p_column_link=>'#'
 ,p_column_linktext=>'<button type="button" class="t-Button t-Button--tiny">Remove Job</button>'
 ,p_column_link_attr=>'class="removeJob" id="#JOB_NAME#"'
@@ -190,7 +181,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>10
 ,p_column_alias=>'VIEW_DETAILS'
 ,p_column_display_sequence=>100
-,p_use_as_row_header=>'N'
 ,p_column_link=>'f?p=&APP_ID.:6010:&SESSION.::&DEBUG.::P6010_JOB_NAME:#JOB_NAME#'
 ,p_column_linktext=>'<button type="button" class="t-Button t-Button--tiny">View Details</button>'
 ,p_column_alignment=>'RIGHT'
@@ -204,7 +194,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>11
 ,p_column_alias=>'RUN_JOB'
 ,p_column_display_sequence=>110
-,p_use_as_row_header=>'N'
 ,p_column_link=>'#'
 ,p_column_linktext=>'<button type="button" class="t-Button t-Button--tiny">Run Now</button>'
 ,p_column_link_attr=>'class="runJob" id="#JOB_NAME#"'
@@ -252,8 +241,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'FACET_COLUMN'
 ,p_display_as=>'NATIVE_SEARCH'
 ,p_item_template_options=>'#DEFAULT#'
-,p_attribute_01=>'ROW'
-,p_attribute_04=>'N'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'collapsed_search_field', 'N',
+  'search_type', 'ROW')).to_clob
 ,p_fc_show_chart=>false
 );
 wwv_flow_imp_page.create_page_item(
@@ -276,7 +266,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_fc_sort_by_top_counts=>true
 ,p_fc_show_selected_first=>false
 ,p_fc_show_chart=>false
-,p_fc_toggleable=>false
+,p_fc_display_as=>'INLINE'
 ,p_suggestions_type=>'DYNAMIC'
 );
 wwv_flow_imp_page.create_page_item(
@@ -285,7 +275,8 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(73850259993346152)
 ,p_display_as=>'NATIVE_HIDDEN'
-,p_attribute_01=>'Y'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'value_protected', 'Y')).to_clob
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(74423751036971553)
@@ -358,6 +349,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(73850259993346152)
+,p_attribute_01=>'N'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(74424249734971558)
@@ -439,6 +431,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(73850259993346152)
+,p_attribute_01=>'N'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(70051044387108352)
@@ -468,6 +461,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(73850259993346152)
+,p_attribute_01=>'N'
 );
 wwv_flow_imp.component_end;
 end;

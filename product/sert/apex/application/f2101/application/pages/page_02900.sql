@@ -1,4 +1,4 @@
--- file_checksum: F534DBCE79DE9B8684D02CBD7686485FF170F82B5CD972076C72B0A3BE2D51D3
+-- file_checksum: D6807A1363C2B4C4E86BBB00F678A25A049AC3CD9AD2BEAE6B5BF2E02E3DF4BD
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     PAGE: 02900
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
@@ -58,7 +58,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>1
 ,p_column_alias=>'BUILDER_URL_ID'
 ,p_column_display_sequence=>10
-,p_use_as_row_header=>'N'
 ,p_column_link=>'f?p=&APP_ID.:2910:&SESSION.::&DEBUG.::P2910_BUILDER_URL_ID:#BUILDER_URL_ID#'
 ,p_column_linktext=>'<img src="#APEX_FILES#app_ui/img/icons/apex-edit-pencil.png" class="apex-edit-pencil" alt="">'
 ,p_column_alignment=>'CENTER'
@@ -72,7 +71,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'BUILDER_URL_KEY'
 ,p_column_display_sequence=>30
 ,p_column_heading=>'Builder URL Key'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -84,7 +82,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'COMPONENT_NAME'
 ,p_column_display_sequence=>20
 ,p_column_heading=>'Component Name'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -96,7 +93,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'DATA_TYPE_ID'
 ,p_column_display_sequence=>50
 ,p_column_heading=>'Data Type ID'
-,p_use_as_row_header=>'N'
 ,p_column_alignment=>'RIGHT'
 ,p_heading_alignment=>'RIGHT'
 ,p_disable_sort_column=>'N'
@@ -109,7 +105,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'DATA_LINK'
 ,p_column_display_sequence=>60
 ,p_column_heading=>'Data Link'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -120,7 +115,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>6
 ,p_column_alias=>'DESCRIPTION'
 ,p_column_display_sequence=>70
-,p_use_as_row_header=>'N'
 ,p_hidden_column=>'Y'
 ,p_derived_column=>'N'
 );
@@ -129,7 +123,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>7
 ,p_column_alias=>'CREATED_BY'
 ,p_column_display_sequence=>80
-,p_use_as_row_header=>'N'
 ,p_hidden_column=>'Y'
 ,p_derived_column=>'N'
 );
@@ -138,7 +131,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>8
 ,p_column_alias=>'CREATED_ON'
 ,p_column_display_sequence=>90
-,p_use_as_row_header=>'N'
 ,p_hidden_column=>'Y'
 ,p_derived_column=>'N'
 );
@@ -147,7 +139,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>9
 ,p_column_alias=>'UPDATED_BY'
 ,p_column_display_sequence=>100
-,p_use_as_row_header=>'N'
 ,p_hidden_column=>'Y'
 ,p_derived_column=>'N'
 );
@@ -156,7 +147,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_query_column_id=>10
 ,p_column_alias=>'UPDATED_ON'
 ,p_column_display_sequence=>110
-,p_use_as_row_header=>'N'
 ,p_hidden_column=>'Y'
 ,p_derived_column=>'N'
 );
@@ -210,8 +200,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'FACET_COLUMN'
 ,p_display_as=>'NATIVE_SEARCH'
 ,p_item_template_options=>'#DEFAULT#'
-,p_attribute_01=>'ROW'
-,p_attribute_04=>'N'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'collapsed_search_field', 'N',
+  'search_type', 'ROW')).to_clob
 ,p_fc_show_chart=>false
 );
 wwv_flow_imp_page.create_page_da_event(
@@ -233,6 +224,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(193707116604459725)
+,p_attribute_01=>'N'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(194075639123874322)
@@ -253,6 +245,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(193707116604459725)
+,p_attribute_01=>'N'
 );
 wwv_flow_imp.component_end;
 end;

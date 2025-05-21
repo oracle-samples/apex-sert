@@ -1,4 +1,4 @@
--- file_checksum: 26F6962E87BCDA77E3816C213EA3AE54F698C938B148CC2EEE263296EFFA4390
+-- file_checksum: 8C565421358A641EEB16AD55CC4B1AED1609B842F433B33E678EE7A3FAA56145
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     THEME STYLE: 2101
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
@@ -24,7 +24,6 @@ wwv_flow_imp_shared.create_theme_style(
 ,p_css_file_urls=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '#APEX_FILES#libraries/oracle-fonts/oraclesans-apex#MIN#.css?v=#APEX_VERSION#',
 '#THEME_FILES#css/Redwood#MIN#.css?v=#APEX_VERSION#'))
-,p_is_current=>false
 ,p_is_public=>true
 ,p_is_accessible=>false
 ,p_theme_roller_input_file_urls=>'#THEME_FILES#less/theme/Redwood-Theme.less'
@@ -35,7 +34,6 @@ wwv_flow_imp_shared.create_theme_style(
  p_id=>wwv_flow_imp.id(73501891121359450)
 ,p_theme_id=>42
 ,p_name=>'Vita'
-,p_is_current=>false
 ,p_is_public=>true
 ,p_is_accessible=>true
 ,p_theme_roller_input_file_urls=>'#THEME_FILES#less/theme/Vita.less'
@@ -46,7 +44,6 @@ wwv_flow_imp_shared.create_theme_style(
  p_id=>wwv_flow_imp.id(73502268833359450)
 ,p_theme_id=>42
 ,p_name=>'Vita - Dark'
-,p_is_current=>false
 ,p_is_public=>true
 ,p_is_accessible=>false
 ,p_theme_roller_input_file_urls=>'#THEME_FILES#less/theme/Vita-Dark.less'
@@ -57,7 +54,6 @@ wwv_flow_imp_shared.create_theme_style(
  p_id=>wwv_flow_imp.id(73502690454359450)
 ,p_theme_id=>42
 ,p_name=>'Vita - Red'
-,p_is_current=>false
 ,p_is_public=>true
 ,p_is_accessible=>false
 ,p_theme_roller_input_file_urls=>'#THEME_FILES#less/theme/Vita-Red.less'
@@ -68,7 +64,6 @@ wwv_flow_imp_shared.create_theme_style(
  p_id=>wwv_flow_imp.id(73503062356359450)
 ,p_theme_id=>42
 ,p_name=>'Vita - Slate'
-,p_is_current=>false
 ,p_is_public=>true
 ,p_is_accessible=>false
 ,p_theme_roller_input_file_urls=>'#THEME_FILES#less/theme/Vita-Slate.less'
@@ -83,7 +78,6 @@ wwv_flow_imp_shared.create_theme_style(
 '#APEX_FILES#libraries/oracle-fonts/oraclesans-apex#MIN#.css?v=#APEX_VERSION#',
 '#THEME_FILES#css/Redwood#MIN#.css?v=#APEX_VERSION#'))
 ,p_css_classes=>' rw-mode-nav--light rw-mode-header--pillar rw-mode-body--light rw-layout--contained rw-mode-body-header--dark'
-,p_is_current=>true
 ,p_is_public=>true
 ,p_is_accessible=>false
 ,p_theme_roller_input_file_urls=>'#THEME_FILES#less/theme/Redwood-Theme.less'

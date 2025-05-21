@@ -9,7 +9,7 @@
 declare
   l_count number := 0;
   l_current_sert_apex_version number;
-  l_deploy_version number := 24.1;
+  l_deploy_version number := 24.2;
 begin
   -- determine the currently installed sert_apex_version
   -- value 0 indicates a fresh install
@@ -25,14 +25,14 @@ begin
   --      do nothing.
   -- later in post-install we will look at upgrade steps and updating sert_apex_version. not to be done here...
 
-  select to_number(coalesce(max(pref_value),'0'))
+  select to_number(coalesce(max(pref_value),'0'),'99.9')
   into l_current_sert_apex_version
   from sert_core.prefs
   where pref_key = 'SERT_APEX_VERSION';
 
   if ( l_current_sert_apex_version < l_deploy_version ) then
     merge into sert_core.prefs dst
-    using ( select 'SERT APEX Version' as pref_name, 'SERT_APEX_VERSION' as pref_key, to_char(l_deploy_version) as pref_value, 'Y' as internal_yn from dual ) src
+    using ( select 'SERT APEX Version' as pref_name, 'SERT_APEX_VERSION' as pref_key, to_char(l_deploy_version,'99.9') as pref_value, 'Y' as internal_yn from dual ) src
     on ( src.pref_key = dst.pref_key)
       when matched then
         update set dst.pref_value = src.pref_value ,dst.internal_yn = src.internal_yn
@@ -61,7 +61,7 @@ begin
     merge into sert_core.prefs dst
     using ( select 'Release Version' as pref_name
                   , 'RELEASE_VERSION' as pref_key
-                  , '24.2.8' as pref_value
+                  , '#DEVELOPMENT_BUILD#' as pref_value
                   , 'Y' as internal_yn from dual ) src
     on ( src.pref_key = dst.pref_key)
       when matched then

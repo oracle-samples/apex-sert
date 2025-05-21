@@ -1,4 +1,4 @@
--- file_checksum: 2D166CA52E0804514B68ADD5978BB5F8698934C932920386C92A5B1E0FD50C9F
+-- file_checksum: A902E39A5E02C8682BF9ACDBCA2B1513E3E07B6721368C8F1B801C4FF7C3D02F
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     REPORT LAYOUT: IS_Attributes_Master_Report_Template
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
