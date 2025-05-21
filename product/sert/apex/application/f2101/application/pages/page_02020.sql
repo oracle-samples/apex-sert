@@ -1,4 +1,4 @@
--- file_checksum: D9F1D73B3CB80977D07B84EF705C9194E81B8FFEF8CB46683CFFD02E560F9406
+-- file_checksum: 99B42E0EEC690BF7BD856AC2BDC91596DE7C45511F37DFD5B682920B2F1DDFA2
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     PAGE: 02020
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
@@ -111,12 +111,13 @@ wwv_flow_imp_page.create_page_item(
 ,p_grid_column=>3
 ,p_field_template=>wwv_flow_imp.id(394561407168760174)
 ,p_item_template_options=>'#DEFAULT#'
-,p_attribute_01=>'APEX_APPLICATION_TEMP_FILES'
-,p_attribute_09=>'SESSION'
-,p_attribute_10=>'N'
-,p_attribute_11=>'.json'
-,p_attribute_12=>'DROPZONE_BLOCK'
-,p_attribute_13=>'Upload APEX-SERT Rules'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'allow_multiple_files', 'N',
+  'display_as', 'DROPZONE_BLOCK',
+  'dropzone_title', 'Upload APEX-SERT Rules',
+  'file_types', '.json',
+  'purge_file_at', 'SESSION',
+  'storage_type', 'APEX_APPLICATION_TEMP_FILES')).to_clob
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(375385020157119632)

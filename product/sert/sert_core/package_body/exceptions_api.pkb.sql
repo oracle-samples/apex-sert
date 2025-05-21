@@ -270,7 +270,7 @@ procedure add_exception
   ,p_item_name        in varchar2 default null
   ,p_shared_comp_name in varchar2 default null
   ,p_exception        in varchar2
-  ,p_curernt_value    in varchar2
+  ,p_current_value    in varchar2
   ,p_eval_id          in number
   )
 is
@@ -306,7 +306,7 @@ values
   ,p_shared_comp_name
   ,p_exception
   ,'PENDING'
-  ,p_curernt_value
+  ,p_current_value
   );
 
 -- calculate the scores
@@ -425,7 +425,7 @@ begin
         || x.item_name
         || x.shared_comp_name
         || x.current_value
-        || x.exception
+        || utl_i18n.unescape_reference(x.exception)
         || x.result
         || x.reason
         || x.created_by
@@ -541,7 +541,7 @@ begin
         (
          l_rule_set_id
         ,l_rule_id
-        ,x.exception
+        ,utl_i18n.unescape_reference(x.exception)
         ,l_workspace_id
         ,l_application_id
         ,x.page_id
@@ -682,8 +682,8 @@ begin
     select application_id, rule_set_key, apex_version, workspace_id
     into l_application_id, l_rule_set_key, l_apex_version, l_workspace_id
     from evals_v
-    where eval_id = p_eval_id;    
-    
+    where eval_id = p_eval_id;
+
   else
     -- The import was initiated from outside of APEX, we still expect a given export
     -- to be for only one applications/rule set, so use an agg query to get that
@@ -691,11 +691,11 @@ begin
     select any_value(application_id), any_value(rule_set_key), any_value(workspace_id)
     into l_application_id, l_rule_set_key, l_workspace_id
     from exceptions_from_json(p_exceptions => p_json_export_file);
-    
+
     select sert_apex_version
     into l_apex_version
-    from apex_version_v;    
-    
+    from apex_version_v;
+
   end if;
 
   log_pkg.log(p_log => 'Uploading Exceptions for Application ' || l_application_id || ' - Rule Set ' || l_rule_set_key, p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
@@ -723,7 +723,7 @@ begin
         || x.item_name
         || x.shared_comp_name
         || x.current_value
-        || x.exception
+        || utl_i18n.unescape_reference(x.exception)
         || x.result
         || x.reason
         || x.created_by
@@ -784,10 +784,10 @@ begin
           begin
             select r.component_id,
                   ora_hash(
-                  (select rule_key 
-                   from rules 
-                   where rule_id= r.rule_id 
-                   and apex_version = l_apex_version                 
+                  (select rule_key
+                   from rules
+                   where rule_id= r.rule_id
+                   and apex_version = l_apex_version
                   ) ||
                   r.page_id ||
                   r.component_name ||
@@ -805,7 +805,7 @@ begin
             and nvl(column_name,'N/A') = nvl(x.column_name,'N/A')
             and rule_set_id = l_rule_set_id
             and nvl(component_name,'N/A') = nvl(x.component_name,'N/A')
-            and rule_id = l_rule_id;            
+            and rule_id = l_rule_id;
 
           exception
             when no_data_found then
@@ -821,7 +821,7 @@ begin
                                    ' l_rule_set_id: ' || l_rule_set_id ||
                                    ' l_rule_id: ' || l_rule_id ||
                                    ' x.rule_key:' || x.rule_key ||
-                                   ' x.component_name:' || x.component_name ||                                    
+                                   ' x.component_name:' || x.component_name ||
                                    ' SQLERRM:' || SQLERRM
                           , p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
 
@@ -860,7 +860,7 @@ begin
             (
             l_rule_set_id
             ,l_rule_id
-            ,x.exception
+            ,utl_i18n.unescape_reference(x.exception)
             ,l_workspace_id
             ,l_application_id
             ,x.page_id
@@ -928,10 +928,10 @@ begin
 
           elsif nvl(x.current_value,'N/A') <> nvl(l_current_value,'N/A') then
             l_exception_import_message := 'Component checksum not matched. Current value for component differs.';
-            
+
           else
             l_exception_import_message := 'Component checksum not matched. ';
-            
+
           end if;
 
 

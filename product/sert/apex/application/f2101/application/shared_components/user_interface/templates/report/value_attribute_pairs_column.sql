@@ -1,4 +1,4 @@
--- file_checksum: 5E8813D8318EC13E1A05CC94F52A612AB05ED0828F41EF229F82F623C89D801F
+-- file_checksum: 2FA33957857F4168FDFFAC1381F586E0F6D19D7317D44E482B68B8AC1C76EC41
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     ROW TEMPLATE: VALUE_ATTRIBUTE_PAIRS_COLUMN
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

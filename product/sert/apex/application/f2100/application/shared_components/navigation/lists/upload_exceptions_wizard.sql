@@ -1,4 +1,4 @@
--- file_checksum: 9FD58CE782055FF4C377822424A17C664CB3BB670DE2AB677EE77BEF26433F86
+-- file_checksum: F7BFCE1157BFA220EBCE1E28ADAEDE0269A86CD283D68D163C3870B7EA016A9B
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     LIST: Upload Exceptions Wizard
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

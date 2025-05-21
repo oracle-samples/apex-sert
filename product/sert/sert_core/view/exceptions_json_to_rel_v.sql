@@ -18,7 +18,7 @@ select
        'ruleSetKey'         is rule_set_key
       ,'ruleKey'            is rule_key
       ,'apexVersion'        is apex_version
-      ,'exception'          is exception
+      ,'exception'          is utl_i18n.escape_reference(exception)
       ,'workspaceId'        is workspace_id
       ,'applicationId'      is application_id
       ,'pageId'             is page_id

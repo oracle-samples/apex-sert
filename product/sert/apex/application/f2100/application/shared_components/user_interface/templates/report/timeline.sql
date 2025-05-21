@@ -1,4 +1,4 @@
--- file_checksum: C70FA9DFC266FF54D1DDB417158D65F64422114A01B0831130B72629724B2AB9
+-- file_checksum: 1EEFC53FC0CF1A4AE5ED7E3DD9D66D558AB580E87DD2A80177BC1F55E528EE78
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     ROW TEMPLATE: TIMELINE
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

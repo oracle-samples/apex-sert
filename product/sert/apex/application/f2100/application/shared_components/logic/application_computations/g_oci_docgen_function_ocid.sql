@@ -1,4 +1,4 @@
--- file_checksum: B47FA800EB57A4B88ADD57FFAC3E0B3EA024A01D1D7CD2D55E9AA978ADC1B4DF
+-- file_checksum: 4A480A27989B1C7BF90BF0EE46872F1E168FD2C09CB9287B79A12250206CDF58
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     APPLICATION COMPUTATION: G_OCI_DOCGEN_FUNCTION_OCID
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

@@ -19,7 +19,7 @@ begin
      j.rule_set_key
     ,j.rule_key
     ,j.apex_version
-    ,j.exception
+    ,utl_i18n.unescape_reference(j.exception) as exception
     ,j.workspace_id
     ,j.application_id
     ,j.page_id

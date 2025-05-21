@@ -1,4 +1,4 @@
--- file_checksum: 684CB0C86F7EF173182DAA0EF53B5203EC2394366CAF38EF397466E52F7F08C8
+-- file_checksum: 923A3F181F73029B9260937BCB78C344CB9303731D19E84360DBD4057B52711E
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     APPLICATION PROCESS: saveApexLink
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

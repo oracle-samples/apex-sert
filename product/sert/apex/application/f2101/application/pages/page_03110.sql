@@ -1,4 +1,4 @@
--- file_checksum: 1D8C37745169CB8FE1CA87B0577325E8104024F5E40CE1F9C8EC31D2F313FBCA
+-- file_checksum: 6970C2338D049AD69CE04FC46BECA0E4D89165811E0C457CCBC9F20566501A59
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     PAGE: 03110
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
@@ -60,7 +60,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'LOG_ID'
 ,p_column_display_sequence=>10
 ,p_column_heading=>'Log ID'
-,p_use_as_row_header=>'N'
 ,p_column_alignment=>'RIGHT'
 ,p_heading_alignment=>'RIGHT'
 ,p_disable_sort_column=>'N'
@@ -73,7 +72,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'LOG_DATE'
 ,p_column_display_sequence=>20
 ,p_column_heading=>'Log Date'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -85,7 +83,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'OWNER'
 ,p_column_display_sequence=>30
 ,p_column_heading=>'Owner'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -97,7 +94,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'JOB_NAME'
 ,p_column_display_sequence=>40
 ,p_column_heading=>'Job Name'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -109,7 +105,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'JOB_SUBNAME'
 ,p_column_display_sequence=>50
 ,p_column_heading=>'Job Subname'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -121,7 +116,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'STATUS'
 ,p_column_display_sequence=>60
 ,p_column_heading=>'Status'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -133,7 +127,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'ERROR#'
 ,p_column_display_sequence=>70
 ,p_column_heading=>'Error#'
-,p_use_as_row_header=>'N'
 ,p_column_alignment=>'RIGHT'
 ,p_heading_alignment=>'RIGHT'
 ,p_disable_sort_column=>'N'
@@ -146,7 +139,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'REQ_START_DATE'
 ,p_column_display_sequence=>80
 ,p_column_heading=>'Req Start Date'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -158,7 +150,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'ACTUAL_START_DATE'
 ,p_column_display_sequence=>90
 ,p_column_heading=>'Actual Start Date'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -170,7 +161,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'RUN_DURATION'
 ,p_column_display_sequence=>100
 ,p_column_heading=>'Run Duration'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -182,7 +172,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'INSTANCE_ID'
 ,p_column_display_sequence=>110
 ,p_column_heading=>'Instance ID'
-,p_use_as_row_header=>'N'
 ,p_column_alignment=>'RIGHT'
 ,p_heading_alignment=>'RIGHT'
 ,p_disable_sort_column=>'N'
@@ -195,7 +184,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'SESSION_ID'
 ,p_column_display_sequence=>120
 ,p_column_heading=>'Session ID'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -207,7 +195,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'SLAVE_PID'
 ,p_column_display_sequence=>130
 ,p_column_heading=>'Slave PID'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -219,7 +206,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'CPU_USED'
 ,p_column_display_sequence=>140
 ,p_column_heading=>'CPU Used'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -231,7 +217,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'CREDENTIAL_OWNER'
 ,p_column_display_sequence=>150
 ,p_column_heading=>'Credential Owner'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -243,7 +228,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'CREDENTIAL_NAME'
 ,p_column_display_sequence=>160
 ,p_column_heading=>'Credential Name'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -255,7 +239,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'DESTINATION_OWNER'
 ,p_column_display_sequence=>170
 ,p_column_heading=>'Destination Owner'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -267,7 +250,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'DESTINATION'
 ,p_column_display_sequence=>180
 ,p_column_heading=>'Destination'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -279,7 +261,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'ADDITIONAL_INFO'
 ,p_column_display_sequence=>190
 ,p_column_heading=>'Additional Info'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -291,7 +272,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'ERRORS'
 ,p_column_display_sequence=>200
 ,p_column_heading=>'Errors'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -303,7 +283,6 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'OUTPUT'
 ,p_column_display_sequence=>210
 ,p_column_heading=>'Output'
-,p_use_as_row_header=>'N'
 ,p_heading_alignment=>'LEFT'
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
@@ -340,7 +319,8 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_plug_id=>wwv_flow_imp.id(356115791746011754)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_protection_level=>'S'
-,p_attribute_01=>'Y'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'value_protected', 'Y')).to_clob
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(356118351186011780)

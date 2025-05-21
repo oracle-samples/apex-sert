@@ -1,4 +1,4 @@
--- file_checksum: 56E2936E2C2A0A45A44A0D80D6056432868F2291977A1592DA0C41D337F00895
+-- file_checksum: 73935BC5D309808CFEFA2DA443BFA4B71FBC729D9B36E0337ABB23ACD28484DC
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     THEME: 2101
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
@@ -26,6 +26,7 @@ wwv_flow_imp_shared.create_theme(
 ,p_navigation_type=>'L'
 ,p_nav_bar_type=>'LIST'
 ,p_is_locked=>false
+,p_current_theme_style_id=>wwv_flow_imp.id(394689074844769288)
 ,p_default_page_template=>wwv_flow_imp.id(394397214174760012)
 ,p_default_dialog_template=>wwv_flow_imp.id(394414620570760027)
 ,p_error_template=>wwv_flow_imp.id(394411980165760025)

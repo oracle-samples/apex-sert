@@ -5,13 +5,13 @@
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
 
---changeset mzimon:create_view_sert_core.exceptions_json_to_relational_v_1721804191192 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ 
+--changeset mzimon:create_view_sert_core.exceptions_json_to_relational_v_1721804191192 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
 create or replace force view sert_core.exceptions_json_to_relational_v as
 select
      j.rule_set_key
     ,j.rule_key
     ,j.apex_version
-    ,j.exception
+    ,utl_i18n.unescape_reference(j.exception) as exception
     ,j.workspace_id
     ,j.application_id
     ,j.page_id

@@ -1,4 +1,4 @@
--- file_checksum: 6823A3B745B50A0D2C0C5C2227188BE05F6C940BF1D71425C7EE3F57E7249BEA
+-- file_checksum: C2FC084D823DE5B4E0C390633A98F32811C2A1DD429683B48B295925C08E2755
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -10,8 +10,8 @@ begin
 --     PLUGIN: BE.APEXRND.AOP_DA
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
