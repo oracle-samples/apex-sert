@@ -3,6 +3,7 @@
 -- sert base schema must be created so that lb control tables will not be created in ADMIN/SYS schema
 -- if it is a PDB, then tablespace DATA must exists
 set feedback     off
+set define       off
 set linesize     300
 set pagesize     1000
 set serveroutput on size unlimited
