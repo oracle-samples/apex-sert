@@ -37,7 +37,8 @@ as
   
   function attributes_master_report_json (
     p_eval_id NUMBER,
-    p_app_id NUMBER)
+    p_app_id NUMBER,
+    p_apex_version VARCHAR2)
   return clob;  
 
 end is_reports_api;

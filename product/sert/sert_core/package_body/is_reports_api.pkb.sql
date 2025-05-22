@@ -108,7 +108,7 @@ as
                                         returning clob)
                                        from 
                                          sert_core.eval_results_pub_v ers1,
-                                         sert_core.categories cat1
+                                         sert_core.categories_v cat1
                                        where ers1.category_key = cat.category_key
                                        and ers1.eval_id = p_eval_id
                                        and ers1.result not like '%PASS%'
@@ -120,7 +120,7 @@ as
                 returning clob) 
         returning clob pretty) as report_data
     into l_json
-    from sert_core.categories cat,
+    from sert_core.categories_v cat,
          sert_core.evals_v eva
     where eva.eval_id = p_eval_id;
 
@@ -183,11 +183,11 @@ as
                 returning clob) 
         returning clob pretty) as report_data
     into l_json        
-    from sert_core.categories cat,
-         sert_core.rules rul,
+    from sert_core.categories_v cat,
+         sert_core.rules_pub_v rul,
          sert_core.evals_v eva
-    where rul.category_id = cat.category_id   
-    and exists (select 1 from sert_core.eval_results er
+    where rul.category_key = cat.category_key
+    and exists (select 1 from sert_core.eval_results_pub_v er
                 where er.eval_id = p_eval_id
                 and er.rule_id = rul.rule_id
                 and er.result not like '%PASS%')  
@@ -255,10 +255,10 @@ as
                 returning clob) 
         returning clob pretty) as report_data
         into l_json
-   from sert_core.categories cat,
-        sert_core.rules rul,
-       sert_core.evals_v eva
-   where rul.category_id = cat.category_id   
+   from sert_core.categories_v cat,
+        sert_core.rules_pub_v rul,
+        sert_core.evals_v eva
+   where rul.category_key = cat.category_key
   and exists (select 1 from sert_core.exceptions_v ev
               where ev.rule_id = rul.rule_id)  
   and eva.eval_id = p_eval_id;
@@ -276,7 +276,8 @@ end evaluation_exception_report_json;
   ------------------------------------------------------------------------------
   function attributes_master_report_json (
     p_eval_id NUMBER,
-    p_app_id NUMBER)
+    p_app_id NUMBER,
+    p_apex_version VARCHAR2)
   return clob
   ------------------------------------------------------------------------------
   is
@@ -304,9 +305,9 @@ end evaluation_exception_report_json;
                                                  returning clob) 
                                                  order by rul1.rule_name
                                         returning clob)
-                                       from 
-                                         sert_core.rules rul1
-                                       where rul1.category_id = cat.category_id
+                                       from sert_core.rules_v  rul1
+                                       where rul1.category_key = cat.category_key
+                                       and apex_version = p_apex_version
                                        group by rul1.rule_name, rul1.rule_id
                                        )
                                       returning clob
@@ -315,7 +316,7 @@ end evaluation_exception_report_json;
                 returning clob) 
         returning clob pretty) as report_data
     into l_json
-    from sert_core.categories cat,
+    from sert_core.categories_v cat,
          sert_core.evals_v eva
     where eva.eval_id = p_eval_id;        
 
