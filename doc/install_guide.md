@@ -42,8 +42,6 @@ APEX-SERT 24.1  is supported only on Oracle APEX 24.1 and higher. If you are us
 
 to use the AOP report pages, you MUST have your own APEX Office Print Server. 
 
-links: Einstein Get started using APEX Office Print today!
-
 #### 2.1.1.2 Requirements for DocGen
 
 APEX-SERT provides the capability to make use of DocGen, provided you have already setup and configured DocGen for your service.
@@ -55,12 +53,6 @@ some links:
 * [Document Generator Function](https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functions_pbf_catalog_document_generator.htm)
 
 * [kris Rice: PDF Generation with OCI Pre-Built Function](https://www.linkedin.com/pulse/pdf-generation-oci-pre-built-function-kris-rice-gbree/)
-
-Oracle internal only:
-
-* [https://gbuconfluence.oraclecorp.com/display/CDSTS/How+to+configure+APEX+to+use+DocGen+as+a+print+server](https://gbuconfluence.oraclecorp.com/display/CDSTS/How+to+configure+APEX+to+use+DocGen+as+a+print+server)
-
-* [https://gbuconfluence.oraclecorp.com/display/CDSTS/Integrating+OCI+Document+Generator+Function](https://gbuconfluence.oraclecorp.com/display/CDSTS/Integrating+OCI+Document+Generator+Function)
 
 once you have a working DocGen service, you can set preferences in the APEX-SERT administration application by navigating to Setup → Preferences and providing the required data values.
 
