@@ -1,4 +1,9 @@
 # Release Notes
+## 24.2.10
+
+- remove oracle specific links from install guide md
+Bug (Non BugDB)
+- "add exception" regression bug casues UI to fail on adding exception
 
 ## 24.2.9
 

@@ -1,4 +1,4 @@
--- file_checksum: B382B39EDDD236E434124F559FEC3730DB8BBBE7F2A12155998CF86ED9B6231C
+-- file_checksum: F32FE66015A41865A5799CB8929912EBA10FF2AA61DF83524E9C0164515398A1
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -296,7 +296,8 @@ wwv_flow_imp_page.create_page_process(
 '',
 '  select sert_core.is_reports_api.attributes_master_report_json (',
 '           p_eval_id  => :P10_EVAL_ID,',
-'           p_app_id => :APP_ID)',
+'           p_app_id => :APP_ID,',
+'           p_apex_version => :G_APEX_VERSION)',
 '  into l_json',
 '  from dual;',
 '',

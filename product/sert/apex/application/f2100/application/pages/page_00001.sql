@@ -1,4 +1,4 @@
--- file_checksum: C59FF34B9F98B58423D50D98D701F4A8E808024DA20BA446C1D915A1F94A5EE1
+-- file_checksum: 71E0B3749957370B9DBFCB8FB2DFCB41AF8042CDEF66588E7B1DB194A6DA0780
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -170,6 +170,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'APP_IMAGE2'
 ,p_data_type=>'VARCHAR2'
+,p_session_state_data_type=>'VARCHAR2'
 ,p_display_sequence=>260
 ,p_is_group=>false
 ,p_use_as_row_header=>false

@@ -1,4 +1,4 @@
--- file_checksum: 9EBE1DF05B140BB0571BFE5D0D394C7616EB9E6B72B920842B5D65B66440A70C
+-- file_checksum: A934F974A742649EDB9653998869D885AFAA5A0A32C38AD245D02ED2F566F819
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -1020,7 +1020,7 @@ wwv_flow_imp_shared.create_invokeapi_comp_param(
  p_id=>wwv_flow_imp.id(480716556057443201)
 ,p_page_process_id=>wwv_flow_imp.id(479964127125940297)
 ,p_page_id=>30
-,p_name=>'p_curernt_value'
+,p_name=>'p_current_value'
 ,p_direction=>'IN'
 ,p_data_type=>'VARCHAR2'
 ,p_has_default=>false

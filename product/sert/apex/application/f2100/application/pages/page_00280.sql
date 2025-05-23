@@ -1,4 +1,4 @@
--- file_checksum: 3C6EA601AC001689A780DC603FDB516F97F524021ABF890397AA1BC46127503D
+-- file_checksum: 0A69AA6A58CCDA6F3F6F85A21F15F996C0CFF62326D7CF5A3754BE21FB4CB573
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -60,13 +60,13 @@ wwv_flow_imp_page.create_page_plug(
 '  decode(er1.result,''FAIL'',NULL,er1.result) approved_flag',
 'from',
 '   sert_core.eval_results_pub_v er1,',
-'   sert_core.categories ca1,',
-'   sert_core.rules ru1',
+'   sert_core.categories_v ca1,',
+'   sert_core.rules_pub_v ru1',
 'where 1=1',
 'and er1.eval_id = :P280_EVAL_ID  --SYS_CONTEXT(''SV_SERT_CTX'', ''COLLECTION_ID'')',
 'and er1.result not like ''%PASS%''',
 'and er1.category_key = ca1.category_key',
-'and ca1.category_id = ru1.category_id',
+'and ca1.category_key = ru1.category_key',
 'and ru1.rule_id = er1.rule_id',
 'and (:P280_CATEGORY is null or :P280_CATEGORY = ca1.category_key)',
 'order by ca1.category_id, er1.rule_id'))
@@ -273,39 +273,23 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(49194528244990822)
+ p_id=>wwv_flow_imp.id(12988191508532929)
 ,p_db_column_name=>'INFO'
 ,p_display_order=>160
-,p_column_identifier=>'P'
+,p_column_identifier=>'R'
 ,p_column_label=>'Info'
-,p_allow_sorting=>'N'
-,p_allow_ctrl_breaks=>'N'
-,p_allow_aggregations=>'N'
-,p_allow_computations=>'N'
-,p_allow_charting=>'N'
-,p_allow_group_by=>'N'
-,p_allow_pivot=>'N'
-,p_column_type=>'CLOB'
+,p_column_type=>'STRING'
 ,p_heading_alignment=>'LEFT'
-,p_rpt_show_filter_lov=>'N'
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(49194642796990823)
+ p_id=>wwv_flow_imp.id(12988285977532930)
 ,p_db_column_name=>'FIX'
 ,p_display_order=>170
-,p_column_identifier=>'Q'
+,p_column_identifier=>'S'
 ,p_column_label=>'Fix'
-,p_allow_sorting=>'N'
-,p_allow_ctrl_breaks=>'N'
-,p_allow_aggregations=>'N'
-,p_allow_computations=>'N'
-,p_allow_charting=>'N'
-,p_allow_group_by=>'N'
-,p_allow_pivot=>'N'
-,p_column_type=>'CLOB'
+,p_column_type=>'STRING'
 ,p_heading_alignment=>'LEFT'
-,p_rpt_show_filter_lov=>'N'
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_rpt(
@@ -315,7 +299,7 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_report_alias=>'492095'
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
-,p_report_columns=>'APPLICATION_ID:CATEGORY_NAME:RULE_NAME:PAGE_ID:DESCRIPTION:RESULT:CURRENT_VALUE:'
+,p_report_columns=>'APPLICATION_ID:CATEGORY_NAME:RULE_NAME:PAGE_ID:DESCRIPTION:RESULT:CURRENT_VALUE'
 ,p_sort_column_1=>'CATEGORY_NAME'
 ,p_sort_direction_1=>'ASC'
 ,p_sort_column_2=>'RULE_NAME'
