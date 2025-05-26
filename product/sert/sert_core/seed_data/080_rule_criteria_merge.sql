@@ -7,7 +7,7 @@
 
 --changeset mipotter:rule_criteria_merge_1722422311560 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
 -- ---------------------------------------------------------------------------
--- use / delimieter for earlier versions of sqlcl
+-- use / delimiter for earlier versions of sqlcl
 -- This script needs to run AFTER rule_criteria_types_merge
 -- It converts the criteria type KEY into the criteria_type_id value so that
 -- the script does not rely on ID which could change on different environments
