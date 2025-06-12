@@ -407,7 +407,8 @@ where
   || e.item_name       || ':'
   || e.column_name     || ':'
   || e.shared_comp_name
-  and er.current_value != e.current_value
+  -- and er.current_value != e.current_value
+  and sert_core.sert_util.compare_string_yn(e.current_value,er.current_value) = 'Y'
   and er.eval_id = p_eval_id
   );
 

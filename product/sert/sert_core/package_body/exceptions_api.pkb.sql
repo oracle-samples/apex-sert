@@ -356,289 +356,6 @@ log_pkg.log(p_log => 'Downloading Exceptions Completed for Application ' || p_ap
 
 end download_exceptions;
 
-
-----------------------------------------------------------------------------------------------------------------------------
--- PROCEDURE: U P L O A D  _ E X C E P T I O N S
-----------------------------------------------------------------------------------------------------------------------------
--- Uploads and applies an Exceptions JSON file
-----------------------------------------------------------------------------------------------------------------------------
-procedure upload_exceptions
-  (
-   p_json_export_file      in blob
-  ,p_eval_id               in number default null
-  )
-is
-  l_fail           number        := 0;
-  l_pass           number        := 0;
-  l_application_id number;
-  l_workspace_id   number;
-  l_rule_set_key   varchar2(250);
-  l_apex_version   number;
-  l_log_key        varchar2(10)  := log_pkg.get_log_key;
-  l_checksum       number;
-  l_source_ora_hash number;
-  l_dest_ora_hash number;
-  l_dest_component_id number;
-  l_rule_set_id number;
-  l_rule_id number;
-
-  l_summary_result_string varchar2(4000);
-
-begin
-
-  -- get the application_id for the specific evaluation
-  if p_eval_id is not null then
-    -- The import was initiated from the SERT application. Fetch the information from
-    -- the evaluation we are trying to import into
-    select application_id, rule_set_key, apex_version, workspace_id
-    into l_application_id, l_rule_set_key, l_apex_version, l_workspace_id
-    from evals_v
-    where eval_id = p_eval_id;
-  else
-    -- The import was initiated from outside of APEX, we still expect a given export
-    -- to be for only one applications/rule set, so use an agg query to get that
-    -- info directly from the export JSON.
-    select any_value(application_id), any_value(rule_set_key), any_value(apex_version)
-    into l_application_id, l_rule_set_key, l_apex_version
-    from exceptions_from_json(p_exceptions => p_json_export_file);
-  end if;
-
-  log_pkg.log(p_log => 'Uploading Exceptions for Application ' || l_application_id || ' - Rule Set ' || l_rule_set_key, p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
-
-  for x in (select * from exceptions_from_json(p_exceptions => p_json_export_file))
-  loop
-
-    -- check to make sure that the user can see the application and if so, try to insert the row
-
-    -- generate a checksum based on the data uploaded
-
-    if l_rule_set_key = x.rule_set_key and l_apex_version = x.apex_version then
-
-      --this ora_hash is for exception itself
-      select ora_hash
-        (
-        x.rule_key
-        || x.apex_version
-        || x.page_id
-        || x.component_name
-        || x.column_name
-        || x.item_name
-        || x.shared_comp_name
-        || x.current_value
-        || utl_i18n.unescape_reference(x.exception)
-        || x.result
-        || x.reason
-        || x.created_by
-        || x.updated_by
-        || x.actioned_by
-        )
-      into l_checksum
-      from dual;
-
-      -- verify that the checksums match
-      if x.checksum = l_checksum then
-
-        -- checksums match; insert the exception
-        log_pkg.log(p_log => 'insert:', p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
-
-        select rule_set_id
-        into l_rule_set_id
-        from rule_sets
-        where rule_set_key = x.rule_set_key
-        and apex_version = x.apex_version;
-
-        select rule_id
-        into l_rule_id
-        from rules
-        where rule_key = x.rule_key
-        and apex_version = x.apex_version;
-
-        --if ws and app id is the same and component_id is null, we don't need to recalc component id
-        --else recalc component_id.
-        if x.component_id  is NULL and
-           l_application_id = x.application_id and
-           l_application_id = x.workspace_id then
-
-          --component_id is unchangd
-          l_source_ora_hash := x.component_id;
-          l_dest_component_id := x.component_id;
-
-        else
-          --component_id is different
-
-          --construct l_source_ora_hash
-          select ora_hash(
-            x.rule_key ||
-            x.apex_version ||
-            x.page_id ||
-            x.component_name ||
-            x.item_name ||
-            x.shared_comp_name ||
-            x.current_value
-            )
-          into l_source_ora_hash
-          from dual;
-
-          --fetch new component_id and construct l_dest_ora_hash
-          begin
-            select r.component_id,
-                  ora_hash(
-                  (select rule_key from sert_core.rules where rule_id= r.rule_id and apex_version = l_apex_version) ||
-                  l_apex_version ||
-                  r.page_id ||
-                  r.component_name ||
-                  r.column_name ||
-                  r.item_name ||
-                  r.shared_comp_name ||
-                  r.current_value
-                  ) as orahash
-            into l_dest_component_id, l_dest_ora_hash
-            from sert_core.eval_results_v r
-            where application_id = l_application_id
-            and nvl(page_id,-1) = nvl(x.page_id,-1)
-            and nvl(item_name,'N/A') = nvl(x.item_name,'N/A')
-            and nvl(column_name,'N/A') = nvl(x.column_name,'N/A')
-            and rule_set_id = l_rule_set_id
-            and rule_id = l_rule_id;
-          exception
-            when others then
-              log_pkg.log(p_log => 'Upload exceptons, failed constructing dest_ora_hash:' ||
-                                   'l_source_ora_hash:'||l_source_ora_hash || '-' || SQLERRM
-                          , p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
-
-          end;
-
-        end if;
-
-
-       if l_source_ora_hash = l_dest_ora_hash then
-
-       begin
-       insert into exceptions
-        (
-          rule_set_id
-        ,rule_id
-        ,exception
-        ,workspace_id
-        ,application_id
-        ,page_id
-        ,component_id
-        ,column_name
-        ,item_name
-        ,shared_comp_name
-        ,result
-        ,reason
-        ,current_value
-        ,created_by
-        ,created_on
-        ,updated_by
-        ,updated_on
-        ,actioned_by
-        ,actioned_on
-        ,component_name
-        )
-      values
-        (
-         l_rule_set_id
-        ,l_rule_id
-        ,utl_i18n.unescape_reference(x.exception)
-        ,l_workspace_id
-        ,l_application_id
-        ,x.page_id
-        ,l_dest_component_id
-        ,x.column_name
-        ,x.item_name
-        ,x.shared_comp_name
-        ,x.result
-        ,x.reason
-        ,x.current_value
-        ,x.created_by
-        ,to_timestamp_tz(x.created_on, 'YYYY-MM-DD"T"HH24:MI:SS.FF6TZH:TZM')
-        ,x.updated_by
-        ,to_timestamp_tz(x.updated_on, 'YYYY-MM-DD"T"HH24:MI:SS.FF6TZH:TZM')
-        ,x.actioned_by
-        ,to_timestamp_tz(x.actioned_on, 'YYYY-MM-DD"T"HH24:MI:SS.FF6TZH:TZM')
-        ,x.component_name
-        );
-
-      -- increment the pass counter
-      l_pass := l_pass + 1;
-
-      log_pkg.log(p_log => 'Exception Uploaded - Application: ' || x.application_id || ' - Rule Set: ' || l_rule_set_key || ' - Rule Key: ' || x.rule_key,
-        p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
-
-      exception
-        when others then
-        -- exception already exists, do not insert another one; increment the fail counter
-        log_pkg.log(p_log => 'fail:'||SQLERRM, p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
-        l_fail := l_fail + 1;
-        log_pkg.log(p_log => 'Exception Failed (already exists) - Application: ' || x.application_id || ' - Rule Set: ' || l_rule_set_key || ' - Rule Key: ' || x.rule_key,
-          p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
-      end;
-
-      else
-        --no ora_hash match between source and dest
-         log_pkg.log(p_log => 'Exception Failed  - l_source_ora_hash:'||l_source_ora_hash || '-' || SQLERRM ,
-                     p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
-
-      end if; --l_source_ora_hash = l_dest_ora_hash
-
-    else
-      -- checksum does not match; increment the fail counter
-      log_pkg.log(p_log => 'no insert:', p_log_key => l_log_key, p_log_type => 'EVAL', p_application_id => l_application_id);
-      l_fail := l_fail + 1;
-      log_pkg.log(p_log => 'Exception Failed (checksum mismatch) - Application: ' || x.application_id || ' - Rule Set: ' || l_rule_set_key || ' - Rule Key: ' || x.rule_key,
-          p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
-    end if;  --x.checksum = l_checksum
-
-  else
-    -- exception is for another app/rule set combination; increment the fail counter
-    log_pkg.log(p_log => 'other1:', p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
-    l_fail := l_fail + 1;
-    log_pkg.log(p_log => 'Exception Failed (other) - Application: ' || x.application_id || ' - Rule Set: ' || l_rule_set_key || ' - Rule Key: ' || x.rule_key,
-        p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
-  end if;
-
-  end loop;
-
-  l_summary_result_string := l_pass || ' exceptions imported' || case when l_fail > 0 then ', ' || l_fail || ' ignored' end;
-  -- This could be called outside of an APEX session context, so first make sure
-  -- we have a valid session before trying to set session state.
-  if apex_custom_auth.is_session_valid then
-    -- set the message to be displayed
-    apex_util.set_session_state('P40_MSG', l_summary_result_string);
-  else
-    -- Prepend with additional info outside of APEX to give more awareness about
-    -- what application just had exceptions imported.
-    dbms_output.put_line('Application f' || l_application_id || ' import result: ' || l_summary_result_string);
-  end if;
-
-  log_pkg.log(p_log => 'Uploading Exceptions for Application ' || l_application_id || ' - Rule Set ' || l_rule_set_key || ' Completed',
-              p_log_key => l_log_key, p_log_type => 'EXCEPTION_EXPORT', p_application_id => l_application_id);
-
-end upload_exceptions;
-
-----------------------------------------------------------------------------------------------------------------------------
--- PROCEDURE: U P L O A D  _ E X C E P T I O N S
-----------------------------------------------------------------------------------------------------------------------------
--- Uploads and applies an Exceptions JSON file from an upload in APEX
-----------------------------------------------------------------------------------------------------------------------------
-procedure upload_exceptions
-  (
-   p_name      in varchar2
-  ,p_eval_id   in number
-  )
-is
-  l_blob_content apex_application_temp_files.blob_content%type;
-begin
--- find the file that was just uploaded
-select blob_content into l_blob_content from apex_application_temp_files where name = p_name;
-
-upload_exceptions(p_json_export_file => l_blob_content, p_eval_id => p_eval_id);
-
-end upload_exceptions;
-
-
 ----------------------------------------------------------------------------------------------------------------------------
 -- PROCEDURE: P R O C E S S _ E X C E P T I O N S
 ----------------------------------------------------------------------------------------------------------------------------
@@ -648,6 +365,7 @@ procedure process_exceptions
   (
    p_json_export_file      in blob
   ,p_eval_id               in number default null
+  ,p_ignore_checksum      in boolean default FALSE
   )
 is
   l_fail           number        := 0;
@@ -704,6 +422,10 @@ begin
     apex_collection.create_or_truncate_collection(p_collection_name => l_collection_name);
   end if;
 
+  if p_ignore_checksum = true then
+    log_pkg.log(p_log => 'p_ignore_checksum set to TRUE, component checksums will be ignored ', p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);  
+  end if;
+
   for x in (select * from exceptions_from_json(p_exceptions => p_json_export_file))
   loop
 
@@ -733,8 +455,8 @@ begin
       into l_checksum
       from dual;
 
-      -- verify that the checksums match
-      if x.checksum = l_checksum then
+      -- verify that the checksums match or ignore checksum if instructed so
+      if x.checksum = l_checksum or p_ignore_checksum = TRUE then
 
         -- checksums match; insert the exception
         log_pkg.log(p_log => 'insert:', p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
@@ -891,14 +613,35 @@ begin
 
           exception
             when dup_val_on_index then
-              -- exception already exists, do not insert another one; increment the fail counter
-              log_pkg.log(p_log => 'fail:'||SQLERRM, p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
-              l_fail := l_fail + 1;
-              log_pkg.log(p_log => 'Exception Failed (already exists) - Application: ' || x.application_id || ' - Rule Set: ' || l_rule_set_key || ' - Rule Key: ' || x.rule_key,
-                          p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
+              -- exception already exists, update status
+              update exceptions
+              set result = x.result
+              where rule_set_id = l_rule_set_id
+              and rule_id = l_rule_id
+              and workspace_id = l_workspace_id
+              and application_id = l_application_id
+              and nvl(page_id,-1) = nvl(x.page_id,-1)
+              and component_id = l_dest_component_id
+              and nvl(column_name,'N/A') = nvl(x.column_name,'N/A')
+              and nvl(item_name,'N/A') = nvl(x.item_name,'N/A');
+              
+            -- increment the pass counter
+            l_pass := l_pass + 1;
 
-              l_exception_import_status := 'FAIL';
-              l_exception_import_message := 'Exception is a duplicate';
+            log_pkg.log(p_log => 'Exception Updated Status: ' ||x.result || ' - Application: ' || x.application_id || ' - Rule Set: ' || l_rule_set_key || ' - Rule Key: ' || x.rule_key,
+                        p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
+
+            l_exception_import_status := 'SUCCESS';
+            l_exception_import_message := NULL;
+              
+              -- exception already exists, do not insert another one; increment the fail counter
+              --log_pkg.log(p_log => 'fail:'||SQLERRM, p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
+              --l_fail := l_fail + 1;
+              --log_pkg.log(p_log => 'Exception Failed (already exists) - Application: ' || x.application_id || ' - Rule Set: ' || l_rule_set_key || ' - Rule Key: ' || x.rule_key,
+              --            p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
+
+              --l_exception_import_status := 'FAIL';
+              --l_exception_import_message := 'Exception is a duplicate';
 
             when others then
               -- exception already exists, do not insert another one; increment the fail counter
@@ -995,6 +738,7 @@ begin
 
 end process_exceptions;
 
+
 ----------------------------------------------------------------------------------------------------------------------------
 -- PROCEDURE: U P L O A D _ E X C E P T I O N S _ W I Z A R D
 ----------------------------------------------------------------------------------------------------------------------------
@@ -1004,6 +748,7 @@ procedure upload_exceptions_wizard
   (
    p_name      in varchar2
   ,p_eval_id   in number
+  ,p_ignore_checksum      in boolean default FALSE
   )
 is
   l_blob_content apex_application_temp_files.blob_content%type;
@@ -1012,9 +757,12 @@ begin
   -- find the file that was just uploaded
   select blob_content into l_blob_content from apex_application_temp_files where name = p_name;
 
-  process_exceptions(p_json_export_file => l_blob_content, p_eval_id => p_eval_id);
+  process_exceptions(p_json_export_file => l_blob_content, 
+                     p_eval_id => p_eval_id,
+                     p_ignore_checksum => p_ignore_checksum);
 
 end upload_exceptions_wizard;
+
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------

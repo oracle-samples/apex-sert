@@ -1,4 +1,4 @@
--- file_checksum: 896D3B9EEA7554FD9C7BF2A6EFE87CCCF69AF5E6774555084DAB1F8592F406C8
+-- file_checksum: 0A16CA55D74C47F2E18A0FCACDD8017E362F4062FD1972F9AD9D131386A49A5D
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.0'
+,p_release=>'24.2.5'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -1679,12 +1679,15 @@ wwv_flow_imp_page.create_page_process(
 '  ,p_item_name        => i.item_name',
 '  ,p_shared_comp_name => i.shared_comp_name',
 '  ,p_exception        => :P70_EXCEPTION',
-'  ,p_curernt_value    => i.current_value',
+'  ,p_current_value    => i.current_value',
 '  ,p_eval_id          => i.eval_id',
 '  );',
 '',
 '',
 'end loop;',
+'',
+'eval_pkg.calc_score(:P10_EVAL_ID);',
+'',
 'end;',
 '',
 '',
@@ -1728,6 +1731,9 @@ wwv_flow_imp_page.create_page_process(
 '  ,p_eval_id      => i.eval_id',
 '  );',
 'end loop;',
+'',
+'eval_pkg.calc_score(:P10_EVAL_ID);',
+'',
 'end;',
 '',
 '',
@@ -1744,7 +1750,7 @@ wwv_flow_imp_page.create_page_process(
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(67380173297065863)
-,p_process_sequence=>60
+,p_process_sequence=>70
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'Close Dialog after Exception'

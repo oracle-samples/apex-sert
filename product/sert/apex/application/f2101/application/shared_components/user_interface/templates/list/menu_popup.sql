@@ -1,4 +1,4 @@
--- file_checksum: EA6D8B7E8ABA4B326E732FD493BF16FF95A9AC0788A024F543F9E47D487A7ACE
+-- file_checksum: 7E0A9245EEFA0E468A73507D4174559C5A31EB2BBD31817124D2851FD882730A
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.0'
+,p_release=>'24.2.5'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

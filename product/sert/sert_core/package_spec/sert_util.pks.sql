@@ -22,6 +22,29 @@ as
     p_build_status in varchar2 default apex_application_admin.c_build_option_status_include
     );
 
+----------------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: c o m p a r e _ s t r i n g.
+----------------------------------------------------------------------------------------------------------------------------
+-- strips whitespace, and compares if string 1 matches string 2
+-- is string 1 is SHORTER than string 2, match up to length of string 1
+-- returns TRUE if matched
+----------------------------------------------------------------------------------------------------------------------------
+  function compare_string (
+    p_string1 in varchar2,
+    p_string2 in varchar2
+  ) return boolean;
+
+----------------------------------------------------------------------------------------------------------------------------
+-- c o m p a r e _ s t r i n g _ y n
+-- returns Y is strings match excluding whitespace
+-- is string 1 is SHORTER than string 2, match up to length of string 1
+-- returns N otherwise
+----------------------------------------------------------------------------------------------------------------------------
+  function compare_string_yn (
+    p_string1 in varchar2,
+    p_string2 in varchar2
+  ) return varchar2;
+
 end sert_util;
 /
 --rollback not required

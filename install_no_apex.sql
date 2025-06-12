@@ -2,6 +2,15 @@
 -- run Liquibase to install/update SERT in standalone mode (no platform)
 -- sert base schema must be created so that lb control tables will not be created in ADMIN/SYS schema
 -- if it is a PDB, then tablespace DATA must exists
+set feedback     off
+set define       off
+set linesize     300
+set pagesize     1000
+set serveroutput on size unlimited
+set sqlformat    default
+set termout      on
+set timing       off
+set verify       off
 
 liquibase update -changelog-file product/sert/pre-install/base_schema.sql -database-changelog-table-name sert_databasechangelog -defaults-file sert.properties
 -- run liquibase

@@ -1,4 +1,4 @@
--- file_checksum: B19A295EA4BE8E465C6636A6FB71CF8118FECE6F84EA9DDC1847D98676D81F34
+-- file_checksum: 55A953ECF65347A8DDA19E6D2B12F2700C141153AF8053B0776E71798C0D858A
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.0'
+,p_release=>'24.2.5'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -571,7 +571,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_lazy_loading=>false
 ,p_plug_source_type=>'TMPL_THEME_42$CONTENT_ROW'
 ,p_ajax_items_to_submit=>'P10_CATEGORY_NAME,P10_RESULT'
-,p_plug_query_num_rows=>15
+,p_plug_query_num_rows=>30
 ,p_plug_query_num_rows_type=>'SET'
 ,p_show_total_row_count=>true
 ,p_plug_required_role=>'MUST_NOT_BE_PUBLIC_USER'

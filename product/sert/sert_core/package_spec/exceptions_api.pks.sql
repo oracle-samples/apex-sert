@@ -82,29 +82,18 @@ as
     ,p_eval_id        in number
     );
 
-  procedure upload_exceptions
-    (
-    p_json_export_file in blob
-    ,p_eval_id          in number default null
-    );
-
-  procedure upload_exceptions
-    (
-    p_name      in varchar2
-    ,p_eval_id   in number
-    );
-
   procedure upload_exceptions_wizard
     (
     p_name      in varchar2
     ,p_eval_id   in number
+    ,p_ignore_checksum   in boolean default FALSE
     );
-
 
   procedure process_exceptions
     (
     p_json_export_file      in blob
     ,p_eval_id              in number default null
+    ,p_ignore_checksum   in boolean default FALSE
     );
 
 end exceptions_api;
