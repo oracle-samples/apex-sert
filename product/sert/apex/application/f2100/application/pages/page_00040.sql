@@ -1,4 +1,4 @@
--- file_checksum: F00F4AA61BC489F0AA608B4B8E5A501B89516B156C7791F601AF846E27478473
+-- file_checksum: F5F5EC900D2C78C50644933ACF64FEF8E491C8C09CEE8A5FF761EB8E685BD2BF
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.0'
+,p_release=>'24.2.5'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -119,7 +119,7 @@ wwv_flow_imp_page.create_page_branch(
 wwv_flow_imp_page.create_page_branch(
  p_id=>wwv_flow_imp.id(45769620899964650)
 ,p_branch_name=>'Goto Preview Exceptions'
-,p_branch_action=>'f?p=&APP_ID.:42:&SESSION.::&DEBUG.::P42_NAME:&P40_NAME.'
+,p_branch_action=>'f?p=&APP_ID.:42:&SESSION.::&DEBUG.:42:P42_NAME:&P40_NAME.'
 ,p_branch_point=>'AFTER_PROCESSING'
 ,p_branch_type=>'REDIRECT_URL'
 ,p_branch_when_button_id=>wwv_flow_imp.id(45769542551964649)

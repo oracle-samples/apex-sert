@@ -1,4 +1,4 @@
--- file_checksum: 3740F79D9394D385C96C4CABA2F50EF9DE17AE0890863A03DD01C7FFD1C2DDA6
+-- file_checksum: C2F4A7E08D3F0BC0E920C9C0C96F8667D1CA87E51F679D9E3D972C0F0AE97482
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -25,7 +25,7 @@ whenever sqlerror exit sql.sqlcode rollback
 begin
 wwv_flow_imp.import_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.0'
+,p_release=>'24.2.5'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

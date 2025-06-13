@@ -95,5 +95,6 @@ when not matched then
     , src.rule_criteria_sql
     , src.reason
     , src.rule_criteria_key
-   );
+   )
+   /
    --rollback not required

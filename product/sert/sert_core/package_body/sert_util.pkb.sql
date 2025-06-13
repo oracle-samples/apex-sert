@@ -71,7 +71,50 @@ as
 
   end set_build_option;
 
+----------------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: c o m p a r e _ s t r i n g.
+----------------------------------------------------------------------------------------------------------------------------
+-- strips whitespace, and compares if string 1 matches string 2
+-- is string 1 is SHORTER than string 2, match up to length of string 1
+-- returns TRUE if matched
+----------------------------------------------------------------------------------------------------------------------------
+  function compare_string (
+    p_string1 in varchar2,
+    p_string2 in varchar2
+  ) return boolean
+  is
+    l_string1 varchar2(32767);
+    l_string2 varchar2(32767);
+  begin
+    l_string1 := REGEXP_REPLACE(p_string1, '[[:space:]]', '');
+    l_string2 := REGEXP_REPLACE(p_string2, '[[:space:]]', '');
+    if length(l_string1) <= length(l_string2) then
+      l_string2 := substr(l_string2,1,length(l_string1));
+    -- else
+    --   l_string1 := substr(l_string1,1,length(l_string2));
+    end if;
+    -- return (coalesce(l_string1,'N/A') = coalesce(l_string2,'N/A');
+    return ( l_string1 = l_string2 or (l_string1 is null and l_string2 is null) );
+  end compare_string;
 
+----------------------------------------------------------------------------------------------------------------------------
+-- c o m p a r e _ s t r i n g _ y n
+-- returns Y is strings match excluding whitespace
+-- is string 1 is SHORTER than string 2, match up to length of string 1
+-- returns N otherwise
+----------------------------------------------------------------------------------------------------------------------------
+  function compare_string_yn (
+    p_string1 in varchar2,
+    p_string2 in varchar2
+  ) return varchar2
+  is
+  begin
+    if ( compare_string(p_string1,p_string2) ) then
+      return 'Y';
+    else
+      return 'N';
+    end if;
+  end compare_string_yn;
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
 end sert_util;

@@ -1,4 +1,4 @@
--- file_checksum: 2FAA72D32C171DE41FAAFD5B12DAEA118EECF8C10E53C0241CA2166DE085B02B
+-- file_checksum: 23C4ABAB6596A46F50BDC7631AD8D7205321EB506D3B6DD20D02E367F38336C4
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.0'
+,p_release=>'24.2.5'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -1594,9 +1594,12 @@ wwv_flow_imp_page.create_page_process(
 '  ,p_item_name        => :ITEM_NAME',
 '  ,p_shared_comp_name => :SHARED_COMP_NAME',
 '  ,p_exception        => :EXCEPTION',
-'  ,p_curernt_value    => :CURRENT_VALUE',
+'  ,p_current_value    => :CURRENT_VALUE',
 '  ,p_eval_id          => :EVAL_ID',
 '  );',
+'',
+'eval_pkg.calc_score(:EVAL_ID);',
+'',
 'end;'))
 ,p_attribute_05=>'Y'
 ,p_attribute_06=>'Y'

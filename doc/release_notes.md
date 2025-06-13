@@ -1,9 +1,23 @@
 # Release Notes
+
+## 24.2.12
+
+* [GAT-437] - Application "Scoreboard" not updating asynchronously #17
+* [GAT-447] - Compatibility Version should be updated in rules #26
+* [GAT-453] - 2000_upgrade_sert_apex_version.sql fails due to string-number conversion in international format #32
+* [GAT-454] - SERT Stale Exceptions, whitespace affects the STALENESS
+* [GAT-455] - add ability to ignore checksums on exception upload
+
+## 24.2.11
+
+- No Rule Criteria imported during install #30
+
 ## 24.2.10
 
 - remove oracle specific links from install guide md
 Bug (Non BugDB)
 - "add exception" regression bug casues UI to fail on adding exception
+- - No Rule Criteria imported during install #30
 
 ## 24.2.9
 

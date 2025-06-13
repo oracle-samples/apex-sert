@@ -1,4 +1,4 @@
--- file_checksum: 9FCB713DD98808F809BCC0CFF8D91220589C128A37A70C8B099778B00583F864
+-- file_checksum: 16456AA06FE8D1833F0A2C6AD2C8D95C97FA03D0BA974F2A87AF80A6BDABBF15
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -8,7 +8,7 @@ prompt --application/plugin_settings
 begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.0'
+,p_release=>'24.2.5'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

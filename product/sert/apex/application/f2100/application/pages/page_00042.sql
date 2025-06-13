@@ -1,4 +1,4 @@
--- file_checksum: 4DCF2953CA062F331C40302EF0823D62D8F9A97D7D8E7A00FE11FEA339DD1318
+-- file_checksum: 7945AFD15D60861EE0F5615913C4DE578FE22C0A0D3B91227884280EADF1CEB4
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.0'
+,p_release=>'24.2.5'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -37,7 +37,7 @@ wwv_flow_imp_page.create_report_region(
  p_id=>wwv_flow_imp.id(51389790588281027)
 ,p_name=>'Exceptions'
 ,p_template=>wwv_flow_imp.id(468265822494671277)
-,p_display_sequence=>120
+,p_display_sequence=>130
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_component_template_options=>'#DEFAULT#:t-Report--altRowsDefault:t-Report--rowHighlight'
 ,p_source_type=>'NATIVE_SQL_REPORT'
@@ -322,6 +322,21 @@ wwv_flow_imp_page.create_page_branch(
 ,p_branch_sequence=>10
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(20697753476384729)
+,p_name=>'P42_IGNORE_CHECKSUM'
+,p_item_sequence=>120
+,p_item_default=>'N'
+,p_prompt=>'Ignore Component Checksum'
+,p_display_as=>'NATIVE_SINGLE_CHECKBOX'
+,p_field_template=>wwv_flow_imp.id(468536483915671350)
+,p_item_template_options=>'#DEFAULT#'
+,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'Old exceptions may have different checksum due to attributes changing.',
+'Check this box only if you wish to attempt exception best upload match and bypass this safeguard.'))
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'use_defaults', 'Y')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(51387111522281001)
 ,p_name=>'P42_NAME'
 ,p_item_sequence=>30
@@ -464,6 +479,19 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_when_button_id=>wwv_flow_imp.id(51359577128619714)
 ,p_process_success_message=>'&P42_MSG.'
 ,p_internal_uid=>51372160876455996
+);
+wwv_flow_imp_shared.create_invokeapi_comp_param(
+ p_id=>wwv_flow_imp.id(20697824000384730)
+,p_page_process_id=>wwv_flow_imp.id(51372160876455996)
+,p_page_id=>42
+,p_name=>'p_ignore_checksum'
+,p_direction=>'IN'
+,p_data_type=>'BOOLEAN'
+,p_has_default=>false
+,p_display_sequence=>40
+,p_value_type=>'ITEM'
+,p_value=>'P42_IGNORE_CHECKSUM'
+,p_format_mask=>'Y,N'
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
  p_id=>wwv_flow_imp.id(51372508522455994)
