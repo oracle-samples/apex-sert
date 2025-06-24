@@ -5,7 +5,7 @@
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
 
---changeset mipotter:create_view_sert_core.eval_results_pub_v_1721804342058 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ 
+--changeset mipotter:create_view_sert_core.eval_results_pub_v_1721804342058 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
 create or replace force view sert_core.eval_results_pub_v
 as
 select
@@ -64,6 +64,9 @@ select
   ,help_url
   ,impact
   ,nvl(rule_criteria_type_name, 'n/a') as rule_criteria_type_name
+  ,r.rule_severity_id
+  ,r.rule_severity_name
+  ,r.rule_severity_key
 from
    eval_results_v er
   ,rules_pub_v r

@@ -5,7 +5,7 @@
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
 
---changeset mipotter:create_view_sert_core.rules_pub_v_1721804194431 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ 
+--changeset mipotter:create_view_sert_core.rules_pub_v_1721804194431 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
 create or replace force view sert_core.rules_pub_v
 as
 select
@@ -26,6 +26,9 @@ select
   ,builder_url_id
   ,rule_hash
   ,view_name
+  ,rule_severity_id
+  ,rule_severity_name
+  ,rule_severity_key
 from
   sert_core.rules_v r
 /

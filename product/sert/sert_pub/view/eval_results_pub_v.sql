@@ -48,6 +48,9 @@ select
   ,created_on
   ,updated_by
   ,updated_on
+  ,rule_severity_id
+  ,rule_severity_name
+  ,rule_severity_key
 from
    sert_core.eval_results_pub_v
 ;
