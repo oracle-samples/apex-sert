@@ -1,10 +1,10 @@
-prompt app_checksum: D80C74FA7E4FEC6DB664C7CCF4975B7174A0C3AAD2022AB7F69C7C8F61090CA5
+prompt app_checksum: DF114443309E0EBE961BCF5FDD00FD81766C3EB3B14D00028942EABD692A9CEA
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 62ED7E490C20168CEC03484EE414DF2199AE344B80A680043AB3F27E5754D707
+-- file_checksum: 62CF4CE92A0A831494212FAE1FDABBF75752D4AFAB65350B6D012C755FC3EAAB
 prompt --install
 @@application/set_environment.sql
 @@application/delete_application.sql
@@ -83,6 +83,7 @@ prompt --install
 @@application/shared_components/user_interface/lovs/rules_lov.sql
 @@application/shared_components/user_interface/lovs/rules_lov_exceptions_ar.sql
 @@application/shared_components/user_interface/lovs/rules_lov_raise_exceptions.sql
+@@application/shared_components/user_interface/lovs/rule_severity_v.sql
 @@application/pages/page_groups.sql
 @@application/comments.sql
 @@application/shared_components/navigation/breadcrumbs/breadcrumb.sql

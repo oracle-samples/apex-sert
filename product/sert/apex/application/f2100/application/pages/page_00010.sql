@@ -1,4 +1,4 @@
--- file_checksum: 55A953ECF65347A8DDA19E6D2B12F2700C141153AF8053B0776E71798C0D858A
+-- file_checksum: 28DB84D2F870A663A3160E45BC900BB7C7B1FDB40B78262E232E74943C86A714
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -557,7 +557,9 @@ wwv_flow_imp_page.create_page_plug(
 '        exception_key,',
 '        exception_justification,',
 '        pending_icon,',
-'        exception_description',
+'        exception_description,',
+'        rule_severity_id,',
+'        rule_severity_name',
 '        -- case when exception_id is not null and result=''PENDING''',
 '        --        then ''Raised by ''||exception_created_by',
 '        --      when exception_id is not null and result=''APPROVED''',
@@ -566,7 +568,7 @@ wwv_flow_imp_page.create_page_plug(
 '        -- end as exception_description',
 'from eval_results_exc_pub_v',
 'where eval_id = :P10_EVAL_ID',
-' order by page_id, rule_name, description'))
+'--  order by page_id, rule_name, description'))
 ,p_template_component_type=>'REPORT'
 ,p_lazy_loading=>false
 ,p_plug_source_type=>'TMPL_THEME_42$CONTENT_ROW'
@@ -593,6 +595,28 @@ wwv_flow_imp_page.create_page_plug(
   'OVERLINE', '&CATEGORY_NAME.',
   'REMOVE_PADDING', 'Y',
   'TITLE', '&RULE_NAME.')).to_clob
+);
+wwv_flow_imp_page.create_region_column(
+ p_id=>wwv_flow_imp.id(20960728145448405)
+,p_name=>'RULE_SEVERITY_ID'
+,p_source_type=>'DB_COLUMN'
+,p_source_expression=>'RULE_SEVERITY_ID'
+,p_data_type=>'NUMBER'
+,p_display_sequence=>460
+,p_is_group=>false
+,p_use_as_row_header=>false
+,p_is_primary_key=>false
+);
+wwv_flow_imp_page.create_region_column(
+ p_id=>wwv_flow_imp.id(20960818028448406)
+,p_name=>'RULE_SEVERITY_NAME'
+,p_source_type=>'DB_COLUMN'
+,p_source_expression=>'RULE_SEVERITY_NAME'
+,p_data_type=>'VARCHAR2'
+,p_display_sequence=>470
+,p_is_group=>false
+,p_use_as_row_header=>false
+,p_is_primary_key=>false
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(67561067420117867)
@@ -1388,10 +1412,34 @@ wwv_flow_imp_page.create_page_branch(
 ,p_branch_condition=>'DELETE_EVALUATION,RE-EVALUATE_BACKGROUND'
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(20960548973448403)
+,p_name=>'P10_RULE_SEVERITY'
+,p_source_data_type=>'NUMBER'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(495792642280263573)
+,p_prompt=>'Severity'
+,p_source=>'RULE_SEVERITY_ID'
+,p_source_type=>'FACET_COLUMN'
+,p_display_as=>'NATIVE_CHECKBOX'
+,p_named_lov=>'RULE_SEVERITY_V'
+,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select rule_severity_name d, rule_severity_id r',
+'from sert_core.rule_severity_v;'))
+,p_item_template_options=>'#DEFAULT#'
+,p_escape_on_http_output=>'N'
+,p_encrypt_session_state_yn=>'N'
+,p_fc_show_label=>true
+,p_fc_compute_counts=>false
+,p_fc_filter_values=>false
+,p_fc_show_selected_first=>false
+,p_fc_show_chart=>false
+,p_suggestions_type=>'DYNAMIC'
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(67909201167459060)
 ,p_name=>'P10_RAISED_BY'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>60
+,p_item_sequence=>80
 ,p_item_plug_id=>wwv_flow_imp.id(495792642280263573)
 ,p_prompt=>'Raised By'
 ,p_source=>'EXCEPTION_CREATED_BY'
@@ -1460,7 +1508,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(495792960996263576)
 ,p_name=>'P10_RESULT'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>20
+,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(495792642280263573)
 ,p_prompt=>'Result'
 ,p_source=>'RESULT'
@@ -1483,7 +1531,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(495793088835263577)
 ,p_name=>'P10_FULL_PAGE_NAME'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>30
+,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(495792642280263573)
 ,p_prompt=>'Page'
 ,p_source=>'FULL_PAGE_NAME'
@@ -1503,7 +1551,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(495793168138263578)
 ,p_name=>'P10_RULE_NAME'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>40
+,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(495792642280263573)
 ,p_prompt=>'Rule'
 ,p_source=>'RULE_NAME'
@@ -1523,7 +1571,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(495793305911263579)
 ,p_name=>'P10_CATEGORY_NAME'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>50
+,p_item_sequence=>70
 ,p_item_plug_id=>wwv_flow_imp.id(495792642280263573)
 ,p_prompt=>'Category'
 ,p_source=>'CATEGORY_NAME'
