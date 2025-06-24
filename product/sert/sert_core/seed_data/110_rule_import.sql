@@ -7051,7 +7051,7 @@ begin
         p_val_number             => null,
         p_case_sensitive_yn      => 'N',
         p_rule_criteria_type_key => '',
-        p_additional_where       => '',
+        p_additional_where       => 'AND DISPLAY_AS_CODE not in (''NATIVE_IMAGE_UPLOAD'',''NATIVE_FILE'')',
         p_custom_query           => '',
         p_info                   => apex_string.join(apex_t_varchar2(
             'When users fill out a form in APEX, the data that is sent back to the server is stored unencrypted in the APEX session table - WWV\_FLOW\_DATA. While there are adequate precautions taken to ensure that other users can not see this data, there is nothing to stop an APEX workspace administrator or DBA from seeing it.',
@@ -7643,7 +7643,7 @@ begin
         p_val_number             => null,
         p_case_sensitive_yn      => 'N',
         p_rule_criteria_type_key => '',
-        p_additional_where       => '',
+        p_additional_where       => 'AND AUTHORIZATION_SCHEME_ID <> ''MUST_NOT_BE_PUBLIC_USER''',
         p_custom_query           => '',
         p_info                   => apex_string.join(apex_t_varchar2(
             'If a page is set to a Public Page, it is likely that the developer intended that page to always be available to anyone - regardless whether they are authenticated or not. However, if there is an Authorization Scheme associated with the application itself, it is possible that pages that intended to be public will not render, based on the result of the Authorization Scheme.',
