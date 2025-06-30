@@ -1,5 +1,18 @@
 # Release Notes
 
+## 24.2.14
+
+* [GAT-438] - github #19 Expose Severity attribute to main report
+* [GAT-439] - Check App ID availability in sert.properties before starting #11
+* [GAT-448] - Exclude File Browse item from Encrypted Items check #27
+* [GAT-449] - Run authz on public pages should be ignored if authz scheme = must not be public user #28
+* [GAT-457] - Doc: ora-22905 in exceptions API when referencing a table sql_macro #34
+* [GAT-458] - Expose Severity attribute to main report #19
+
+## 24.2.13
+
+* [GAT-456] - error in eval_pkg causes pending exceptions to be marked stale
+
 ## 24.2.12
 
 * [GAT-437] - Application "Scoreboard" not updating asynchronously #17

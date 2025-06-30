@@ -38,7 +38,7 @@ end;
 -- end;
 declare
     l_sql varchar2(4000);
-    l_to_workspace varchar2(255) := 'SERT';
+    l_to_workspace varchar2(255) := upper('${sert_apex_workspace}');
 begin
   -- verify the to_workspace exists
   if (apex_util.find_security_group_id(l_to_workspace) is null ) then

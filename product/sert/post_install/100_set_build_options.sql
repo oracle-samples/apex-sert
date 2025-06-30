@@ -17,7 +17,7 @@ begin
   end if;
 
   sert_core.sert_util.set_build_option(
-      p_workspace         => 'SERT',
+      p_workspace         => upper('${sert_apex_workspace}'),
       p_application_alias => 'APEX_SERT',
       p_build_option_name => 'AOP',
       p_build_status      => l_build_status
