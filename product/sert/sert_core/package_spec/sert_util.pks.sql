@@ -23,24 +23,24 @@ as
     );
 
 ----------------------------------------------------------------------------------------------------------------------------
--- FUNCTION: c o m p a r e _ s t r i n g.
+-- FUNCTION: m a t c h _ s t r i n g.
 ----------------------------------------------------------------------------------------------------------------------------
 -- strips whitespace, and compares if string 1 matches string 2
 -- is string 1 is SHORTER than string 2, match up to length of string 1
 -- returns TRUE if matched
 ----------------------------------------------------------------------------------------------------------------------------
-  function compare_string (
+  function match_string (
     p_string1 in varchar2,
     p_string2 in varchar2
   ) return boolean;
 
 ----------------------------------------------------------------------------------------------------------------------------
--- c o m p a r e _ s t r i n g _ y n
+-- m a t c h _ s t r i n g _ y n
 -- returns Y is strings match excluding whitespace
 -- is string 1 is SHORTER than string 2, match up to length of string 1
 -- returns N otherwise
 ----------------------------------------------------------------------------------------------------------------------------
-  function compare_string_yn (
+  function match_string_yn (
     p_string1 in varchar2,
     p_string2 in varchar2
   ) return varchar2;

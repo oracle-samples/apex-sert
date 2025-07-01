@@ -29,20 +29,28 @@ Installing APEX-SERT is a simple process that is done entirely via a SQL script.
 
 #### 2.1.1. Software Versions
 
-#### 2.1.1.1 APEX
+#### 2.1.1.1 Database
 
-Minimum APEX version: 24.1
+**Version:** 19.6+
 
-APEX-SERT 24.1  is supported only on Oracle APEX 24.1 and higher. If you are using an APEX version prior to 24.1, you need to upgrade your instance to use SERT.
+APEX-SERT makes use of SQL Macros for table expressions.  This feature was backported to 19c in the 19.6 update.
+
+SQL Macros for table expressions were made generally available in 21c
+
+#### 2.1.1.2 APEX
+
+Minimum APEX version: 24.2
+
+APEX-SERT 24.2 is supported only on Oracle APEX 24.2 and higher. If you are using an APEX version prior to 24.2, you need to upgrade your instance to use APEX-SERT.
 
 > [!NOTE]
->This version of APEX-SERT is a complete rewrite from the ground up. It can be installed independently of an existing SERT, but there is no migration of historical scans, nor of exceptions.
+>This version of APEX-SERT is a complete rewrite from the ground up. It can be installed independently of an existing APEX-SERT, but there is no migration of historical scans, nor of exceptions.
 
-#### 2.1.1.2 Requirements for AOP
+#### 2.1.1.3 Requirements for AOP
 
 to use the AOP report pages, you MUST have your own APEX Office Print Server. 
 
-#### 2.1.1.2 Requirements for DocGen
+#### 2.1.1.4 Requirements for DocGen
 
 APEX-SERT provides the capability to make use of DocGen, provided you have already setup and configured DocGen for your service.
 
@@ -62,7 +70,7 @@ In order to install APEX-SERT, you will need access to the following system reso
 
 * Oracle SYS or ADMIN database account.
   - SYS is used ONLY in non ADB installs, to create a privileged installer schema
-* For Autonomous installs, use ADMIN
+* For Autonomous installs, use ADMIN or create an [installer account](#221-acdc-installing-schema-creation-script)
 * Oracle APEX instance administration account
 * SQLCL  24.2 or higher
 
@@ -80,7 +88,7 @@ For AUTONOMOUS, use DATA as your tablespace
 
 #### 2.2.1 ACDC installing schema creation script
 
-Access the "acdc" setup scripts from the sert_latest.zip file, located in product/sert/pre-install/.  refer to the [README.md](README.md) for details of installation
+Access the "acdc" setup scripts from the sert_latest.zip file, located in product/sert/pre-install/acdc.  refer to the [README.md](ACDC_README.md) for details of installation
 
 As the `ADMIN` or `SYS` user, use the supplied script create_acdc_schema.sql using sqlcl.
 
@@ -110,7 +118,7 @@ If you wish to pre-specify the Application ID for the SERT application, and it's
 
 Define your desired AOP server:  You can simply define as localhost if you do not have or intend to use AOP.
 
-```sh
+```bash
 ########################################################################
 # SERT Properties File
 ########################################################################
@@ -140,9 +148,9 @@ sert_temp_tablespace =
 The installation will create two schema in your database:
 
 * **SERT_CORE**
-  - Schema which holds all of the APEX-SERT database objects and metadata.
+  * Schema which holds all of the APEX-SERT database objects and metadata.
 * **SERT_PUB**
-  - Schema which will be used as the Parse As schema for the APEX-SERT APEX applications.
+  * Schema which will be used as the Parse As schema for the APEX-SERT APEX applications.
 
 It also creates an APEX workspace called SERT (or the name you supplied in the sert.properties). This is where the APEX-SERT APEX applications will be installed. The SERT workspace will not contain any developer users or workspace administrators, as it is not necessary nor required that any APEX developer access this workspace.
 
@@ -157,10 +165,10 @@ It also creates an APEX workspace called SERT (or the name you supplied in the s
 1. Locate and change directories to the sert_latest directory that was created in the last section.
 1. Enter the following command and press enter:
 
-    `sql ACDC@<database>`
+    `sql ACDC@[database]`
 
-    you will be prompted for your schema password, and <database> is your database TNSNames entry. For ADB, use the LOW connection to avoid parallelisation
-1. Depending on your environment, it may not be necessary to enter a value for `<database>`.
+    you will be prompted for your schema password, and [database] is your database TNSNames entry. For ADB, use the LOW connection to avoid parallelisation
+1. Depending on your environment, it may not be necessary to enter a value for `[database]`.
 1. From the SQL Plus prompt, enter the following and press enter:
 
     `@install.sql`
@@ -172,6 +180,9 @@ It also creates an APEX workspace called SERT (or the name you supplied in the s
 The design of the builder extension menu means that we *cannot* have the extension automatically available to all workspaces. Each workspace must **subscribe** to the SERT extension link.  Luckily, we have code that will find and enable all workspaces that do not have the link.
 
 This should be run as the "acdc" or equivalent user.  (admin should work too in ADB)
+
+> [!TIP]
+> this is a useful block of code for a periodic job to automate subscription for new workspaces created after installation
 
 ```sql
 BEGIN
@@ -217,4 +228,3 @@ to do this manually for a single workspace:
     <!-- ![GIF image clicking on extension builder menu > Sert > Evaluations ](./images/launch-sert.gif) -->
 
 <img src="./images/launch-sert.gif" alt="GIF of user launching SERT" width=50% height=50%>
-

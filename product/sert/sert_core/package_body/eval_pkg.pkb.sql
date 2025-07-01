@@ -408,7 +408,7 @@ where
   || e.column_name     || ':'
   || e.shared_comp_name
   -- and er.current_value != e.current_value
-  and sert_core.sert_util.compare_string_yn(e.current_value,er.current_value) = 'N'
+  and sert_core.sert_util.match_string_yn(e.current_value,er.current_value) = 'N'
   and er.eval_id = p_eval_id
   );
 
