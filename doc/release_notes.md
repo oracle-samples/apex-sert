@@ -1,5 +1,13 @@
 # Release Notes
 
+## 24.2.15
+
+* [GAT-459] - improve performance of evaluation dashboard and details page load
+* [GAT-462] - move acdc setup script to util directory
+* [GAT-460] - tune finding details page load - don't test for apex page update on each render
+* [GAT-461] - workspace name hard-coded in build_options install script
+* [GAT-452] - Add options for ordering results in dashboard
+
 ## 24.2.14
 
 * [GAT-438] - github #19 Expose Severity attribute to main report

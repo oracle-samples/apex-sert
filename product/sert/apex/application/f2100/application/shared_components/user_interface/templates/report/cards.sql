@@ -1,4 +1,4 @@
--- file_checksum: FF6D4E7535C1DC64BB294ED39C65038D76579D4D2F0979667D3116E04B95D1F8
+-- file_checksum: EFB750957F6C03A422B70CB471B026E6C4896A569209A01F1475C53BB0BED4DC
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_row_template(
- p_id=>wwv_flow_imp.id(468489971663671298)
+ p_id=>wwv_flow_imp.id(512211389524949561)
 ,p_row_template_name=>'Cards'
 ,p_internal_name=>'CARDS'
 ,p_row_template1=>wwv_flow_string.join(wwv_flow_t_varchar2(

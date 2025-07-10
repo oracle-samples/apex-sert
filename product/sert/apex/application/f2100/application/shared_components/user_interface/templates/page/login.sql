@@ -1,4 +1,4 @@
--- file_checksum: DAEB7074CB69E4274632306909D02DECCD46076D19776E62889D72366A79F73A
+-- file_checksum: A57E80563D27C4D66570C56BF407B1345C25D64BA6E0DBC975FDD16FB5500F40
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_template(
- p_id=>wwv_flow_imp.id(468173886557671190)
+ p_id=>wwv_flow_imp.id(511895304418949453)
 ,p_theme_id=>42
 ,p_name=>'Login'
 ,p_internal_name=>'LOGIN'
@@ -147,8 +147,8 @@ wwv_flow_imp_shared.create_template(
 ,p_dialog_browser_frame=>'MODAL'
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96103377988044344)
-,p_page_template_id=>wwv_flow_imp.id(468173886557671190)
+ p_id=>wwv_flow_imp.id(139824795849322607)
+,p_page_template_id=>wwv_flow_imp.id(511895304418949453)
 ,p_name=>'Background Image'
 ,p_placeholder=>'BACKGROUND_IMAGE'
 ,p_has_grid_support=>false
@@ -159,8 +159,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>12
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96103925393044344)
-,p_page_template_id=>wwv_flow_imp.id(468173886557671190)
+ p_id=>wwv_flow_imp.id(139825343254322607)
+,p_page_template_id=>wwv_flow_imp.id(511895304418949453)
 ,p_name=>'Content Body'
 ,p_placeholder=>'BODY'
 ,p_has_grid_support=>true
@@ -171,8 +171,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>12
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96104440133044344)
-,p_page_template_id=>wwv_flow_imp.id(468173886557671190)
+ p_id=>wwv_flow_imp.id(139825857994322607)
+,p_page_template_id=>wwv_flow_imp.id(511895304418949453)
 ,p_name=>'Body Header'
 ,p_placeholder=>'REGION_POSITION_01'
 ,p_has_grid_support=>false
@@ -182,8 +182,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96104922074044343)
-,p_page_template_id=>wwv_flow_imp.id(468173886557671190)
+ p_id=>wwv_flow_imp.id(139826339935322606)
+,p_page_template_id=>wwv_flow_imp.id(511895304418949453)
 ,p_name=>'Body Footer'
 ,p_placeholder=>'REGION_POSITION_02'
 ,p_has_grid_support=>false

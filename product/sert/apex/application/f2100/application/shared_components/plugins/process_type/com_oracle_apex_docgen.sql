@@ -1,4 +1,4 @@
--- file_checksum: FEC3BED54B3B9BEC4C696F2C6FBD1513C23B7C498078A7528A013512AB9DD0A1
+-- file_checksum: AD538BCA24F1EFC81B50E077362F55DB95F478020C1DF5FCC0AE1CD6203BFDD5
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_plugin(
- p_id=>wwv_flow_imp.id(2708043663812407756)
+ p_id=>wwv_flow_imp.id(2751765081673686019)
 ,p_plugin_type=>'PROCESS TYPE'
 ,p_name=>'COM.ORACLE.APEX.DOCGEN'
 ,p_display_name=>'OCI Document Generator - Print Document'
@@ -240,20 +240,20 @@ wwv_flow_imp_shared.create_plugin(
 ,p_plugin_comment=>'Sample purposes only'
 );
 wwv_flow_imp_shared.create_plugin_attr_group(
- p_id=>wwv_flow_imp.id(1950688688866845881)
-,p_plugin_id=>wwv_flow_imp.id(2708043663812407756)
+ p_id=>wwv_flow_imp.id(1994410106728124144)
+,p_plugin_id=>wwv_flow_imp.id(2751765081673686019)
 ,p_title=>'OCI Document Generator Function'
 ,p_display_sequence=>10
 );
 wwv_flow_imp_shared.create_plugin_attr_group(
- p_id=>wwv_flow_imp.id(1950689168789845882)
-,p_plugin_id=>wwv_flow_imp.id(2708043663812407756)
+ p_id=>wwv_flow_imp.id(1994410586651124145)
+,p_plugin_id=>wwv_flow_imp.id(2751765081673686019)
 ,p_title=>'OCI Object Storage Bucket'
 ,p_display_sequence=>20
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(1950689601748855878)
-,p_plugin_id=>wwv_flow_imp.id(2708043663812407756)
+ p_id=>wwv_flow_imp.id(1994411019610134141)
+,p_plugin_id=>wwv_flow_imp.id(2751765081673686019)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>10
@@ -264,8 +264,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_examples=>'us-phoenix-1'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(1950690411854876338)
-,p_plugin_id=>wwv_flow_imp.id(2708043663812407756)
+ p_id=>wwv_flow_imp.id(1994411829716154601)
+,p_plugin_id=>wwv_flow_imp.id(2751765081673686019)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>2
 ,p_display_sequence=>20
@@ -273,13 +273,13 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_type=>'TEXT'
 ,p_is_required=>false
 ,p_is_translatable=>false
-,p_attribute_group_id=>wwv_flow_imp.id(1950688688866845881)
+,p_attribute_group_id=>wwv_flow_imp.id(1994410106728124144)
 ,p_examples=>'ocid1.fnfunc.oc1.phx.abcdefghijklmnopqrstuvwxyz'
 ,p_help_text=>'Oracle-assigned unique ID called an Oracle Cloud Identifier (OCID) which identifies the DocGen Function.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(1950692188360913457)
-,p_plugin_id=>wwv_flow_imp.id(2708043663812407756)
+ p_id=>wwv_flow_imp.id(1994413606222191720)
+,p_plugin_id=>wwv_flow_imp.id(2751765081673686019)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>3
 ,p_display_sequence=>70
@@ -288,12 +288,12 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_required=>false
 ,p_default_value=>'out/'
 ,p_is_translatable=>false
-,p_attribute_group_id=>wwv_flow_imp.id(1950689168789845882)
+,p_attribute_group_id=>wwv_flow_imp.id(1994410586651124145)
 ,p_help_text=>'Specify the folder in the Bucket where the generated PDF will be stored.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(1950698942679632746)
-,p_plugin_id=>wwv_flow_imp.id(2708043663812407756)
+ p_id=>wwv_flow_imp.id(1994420360540911009)
+,p_plugin_id=>wwv_flow_imp.id(2751765081673686019)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>5
 ,p_display_sequence=>40
@@ -301,11 +301,11 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_type=>'TEXT'
 ,p_is_required=>false
 ,p_is_translatable=>false
-,p_attribute_group_id=>wwv_flow_imp.id(1950689168789845882)
+,p_attribute_group_id=>wwv_flow_imp.id(1994410586651124145)
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(1950699727461633960)
-,p_plugin_id=>wwv_flow_imp.id(2708043663812407756)
+ p_id=>wwv_flow_imp.id(1994421145322912223)
+,p_plugin_id=>wwv_flow_imp.id(2751765081673686019)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>6
 ,p_display_sequence=>50
@@ -313,11 +313,11 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_type=>'TEXT'
 ,p_is_required=>false
 ,p_is_translatable=>false
-,p_attribute_group_id=>wwv_flow_imp.id(1950689168789845882)
+,p_attribute_group_id=>wwv_flow_imp.id(1994410586651124145)
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(1953613730162243182)
-,p_plugin_id=>wwv_flow_imp.id(2708043663812407756)
+ p_id=>wwv_flow_imp.id(1997335148023521445)
+,p_plugin_id=>wwv_flow_imp.id(2751765081673686019)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>7
 ,p_display_sequence=>70
@@ -326,11 +326,11 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_required=>false
 ,p_default_value=>'template/'
 ,p_is_translatable=>false
-,p_attribute_group_id=>wwv_flow_imp.id(1950689168789845882)
+,p_attribute_group_id=>wwv_flow_imp.id(1994410586651124145)
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(2708044455831417378)
-,p_plugin_id=>wwv_flow_imp.id(2708043663812407756)
+ p_id=>wwv_flow_imp.id(2751765873692695641)
+,p_plugin_id=>wwv_flow_imp.id(2751765081673686019)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>20
@@ -341,8 +341,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'The query has to return JSON.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(1950708240008111264)
-,p_plugin_id=>wwv_flow_imp.id(2708043663812407756)
+ p_id=>wwv_flow_imp.id(1994429657869389527)
+,p_plugin_id=>wwv_flow_imp.id(2751765081673686019)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>2
 ,p_display_sequence=>20
@@ -353,8 +353,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Location of the template in Static Application Files.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(1950712826939335766)
-,p_plugin_id=>wwv_flow_imp.id(2708043663812407756)
+ p_id=>wwv_flow_imp.id(1994434244800614029)
+,p_plugin_id=>wwv_flow_imp.id(2751765081673686019)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>3
 ,p_display_sequence=>30

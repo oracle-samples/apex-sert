@@ -17,21 +17,20 @@ select
   ,er.workspace_id
   ,er.application_id
   ,er.page_id
-  ,case when er.page_id is not null then er.page_id || ': ' else null end || ap.page_name as page
-  ,case when er.page_id is null then 'Shared Component' else ap.page_name end as page_name
-  ,case when er.page_id is not null then er.page_id || ' - ' || ap.page_name else 'Shared Component' end as full_page_name
+  ,case when er.page_id is not null then er.page_id || ': ' || er.page_name else null end as page
+  ,case when er.page_id is null then 'Shared Component' else er.page_name end as page_name
+  ,case when er.page_id is not null then er.page_id || ' - ' || er.page_name else 'Shared Component' end as full_page_name
   ,case when r.impact = 'SC' then shared_comp_type || case when shared_comp_type is not null then ' / ' else null end || shared_comp_name else null end
-    || case when er.page_id is not null then er.page_id || ': '  || ap.page_name else null end
-    || case when region_name       is not null then ' / ' || region_name else null end
+    || case when er.page_id is not null then er.page_id || ': '  || er.page_name else null end
+    || case when er.region_name       is not null then ' / ' || er.region_name else null end
     || case when er.component_name is not null then ' / ' || er.component_name else null end
-    || case when column_name       is not null then ' / ' || column_name else null end
-    || case when item_name         is not null then ' / ' || (select case when region is null then null else region || ' / ' end from apex_application_page_items where item_id = component_id) || item_name   else null end
+    || case when er.column_name       is not null then ' / ' || er.column_name else null end
+    || case when er.item_name         is not null then ' / ' || case when er.region_name is null then null else er.region_name || ' / ' end || item_name   else null end
    as description
   ,r.view_name
   ,er.component_id
   ,er.component_name
-  ,case when item_name is null then apr.region_name else (select region from apex_application_page_items where item_id = component_id) end as region_name
---  ,case when item_name is null then null else (select region from apex_application_page_items where item_id = component_id) end as region_name
+  ,er.region_name as region_name
   ,er.column_name
   ,er.shared_comp_name
   ,r.shared_comp_type
@@ -70,12 +69,7 @@ select
 from
    eval_results_v er
   ,rules_pub_v r
-  ,apex_application_pages ap
-  ,apex_application_page_regions apr
 where 1=1
   and er.rule_id = r.rule_id
-  and nvl(er.page_id, 0) = ap.page_id(+)
-  and er.application_id = ap.application_id(+)
-  and to_char(er.component_id) = to_char(apr.region_id(+))
 /
 --rollback not required

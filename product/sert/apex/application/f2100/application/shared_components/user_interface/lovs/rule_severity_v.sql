@@ -1,4 +1,4 @@
--- file_checksum: 539996939DFEAC54A5354DBFB6F4C186AB40FFE6DFD6830641039E3E1BC278A6
+-- file_checksum: E990B0256A7EA267CEB1425D6B0B68E3E038B2D8CBEB22E6158B6EA2F64DA4A3
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_list_of_values(
- p_id=>wwv_flow_imp.id(21100502907699167)
+ p_id=>wwv_flow_imp.id(64821920768977430)
 ,p_lov_name=>'RULE_SEVERITY_V'
 ,p_lov_query=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select rule_severity_name d, rule_severity_id r',

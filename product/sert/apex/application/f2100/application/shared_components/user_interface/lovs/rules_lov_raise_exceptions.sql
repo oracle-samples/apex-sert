@@ -1,4 +1,4 @@
--- file_checksum: 86880D072D1C4DFD070DB646C94D25822F53C571F86894ED5F432B958A9633C8
+-- file_checksum: 1DCF84FD828DAB28FBA416DCCCE11CEB8487A753B7AF1FC305C3E05C2B1709F2
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_list_of_values(
- p_id=>wwv_flow_imp.id(67634260270725470)
+ p_id=>wwv_flow_imp.id(111355678132003733)
 ,p_lov_name=>'RULES_LOV_RAISE_EXCEPTIONS'
 ,p_lov_query=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'with tab as ',

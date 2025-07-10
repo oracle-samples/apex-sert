@@ -1,4 +1,4 @@
--- file_checksum: D1C167F725046F3260831EA063F1BE443B7A5FC8879DC9AC38CE912F56220EF6
+-- file_checksum: AE00BB21D99771CF154B2B335E3D174544F50D227BCC21CA40041EB116B4C686
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_flow_item(
- p_id=>wwv_flow_imp.id(69074614137286259)
+ p_id=>wwv_flow_imp.id(112796031998564522)
 ,p_name=>'G_OCI_BUCKET_TEMPLATE_FOLDER'
 ,p_protection_level=>'I'
 ,p_version_scn=>42133019488520

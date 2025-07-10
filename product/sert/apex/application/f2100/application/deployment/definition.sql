@@ -1,4 +1,4 @@
--- file_checksum: D1AB6381D731E27B33A5F9AFDFF43BCEAC59A2E0FC5EACCDFE1099FD55E2CE43
+-- file_checksum: 75FA1B4A7D2514B582A8401D379E3BBC9ED9F334378C10D5F51EBA3E62C991B7
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_install(
- p_id=>wwv_flow_imp.id(215548230219300044)
+ p_id=>wwv_flow_imp.id(259269648080578307)
 );
 wwv_flow_imp.component_end;
 end;

@@ -1,4 +1,4 @@
--- file_checksum: D77AD95B8C0C6C444380F4B247FD7620181E4F71B83E61125CB486DF4298EA67
+-- file_checksum: 54755DA022E27A08E35F6169F7347EDB09A23F0A104728AE1DFFBD1456B0C905
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_plug_template(
- p_id=>wwv_flow_imp.id(468258082264671272)
+ p_id=>wwv_flow_imp.id(511979500125949535)
 ,p_layout=>'TABLE'
 ,p_template=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<div class="t-ItemContainer #REGION_CSS_CLASSES#" id="#REGION_STATIC_ID#" #REGION_LANDMARK_ATTRIBUTES# #REGION_ATTRIBUTES#>',
@@ -35,8 +35,8 @@ wwv_flow_imp_shared.create_plug_template(
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96322006258044231)
-,p_plug_template_id=>wwv_flow_imp.id(468258082264671272)
+ p_id=>wwv_flow_imp.id(140043424119322494)
+,p_plug_template_id=>wwv_flow_imp.id(511979500125949535)
 ,p_name=>'Item'
 ,p_placeholder=>'BODY'
 ,p_has_grid_support=>false
@@ -46,8 +46,8 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96322557712044230)
-,p_plug_template_id=>wwv_flow_imp.id(468258082264671272)
+ p_id=>wwv_flow_imp.id(140043975573322493)
+,p_plug_template_id=>wwv_flow_imp.id(511979500125949535)
 ,p_name=>'Button End'
 ,p_placeholder=>'BUTTON_END'
 ,p_has_grid_support=>false
@@ -57,8 +57,8 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96323048785044230)
-,p_plug_template_id=>wwv_flow_imp.id(468258082264671272)
+ p_id=>wwv_flow_imp.id(140044466646322493)
+,p_plug_template_id=>wwv_flow_imp.id(511979500125949535)
 ,p_name=>'Button Start'
 ,p_placeholder=>'BUTTON_START'
 ,p_has_grid_support=>false

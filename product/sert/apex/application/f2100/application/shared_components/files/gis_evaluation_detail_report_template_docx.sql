@@ -1,4 +1,4 @@
--- file_checksum: 9676485E20B4AC119CEAF77EF696CBCAFDD1EF7E03F2F575F42EFF91369560E9
+-- file_checksum: 710409E3E7AFBEE9ED2B8763FEA33EA8619F9DC214429FC015B39F02FF4673DF
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -3209,7 +3209,7 @@ wwv_flow_imp.g_varchar2_table(3162) := '21008B53863FDF010000E1030000100000000000
 wwv_flow_imp.g_varchar2_table(3163) := '6F6E745461626C652E786D6C504B01022D00140006000800000021003519BCCC280C0000AF75000018000000000000000000000000003FBC0400776F72642F676C6F73736172792F7374796C65732E786D6C504B01022D0014000600080000002100743F';
 wwv_flow_imp.g_varchar2_table(3164) := '397AC2000000280100001E000000000000000000000000009DC80400637573746F6D586D6C2F5F72656C732F6974656D312E786D6C2E72656C73504B0506000000002200220023090000A3CA04000000';
 wwv_flow_imp_shared.create_app_static_file(
- p_id=>wwv_flow_imp.id(77263898873283521)
+ p_id=>wwv_flow_imp.id(120985316734561784)
 ,p_file_name=>'GIS_Evaluation_Detail_Report_Template.docx'
 ,p_mime_type=>'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
 ,p_file_charset=>'utf-8'

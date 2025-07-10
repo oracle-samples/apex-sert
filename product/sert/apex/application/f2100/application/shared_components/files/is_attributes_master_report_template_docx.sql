@@ -1,4 +1,4 @@
--- file_checksum: 6789A84F1AB1F799F8D903F5B4DA4F0FAD9C2F710BBBBBF08FD2C57A76C096D3
+-- file_checksum: 62B05C02FA7E9B532ED278C67C3E89B338A79B0839EB14E169EF128428324A76
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -3211,7 +3211,7 @@ wwv_flow_imp.g_varchar2_table(3164) := '6170702E786D6C504B01022D0014000600080000
 wwv_flow_imp.g_varchar2_table(3165) := '00000000000000000000000000DEBC0400776F72642F676C6F73736172792F7374796C65732E786D6C504B01022D0014000600080000002100743F397AC2000000280100001E000000000000000000000000003CC90400637573746F6D586D6C2F5F7265';
 wwv_flow_imp.g_varchar2_table(3166) := '6C732F6974656D312E786D6C2E72656C73504B050600000000220022002309000042CB04000000';
 wwv_flow_imp_shared.create_app_static_file(
- p_id=>wwv_flow_imp.id(66493633317797922)
+ p_id=>wwv_flow_imp.id(110215051179076185)
 ,p_file_name=>'IS_Attributes_Master_Report_Template.docx'
 ,p_mime_type=>'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
 ,p_file_charset=>'utf-8'

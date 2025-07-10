@@ -1,4 +1,4 @@
--- file_checksum: F49703064B8FB4A0852B416920E357D498CB91B801C79C5943882F6D6A67AFEE
+-- file_checksum: 14758F2549E5C435D695D27D52E8544BE4DB0836DC54B14AF5CA17104C1F80F9
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_row_template(
- p_id=>wwv_flow_imp.id(468503940864671309)
+ p_id=>wwv_flow_imp.id(512225358725949572)
 ,p_row_template_name=>'Standard'
 ,p_internal_name=>'STANDARD'
 ,p_row_template1=>'<td class="t-Report-cell" #ALIGNMENT# #ACCESSIBLE_HEADERS#>#COLUMN_VALUE#</td>'

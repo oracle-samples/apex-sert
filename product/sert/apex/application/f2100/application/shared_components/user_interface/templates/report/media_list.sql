@@ -1,4 +1,4 @@
--- file_checksum: F68558CE2BEA8285FF30FA56DA3264349C6A07C93AD0405ACA2021F2883ECFA9
+-- file_checksum: F25EC88E12B18E33410A3223F8BE4A9806F9033AE65CC9CF571F628E66A3D1DD
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_row_template(
- p_id=>wwv_flow_imp.id(468500766672671306)
+ p_id=>wwv_flow_imp.id(512222184533949569)
 ,p_row_template_name=>'Media List'
 ,p_internal_name=>'MEDIA_LIST'
 ,p_row_template1=>wwv_flow_string.join(wwv_flow_t_varchar2(

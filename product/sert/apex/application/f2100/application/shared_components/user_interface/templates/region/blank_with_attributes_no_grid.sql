@@ -1,4 +1,4 @@
--- file_checksum: 8A42F251CB14C8B1F91A8964C1E8450F3C3C950AA58BD5B939C622FEFC20ED2F
+-- file_checksum: ADF22D4A4AC99B8C4D41F15CA24631DE62D16F50E9B9BFFD251C2EC599478DEB
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_plug_template(
- p_id=>wwv_flow_imp.id(468200562287671223)
+ p_id=>wwv_flow_imp.id(511921980148949486)
 ,p_layout=>'TABLE'
 ,p_template=>'<div id="#REGION_STATIC_ID#" class="#REGION_CSS_CLASSES#" #REGION_LANDMARK_ATTRIBUTES# #REGION_ATTRIBUTES#>#PREVIOUS##BODY##SUB_REGIONS##NEXT#</div>'
 ,p_page_plug_template_name=>'Blank with Attributes (No Grid)'
@@ -30,8 +30,8 @@ wwv_flow_imp_shared.create_plug_template(
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96174559811044309)
-,p_plug_template_id=>wwv_flow_imp.id(468200562287671223)
+ p_id=>wwv_flow_imp.id(139895977672322572)
+,p_plug_template_id=>wwv_flow_imp.id(511921980148949486)
 ,p_name=>'Region Body'
 ,p_placeholder=>'BODY'
 ,p_has_grid_support=>false
@@ -41,8 +41,8 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96175046058044309)
-,p_plug_template_id=>wwv_flow_imp.id(468200562287671223)
+ p_id=>wwv_flow_imp.id(139896463919322572)
+,p_plug_template_id=>wwv_flow_imp.id(511921980148949486)
 ,p_name=>'Next'
 ,p_placeholder=>'NEXT'
 ,p_has_grid_support=>false
@@ -52,8 +52,8 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96175495490044309)
-,p_plug_template_id=>wwv_flow_imp.id(468200562287671223)
+ p_id=>wwv_flow_imp.id(139896913351322572)
+,p_plug_template_id=>wwv_flow_imp.id(511921980148949486)
 ,p_name=>'Previous'
 ,p_placeholder=>'PREVIOUS'
 ,p_has_grid_support=>false
@@ -63,8 +63,8 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96175989224044309)
-,p_plug_template_id=>wwv_flow_imp.id(468200562287671223)
+ p_id=>wwv_flow_imp.id(139897407085322572)
+,p_plug_template_id=>wwv_flow_imp.id(511921980148949486)
 ,p_name=>'Sub Regions'
 ,p_placeholder=>'SUB_REGIONS'
 ,p_has_grid_support=>false

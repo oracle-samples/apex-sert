@@ -1,4 +1,4 @@
--- file_checksum: A515A856FAEF1C4D7218749ECC6B664B11A461B0F69BFF7F0CE642A329C96CAF
+-- file_checksum: DCD41A892C7E04A0203C889E670C06D5B3036FDE99AFB459E94F6F432E1BAC61
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_list_template(
- p_id=>wwv_flow_imp.id(468530140889671341)
+ p_id=>wwv_flow_imp.id(512251558750949604)
 ,p_list_template_current=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<li class="t-MegaMenu-item t-MegaMenu-item--top t-MegaMenu-item--noSub is-active #A04#" data-current="true" data-id="#A01#" data-shortcut="#A05#">',
 '  <span class="a-Menu-item t-MegaMenu-itemBody #A08#">',

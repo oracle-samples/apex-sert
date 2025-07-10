@@ -1,4 +1,4 @@
--- file_checksum: 2F388BF116B2842044880971696B2B95D094DB11A2F1E6201271A0F1D43CB1FB
+-- file_checksum: 4F3C4C8B22C5775859767B49935DAC59BF65D1D1BEF3AC69885EA95D446D3C16
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_calendar_template(
- p_id=>wwv_flow_imp.id(468540724741671362)
+ p_id=>wwv_flow_imp.id(512262142602949625)
 ,p_cal_template_name=>'Calendar'
 ,p_internal_name=>'CALENDAR'
 ,p_day_of_week_format=>wwv_flow_string.join(wwv_flow_t_varchar2(

@@ -1,4 +1,4 @@
--- file_checksum: EA892F654CC44EAAB7399456C19306885C999309C80C9E81C2064FBEDE4EE3D4
+-- file_checksum: F1FBDD1AEC73EFB8823364447868ABE3B69A703000AD816D2DF6B87F0058913C
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_row_template(
- p_id=>wwv_flow_imp.id(468495379148671302)
+ p_id=>wwv_flow_imp.id(512216797009949565)
 ,p_row_template_name=>'Comments'
 ,p_internal_name=>'COMMENTS'
 ,p_row_template1=>wwv_flow_string.join(wwv_flow_t_varchar2(

@@ -1,4 +1,4 @@
--- file_checksum: 4F2B0BB9DD75CB55E7B72CFC0577FA01E01EEE5FF7C00CD1E4D67132CC4249FC
+-- file_checksum: 85BD58391C897BEC09D49D768C51E8585DA5442613DEB361CB1BFF88111DE913
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_flow_item(
- p_id=>wwv_flow_imp.id(58289193688518438)
+ p_id=>wwv_flow_imp.id(102010611549796701)
 ,p_name=>'G_EMAIL_FROM'
 ,p_protection_level=>'I'
 ,p_version_scn=>41916700941964

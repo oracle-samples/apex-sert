@@ -1,4 +1,4 @@
--- file_checksum: EC5ADD4FD1B089AC149CD695B3C13AD24706D7F7FF58F13BB553FCDFA1AF2DFE
+-- file_checksum: 89876ADC59E53D5C16F82B8D3DDDBCF55B9887BEC95B9AEE67ABB2697A9E348B
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_plug_template(
- p_id=>wwv_flow_imp.id(468232507438671254)
+ p_id=>wwv_flow_imp.id(511953925299949517)
 ,p_layout=>'TABLE'
 ,p_template=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<div class="t-HeroRegion #REGION_CSS_CLASSES#" id="#REGION_STATIC_ID#" #REGION_LANDMARK_ATTRIBUTES# #REGION_ATTRIBUTES#>',
@@ -48,8 +48,8 @@ wwv_flow_imp_shared.create_plug_template(
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96257419734044265)
-,p_plug_template_id=>wwv_flow_imp.id(468232507438671254)
+ p_id=>wwv_flow_imp.id(139978837595322528)
+,p_plug_template_id=>wwv_flow_imp.id(511953925299949517)
 ,p_name=>'Region Body'
 ,p_placeholder=>'BODY'
 ,p_has_grid_support=>true
@@ -59,8 +59,8 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96257884173044265)
-,p_plug_template_id=>wwv_flow_imp.id(468232507438671254)
+ p_id=>wwv_flow_imp.id(139979302034322528)
+,p_plug_template_id=>wwv_flow_imp.id(511953925299949517)
 ,p_name=>'Next'
 ,p_placeholder=>'NEXT'
 ,p_has_grid_support=>false
@@ -70,8 +70,8 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96258398777044265)
-,p_plug_template_id=>wwv_flow_imp.id(468232507438671254)
+ p_id=>wwv_flow_imp.id(139979816638322528)
+,p_plug_template_id=>wwv_flow_imp.id(511953925299949517)
 ,p_name=>'Search Field and Smart Filters'
 ,p_placeholder=>'SMART_FILTERS'
 ,p_has_grid_support=>true
@@ -81,8 +81,8 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96258894087044265)
-,p_plug_template_id=>wwv_flow_imp.id(468232507438671254)
+ p_id=>wwv_flow_imp.id(139980311948322528)
+,p_plug_template_id=>wwv_flow_imp.id(511953925299949517)
 ,p_name=>'Sub Regions'
 ,p_placeholder=>'SUB_REGIONS'
 ,p_has_grid_support=>true
@@ -92,8 +92,8 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(96259441182044265)
-,p_plug_template_id=>wwv_flow_imp.id(468232507438671254)
+ p_id=>wwv_flow_imp.id(139980859043322528)
+,p_plug_template_id=>wwv_flow_imp.id(511953925299949517)
 ,p_name=>'Up'
 ,p_placeholder=>'UP'
 ,p_has_grid_support=>false

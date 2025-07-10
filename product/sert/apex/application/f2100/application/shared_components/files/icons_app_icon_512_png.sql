@@ -1,4 +1,4 @@
--- file_checksum: A25662AAF373EC801361392F830F92CBBD3C9377865F008CF4C76853FD790E13
+-- file_checksum: 364F4F86932A6AEB7844FAF4EE67F0CE88D92BD2C9C657C57C314B004A25FA42
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -190,7 +190,7 @@ wwv_flow_imp.g_varchar2_table(169) := '208000020858284000B0B0E9948C0002082080000
 wwv_flow_imp.g_varchar2_table(170) := '00020858284000B0B0E9948C00020820800001803980000208208080850204000B9B4EC90820800002081000980308208000020858284000B0B0E9948C00020820800001803980000208208080850204000B9B4EC9082080000208100098030820800002';
 wwv_flow_imp.g_varchar2_table(171) := '085828F0FF01663B3AA52357B1B30000000049454E44AE426082';
 wwv_flow_imp_shared.create_app_static_file(
- p_id=>wwv_flow_imp.id(468653810712671800)
+ p_id=>wwv_flow_imp.id(512375228573950063)
 ,p_file_name=>'icons/app-icon-512.png'
 ,p_mime_type=>'image/png'
 ,p_file_charset=>'utf-8'

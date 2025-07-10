@@ -1,4 +1,4 @@
--- file_checksum: 91AE4AFA452DA7269F8EBEE52D0A0BD1D9DE75F9D309F1C69B74EC235D972400
+-- file_checksum: A85018FD19D77E2851B5F5FCEBDFF7433F38C6D4B0FFC442B6EE4B51D2906151
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_button_templates(
- p_id=>wwv_flow_imp.id(468538323570671354)
+ p_id=>wwv_flow_imp.id(512259741431949617)
 ,p_template_name=>'Icon'
 ,p_internal_name=>'ICON'
 ,p_template=>'<button class="t-Button t-Button--noLabel  t-Button--icon #BUTTON_CSS_CLASSES#" #BUTTON_ATTRIBUTES# #ONCLICK# type="button" id="#BUTTON_ID#" title="#LABEL!ATTR#" aria-label="#LABEL!ATTR#"><span class="t-Icon #ICON_CSS_CLASSES#" aria-hidden="true"></s'
