@@ -8,7 +8,6 @@
 --preconditions onFail:MARK_RAN onError:HALT
 --precondition-sql-check expectedResult:1 select case when count(status) > 0 then 1 else 0 end as mycount from dba_objects where owner in ('SERT_CORE','SERT_PUB') and status = 'INVALID';
 set serveroutput on
-exec dbms_output.put_line('testing...');
 prompt "********************************************************************************"
 prompt "** Invalid Objects"
 prompt "********************************************************************************"
