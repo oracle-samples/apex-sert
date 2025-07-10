@@ -1,4 +1,4 @@
--- file_checksum: CA2EC3C124523A926A1CD06364F5EACCC79938EAC2C2676999C1FF78FEC00764
+-- file_checksum: 300CF443FDFA85C92EA0AF0360455FF7CB13A32EBAC4ADBC2E39CF01D99BA118
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_list_template(
- p_id=>wwv_flow_imp.id(468510815947671316)
+ p_id=>wwv_flow_imp.id(512232233808949579)
 ,p_list_template_current=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<li class="t-BadgeList-item #A02# is-current" aria-current="page">',
 '  <a class="t-BadgeList-wrap u-color #A04#" href="#LINK#" #A03#>',

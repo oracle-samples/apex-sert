@@ -1,4 +1,4 @@
--- file_checksum: B07DDA9A2B743ED09FF2ECCCB842047A16AE7A8B69A7E71BB4F8CF51ED01C448
+-- file_checksum: B90EF4204AED7F1EC0FD59FEC2EF9F428B1D0DE9CEF0206E3A081B048BD97B31
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_button_templates(
- p_id=>wwv_flow_imp.id(468538954525671357)
+ p_id=>wwv_flow_imp.id(512260372386949620)
 ,p_template_name=>'Text'
 ,p_internal_name=>'TEXT'
 ,p_template=>'<button class="t-Button #BUTTON_CSS_CLASSES#" type="button" #BUTTON_ATTRIBUTES# #ONCLICK# id="#BUTTON_ID#"><span class="t-Button-label">#LABEL#</span></button>'

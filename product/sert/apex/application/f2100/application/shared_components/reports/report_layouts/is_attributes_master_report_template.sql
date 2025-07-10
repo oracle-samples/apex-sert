@@ -1,4 +1,4 @@
--- file_checksum: 5D0E986E60CF6E0377A150714C29CA39ECA362E8E3D234A99D561B1C60CB53CA
+-- file_checksum: C66728BE2348E68573EC46A0A227D0D6B8C8F636477716A1DDE0180F33793E26
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -3275,7 +3275,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_report_layout(
- p_id=>wwv_flow_imp.id(56324343313962023)
+ p_id=>wwv_flow_imp.id(100045761175240286)
 ,p_report_layout_name=>'IS_Attributes_Master_Report_Template'
 ,p_static_id=>'IS_ATTRIBUTES_MASTER_REPORT_TEMPLATE'
 ,p_report_layout_type=>'DOCX_FILE'

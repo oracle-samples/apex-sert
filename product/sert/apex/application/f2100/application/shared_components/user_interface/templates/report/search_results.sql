@@ -1,4 +1,4 @@
--- file_checksum: 195B482AC4861CCC5684C636E32CE5303098BBF6419893D2B33ACF18E9EF49AD
+-- file_checksum: 1ACE8883D2FC42CB4C5E50C71DBD6DE9B05C3E1911F6D6FA2C7A5CB393CCD9A2
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_row_template(
- p_id=>wwv_flow_imp.id(468503805679671308)
+ p_id=>wwv_flow_imp.id(512225223540949571)
 ,p_row_template_name=>'Search Results'
 ,p_internal_name=>'SEARCH_RESULTS'
 ,p_row_template1=>wwv_flow_string.join(wwv_flow_t_varchar2(

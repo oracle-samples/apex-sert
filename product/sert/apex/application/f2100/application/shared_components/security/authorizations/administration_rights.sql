@@ -1,4 +1,4 @@
--- file_checksum: BE3625CD47F27735A523AF06C23A88FEB26338066BC045A9583E22BF72D56EE2
+-- file_checksum: 3312448C86BF2B13A617B26971BD7B00A23A57F470CAA038A767121C1D8DD2C2
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_security_scheme(
- p_id=>wwv_flow_imp.id(468655384299671804)
+ p_id=>wwv_flow_imp.id(512376802160950067)
 ,p_name=>'Administration Rights'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
 ,p_attribute_01=>'return true;'

@@ -1,4 +1,4 @@
--- file_checksum: 59AD68ECF3BC5B120B02FE7041F634A64F4188065BC60ACDD7B4B44C698D1FEC
+-- file_checksum: F4456F6F9563857BDA189443FA70EEEB1C158C4BA0AA1116A6B76E53399E4C4C
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_authentication(
- p_id=>wwv_flow_imp.id(94777986993428805)
+ p_id=>wwv_flow_imp.id(138499404854707068)
 ,p_name=>'Builder Extension AuthN'
 ,p_scheme_type=>'NATIVE_EXTENSION'
 ,p_use_secure_cookie_yn=>'N'

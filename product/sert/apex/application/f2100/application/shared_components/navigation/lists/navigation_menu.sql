@@ -1,4 +1,4 @@
--- file_checksum: 2050621D80DA1D505E164DABB27451155FFBD159106A7B1D5D89D930ED9B9F6E
+-- file_checksum: AA6F9FEAAFAF59C1AFD83F443AAC7195AE8D023F33E1F783D183704BD29606AE
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,13 +18,13 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_list(
- p_id=>wwv_flow_imp.id(468162994263671146)
+ p_id=>wwv_flow_imp.id(511884412124949409)
 ,p_name=>'Navigation Menu'
 ,p_list_status=>'PUBLIC'
 ,p_version_scn=>39194514025033
 );
 wwv_flow_imp_shared.create_list_item(
- p_id=>wwv_flow_imp.id(468662392869671853)
+ p_id=>wwv_flow_imp.id(512383810730950116)
 ,p_list_item_display_sequence=>10
 ,p_list_item_link_text=>'Home'
 ,p_list_item_link_target=>'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
@@ -33,7 +33,7 @@ wwv_flow_imp_shared.create_list_item(
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_imp_shared.create_list_item(
- p_id=>wwv_flow_imp.id(468708413161812961)
+ p_id=>wwv_flow_imp.id(512429831023091224)
 ,p_list_item_display_sequence=>20
 ,p_list_item_link_text=>'Evaluation Details'
 ,p_list_item_link_target=>'f?p=&APP_ID.:10:&APP_SESSION.::&DEBUG.:::'

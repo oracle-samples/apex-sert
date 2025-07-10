@@ -1,4 +1,4 @@
--- file_checksum: 26C4137FBA751E0882589EAF6CF207D71F83AEFC00A52DAA5C507D31CE2B2913
+-- file_checksum: BDC55B8600A7BA824BDFC509FC1E3023E631B7F0F13A89D8E6A1789E094EA1FF
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_plugin(
- p_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161500556151696618)
 ,p_plugin_type=>'DYNAMIC ACTION'
 ,p_name=>'BE.APEXRND.AOP_DA'
 ,p_display_name=>'UC - APEX Office Print (AOP) - DA'
@@ -44,8 +44,8 @@ wwv_flow_imp_shared.create_plugin(
 ,p_files_version=>265
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117779451182418356)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161500869043696619)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>1000
@@ -64,8 +64,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 'You can also dynamically specify a url by an Application Item e.g. &AI_AOP_URL.'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117779889307418358)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161501307168696621)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>2
 ,p_display_sequence=>2000
@@ -78,8 +78,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Enter your API key found on your account when you login at https://www.apexofficeprint.com.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117780269840418358)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161501687701696621)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>3
 ,p_display_sequence=>3000
@@ -93,8 +93,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'By default debug is turned off.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117780655502418359)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117780269840418358)
+ p_id=>wwv_flow_imp.id(161502073363696622)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161501687701696621)
 ,p_display_sequence=>10
 ,p_display_value=>'Remote'
 ,p_return_value=>'Yes'
@@ -104,8 +104,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'This option only works when you use http(s)://www.apexofficeprint.com/api in your AOP settings.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117781209000418360)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117780269840418358)
+ p_id=>wwv_flow_imp.id(161502626861696623)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161501687701696621)
 ,p_display_sequence=>20
 ,p_display_value=>'Local'
 ,p_return_value=>'Local'
@@ -115,8 +115,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'Note that the output file will not be produced and the server will never be called.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117781635475418361)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117780269840418358)
+ p_id=>wwv_flow_imp.id(161503053336696624)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161501687701696621)
 ,p_display_sequence=>30
 ,p_display_value=>'Derived from Application Item'
 ,p_return_value=>'APEX_ITEM'
@@ -125,8 +125,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'The application item needs to be called AOP_DEBUG and can have values: No, Yes (=Remote) or Local.'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117782129783418361)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161503547644696624)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>4
 ,p_display_sequence=>4000
@@ -142,24 +142,24 @@ wwv_flow_imp_shared.create_plugin_attribute(
 'By default LibreOffice is used, but you can select another converter on request.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117782610434418362)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117782129783418361)
+ p_id=>wwv_flow_imp.id(161504028295696625)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161503547644696624)
 ,p_display_sequence=>10
 ,p_display_value=>'MS Office (Windows only)'
 ,p_return_value=>'officetopdf'
 ,p_help_text=>'Uses Microsoft Office to do the conversion and following module http://officetopdf.codeplex.com'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117783038404418362)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117782129783418361)
+ p_id=>wwv_flow_imp.id(161504456265696625)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161503547644696624)
 ,p_display_sequence=>20
 ,p_display_value=>'Custom'
 ,p_return_value=>'custom'
 ,p_help_text=>'Specify the name of the custom converter defined at the AOP Server.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117783574238418363)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161504992099696626)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>5
 ,p_display_sequence=>5000
@@ -177,8 +177,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 'When a package is defined, we will always read those settings, regardless what is filled in above.'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117783952785418363)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161505370646696626)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>6
 ,p_display_sequence=>1500
@@ -195,8 +195,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 'When running AOP on the Oracle Cloud you are obliged to use HTTPS, so the url should be https://www.apexofficeprint.com/failover-api/ or https://www.cloudofficeprint.com/aop/'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117784375729418364)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161505793590696627)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>7
 ,p_display_sequence=>9000
@@ -204,7 +204,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_type=>'PLSQL'
 ,p_is_required=>false
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(117783952785418363)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(161505370646696626)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'NOT_NULL'
 ,p_examples=>'aop_sample_pkg.failover_procedure;'
@@ -213,8 +213,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 'The procedure can for example send an email to notify the primary AOP url is not used, but the fallback url.'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117784797832418364)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161506215693696627)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>8
 ,p_display_sequence=>8000
@@ -271,8 +271,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 '</pre>'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117785180199418365)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161506598060696628)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>9
 ,p_display_sequence=>4050
@@ -280,7 +280,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_type=>'TEXT'
 ,p_is_required=>false
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(117782129783418361)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(161503547644696624)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'custom'
@@ -307,8 +307,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Specify the name of the custom converter as specified at the AOP Server e.g. abiword'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117785558142418366)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161506976003696629)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>10
 ,p_display_sequence=>2500
@@ -323,16 +323,16 @@ wwv_flow_imp_shared.create_plugin_attribute(
 '  Credits will be used.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117785962478418366)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117785558142418366)
+ p_id=>wwv_flow_imp.id(161507380339696629)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161506976003696629)
 ,p_display_sequence=>10
 ,p_display_value=>'Development'
 ,p_return_value=>'development'
 ,p_help_text=>'In development mode no credits are used.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117786465691418367)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117785558142418366)
+ p_id=>wwv_flow_imp.id(161507883552696630)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161506976003696629)
 ,p_display_sequence=>20
 ,p_display_value=>'Derived from Application Item'
 ,p_return_value=>'APEX_ITEM'
@@ -341,8 +341,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'The application item needs to be called AOP_MODE and can have values: development, production  or null (=production).'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117786970164418371)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161508388025696634)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>23
@@ -350,7 +350,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_type=>'TEXTAREA'
 ,p_is_required=>true
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(117803560551418410)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'IN_LIST'
 ,p_depending_on_expression=>'URL,XML,JSON,JSON_FILES'
@@ -388,8 +388,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 '</p>'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117787371358418374)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161508789219696637)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>2
 ,p_display_sequence=>27
@@ -398,7 +398,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_required=>false
 ,p_show_in_wizard=>false
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(117803560551418410)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'IN_LIST'
 ,p_depending_on_expression=>'SQL,PLSQL_SQL,IR'
@@ -406,8 +406,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Specific features of APEX Office Print'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117787800185418375)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117787371358418374)
+ p_id=>wwv_flow_imp.id(161509218046696638)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161508789219696637)
 ,p_display_sequence=>10
 ,p_display_value=>'Treat all numbers as strings'
 ,p_return_value=>'NUMBER_TO_STRING'
@@ -421,64 +421,64 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 '</p>'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117788238251418378)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117787371358418374)
+ p_id=>wwv_flow_imp.id(161509656112696641)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161508789219696637)
 ,p_display_sequence=>20
 ,p_display_value=>'Report as Labels'
 ,p_return_value=>'REPORT_AS_LABELS'
 ,p_help_text=>'Check this box in case you want to use the Classic or Interactive Report data source but print them as Labels (using the Mailings feature in Word).'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117788746305418379)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117787371358418374)
+ p_id=>wwv_flow_imp.id(161510164166696642)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161508789219696637)
 ,p_display_sequence=>30
 ,p_display_value=>'IR/IG: Show Filters on top'
 ,p_return_value=>'FILTERS_ON_TOP'
 ,p_help_text=>'When there''re filters applied to the Interactive Report, this checkbox will print them above the report.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117789294376418381)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117787371358418374)
+ p_id=>wwv_flow_imp.id(161510712237696644)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161508789219696637)
 ,p_display_sequence=>40
 ,p_display_value=>'IR/IG: Show Highlights on top'
 ,p_return_value=>'HIGHLIGHTS_ON_TOP'
 ,p_help_text=>'When there''re highlights applied to the Interactive Report, this checkbox will print them above the report.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117789756011418381)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117787371358418374)
+ p_id=>wwv_flow_imp.id(161511173872696644)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161508789219696637)
 ,p_display_sequence=>50
 ,p_display_value=>'IR/IG: Show header with filter (Excel)'
 ,p_return_value=>'HEADER_WITH_FILTER'
 ,p_help_text=>'When exporting the Interactive Report to Excel, show the header with filter option.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117790263630418382)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117787371358418374)
+ p_id=>wwv_flow_imp.id(161511681491696645)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161508789219696637)
 ,p_display_sequence=>60
 ,p_display_value=>'IR/IG: Use Saved Report instead of Report in Session'
 ,p_return_value=>'ALWAYS_REPORT_ALIAS'
 ,p_help_text=>'When defining the Interactive Report source ir1|my_saved_report, the "my_saved_report" will be used, even when the person is looking at a different report in his session session.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117790732478418383)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117787371358418374)
+ p_id=>wwv_flow_imp.id(161512150339696646)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161508789219696637)
 ,p_display_sequence=>70
 ,p_display_value=>'IR/IG: Repeat header on every page'
 ,p_return_value=>'REPEAT_HEADER'
 ,p_help_text=>'When the table spans multiple pages, the header row will be repeated on every page.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117791282742418384)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117787371358418374)
+ p_id=>wwv_flow_imp.id(161512700603696647)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161508789219696637)
 ,p_display_sequence=>80
 ,p_display_value=>'Obfuscate data'
 ,p_return_value=>'OBFUSCATE_DATA'
 ,p_help_text=>'Obfuscate data, so it''s easy to send examples to others.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117791762542418386)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161513180403696649)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>3
 ,p_display_sequence=>30
@@ -520,8 +520,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 '</pre>'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117792147894418387)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161513565755696650)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>4
 ,p_display_sequence=>31
@@ -533,169 +533,169 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_lov_type=>'STATIC'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117792516869418388)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161513934730696651)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>10
 ,p_display_value=>'Word (docx)'
 ,p_return_value=>'docx'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117793078029418389)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161514495890696652)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>20
 ,p_display_value=>'Excel (xlsx)'
 ,p_return_value=>'xlsx'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117793517747418390)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161514935608696653)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>30
 ,p_display_value=>'Powerpoint (pptx)'
 ,p_return_value=>'pptx'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117794097749418391)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161515515610696654)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>40
 ,p_display_value=>'PDF (pdf)'
 ,p_return_value=>'pdf'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117794556660418393)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161515974521696656)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>60
 ,p_display_value=>'HTML (html)'
 ,p_return_value=>'html'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117795114245418395)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161516532106696658)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>65
 ,p_display_value=>'Markdown (md)'
 ,p_return_value=>'md'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117795531487418396)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161516949348696659)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>66
 ,p_display_value=>'Text (txt)'
 ,p_return_value=>'txt'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117796077501418397)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161517495362696660)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>67
 ,p_display_value=>'Rich Text Format (rtf)'
 ,p_return_value=>'rtf'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117796571019418399)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161517988880696662)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>68
 ,p_display_value=>'CSV (csv)'
 ,p_return_value=>'csv'
 ,p_help_text=>'Comma separated values file. Text file containing information separated by commas.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117797065291418400)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161518483152696663)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>69
 ,p_display_value=>'One Page PDF (pdf)'
 ,p_return_value=>'onepagepdf'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117797541008418401)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161518958869696664)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>70
 ,p_display_value=>'PDF Form Fields (pdf)'
 ,p_return_value=>'form_fields'
 ,p_help_text=>'Get the form fields defined on a PDF.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117798022891418402)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161519440752696665)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>210
 ,p_display_value=>'Word with macros (docm)'
 ,p_return_value=>'docm'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117798546694418402)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161519964555696665)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>220
 ,p_display_value=>'Excel with macros (xlsm)'
 ,p_return_value=>'xlsm'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117799110173418403)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161520528034696666)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>230
 ,p_display_value=>'Powerpoint with macros (pptm)'
 ,p_return_value=>'pptm'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117799554392418404)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161520972253696667)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>240
 ,p_display_value=>'Calendar (ics)'
 ,p_return_value=>'ics'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117800086962418404)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161521504823696667)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>250
 ,p_display_value=>'Calendar (ifb)'
 ,p_return_value=>'ifb'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117800519970418405)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161521937831696668)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>520
 ,p_display_value=>'OpenDocument Text (odt)'
 ,p_return_value=>'odt'
 ,p_help_text=>'OpenOffice Word'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117801062645418406)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161522480506696669)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>530
 ,p_display_value=>'OpenDocument Spreadsheet (ods)'
 ,p_return_value=>'ods'
 ,p_help_text=>'OpenOffice Excel'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117801564291418406)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161522982152696669)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>540
 ,p_display_value=>'OpenDocument Presentation (odp)'
 ,p_return_value=>'odp'
 ,p_help_text=>'OpenOffice Powerpoint'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117802025819418407)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161523443680696670)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>550
 ,p_display_value=>'XML (xml)'
 ,p_return_value=>'xml'
 ,p_help_text=>'Extensible Markup Language is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117802611771418408)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161524029632696671)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>560
 ,p_display_value=>'JSON (json)'
 ,p_return_value=>'json'
 ,p_help_text=>'JSON stands for JavaScript Object Notation. JSON is a lightweight data-interchange format.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117803073193418409)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117792147894418387)
+ p_id=>wwv_flow_imp.id(161524491054696672)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_display_sequence=>900
 ,p_display_value=>'Defined by APEX Item'
 ,p_return_value=>'apex_item'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117803560551418410)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161524978412696673)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>5
 ,p_display_sequence=>20
@@ -707,8 +707,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_lov_type=>'STATIC'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117803946567418411)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117803560551418410)
+ p_id=>wwv_flow_imp.id(161525364428696674)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_display_sequence=>10
 ,p_display_value=>'SQL'
 ,p_return_value=>'SQL'
@@ -758,8 +758,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 '</pre>'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117804482964418413)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117803560551418410)
+ p_id=>wwv_flow_imp.id(161525900825696676)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_display_sequence=>15
 ,p_display_value=>'PL/SQL Function (returning SQL)'
 ,p_return_value=>'PLSQL_SQL'
@@ -768,8 +768,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'Note that you can use bind variables e.g. :PXX_ITEM.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117804963932418414)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117803560551418410)
+ p_id=>wwv_flow_imp.id(161526381793696677)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_display_sequence=>20
 ,p_display_value=>'PL/SQL Function (returning JSON)'
 ,p_return_value=>'PLSQL'
@@ -778,8 +778,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 '(see example in help of Data Source)'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117805474381418416)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117803560551418410)
+ p_id=>wwv_flow_imp.id(161526892242696679)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_display_sequence=>30
 ,p_display_value=>'URL (returning JSON)'
 ,p_return_value=>'URL'
@@ -792,8 +792,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'If the URL is using an APEX/ORDS REST call it will automatically be wrapped with additional JSON: {"items":[...]} This is ok as the plugin removes it for you.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117805997690418418)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117803560551418410)
+ p_id=>wwv_flow_imp.id(161527415551696681)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_display_sequence=>40
 ,p_display_value=>'Region(s): Classic Report, Interactive Report/Grid, SVG, Canvas, HTML, Other'
 ,p_return_value=>'IR'
@@ -830,24 +830,24 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 '</p>'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117806468956418419)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117803560551418410)
+ p_id=>wwv_flow_imp.id(161527886817696682)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_display_sequence=>50
 ,p_display_value=>'XML (data part)'
 ,p_return_value=>'XML'
 ,p_help_text=>'Data in XML format. No need to specify files or filename.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117806965351418420)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117803560551418410)
+ p_id=>wwv_flow_imp.id(161528383212696683)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_display_sequence=>60
 ,p_display_value=>'JSON (data part)'
 ,p_return_value=>'JSON'
 ,p_help_text=>'Data in JSON format. No need to specify files or filename.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117807498363418421)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117803560551418410)
+ p_id=>wwv_flow_imp.id(161528916224696684)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_display_sequence=>70
 ,p_display_value=>'JSON (REST, GraphQL, Raw)'
 ,p_return_value=>'JSON_FILES'
@@ -867,16 +867,16 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'The files part of the AOP structure will be filled in with the value specified here.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117807968878418423)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117803560551418410)
+ p_id=>wwv_flow_imp.id(161529386739696686)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_display_sequence=>80
 ,p_display_value=>'None'
 ,p_return_value=>'NONE'
 ,p_help_text=>'To only append or prepend files or to work with PDFs, set the data type to none.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117808456705418424)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161529874566696687)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>6
 ,p_display_sequence=>10
@@ -893,16 +893,16 @@ wwv_flow_imp_shared.create_plugin_attribute(
 '</p>'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117808870489418428)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161530288350696691)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>1
 ,p_display_value=>'AOP Report'
 ,p_return_value=>'AOP_REPORT'
 ,p_help_text=>'AOP will generate a report for you based on the Print Attributes specified in the given region (in case multiple regions are specified, the first region is used for the Print Attributes).'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117809377112418429)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161530794973696692)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>3
 ,p_display_value=>'APEX Report'
 ,p_return_value=>'APEX_REPORT'
@@ -911,8 +911,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'An alternative to APEX Report is an AOP Report, which uses the AOP rendering and which supports also HTML expressions.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117809896823418431)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161531314684696694)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>4
 ,p_display_value=>'APEX Report (Data only)'
 ,p_return_value=>'APEX_REPORT_DO'
@@ -921,8 +921,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'An alternative to APEX Report is an AOP Report, which uses the AOP rendering and which supports also HTML expressions.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117810379779418435)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161531797640696698)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>5
 ,p_display_value=>'Static Application Files'
 ,p_return_value=>'APEX'
@@ -931,8 +931,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'e.g. aop_template_d01.docx'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117810822582418436)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161532240443696699)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>7
 ,p_display_value=>'Static Workspace Files'
 ,p_return_value=>'WORKSPACE'
@@ -941,8 +941,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'e.g. aop_template_d01.docx'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117815329746418454)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161536747607696717)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>10
 ,p_display_value=>'SQL'
 ,p_return_value=>'SQL'
@@ -952,8 +952,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 '- file: blob column'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117811383302418437)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161532801163696700)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>15
 ,p_display_value=>'PL/SQL Function (returning SQL)'
 ,p_return_value=>'PLSQL_SQL'
@@ -965,8 +965,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'Note that you can use bind variables e.g. :PXX_ITEM.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117811872553418438)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161533290414696701)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>20
 ,p_display_value=>'PL/SQL Function (returning JSON)'
 ,p_return_value=>'PLSQL'
@@ -980,8 +980,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 '</pre>'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117812387861418439)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161533805722696702)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>25
 ,p_display_value=>'JSON'
 ,p_return_value=>'JSON'
@@ -993,16 +993,16 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 '</pre>'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117812901918418440)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161534319779696703)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>30
 ,p_display_value=>'Filename (with path relative to AOP server)'
 ,p_return_value=>'FILENAME'
 ,p_help_text=>'Enter the path and filename of the template which is stored on the same server AOP is running at.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117813398704418443)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161534816565696706)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>35
 ,p_display_value=>'Filename (with database directory)'
 ,p_return_value=>'DB_DIRECTORY'
@@ -1014,8 +1014,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'CREATE DIRECTORY AOP_TEMPLATE AS ''/home/oracle/aop_template'';'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117813855021418445)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161535272882696708)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>40
 ,p_display_value=>'URL (call from DB)'
 ,p_return_value=>'URL'
@@ -1028,8 +1028,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'This call is done from the database, so the database server needs to have access to the url.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117814357598418446)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161535775459696709)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>50
 ,p_display_value=>'URL (call from AOP)'
 ,p_return_value=>'URL_AOP'
@@ -1042,16 +1042,16 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'This call is done from AOP, so the AOP server needs to have access to the url.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117814840127418452)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117808456705418424)
+ p_id=>wwv_flow_imp.id(161536257988696715)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_display_sequence=>60
 ,p_display_value=>'None'
 ,p_return_value=>'NONE'
 ,p_help_text=>'To only append or prepend files or to fill PDFs, set the template type to none.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117816234313418458)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161537652174696721)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>7
 ,p_display_sequence=>11
@@ -1059,7 +1059,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_type=>'TEXTAREA'
 ,p_is_required=>true
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(117808456705418424)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'IN_LIST'
 ,p_depending_on_expression=>'APEX,WORKSPACE,FILENAME,URL,URL_AOP,DB_DIRECTORY,JSON'
@@ -1102,8 +1102,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 '</p>'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117816650458418458)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161538068319696721)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>8
 ,p_display_sequence=>32
@@ -1111,15 +1111,15 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_type=>'PAGE ITEM'
 ,p_is_required=>false
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(117792147894418387)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(161513565755696650)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'apex_item'
 ,p_help_text=>'APEX item that contains the output type. See Output Type help text for valid list of output types.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117817098372418460)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161538516233696723)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>9
 ,p_display_sequence=>12
@@ -1129,7 +1129,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_sql_min_column_count=>2
 ,p_sql_max_column_count=>2
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(117808456705418424)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'SQL'
@@ -1158,8 +1158,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 '</p>'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117815847080418456)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161537264941696719)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>10
 ,p_display_sequence=>13
@@ -1167,7 +1167,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_type=>'PLSQL FUNCTION BODY'
 ,p_is_required=>true
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(117808456705418424)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(161529874566696687)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'IN_LIST'
 ,p_depending_on_expression=>'PLSQL,PLSQL_SQL'
@@ -1228,8 +1228,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 '</pre>'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117823027322418486)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161544445183696749)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>11
 ,p_display_sequence=>21
@@ -1239,7 +1239,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_sql_min_column_count=>1
 ,p_sql_max_column_count=>2
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(117803560551418410)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'SQL'
@@ -1362,8 +1362,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 '</p>'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117817449871418464)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161538867732696727)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>12
 ,p_display_sequence=>22
@@ -1371,7 +1371,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_type=>'PLSQL FUNCTION BODY'
 ,p_is_required=>true
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(117803560551418410)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'IN_LIST'
 ,p_depending_on_expression=>'PLSQL,PLSQL_SQL'
@@ -1476,8 +1476,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 '</p>'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117817899862418465)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161539317723696728)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>13
 ,p_display_sequence=>25
@@ -1485,7 +1485,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_type=>'TEXT'
 ,p_is_required=>false
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(117803560551418410)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(161524978412696673)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'IR'
@@ -1497,8 +1497,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 '</p>'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117818257492418469)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161539675353696732)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>14
 ,p_display_sequence=>140
@@ -1511,8 +1511,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'By default the file that''s generated by AOP, will be downloaded by the Browser and saved on your harddrive.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117818625515418469)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117818257492418469)
+ p_id=>wwv_flow_imp.id(161540043376696732)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161539675353696732)
 ,p_display_sequence=>10
 ,p_display_value=>'Procedure'
 ,p_return_value=>'PROCEDURE'
@@ -1521,8 +1521,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'In that case you can create a procedure that adds the generated document as an attachment to your apex_mail.send.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117819176231418471)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117818257492418469)
+ p_id=>wwv_flow_imp.id(161540594092696734)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161539675353696732)
 ,p_display_sequence=>20
 ,p_display_value=>'Procedure and Browser (file)'
 ,p_return_value=>'PROCEDURE_BROWSER'
@@ -1531,32 +1531,32 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'An example is when you first want to store the generated document in a table before letting the browser to download it.'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117819671979418474)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117818257492418469)
+ p_id=>wwv_flow_imp.id(161541089840696737)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161539675353696732)
 ,p_display_sequence=>30
 ,p_display_value=>'Inline Region (pdf/html/md/txt only)'
 ,p_return_value=>'BROWSER_INLINE'
 ,p_help_text=>'add data-aop-inline-pdf="Name of Dynamic Action" or data-aop-inline-txt="Name of Dynamic Action" to a region, div, textarea of other.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117820155582418477)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117818257492418469)
+ p_id=>wwv_flow_imp.id(161541573443696740)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161539675353696732)
 ,p_display_sequence=>35
 ,p_display_value=>'Procedure and Inline Region (pdf/html/md/txt only)'
 ,p_return_value=>'PROCEDURE_INLINE'
 ,p_help_text=>'This option allows you to call a procedure first and next show the output in a region. Add data-aop-inline-pdf="Name of Dynamic Action" or data-aop-inline-txt="Name of Dynamic Action" to a region, div, textarea of other.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117820626176418478)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117818257492418469)
+ p_id=>wwv_flow_imp.id(161542044037696741)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161539675353696732)
 ,p_display_sequence=>40
 ,p_display_value=>'Directory (on AOP Server)'
 ,p_return_value=>'DIRECTORY'
 ,p_help_text=>'Save the file to a directory specified with g_output_directory. The default directory on the AOP Server is outputfiles.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117821208676418479)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117818257492418469)
+ p_id=>wwv_flow_imp.id(161542626537696742)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161539675353696732)
 ,p_display_sequence=>45
 ,p_display_value=>'Directory (on Database Server)'
 ,p_return_value=>'DB_DIRECTORY'
@@ -1567,8 +1567,8 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 'CREATE DIRECTORY AOP_TEMPLATE AS ''/home/oracle/aop_output'';'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117821691493418482)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117818257492418469)
+ p_id=>wwv_flow_imp.id(161543109354696745)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161539675353696732)
 ,p_display_sequence=>50
 ,p_display_value=>'Cloud (Dropbox, Google Drive, OneDrive, Amazon S3)'
 ,p_return_value=>'CLOUD'
@@ -1582,16 +1582,16 @@ wwv_flow_imp_shared.create_plugin_attr_value(
 '</ul>'))
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(117822178982418483)
-,p_plugin_attribute_id=>wwv_flow_imp.id(117818257492418469)
+ p_id=>wwv_flow_imp.id(161543596843696746)
+,p_plugin_attribute_id=>wwv_flow_imp.id(161539675353696732)
 ,p_display_sequence=>60
 ,p_display_value=>'Defined in Post Process (e.g. Printer)'
 ,p_return_value=>'NA'
 ,p_help_text=>'Use when an external post-process command is specified and the output is only needed to be passed to that process. For example when you want to print directly to a Printer or call an OS command.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(117822669121418485)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161544086982696748)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>15
 ,p_display_sequence=>150
@@ -1599,7 +1599,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_type=>'TEXT'
 ,p_is_required=>false
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(117818257492418469)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(161539675353696732)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'IN_LIST'
 ,p_depending_on_expression=>'PROCEDURE,PROCEDURE_BROWSER,PROCEDURE_INLINE'
@@ -1636,8 +1636,8 @@ wwv_flow_imp_shared.create_plugin_attribute(
 'You can add other parameters with a default value.'))
 );
 wwv_flow_imp_shared.create_plugin_std_attribute(
- p_id=>wwv_flow_imp.id(117827555659418495)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161548973520696758)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_name=>'INIT_JAVASCRIPT_CODE'
 ,p_is_required=>false
 ,p_depending_on_has_to_exist=>true
@@ -1655,20 +1655,20 @@ wwv_flow_imp_shared.create_plugin_std_attribute(
 '<strong>AOP.gAOPOptions.notificatonMessage - Overrides Server-side Notification Message</strong><br>'))
 );
 wwv_flow_imp_shared.create_plugin_event(
- p_id=>wwv_flow_imp.id(117827970939418495)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161549388800696758)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_name=>'aop-file-error'
 ,p_display_name=>'AOP Print File Error'
 );
 wwv_flow_imp_shared.create_plugin_event(
- p_id=>wwv_flow_imp.id(117828351897418496)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161549769758696759)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_name=>'aop-file-progress'
 ,p_display_name=>'AOP Print File Progress'
 );
 wwv_flow_imp_shared.create_plugin_event(
- p_id=>wwv_flow_imp.id(117828778453418497)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161550196314696760)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_name=>'aop-file-success'
 ,p_display_name=>'AOP Print File Success'
 );
@@ -1991,8 +1991,8 @@ end;
 /
 begin
 wwv_flow_imp_shared.create_plugin_file(
- p_id=>wwv_flow_imp.id(117829131204418497)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161550549065696760)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_file_name=>'css/spinkit.min.css'
 ,p_mime_type=>'text/css'
 ,p_file_charset=>'utf-8'
@@ -2197,8 +2197,8 @@ end;
 /
 begin
 wwv_flow_imp_shared.create_plugin_file(
- p_id=>wwv_flow_imp.id(117829537459418498)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161550955320696761)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_file_name=>'js/aop_da.min.js'
 ,p_mime_type=>'application/javascript'
 ,p_file_charset=>'utf-8'
@@ -2278,8 +2278,8 @@ end;
 /
 begin
 wwv_flow_imp_shared.create_plugin_file(
- p_id=>wwv_flow_imp.id(117829952605418498)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161551370466696761)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_file_name=>'js/es6-promise.min.js'
 ,p_mime_type=>'application/javascript'
 ,p_file_charset=>'utf-8'
@@ -4000,8 +4000,8 @@ end;
 /
 begin
 wwv_flow_imp_shared.create_plugin_file(
- p_id=>wwv_flow_imp.id(117830353875418500)
-,p_plugin_id=>wwv_flow_imp.id(117779138290418355)
+ p_id=>wwv_flow_imp.id(161551771736696763)
+,p_plugin_id=>wwv_flow_imp.id(161500556151696618)
 ,p_file_name=>'js/html2canvas.min.js'
 ,p_mime_type=>'application/javascript'
 ,p_file_charset=>'utf-8'

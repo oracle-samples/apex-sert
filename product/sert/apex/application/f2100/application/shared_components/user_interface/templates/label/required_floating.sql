@@ -1,4 +1,4 @@
--- file_checksum: B2AE83657F41D50DB6F905F3B2C807A2E1AAFC12815F4443A822BEF8EF53FBEB
+-- file_checksum: 2EF37FAFD42797EF8BEF5FE9B7382CD877631CBB6383D1AE31523539E016B07D
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_field_template(
- p_id=>wwv_flow_imp.id(468537787206671352)
+ p_id=>wwv_flow_imp.id(512259205067949615)
 ,p_template_name=>'Required - Floating'
 ,p_internal_name=>'REQUIRED_FLOATING'
 ,p_template_body1=>wwv_flow_string.join(wwv_flow_t_varchar2(

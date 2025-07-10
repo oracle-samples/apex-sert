@@ -1,4 +1,4 @@
--- file_checksum: 2DD331C878640AC611E186F9B8DB4577DA6D978112D281AFA4A2FCD9EEB05A36
+-- file_checksum: 27D8C7AC838123077F385359020942E952AD2CA383F479ABF0063F754E7E384A
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_list_of_values(
- p_id=>wwv_flow_imp.id(49122723464136836)
+ p_id=>wwv_flow_imp.id(92844141325415099)
 ,p_lov_name=>'CATEGORY_LOV'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'

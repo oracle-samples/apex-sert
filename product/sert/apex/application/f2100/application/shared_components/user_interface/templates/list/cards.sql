@@ -1,4 +1,4 @@
--- file_checksum: AE8C29B1B2F4C0E1053F27EDDCBD658A37D4D38500BDBED6E9E5775AD65CEE9A
+-- file_checksum: D4F3B4A5D9C0489400F7D6B7EFEB1402574B0142D7A24A46CAC087A99AC3ED60
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_list_template(
- p_id=>wwv_flow_imp.id(468514753074671327)
+ p_id=>wwv_flow_imp.id(512236170935949590)
 ,p_list_template_current=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<li class="t-Cards-item is-active #A04#" aria-current="page">',
 '  <div class="t-Card">',

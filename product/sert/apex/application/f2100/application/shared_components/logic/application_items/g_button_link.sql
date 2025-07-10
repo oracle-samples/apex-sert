@@ -1,4 +1,4 @@
--- file_checksum: 890CDCB23E28A894D071B1042A74E95CFB85199B3C88DAB9659CE3863BE6EDDE
+-- file_checksum: 8E97CC95AA3C6B82543189DAA640F498306D576434E98FF0EDFAB0573148DAEE
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_flow_item(
- p_id=>wwv_flow_imp.id(394626067812897276)
+ p_id=>wwv_flow_imp.id(438347485674175539)
 ,p_name=>'G_BUTTON_LINK'
 ,p_protection_level=>'I'
 ,p_escape_on_http_output=>'N'

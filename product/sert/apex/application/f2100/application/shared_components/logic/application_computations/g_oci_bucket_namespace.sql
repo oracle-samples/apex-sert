@@ -1,4 +1,4 @@
--- file_checksum: 00E7B2CEC7C96A1760F8055C128E987111F86CBF099A31CCB6D97B37D38EEEC7
+-- file_checksum: 826A7C66A0E220D78AFDD592D115497D19E14DAE362BCD100AE83BFD81F1E363
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_flow_computation(
- p_id=>wwv_flow_imp.id(69076159617319500)
+ p_id=>wwv_flow_imp.id(112797577478597763)
 ,p_computation_sequence=>10
 ,p_computation_item=>'G_OCI_BUCKET_NAMESPACE'
 ,p_computation_point=>'ON_NEW_INSTANCE'

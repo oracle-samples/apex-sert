@@ -1,4 +1,4 @@
--- file_checksum: AF9290B964017E5C9885936A466961786559F55CDC07EA62F6054BD48733C9FD
+-- file_checksum: 4CDF9FE4B9ACD715BA0705225A26AF946D6CB9A4E05CC1BD3EEDCD1E79216497
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,13 +18,13 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_list(
- p_id=>wwv_flow_imp.id(468651848467671760)
+ p_id=>wwv_flow_imp.id(512373266328950023)
 ,p_name=>'Navigation Bar'
 ,p_list_status=>'PUBLIC'
 ,p_version_scn=>41986125416791
 );
 wwv_flow_imp_shared.create_list_item(
- p_id=>wwv_flow_imp.id(468663892062671872)
+ p_id=>wwv_flow_imp.id(512385309923950135)
 ,p_list_item_display_sequence=>10
 ,p_list_item_link_text=>'&APP_USER.'
 ,p_list_item_link_target=>'#'
@@ -33,32 +33,32 @@ wwv_flow_imp_shared.create_list_item(
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_imp_shared.create_list_item(
- p_id=>wwv_flow_imp.id(468664341307671874)
+ p_id=>wwv_flow_imp.id(512385759168950137)
 ,p_list_item_display_sequence=>20
 ,p_list_item_link_text=>'---'
 ,p_list_item_link_target=>'separator'
 ,p_list_item_disp_cond_type=>'USER_IS_NOT_PUBLIC_USER'
-,p_parent_list_item_id=>wwv_flow_imp.id(468663892062671872)
+,p_parent_list_item_id=>wwv_flow_imp.id(512385309923950135)
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_imp_shared.create_list_item(
- p_id=>wwv_flow_imp.id(86440239470177202)
+ p_id=>wwv_flow_imp.id(130161657331455465)
 ,p_list_item_display_sequence=>25
 ,p_list_item_link_text=>'About'
 ,p_list_item_link_target=>'f?p=&APP_ID.:5:&SESSION.::&DEBUG.::::'
 ,p_list_item_icon=>'fa-info-circle-o'
-,p_parent_list_item_id=>wwv_flow_imp.id(468663892062671872)
+,p_parent_list_item_id=>wwv_flow_imp.id(512385309923950135)
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_imp_shared.create_list_item(
- p_id=>wwv_flow_imp.id(468664826820671874)
+ p_id=>wwv_flow_imp.id(512386244681950137)
 ,p_list_item_display_sequence=>30
 ,p_list_item_link_text=>'Close Window'
 ,p_list_item_link_target=>'javascript:confirmClose();'
 ,p_list_item_icon=>'fa-sign-out'
 ,p_list_item_disp_cond_type=>'USER_IS_NOT_PUBLIC_USER'
-,p_parent_list_item_id=>wwv_flow_imp.id(468663892062671872)
+,p_parent_list_item_id=>wwv_flow_imp.id(512385309923950135)
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_imp.component_end;

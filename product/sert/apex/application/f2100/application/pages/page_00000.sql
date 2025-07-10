@@ -1,4 +1,4 @@
--- file_checksum: 5DE45AB6BC965A67A404E042C5661E3B659987D633C31219E0D8F727655F4A17
+-- file_checksum: BDD7BD84300AA7B67577C8D37553A5597A4634C04128C16269E17F6512D46F66
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -27,10 +27,10 @@ wwv_flow_imp_page.create_page(
 ,p_page_component_map=>'14'
 );
 wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(84147348711218585)
+ p_id=>wwv_flow_imp.id(127868766572496848)
 ,p_plug_name=>'confirmClose'
 ,p_region_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(468200562287671223)
+,p_plug_template=>wwv_flow_imp.id(511921980148949486)
 ,p_plug_display_sequence=>40
 ,p_plug_display_point=>'REGION_POSITION_05'
 ,p_location=>null
@@ -48,11 +48,11 @@ wwv_flow_imp_page.create_page_plug(
   'output_as', 'HTML')).to_clob
 );
 wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(127605725637394480)
+ p_id=>wwv_flow_imp.id(171327143498672743)
 ,p_plug_name=>'Version Mismatch'
 ,p_title=>'Warning'
 ,p_region_template_options=>'#DEFAULT#:t-Alert--colorBG:t-Alert--horizontal:t-Alert--defaultIcons:t-Alert--warning'
-,p_plug_template=>wwv_flow_imp.id(468194028275671212)
+,p_plug_template=>wwv_flow_imp.id(511915446136949475)
 ,p_plug_display_sequence=>0
 ,p_location=>null
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -79,24 +79,24 @@ wwv_flow_imp_page.create_page_plug(
   'output_as', 'HTML')).to_clob
 );
 wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(143554023292247835)
+ p_id=>wwv_flow_imp.id(187275441153526098)
 ,p_plug_name=>'Reports'
 ,p_region_name=>'reports'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(468200562287671223)
+,p_plug_template=>wwv_flow_imp.id(511921980148949486)
 ,p_plug_display_sequence=>50
 ,p_location=>null
-,p_list_id=>wwv_flow_imp.id(92593047922444846)
+,p_list_id=>wwv_flow_imp.id(136314465783723109)
 ,p_plug_source_type=>'NATIVE_LIST'
-,p_list_template_id=>wwv_flow_imp.id(468525798087671335)
+,p_list_template_id=>wwv_flow_imp.id(512247215948949598)
 ,p_ai_enabled=>false
 );
 wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(480717114477443206)
+ p_id=>wwv_flow_imp.id(524438532338721469)
 ,p_plug_name=>'Stale Exception'
 ,p_region_template_options=>'#DEFAULT#:t-Alert--horizontal:t-Alert--defaultIcons:t-Alert--danger'
-,p_plug_template=>wwv_flow_imp.id(468194028275671212)
+,p_plug_template=>wwv_flow_imp.id(511915446136949475)
 ,p_plug_display_sequence=>20
 ,p_location=>null
 ,p_plug_source=>'The value of this component has changed since an exception was added or approved.'
@@ -107,28 +107,28 @@ wwv_flow_imp_page.create_page_plug(
   'output_as', 'HTML')).to_clob
 );
 wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(489789857780525824)
+ p_id=>wwv_flow_imp.id(533511275641804087)
 ,p_plug_name=>'Breadcrumb'
 ,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
 ,p_component_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(468278220136671284)
+,p_plug_template=>wwv_flow_imp.id(511999637997949547)
 ,p_plug_display_sequence=>10
 ,p_plug_display_point=>'REGION_POSITION_01'
 ,p_location=>null
-,p_menu_id=>wwv_flow_imp.id(468162448988671142)
+,p_menu_id=>wwv_flow_imp.id(511883866849949405)
 ,p_plug_source_type=>'NATIVE_BREADCRUMB'
-,p_menu_template_id=>wwv_flow_imp.id(468540590841671359)
+,p_menu_template_id=>wwv_flow_imp.id(512262008702949622)
 ,p_plug_display_condition_type=>'CURRENT_PAGE_IN_CONDITION'
 ,p_plug_display_when_condition=>'10'
 );
 wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(50967218848796205)
+ p_id=>wwv_flow_imp.id(94688636710074468)
 ,p_button_sequence=>10
-,p_button_plug_id=>wwv_flow_imp.id(489789857780525824)
+,p_button_plug_id=>wwv_flow_imp.id(533511275641804087)
 ,p_button_name=>'REPORTS'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#:t-Button--simple:t-Button--iconRight'
-,p_button_template_id=>wwv_flow_imp.id(468539048343671357)
+,p_button_template_id=>wwv_flow_imp.id(512260466204949620)
 ,p_button_image_alt=>'Reports'
 ,p_button_position=>'EDIT'
 ,p_warn_on_unsaved_changes=>null

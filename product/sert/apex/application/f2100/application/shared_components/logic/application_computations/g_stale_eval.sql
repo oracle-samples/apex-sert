@@ -1,4 +1,4 @@
--- file_checksum: 1B90F14DA3970DF204BE5767D28856DC5883432102513FF86038CC26CB513575
+-- file_checksum: 6F12B1EA88438349DDAFF1406EB37D295B8A0B966C505CC6D03C0BDE3AD1B247
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_flow_computation(
- p_id=>wwv_flow_imp.id(88978768558307898)
+ p_id=>wwv_flow_imp.id(132700186419586161)
 ,p_computation_sequence=>10
 ,p_computation_item=>'G_STALE_EVAL'
 ,p_computation_point=>'BEFORE_HEADER'
@@ -31,9 +31,10 @@ wwv_flow_imp_shared.create_flow_computation(
 '  evals_pub_v ',
 'where ',
 '  eval_id = :P10_EVAL_ID'))
-,p_compute_when=>'10,20,30,100'
+,p_compute_when=>'10'
 ,p_compute_when_type=>'CURRENT_PAGE_IN_CONDITION'
-,p_version_scn=>39194879616660
+,p_computation_comment=>'removed ,20,30,100 from conditions'
+,p_version_scn=>44997293662469
 );
 wwv_flow_imp.component_end;
 end;

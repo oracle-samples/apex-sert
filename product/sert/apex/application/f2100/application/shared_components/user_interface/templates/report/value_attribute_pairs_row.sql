@@ -1,4 +1,4 @@
--- file_checksum: 83150715E1DFD78794C7627AC2BC510CE05795321DE5D7645CEDEB76DED4D6B7
+-- file_checksum: 65444CD406CABF0F9A9D60E43DF44A4177170AC3A7320B385F08C1BF73849B2C
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -18,7 +18,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_PUB'
 );
 wwv_flow_imp_shared.create_row_template(
- p_id=>wwv_flow_imp.id(468508999993671314)
+ p_id=>wwv_flow_imp.id(512230417854949577)
 ,p_row_template_name=>'Value Attribute Pairs - Row'
 ,p_internal_name=>'VALUE_ATTRIBUTE_PAIRS_ROW'
 ,p_row_template1=>wwv_flow_string.join(wwv_flow_t_varchar2(

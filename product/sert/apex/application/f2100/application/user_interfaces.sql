@@ -1,4 +1,4 @@
--- file_checksum: 621E0D7B1DBBCFA71FBA31BCA826938D8AA56C7CFB1E0D47A7504B4597372E70
+-- file_checksum: 411997D238C981AEBA50B2F5AFF9663E71F95C34B63DBC4E046159B2A1855A40
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -26,12 +26,12 @@ wwv_flow_imp_shared.create_user_interface(
 ,p_auto_dismiss_success_msg=>true
 ,p_global_page_id=>0
 ,p_navigation_list_position=>'TOP'
-,p_navigation_list_template_id=>wwv_flow_imp.id(468532153589671342)
+,p_navigation_list_template_id=>wwv_flow_imp.id(512253571450949605)
 ,p_nav_list_template_options=>'#DEFAULT#:js-tabLike'
 ,p_javascript_file_urls=>'#APP_FILES#js/apex-sert-lib#MIN#.js'
 ,p_nav_bar_type=>'LIST'
-,p_nav_bar_list_id=>wwv_flow_imp.id(468651848467671760)
-,p_nav_bar_list_template_id=>wwv_flow_imp.id(468526403861671336)
+,p_nav_bar_list_id=>wwv_flow_imp.id(512373266328950023)
+,p_nav_bar_list_template_id=>wwv_flow_imp.id(512247821722949599)
 ,p_nav_bar_template_options=>'#DEFAULT#'
 );
 wwv_flow_imp.component_end;
