@@ -171,6 +171,8 @@ end eval_criteria;
 -- PROCEDURE: P R O C E S S _ R U L E S
 ----------------------------------------------------------------------------------------------------------------------------
 -- Process all rules for a specific evaluation
+-- Modified
+-- ssasanka   03-Jul-2025   Capture all pages and regions in a hash map to improve performance
 ----------------------------------------------------------------------------------------------------------------------------
 procedure process_rules
   (
@@ -192,6 +194,7 @@ is
   l_sql                    varchar2(32765);
   l_rule_criteria_type_key varchar2(250);
   l_eval_history_id        number;
+
 begin
 
 -- start the evaluation
@@ -354,7 +357,7 @@ open l_cursor;
       p_application_id => p_application_id
       );
 
-    -- if evaluating for a specific page only, ignore APP and SC rules as they do not have a page_id nad will create duplicate entries
+    -- if evaluating for a specific page only, ignore APP and SC rules as they do not have a page_id and will create duplicate entries
     case
       when p_page_id is not null and l_row.impact not in ('APP','SC') then
         execute immediate l_sql;
@@ -506,6 +509,47 @@ loop
 end loop;
 
 -- end the evaluation
+-- Insert the page name and region name
+log_pkg.log(p_log => 'Evaluation merge section start', p_log_key => g_log_key, p_log_type => g_log_type, p_application_id => p_application_id);
+merge into sert_core.eval_results er
+  using (
+      select
+            page_id,
+            page_name
+      from
+          apex_application_pages
+      where
+          application_id = p_application_id
+  ) np on (np.page_id = er.page_id and er.eval_id = p_eval_id)
+when MATCHED then update set er.page_name = np.page_name;
+
+-- For regions, if the item_name is null, then we can pick the region name from region view. If item_name is not null, then the component id is for item and hence need to pick region_name from item view
+merge into sert_core.eval_results er
+  using (
+      select
+            region_id,
+            region_name
+      from
+          apex_application_page_regions
+      where
+          application_id = p_application_id
+  ) np on (np.region_id = er.component_id and er.eval_id = p_eval_id and er.item_name is null)
+when MATCHED then update set er.region_name = np.region_name;
+
+merge into sert_core.eval_results er
+  using (
+      select
+            item_id,
+            region
+      from
+          apex_application_page_items
+      where
+          application_id = p_application_id
+  ) np on (np.item_id = er.component_id and er.eval_id = p_eval_id and er.item_name is not null)
+when MATCHED then update set er.region_name = np.region;
+
+log_pkg.log(p_log => 'Evaluation merge section end', p_log_key => g_log_key, p_log_type => g_log_type, p_application_id => p_application_id);
+
 log_pkg.log(p_log => 'Evaluation completed', p_log_key => g_log_key, p_log_type => g_log_type, p_application_id => p_application_id);
 
 exception

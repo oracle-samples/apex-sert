@@ -23,8 +23,10 @@ select
   ,e.workspace_id
   ,er.application_id
   ,er.page_id
+  ,er.page_name
   ,er.component_id
   ,er.component_name
+  ,er.region_name
   ,er.column_name
   ,er.item_name
   ,er.shared_comp_name
@@ -68,8 +70,10 @@ group by
   ,e.workspace_id
   ,er.application_id
   ,er.page_id
+  ,er.page_name
   ,er.component_id
   ,er.component_name
+  ,er.region_name
   ,er.column_name
   ,er.item_name
   ,er.shared_comp_name
