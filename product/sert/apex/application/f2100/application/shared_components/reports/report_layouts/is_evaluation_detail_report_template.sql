@@ -1,4 +1,4 @@
--- file_checksum: 616C4FC8D95D2B4361F949A28FDDE10EEAC0A88C517347F32F3FFEDD814AF7C6
+-- file_checksum: 0FA4D31F56FE5AA823C57F4709ECE166AAC0E840306E13CA372F1B88CA342B11
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.5'
+,p_release=>'24.2.6'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -524,7 +524,7 @@ end;
 begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.5'
+,p_release=>'24.2.6'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -1037,7 +1037,7 @@ end;
 begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.5'
+,p_release=>'24.2.6'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -1550,7 +1550,7 @@ end;
 begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.5'
+,p_release=>'24.2.6'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -2063,7 +2063,7 @@ end;
 begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.5'
+,p_release=>'24.2.6'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -2576,7 +2576,7 @@ end;
 begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.5'
+,p_release=>'24.2.6'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -3089,7 +3089,7 @@ end;
 begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.5'
+,p_release=>'24.2.6'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -3273,7 +3273,7 @@ end;
 begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.5'
+,p_release=>'24.2.6'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

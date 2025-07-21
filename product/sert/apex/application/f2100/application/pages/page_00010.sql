@@ -1,4 +1,4 @@
--- file_checksum: 8C676DDB2CF021330B76F9DA1BD706EE1980FC14CCD654CECF2741F9C0A929A3
+-- file_checksum: 5ABD9E4F0FDCF25D81A312A47A23D9AEE174A918DCD67D737A058F1A06C8CF79
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.5'
+,p_release=>'24.2.6'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -86,7 +86,7 @@ wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(539514060141541836)
 ,p_plug_name=>'Smart Filters'
 ,p_parent_plug_id=>wwv_flow_imp.id(24101677047690201)
-,p_region_template_options=>'#DEFAULT#:margin-top-lg:margin-bottom-lg:margin-left-lg:margin-right-lg'
+,p_region_template_options=>'#DEFAULT#:margin-top-sm:margin-left-sm:margin-right-sm'
 ,p_plug_template=>wwv_flow_imp.id(511920605950949485)
 ,p_plug_display_sequence=>40
 ,p_plug_display_point=>'SUB_REGIONS'
@@ -1479,8 +1479,8 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_SELECT_LIST'
 ,p_lov=>'STATIC2:Order by Category;category_name,Order by Page #;page_id,Order by Risk Type;risk_name,Order by Rule;rule_name,Order by Rule Criteria;rule_criteria_type_name'
 ,p_cHeight=>1
-,p_field_template=>wwv_flow_imp.id(512257796880949612)
-,p_item_template_options=>'#DEFAULT#'
+,p_field_template=>wwv_flow_imp.id(512257557976949610)
+,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs'
 ,p_warn_on_unsaved_changes=>'I'
 ,p_lov_display_extra=>'NO'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(

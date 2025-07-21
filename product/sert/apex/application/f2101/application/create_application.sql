@@ -1,4 +1,4 @@
--- file_checksum: F47C5C632BEF16134F5C1EE0869C35EA88C70ACE00E18A2727D2B37555959895
+-- file_checksum: 844C986C8AD1F41D7C04F5B1C2764FB8A58591367BE5A6E00493F32567C685E3
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.5'
+,p_release=>'24.2.6'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
@@ -60,6 +60,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_value_01=>'SERT v2'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>16
+,p_version_scn=>44938191442620
 ,p_print_server_type=>'NATIVE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'Y'

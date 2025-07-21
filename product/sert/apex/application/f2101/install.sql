@@ -1,4 +1,4 @@
-prompt app_checksum: 6D913EC9A7DFDF7E5ACC83896D93E230995AEEE982FB05960C4641611BB9B9DB
+prompt app_checksum: D4FC18E568BA9C4E76968ACC31B8FDD5C410B459064C21E6645F306895E8E64F
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown

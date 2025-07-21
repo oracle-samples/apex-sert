@@ -1,4 +1,4 @@
--- file_checksum: AA4B0FA0CFD23EA7FC20CB22E6A3B852DC6C6320CC38ABCB76361E207B50A0BE
+-- file_checksum: 20703B57525A63047957AFCA5FD72D98EB9AEFFDB3519CC9BBCE690142C699E2
 prompt --application/create_application
 begin
 --   Manifest
@@ -6,7 +6,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.5'
+,p_release=>'24.2.6'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -55,7 +55,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_value_01=>'APEX-SERT'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>204
-,p_version_scn=>44997293662873
+,p_version_scn=>45029884746733
 ,p_print_server_type=>'INSTANCE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'Y'
