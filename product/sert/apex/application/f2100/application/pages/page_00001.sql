@@ -1,4 +1,4 @@
--- file_checksum: 06BE9BB3FA51B79B4ECCE6D7C990D1B7EA71AD3020DAF5CCC8E1CA18CBA4132D
+-- file_checksum: 8C8F583842FBCDCBC5C5904ABB86EC7FC0FC54DEDAE1E6EB1C9B4515F77F1643
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.5'
+,p_release=>'24.2.6'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -189,6 +189,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'APPLICATION_NAME'
 ,p_data_type=>'VARCHAR2'
+,p_session_state_data_type=>'VARCHAR2'
 ,p_display_sequence=>270
 ,p_is_group=>false
 ,p_use_as_row_header=>false

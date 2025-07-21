@@ -1,12 +1,20 @@
 # APEX-SERT 24.1 Installation Guide
 
-## PREFACE
+[Preface](#1-preface)
+
+[Installation](#2-installation)
+
+[Post Installation](#3-post-installation)
+
+[Remove APEX-SERT](#4-uninstall-apex-sert)
+
+## 1 PREFACE
 
 ## 1.1 Audience
 
 The APEX SERT Installation Guide is provided as a reference to install APEX-SERT. It is intended for system administrators and/or DBAs. You will require access to the SYS database account and APEX Internal workspace credentials in order to install APEX-SERT.
 
-## 1.2. Conventions
+## 1.2 Conventions
 
 The following typeset conventions are used throughout this document:
 
@@ -21,13 +29,13 @@ button, which corresponds to the value of the Bold text.
 
 **<ins>Bold Underline</ins>** is used to refer to a label or section of a page. Bold Underline labels will typically denote where an action should occur, not the action itself.
 
-## INSTALLATION
+## 2 INSTALLATION
 
 Installing APEX-SERT is a simple process that is done entirely via a SQL script. The script will not only install the required database objects, but also create the APEX-SERT workspace and install the APEX-SERT applications. There is only a single manual step that is required to complete the installation.
 
-### 2.1. Requirements
+### 2.1 Requirements
 
-#### 2.1.1. Software Versions
+#### 2.1.1 Software Versions
 
 #### 2.1.1.1 Database
 
@@ -64,7 +72,7 @@ some links:
 
 once you have a working DocGen service, you can set preferences in the APEX-SERT administration application by navigating to Setup → Preferences and providing the required data values.
 
-#### 2.1.2. Resources
+#### 2.1.2 Resources
 
 In order to install APEX-SERT, you will need access to the following system resources:
 
@@ -76,7 +84,7 @@ In order to install APEX-SERT, you will need access to the following system reso
 
 If you do not have access to all of the above, then it is not possible to install APEX-SERT. Please consult with your local system administrators and/or DBAs for assistance. 
 
-#### 2.1.3. Tablespaces
+#### 2.1.3 Tablespaces
 
 While not necessary, many DBAs prefer to put vendor products in their own tablespace. If you decide to do this, you must create the new tablespace before installing APEX-SERT.
 
@@ -108,7 +116,7 @@ SQL> @create_acdc_schema.sql ACDC <password> DATA
 
 Now, you have a validly configured account that can install APEX-SERT
 
-#### 2.3. Installation
+#### 2.3 Installation
 
 APEX-SERT installs via a single installation script. This script must be run as the installing schema ( we will reference ACDC), and only takes a few minutes to complete if you are executing the installation locally to the database. 
 
@@ -124,10 +132,14 @@ Define your desired AOP server:  You can simply define as localhost if you do n
 ########################################################################
 # using SERT is strongly recommended as a workspace name
 sert_apex_workspace = sert
+#
+# keep sert_apex_workspace_id blank to auto-allocate ID
+# original ID is 32049826282261068
+sert_apex_workspace_id =
 sert_admin_user = sert_admin
 # leave the next two ID's blank to automatically allocate an application ID
-sert_app_id = 2000
-sert_admin_id = 2001
+sert_app_id = 2100
+sert_admin_id = 2101
 # define YOUR AOP hostname
 # uncomment if you are using AOP, and provide the URL to AOP printserver
 sert_aop_url = https://localhost:8010
@@ -173,7 +185,7 @@ It also creates an APEX workspace called SERT (or the name you supplied in the s
 
     `@install.sql`
 
-## 3. POST-INSTALLATION
+## 3 POST-INSTALLATION
 
 ### 3.1 Publish the extension to all current workspaces
 
@@ -206,7 +218,7 @@ end;
 /
 ```
 
-### 3.2. Manually subscribe a workspace
+### 3.2 Manually subscribe a workspace
 
 to do this manually for a single workspace:
 
@@ -228,3 +240,25 @@ to do this manually for a single workspace:
     <!-- ![GIF image clicking on extension builder menu > Sert > Evaluations ](./images/launch-sert.gif) -->
 
 <img src="./images/launch-sert.gif" alt="GIF of user launching SERT" width=50% height=50%>
+
+## 4 Uninstall APEX-SERT
+
+to uninstall APEX-SERT, you can simply execute the uninstall script to remove APEX-SERT, it's workspace, menu extension, schema and all liquibase logs.
+
+From the root directory of the APEX-SERT installation source:
+
+log in as the user that installed APEX-SERT:
+
+```sql
+SQL> @product/sert/uninstall/uninstall_sert.sql
+SQL Format Cleared
+Clear changelog tables
+Drop APEX-SERT workspace
+Drop sert schemas
+dropping user sert_core
+dropping user sert_pub
+
+
+PL/SQL procedure successfully completed.
+SQL> exit
+```

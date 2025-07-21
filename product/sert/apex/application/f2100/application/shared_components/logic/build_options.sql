@@ -1,4 +1,4 @@
--- file_checksum: B602E7939C6FC107FCF18550E219A8BCF057DFA4934D3A5EAB2A91C440A4CB4A
+-- file_checksum: BA1EC5D15AC0A6F473AEFB8BAA67CA11A478363D6F4A9694C7342E1E1573973B
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.5'
+,p_release=>'24.2.6'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -28,7 +28,7 @@ wwv_flow_imp_shared.create_build_option(
  p_id=>wwv_flow_imp.id(98647277488728571)
 ,p_build_option_name=>'AOP'
 ,p_build_option_status=>'INCLUDE'
-,p_version_scn=>44992751248595
+,p_version_scn=>45026449812038
 ,p_default_on_export=>'INCLUDE'
 ,p_on_upgrade_keep_status=>true
 );
