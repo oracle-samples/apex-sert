@@ -1,4 +1,8 @@
 # Release Notes
+## 24.2.16
+
+* [GAT-465] - EVAL_RESULTS_EXC_PUB_V will not compile with ANSI join on PDB 19.27 #38
+* [GAT-440] - Provide uninstall script / documentation #12
 
 ## 24.2.15
 

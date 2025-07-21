@@ -61,7 +61,7 @@ begin
     merge into sert_core.prefs dst
     using ( select 'Release Version' as pref_name
                   , 'RELEASE_VERSION' as pref_key
-                  , '24.2.15' as pref_value
+                  , '24.2.16' as pref_value
                   , 'Y' as internal_yn from dual ) src
     on ( src.pref_key = dst.pref_key)
       when matched then

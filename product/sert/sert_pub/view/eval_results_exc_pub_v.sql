@@ -65,17 +65,18 @@ select  er.EVAL_RESULT_ID
        ,er.rule_severity_id
        ,er.rule_severity_name
        ,er.rule_severity_key
-  from sert_pub.EVAL_RESULTS_PUB_V er
-      left outer join sert_pub.exceptions_pub_v ep on
-        ( ep.rule_set_id || ':' ||
-          ep.rule_id || ':' ||
-          ep.workspace_id || ':' ||
-          ep.application_id  || ':' ||
-          ep.page_id         || ':' ||
-          ep.component_id    || ':' ||
-          ep.item_name       || ':' ||
-          ep.column_name     || ':' ||
-          ep.shared_comp_name
+  from sert_pub.EVAL_RESULTS_PUB_V er,
+  sert_pub.exceptions_pub_v ep
+  where
+        ( ep.rule_set_id(+) || ':' ||
+          ep.rule_id(+) || ':' ||
+          ep.workspace_id(+) || ':' ||
+          ep.application_id(+)  || ':' ||
+          ep.page_id(+)         || ':' ||
+          ep.component_id(+)    || ':' ||
+          ep.item_name(+)       || ':' ||
+          ep.column_name(+)     || ':' ||
+          ep.shared_comp_name(+)
          =
           er.rule_set_id || ':' ||
           er.rule_id || ':' ||
