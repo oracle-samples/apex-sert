@@ -1,4 +1,11 @@
 # Release Notes
+
+## 24.2.17
+
+* [GAT-466] - Rule "List Entry Does Not Contain &ITEM. Syntax" - wrong component_id #42
+* [GAT-467] - product/sert/post_install/9001_check_invalids.sql throws error when using sqlcl24.1
+* [GAT-468] - DB 19.2x Error on installing product/sert/post_install/9001_check_invalids.sql SERT_CORE.EXCEPTIONS_API #40
+
 ## 24.2.16
 
 * [GAT-465] - EVAL_RESULTS_EXC_PUB_V will not compile with ANSI join on PDB 19.27 #38

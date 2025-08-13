@@ -4,7 +4,13 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
---changeset mipotter:9001_check_invalids_1750135149958 endDelimiter:; runOnChange:true runAlways:true rollbackEndDelimiter:; stripComments:false
+--
+-- This script will only work for SQLCL 25+
+-- SQLCL 24.2 and lower will raise liquibase errors due to set command and raise command
+--
+--------------------------------------------------------------------------------
+
+--changeset mipotter:9001_check_invalids_xml endDelimiter:; runOnChange:true runAlways:true rollbackEndDelimiter:; stripComments:false
 --preconditions onFail:MARK_RAN onError:HALT
 --precondition-sql-check expectedResult:1 select case when count(status) > 0 then 1 else 0 end as mycount from dba_objects where owner in ('SERT_CORE','SERT_PUB') and status = 'INVALID';
 set serveroutput on
@@ -35,6 +41,6 @@ where owner in ('SERT_CORE','SERT_PUB')
 order by owner, type, name, sequence;
 
 -- now raise an error!
-exec RAISE_APPLICATION_ERROR (-20001, 'Errors found after compiling SERT schemas!');
+exec RAISE_APPLICATION_ERROR (-20001, '**** Errors found after compiling SERT schemas!');
 
 --rollback not required
