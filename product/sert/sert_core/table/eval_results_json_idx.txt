@@ -1,0 +1,13 @@
+/*
+--changeset mipotter:alter_table_sert_core.eval_results_add_constraint_result_is_json endDelimiter:; runOnChange:true runAlways:false rollbackEndDelimiter:; stripComments:false
+--preconditions onFail:MARK_RAN onError:HALT
+--precondition-sql-check expectedResult:0 select count(1) from dba_constraints where owner = 'SERT_CORE' and constraint_name = 'RESULT_IS_JSON'
+ALTER TABLE sert_core.eval_results ADD CONSTRAINT result_is_json CHECK (result IS JSON) ENABLE novalidate;
+--rollback alter table sert_core.eval_results drop constraint RESULT_IS_JSON;
+
+--changeset mipotter:create_index_sert_core.eval_results_result_jidx_1752059964456 endDelimiter:; runOnChange:true runAlways:false rollbackEndDelimiter:; stripComments:false
+--preconditions onFail:MARK_RAN onError:HALT
+--precondition-sql-check expectedResult:0 select count(1) from dba_indexes where owner = 'SERT_CORE' and table_name = 'EVAL_RESULTS' and index_name = 'EVAL_RESULTS_RESULT_JIDX';
+create search index sert_core.eval_results_result_jidx on sert_core.eval_results(result) for json;
+--rollback drop INDEX sert_core.eval_results_result_jidx;
+*/
