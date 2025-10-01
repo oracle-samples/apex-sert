@@ -1,4 +1,4 @@
--- file_checksum: CA1E2EF8C472C2F14E0ED53D9B505C72EB95CC4F93CE1A22EC736A3912C5E8BC
+-- file_checksum: 28E6B8898D3E902EAA7AD5F48FC53C79397C58164B35CBDC67D37AF71B6B91F7
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -21,12 +21,20 @@ wwv_flow_imp_shared.create_list(
  p_id=>wwv_flow_imp.id(136301758012484256)
 ,p_name=>'EXCEPTIONS'
 ,p_list_status=>'PUBLIC'
-,p_version_scn=>41986143829048
+,p_version_scn=>45172060544566
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(28940987997545384)
+,p_list_item_display_sequence=>40
+,p_list_item_link_text=>'Exception Details'
+,p_list_item_link_target=>'f?p=&APP_ID.:270:&SESSION.::&DEBUG.::P270_EVAL_ID:&P10_EVAL_ID.:'
+,p_list_item_icon=>'fa-file-text-o'
+,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_imp_shared.create_list_item(
  p_id=>wwv_flow_imp.id(136304413345484250)
 ,p_list_item_display_sequence=>50
-,p_list_item_link_text=>'Download Exceptions'
+,p_list_item_link_text=>'Export Exceptions'
 ,p_list_item_link_target=>'f?p=&APP_ID.:10:&SESSION.:DOWNLOAD_EXCEPTIONS:&DEBUG.::::'
 ,p_list_item_icon=>'fa-cloud-download'
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
@@ -35,7 +43,7 @@ wwv_flow_imp_shared.create_list_item(
 wwv_flow_imp_shared.create_list_item(
  p_id=>wwv_flow_imp.id(136303992947484250)
 ,p_list_item_display_sequence=>55
-,p_list_item_link_text=>'Upload Exceptions'
+,p_list_item_link_text=>'Import Exceptions'
 ,p_list_item_link_target=>'f?p=&APP_ID.:40:&SESSION.::&DEBUG.::::'
 ,p_list_item_icon=>'fa-cloud-upload'
 ,p_list_item_icon_attributes=>'class="foo"'

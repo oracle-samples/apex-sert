@@ -1,4 +1,4 @@
--- file_checksum: 5ABD9E4F0FDCF25D81A312A47A23D9AEE174A918DCD67D737A058F1A06C8CF79
+-- file_checksum: 922AEFC4DCA3FD05ABF700FAFC4302A1EE068CC63AC03228472BC8BA6029DA9F
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -1379,21 +1379,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_alignment=>'RIGHT'
 );
 wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(136308457693728206)
-,p_button_sequence=>10
-,p_button_plug_id=>wwv_flow_imp.id(533511275641804087)
-,p_button_name=>'REPORTS'
-,p_button_action=>'DEFINED_BY_DA'
-,p_button_template_options=>'#DEFAULT#:t-Button--simple:t-Button--iconRight'
-,p_button_template_id=>wwv_flow_imp.id(512260466204949620)
-,p_button_image_alt=>'Reports'
-,p_button_position=>'EDIT'
-,p_warn_on_unsaved_changes=>null
-,p_button_condition_type=>'NEVER'
-,p_icon_css_classes=>'fa-angle-down'
-,p_button_cattributes=>'data-menu="reports_menu"'
-);
-wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(135704296203854054)
 ,p_button_sequence=>20
 ,p_button_plug_id=>wwv_flow_imp.id(533511275641804087)
@@ -1811,6 +1796,17 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(206306377894400075)
+,p_attribute_01=>'N'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(29100313284038401)
+,p_event_id=>wwv_flow_imp.id(110673498088950661)
+,p_event_result=>'TRUE'
+,p_action_sequence=>60
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(539514060141541836)
 ,p_attribute_01=>'N'
 );
 wwv_flow_imp_page.create_page_process(

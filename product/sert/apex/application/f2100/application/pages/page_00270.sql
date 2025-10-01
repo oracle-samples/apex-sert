@@ -1,4 +1,4 @@
--- file_checksum: B6B8D6A3D98FF31478589B6B05091CF1A7C40A71E5086BAE0FCD8078B0990660
+-- file_checksum: 850B1489E97AA95CBC63A951B7321C65AB6B79A69897613CDBDBD555203987EF
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -42,17 +42,21 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select ',
 '    application_id,',
-'    category_name,',
+'    category_name, ',
 '    page_id,',
 '    item_name,',
 '    component_name,',
 '    current_value, ',
 '    exception_justification,',
 '    result,',
+'    result_color,',
 '    exception_reason,',
 '    rule_name,',
 '    risk_name,',
 '    risk,',
+'    exception_score,',
+'    exception_score_reason,',
+'    exception_color,',
 '    created_by,',
 '    created_on,',
 '    updated_by,',
@@ -108,11 +112,29 @@ wwv_flow_imp_page.create_worksheet(
 ,p_internal_uid=>76324462957040721
 );
 wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(120046765843318993)
+,p_db_column_name=>'RESULT'
+,p_display_order=>10
+,p_column_identifier=>'I'
+,p_column_label=>'&nbsp;'
+,p_column_html_expression=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'<span class="t-Badge t-Badge--#RESULT_COLOR#" role="status" aria-label="#RESULT#" title="#RESULT#">',
+'     <span class="t-Badge-value">#RESULT#</span>',
+'</span>'))
+,p_column_type=>'STRING'
+,p_column_alignment=>'CENTER'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(120046024394318986)
 ,p_db_column_name=>'RULE_NAME'
 ,p_display_order=>20
 ,p_column_identifier=>'B'
 ,p_column_label=>'Rule'
+,p_column_html_expression=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'<span class="t-ContentRow-overline">#CATEGORY_NAME#</span>',
+'#RULE_NAME#',
+''))
 ,p_column_type=>'STRING'
 ,p_heading_alignment=>'LEFT'
 ,p_use_as_row_header=>'N'
@@ -138,22 +160,11 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(120046455516318990)
-,p_db_column_name=>'APPLICATION_ID'
-,p_display_order=>60
-,p_column_identifier=>'F'
-,p_column_label=>'Application ID'
-,p_column_type=>'NUMBER'
-,p_heading_alignment=>'RIGHT'
-,p_column_alignment=>'RIGHT'
-,p_use_as_row_header=>'N'
-);
-wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(120046586196318991)
 ,p_db_column_name=>'PAGE_ID'
-,p_display_order=>70
+,p_display_order=>60
 ,p_column_identifier=>'G'
-,p_column_label=>'Page ID'
+,p_column_label=>'Page'
 ,p_column_type=>'NUMBER'
 ,p_heading_alignment=>'RIGHT'
 ,p_column_alignment=>'RIGHT'
@@ -162,19 +173,9 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(120046695579318992)
 ,p_db_column_name=>'ITEM_NAME'
-,p_display_order=>80
+,p_display_order=>70
 ,p_column_identifier=>'H'
-,p_column_label=>'Item Name'
-,p_column_type=>'STRING'
-,p_heading_alignment=>'LEFT'
-,p_use_as_row_header=>'N'
-);
-wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(120046765843318993)
-,p_db_column_name=>'RESULT'
-,p_display_order=>90
-,p_column_identifier=>'I'
-,p_column_label=>'Result'
+,p_column_label=>'Item'
 ,p_column_type=>'STRING'
 ,p_heading_alignment=>'LEFT'
 ,p_use_as_row_header=>'N'
@@ -182,9 +183,10 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(120046968155318995)
 ,p_db_column_name=>'CURRENT_VALUE'
-,p_display_order=>110
+,p_display_order=>90
 ,p_column_identifier=>'K'
 ,p_column_label=>'Current Value'
+,p_column_html_expression=>'<pre>#CURRENT_VALUE#</pre>'
 ,p_column_type=>'STRING'
 ,p_heading_alignment=>'LEFT'
 ,p_use_as_row_header=>'N'
@@ -192,7 +194,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(120047044873318996)
 ,p_db_column_name=>'CREATED_BY'
-,p_display_order=>120
+,p_display_order=>100
 ,p_column_identifier=>'L'
 ,p_column_label=>'Created By'
 ,p_column_type=>'STRING'
@@ -202,7 +204,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(120047140956318997)
 ,p_db_column_name=>'CREATED_ON'
-,p_display_order=>130
+,p_display_order=>110
 ,p_column_identifier=>'M'
 ,p_column_label=>'Created On'
 ,p_column_type=>'DATE'
@@ -213,7 +215,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(120047234778318998)
 ,p_db_column_name=>'UPDATED_BY'
-,p_display_order=>140
+,p_display_order=>120
 ,p_column_identifier=>'N'
 ,p_column_label=>'Updated By'
 ,p_column_type=>'STRING'
@@ -223,7 +225,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(120047330694318999)
 ,p_db_column_name=>'UPDATED_ON'
-,p_display_order=>150
+,p_display_order=>130
 ,p_column_identifier=>'O'
 ,p_column_label=>'Updated On'
 ,p_column_type=>'DATE'
@@ -234,9 +236,9 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(94643419417569065)
 ,p_db_column_name=>'EXCEPTION_JUSTIFICATION'
-,p_display_order=>160
+,p_display_order=>140
 ,p_column_identifier=>'R'
-,p_column_label=>'Justification'
+,p_column_label=>'Exception'
 ,p_column_type=>'STRING'
 ,p_heading_alignment=>'LEFT'
 ,p_use_as_row_header=>'N'
@@ -244,7 +246,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(94643552127569066)
 ,p_db_column_name=>'EXCEPTION_REASON'
-,p_display_order=>170
+,p_display_order=>150
 ,p_column_identifier=>'S'
 ,p_column_label=>'Approve/Reject Reason'
 ,p_column_type=>'STRING'
@@ -254,7 +256,7 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(94643668336569067)
 ,p_db_column_name=>'RISK_NAME'
-,p_display_order=>180
+,p_display_order=>160
 ,p_column_identifier=>'T'
 ,p_column_label=>'Risk Name'
 ,p_column_type=>'STRING'
@@ -264,13 +266,67 @@ wwv_flow_imp_page.create_worksheet_column(
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(94643806895569068)
 ,p_db_column_name=>'RISK'
-,p_display_order=>190
+,p_display_order=>170
 ,p_column_identifier=>'U'
 ,p_column_label=>'Risk'
 ,p_column_type=>'STRING'
 ,p_display_text_as=>'WITHOUT_MODIFICATION'
 ,p_heading_alignment=>'LEFT'
 ,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(28719162529891506)
+,p_db_column_name=>'EXCEPTION_SCORE'
+,p_display_order=>180
+,p_column_identifier=>'V'
+,p_column_label=>'Exception Score'
+,p_column_html_expression=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'{if EXCEPTION_SCORE/}',
+'  <span class="t-Badge t-Badge--#EXCEPTION_COLOR#" role="status" aria-label="#EXCEPTION_SCORE#" title="#EXCEPTION_SCORE#">',
+'     <span class="t-Badge-value">#EXCEPTION_SCORE#</span>',
+'  </span>',
+'{else/}',
+'{endif/}'))
+,p_column_type=>'NUMBER'
+,p_column_alignment=>'CENTER'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(28719248931891507)
+,p_db_column_name=>'EXCEPTION_SCORE_REASON'
+,p_display_order=>190
+,p_column_identifier=>'W'
+,p_column_label=>'Exception Score Reason'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(28723333810891548)
+,p_db_column_name=>'RESULT_COLOR'
+,p_display_order=>210
+,p_column_identifier=>'Z'
+,p_column_label=>'Result Color'
+,p_column_type=>'STRING'
+,p_display_text_as=>'HIDDEN_ESCAPE_SC'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(120046455516318990)
+,p_db_column_name=>'APPLICATION_ID'
+,p_display_order=>220
+,p_column_identifier=>'F'
+,p_column_label=>'Application ID'
+,p_column_type=>'NUMBER'
+,p_display_text_as=>'HIDDEN_ESCAPE_SC'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(28723414054891549)
+,p_db_column_name=>'EXCEPTION_COLOR'
+,p_display_order=>230
+,p_column_identifier=>'AA'
+,p_column_label=>'Exception Color'
+,p_column_type=>'STRING'
+,p_display_text_as=>'HIDDEN_ESCAPE_SC'
 );
 wwv_flow_imp_page.create_worksheet_rpt(
  p_id=>wwv_flow_imp.id(142279040265062710)
@@ -279,10 +335,10 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_report_alias=>'491674'
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
-,p_report_columns=>'APPLICATION_ID:CATEGORY_NAME:RULE_NAME:PAGE_ID:ITEM_NAME:COMPONENT_NAME:RESULT:CURRENT_VALUE:EXCEPTION_JUSTIFICATION:EXCEPTION_REASON:UPDATED_BY:UPDATED_ON:RISK:'
-,p_sort_column_1=>'CATEGORY_NAME'
+,p_report_columns=>'RESULT:RULE_NAME:PAGE_ID:ITEM_NAME:COMPONENT_NAME:CURRENT_VALUE:EXCEPTION_JUSTIFICATION:EXCEPTION_SCORE:EXCEPTION_SCORE_REASON:EXCEPTION_REASON'
+,p_sort_column_1=>'RULE_NAME'
 ,p_sort_direction_1=>'ASC'
-,p_sort_column_2=>'RULE_NAME'
+,p_sort_column_2=>'CATEGORY_NAME'
 ,p_sort_direction_2=>'ASC'
 ,p_sort_column_3=>'APPLICATION_ID'
 ,p_sort_direction_3=>'ASC'
@@ -292,10 +348,6 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_sort_direction_5=>'ASC'
 ,p_sort_column_6=>'0'
 ,p_sort_direction_6=>'ASC'
-,p_break_on=>'APPLICATION_ID:CATEGORY_NAME:RULE_NAME'
-,p_break_enabled_on=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'APPLICATION_ID',
-'CATEGORY_NAME:APPLICATION_ID:CATEGORY_NAME:RULE_NAME'))
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(148236608517472381)

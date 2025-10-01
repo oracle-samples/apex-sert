@@ -47,6 +47,9 @@ as
        ,er.CREATED_ON
        ,er.UPDATED_BY
        ,er.UPDATED_ON
+       ,ep.exception_score
+       ,ep.exception_color
+       ,ep.exception_score_reason
        ,ep.exception_id
        ,ep.created_by exception_created_by
        ,ep.actioned_by exception_actioned_by

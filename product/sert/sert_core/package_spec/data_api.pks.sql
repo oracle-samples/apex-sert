@@ -54,6 +54,7 @@ procedure import_rule (
     p_info                   in clob,
     p_fix                    in clob,
     p_time_to_fix            in number,
+    p_valid_exceptions       in varchar2,
     p_rule_severity_name     in varchar2,
     p_rule_severity_key      in varchar2,
     p_description            in varchar2,

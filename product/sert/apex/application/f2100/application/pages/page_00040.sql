@@ -1,4 +1,4 @@
--- file_checksum: 412104E44FD2DCC17DA6B4E402E8F35120530CA31E2030306B5D5396B475F970
+-- file_checksum: 01F078620B1D58FEC794236BD64AB5ADB22CBD832DE2971738F38386377C080F
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -19,10 +19,10 @@ wwv_flow_imp.component_begin (
 );
 wwv_flow_imp_page.create_page(
  p_id=>40
-,p_name=>'Upload Exceptions'
-,p_alias=>'UPLOAD-EXCEPTIONS'
+,p_name=>'Import Exceptions'
+,p_alias=>'IMPORT-EXCEPTIONS'
 ,p_page_mode=>'MODAL'
-,p_step_title=>'Upload Exceptions'
+,p_step_title=>'Import Exceptions'
 ,p_allow_duplicate_submissions=>'N'
 ,p_autocomplete_on_off=>'OFF'
 ,p_step_template=>wwv_flow_imp.id(511913896638949473)

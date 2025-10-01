@@ -61,7 +61,7 @@ begin
     merge into sert_core.prefs dst
     using ( select 'Release Version' as pref_name
                   , 'RELEASE_VERSION' as pref_key
-                  , '24.2.17' as pref_value
+                  , '24.2.18' as pref_value
                   , 'Y' as internal_yn from dual ) src
     on ( src.pref_key = dst.pref_key)
       when matched then
@@ -69,6 +69,52 @@ begin
       when not matched then
         insert (pref_name, pref_key, pref_value,internal_yn)
         values (src.pref_name,src.pref_key,src.pref_value,src.internal_yn);
+end;
+/
+
+--rollback not required
+
+--changeset mipotter:prefs_ai_internal_merge endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
+begin
+  -- Default AI to not enabled.
+  merge into sert_core.prefs dst
+  using ( select 'AI Enabled' as pref_name
+                , 'AI_ENABLED' as pref_key
+                , 'N' as pref_value
+                , 'Y' as internal_yn from dual ) src
+  on ( src.pref_key = dst.pref_key)
+    when matched then
+      update set dst.pref_value = src.pref_value ,dst.internal_yn = src.internal_yn
+    when not matched then
+      insert (pref_name, pref_key, pref_value,internal_yn)
+      values (src.pref_name,src.pref_key,src.pref_value,src.internal_yn);
+
+  -- AI_STATIC_ID, open_ai
+  -- put a default AI static ID - this can be changed by any user.
+  merge into sert_core.prefs dst
+  using ( select 'AI Static ID' as pref_name
+                , 'AI_STATIC_ID' as pref_key
+                , 'open_ai' as pref_value
+                , 'Y' as internal_yn from dual ) src
+  on ( src.pref_key = dst.pref_key)
+    when matched then
+      update set dst.pref_value = src.pref_value ,dst.internal_yn = src.internal_yn
+    when not matched then
+      insert (pref_name, pref_key, pref_value,internal_yn)
+      values (src.pref_name,src.pref_key,src.pref_value,src.internal_yn);
+
+  -- AI Exception Prompt
+  merge into sert_core.prefs dst
+  using ( select 'AI Exception Prompt' as pref_name
+                , 'AI_EXCEPTION_PROMPT' as pref_key
+                , 'You are an Oracle IT security expert reviewing an exception provided by a user in response to a flagged vulnerability from the APEX-SERT tool. The user believes the flag is a false positive. You are provided with a list of acceptable exceptions for this rule: {VALID_EXCEPTIONS} Evaluate how well the user exception aligns with the acceptable exceptions. Assign a score from 1 to 5, where: 1 = Poorly written or irrelevant exception 3 = Partially acceptable, needs improvement or clarification 5 = Clearly aligns with acceptable exceptions and is well-justified Return only a JSON document in the following format: { "score": <integer from 1 to 5>, "reason": "<brief explanation for the score>" } Keep the explanation concise (1–2 sentences) and do not return any additional commentary outside the JSON.' as pref_value
+                , 'Y' as internal_yn from dual ) src
+  on ( src.pref_key = dst.pref_key)
+    when matched then
+      update set dst.pref_value = src.pref_value ,dst.internal_yn = src.internal_yn
+    when not matched then
+      insert (pref_name, pref_key, pref_value,internal_yn)
+      values (src.pref_name,src.pref_key,src.pref_value,src.internal_yn);
 end;
 /
 --rollback not required

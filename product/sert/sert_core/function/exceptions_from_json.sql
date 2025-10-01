@@ -30,6 +30,8 @@ begin
     ,j.result
     ,j.reason
     ,j.current_value
+    ,j.exception_score
+    ,j.exception_score_reason
     ,j.created_by
     ,j.created_on
     ,j.updated_by
@@ -59,6 +61,8 @@ begin
         ,result                 varchar path  '$.result'
         ,reason                 varchar path  '$.reason'
         ,current_value          varchar path  '$.currentValue'
+        ,exception_score        number  path  '$.exceptionScore'
+        ,exception_score_reason varchar path  '$.exceptionScoreReason'
         ,created_by             varchar path  '$.createdBy'
         ,created_on             varchar path  '$.createdOn'
         ,updated_by             varchar path  '$.updatedBy'

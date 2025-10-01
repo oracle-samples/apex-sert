@@ -1,4 +1,4 @@
--- file_checksum: 45581C4998938B3C94A8768DF789ADA0F87286E8D6DDFD593189DC1B92B47C63
+-- file_checksum: DDAA1EBDFBAE0353CBEB4736E6D9E467535D1FA419524860C8092EC274791102
 prompt --application/pages/page_00005
 begin
 --   Manifest
@@ -46,6 +46,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(512260372386949620)
 ,p_button_image_alt=>'Close'
+,p_button_position=>'CLOSE'
 ,p_warn_on_unsaved_changes=>null
 );
 wwv_flow_imp_page.create_page_item(

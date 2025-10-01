@@ -51,6 +51,25 @@ begin
             '4.  If setting it to **No**, then optionally supply a URL to redirect users to in the case of a duplicate page submission.',
             '5.  Click **Save**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => apex_string.join(apex_t_varchar2(
+            '1.  **Idempotent Operations**',
+            '    ',
+            '    *   If the underlying process is idempotent (i.e., processing multiple times produces the same result without adverse effects), duplicate submissions may be safe to allow. For example, refreshing non-critical data or resetting a form.',
+            '2.  **Bulk or Batch Operations**',
+            '    ',
+            '    *   In pages where users intentionally and repeatedly submit similar actions in rapid succession as part of a workflow (such as approval or flagging records), preventing duplicate submissions could hinder productivity.',
+            '3.  **Custom Backend Handling**',
+            '    ',
+            '    *   If your application''s backend logic already handles de-duplication or aggregation (for example, update-or-insert logic, or discarding duplicate payloads), you may allow duplicate submissions confidently.',
+            '4.  **User Experience Considerations**',
+            '    ',
+            '    *   In rare cases, disabling duplicate submission protection can make sense for test/demonstration environments where fast, repeated inputs are expected and required (e.g., demo pages, rapid prototyping).',
+            '5.  **Event-Driven or Real-Time Feedback**',
+            '    ',
+            '    *   For certain real-time, event-triggered behaviors (like showing live feedback or updating dashboards), you may want to allow fast, repeated submissions or refresh calls to provide up-to-the-moment data.',
+            '6.  **Handling Large/Slow Transactions**',
+            '    ',
+            '    *   If a long-running background process is triggered and the page provides clear feedback or disables controls during processing, you may opt to allow the user another try in case the original request failed silently.')),
         p_rule_severity_name     => 'Low',
         p_rule_severity_key      => 'LOW',
         p_description            => '' );
@@ -100,6 +119,9 @@ begin
             '3.  In the _Authorization_ region, set the value of _Authorization Scheme_ to the corresponding **Authorization Scheme**.',
             '4.  Click **Apply Changes**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => apex_string.join(apex_t_varchar2(
+            '*   All users of this application have the same security profile, thus an application-level authorization scheme is not needed',
+            '*   This is a public application, and thus, an application-level authorization scheme is not needed')),
         p_rule_severity_name     => 'High',
         p_rule_severity_key      => 'HIGH',
         p_description            => '' );
@@ -231,6 +253,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -283,6 +306,7 @@ begin
             '4.  In the Security region, set the **Escape Special Characters** attribute to  **Yes**',
             '5.  Click **Apply Changes**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -340,6 +364,7 @@ begin
             '4.  In the Security region, set the Session State Protection attribute to any value other than **Unrestricted**.',
             '5.  Click **Apply Changes**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -473,6 +498,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -519,6 +545,7 @@ begin
             '',
             'In **Session Management** area, locate **Rejoin Sessions** attribute and change its value to Disabled.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -656,6 +683,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -789,6 +817,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -922,6 +951,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -1055,6 +1085,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -1188,6 +1219,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -1319,6 +1351,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -1409,6 +1442,7 @@ begin
         p_info                   => '**APEX-SERT** flags **Breadcrumbs** where the Authorization Scheme doesn''t match the Authorization Scheme for the **Page**. This may provide users access to the Page but not the List Entries, or vice versa.',
         p_fix                    => 'Check the **Authorization Schemes** on both the **component** and the **Page** for compatibility. Although they are not _**required**_ to be the same, developers need to make sure that the Authorization Schemes are compatible and will provided the desired result.',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -1487,6 +1521,7 @@ begin
             '',
             '**NOTE**: When **Browser Cache** is set to "Disabled", APEX will include the HTTP Header directive  **cache-control: no-store** indicating the browser should not store page content in either memory or disk. This feature will only work with browsers which support the _**cache-control**_ directive.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -1527,6 +1562,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -1618,6 +1654,7 @@ begin
             'APEX-SERT flags when the Button''s Authorization scheme doesn''t match the Authorization Scheme for the target Page redirection.')),
         p_fix                    => 'Check the **Authorization Schemes** on both the driving **Button** and the target **Page** redirect for compatibility. Although they are not required to be the same, developers need to make sure that the Authorization Schemes are compatible and will provide the desired result.',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -1666,6 +1703,7 @@ begin
             '',
             'In **Browser Security** area, locate **Cache** attribute and change its value to Disabled.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'High',
         p_rule_severity_key      => 'HIGH',
         p_description            => '' );
@@ -1799,6 +1837,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -1932,6 +1971,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -2065,6 +2105,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -2198,6 +2239,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -2299,6 +2341,7 @@ begin
             '',
             'When a Card action uses a column substitution for the Action, it cannot be confirmed by APEX-SERT and will require an exception')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -2430,6 +2473,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -2561,6 +2605,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -2694,6 +2739,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -2827,6 +2873,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -2916,6 +2963,7 @@ begin
         p_info                   => '**APEX-SERT** flags **components** where the Authorization Scheme doesn''t match the Authorization Scheme for the **Page**. This may provide users access to the Page but not the List Entries, or vice versa.',
         p_fix                    => 'Check the **Authorization Schemes** on both the **component** and the **Page** for compatibility. Although they are not _**required**_ to be the same, developers need to make sure that the Authorization Schemes are compatible and will provided the desired result.',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -2966,6 +3014,7 @@ begin
             '4.  In the Column Attribute panel/region, locate the **Security section**, and toggle the switch **Escape Special Characters** attribute to **Yes**.',
             '5.  Save your page')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -3100,6 +3149,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -3233,6 +3283,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -3276,6 +3327,7 @@ begin
             '',
             'In **Database Session** area, examine **Cleanup PL/SQL Code** attribute for reported SQL Injections issues. In particular, check usage of DBMS\_SQL, EXECUTE\_IMMEDIATE and incorrect item substitution syntax.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -3409,6 +3461,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -3542,6 +3595,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -3584,6 +3638,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -3626,6 +3681,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -3668,6 +3724,7 @@ begin
             'Navigate to your Application Definition, and select **Definition** tab.  ',
             'In **Properties** area, locate **Compatibility Mode** attribute and change its value to the desired setting.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -3710,6 +3767,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -3752,6 +3810,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -3799,6 +3858,7 @@ begin
             'Navigate to your **Application** Definition, and select **Definition** tab.  ',
             'In Properties area, locate **Debugging** attribute and set its value to **No**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -3930,6 +3990,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -3992,6 +4053,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4034,6 +4096,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4087,6 +4150,7 @@ begin
             'Navigate to your **Application** Definition, and select **Security** tab.  ',
             'In **Browser Security** area, locate **Embed in Frames** attribute and set its value to either **Deny** or **Allow from same origin**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'High',
         p_rule_severity_key      => 'HIGH',
         p_description            => '' );
@@ -4142,6 +4206,7 @@ begin
             'Navigate to your Application Definition, and select **Definition** tab.  ',
             'In **Error Handling** area, locate **Error Handling Function** attribute and set its value to not NULL, for example to your PL/SQL error function name.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4182,6 +4247,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4232,6 +4298,7 @@ begin
             '2.  In the Security region set the value of Form Auto Complete to **Off**.',
             '3.  Click **Save.**')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'High',
         p_rule_severity_key      => 'HIGH',
         p_description            => '' );
@@ -4282,6 +4349,7 @@ begin
             '2.  In the Settings region, set the value of Value Protected to **Yes**.',
             '3.  Click **Apply Changes**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4346,6 +4414,7 @@ begin
             '',
             'In **Browser Security** area, locate **HTML Escaping Mode** attribute and set its value to Extended.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'High',
         p_rule_severity_key      => 'HIGH',
         p_description            => '' );
@@ -4386,6 +4455,7 @@ begin
         p_info                   => 'The **HTTP Response Headers** attribute allows a developer to supplement what APEX sends to the browser as part of the response header. This is a more advanced feature of APEX, and is unlikely to be used in most applications.',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4434,6 +4504,7 @@ begin
             '',
             'In **Javascript** area, locate **Include jQuery Migrate** attribute and use the slider to set its value to **Off**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4482,6 +4553,7 @@ begin
             '',
             'In **Javascript** area, locate **Include Deprecated or Desupported Javascript Functions** attribute and set both Pre 18.1 and 18.x  checkbox values to **Off**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4525,6 +4597,7 @@ begin
             '',
             'In **Database Session** area, examine **Initialization PL/SQL Code** attribute for reported SQL Injections issues. In particular, check usage of DBMS\_SQL, EXECUTE\_IMMEDIATE and incorrect item substitution syntax.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4617,6 +4690,7 @@ begin
         p_info                   => 'APEX-SERT flags **components** where the Authorization Scheme doesn''t match the Authorization Scheme for the Page. This may provide users access to the Page but not the List Entries, or vice versa.',
         p_fix                    => 'Check the **Authorization Schemes** on both the **component** and the **Page** for compatibility. Although they are not _**required**_ to be the same, developers need to make sure that the Authorization Schemes are compatible and will provided the desired result.',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4659,6 +4733,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4701,6 +4776,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4793,6 +4869,7 @@ begin
         p_info                   => '**APEX-SERT** flags **components** where the Authorization Scheme doesn''t match the Authorization Scheme for the **Page**. This may provide users access to the Page but not the List Entries, or vice versa.',
         p_fix                    => 'Check the **Authorization Schemes** on both the **component** and the **Page** for compatibility. Although they are not _**required**_ to be the same, developers need to make sure that the Authorization Schemes are compatible and will provided the desired result.',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4843,6 +4920,7 @@ begin
             '4.  In the Column Attribute panel/region, locate the **Security section**, and toggle the switch **Escape Special Characters** attribute to **Yes**.',
             '5.  Save your page')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -4933,6 +5011,7 @@ begin
         p_info                   => '**APEX-SERT** flags **components** where the Authorization Scheme doesn''t match the Authorization Scheme for the **Page**. This may provide users access to the Page but not the List Entries, or vice versa.',
         p_fix                    => 'Check the **Authorization Schemes** on both the **component** and the **Page** for compatibility. Although they are not _**required**_ to be the same, developers need to make sure that the Authorization Schemes are compatible and will provided the desired result.',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -5020,6 +5099,7 @@ begin
             '5.  Ensure that the **'||chr(38)||'ITEM.** reference is to a page item or an application item, and that the value of that item is properly escaped (**Escape Special Characters** attribute to **Yes)**. Otherwise, remove any reference to that item.',
             '6.  Save your page')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -5062,6 +5142,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -5104,6 +5185,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -5243,6 +5325,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -5312,6 +5395,7 @@ begin
             '2.  In the Security region, set the Session State Protection attribute to any value other than **Unrestricted**.',
             '3.  Click **Apply Changes**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -5451,6 +5535,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -5497,6 +5582,7 @@ begin
             '3.  Ensure the **Legacy** region type is not used.',
             '4.  Save your page')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -5589,6 +5675,7 @@ begin
         p_info                   => '**APEX-SERT** flags **List Entries** where the Authorization Scheme doesn''t match the Authorization Scheme for the **Page**. This may provide users access to the Page but not the List Entries, or vice versa.',
         p_fix                    => 'Check the **Authorization Schemes** on both the **List Entries** and the **Page** for compatibility. Although they are not _**required**_ to be the same, developers need to make sure that the Authorization Schemes are compatible and will provided the desired result.',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -5691,6 +5778,7 @@ begin
             '',
             '_**Caution**: Use of **'||chr(38)||'ITEM.** syntax in certain circumstances may also provide the opportunity for a Cross Site Scripting risk. See the XSS Section of APEX-SERT for details._')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '*   The specific ITEM in the list entry already has the proper protections applied and is not a risk',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -5822,6 +5910,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -5953,6 +6042,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6086,6 +6176,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6135,6 +6226,7 @@ begin
             'APEX logs are purged roughly every two weeks by default. APEX will retain high-level information from its logs, but this is often times not detailed enough for most organizations. Thus, itis recommended that you configure a custom archival mechanism to preserve all data stored in the logs.')),
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6175,6 +6267,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6215,6 +6308,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6257,6 +6351,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6299,6 +6394,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6377,6 +6473,7 @@ begin
             '2.  In the Advanced region, set the value of `Maximum Row Count` to the desired value.',
             '3.  Click **Save**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6423,6 +6520,7 @@ begin
             '',
             'In **Session Management** area, locate **Maximum Session Idle Time in Seconds** attribute and change its value to between 0 and 3600.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6469,6 +6567,7 @@ begin
             '',
             'In **Session Management** area, locate **Maximum Session Length in Seconds** attribute and change its value to between 0 and 28800.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6518,6 +6617,7 @@ begin
             '3.  In the Layout region, set **Number of Rows** to the value less than 1000.',
             '4.  Click **Save**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6560,6 +6660,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6602,6 +6703,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6650,6 +6752,7 @@ begin
             '2.  In the Authorization region, set the value of Authorization Scheme to any appropriate value except for **No Authorization Required**.',
             '3.  Click **Apply Changes**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '*   This process should run for any user under any scenario',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6696,6 +6799,7 @@ begin
             '3.  In the **Security** Region, set the **Authorization Scheme** attribute to any appropriate non NULL value.',
             '4.  Click **Save**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6757,6 +6861,7 @@ begin
             '2.  In the Security Region, set the **Page Access Protection** attribute to anything except **Unrestricted**.',
             '3.  Click **Save**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6807,6 +6912,7 @@ begin
             '2.  In the Security region, set the value of **Authorization Scheme** to the corresponding Authorization Scheme that you want to associate with this page.',
             '3.  Click **Save**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -6862,6 +6968,7 @@ begin
             '2.  In the **Server Cache** Region, set the **Caching** attribute to **Disabled**.',
             '3.  Click **Save**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -7016,6 +7123,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -7068,6 +7176,7 @@ begin
             '2.  In the Security region, set the value of **Store value encrypted in session state** to **Yes**.',
             '3.  Click **Apply Changes**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -7199,6 +7308,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -7247,6 +7357,7 @@ begin
             '2.  In the Security region, set the value of Authentication to **Page Requires Authentication**.',
             '3.  Click **Save**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -7326,6 +7437,7 @@ begin
             '',
             'Although they are not _required_ to be the same, developers need to make sure that the Authorization Schemes are compatible and will provide the desired result.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -7374,6 +7486,7 @@ begin
             '',
             'In **Browser Security** area, locate **Referrer Policy** attribute and change its value to **strict-origin**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -7416,6 +7529,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -7458,6 +7572,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -7509,6 +7624,7 @@ begin
             '    2.  **Disabled** - Sessions cannot be rejoined at all',
             '    3.  **Enabled for Public Sessions** - APEX will attempt to rejoin an existing session only when navigating to a page that is publicly accessible.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Low',
         p_rule_severity_key      => 'LOW',
         p_description            => '' );
@@ -7559,6 +7675,7 @@ begin
             '',
             'In **Advanced** area, locate **Runtime API Usage** attribute and change all 3 options to **No**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -7608,6 +7725,7 @@ begin
             '',
             'In **Authorization** area, locate **Run on Background Job** attribute and change its value to **Yes**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -7654,6 +7772,7 @@ begin
             '',
             'In **Authorization** area, locate **Run on Public Pages** attribute and change its value to **Yes**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -7700,6 +7819,7 @@ begin
             '',
             'In **Session State Protection** area, locate **Session State Protection** attribute and set its value to **Enabled**.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'High',
         p_rule_severity_key      => 'HIGH',
         p_description            => '' );
@@ -7831,6 +7951,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -7962,6 +8083,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -8093,6 +8215,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -8133,6 +8256,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -8264,6 +8388,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -8360,6 +8485,7 @@ begin
             '',
             'When an theme component action uses a column substitution for the Action, it cannot be confirmed by APEX-SERT and will require an exception')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -8402,6 +8528,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -8444,6 +8571,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -8582,6 +8710,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -8713,6 +8842,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -8844,6 +8974,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -8975,6 +9106,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -9106,6 +9238,7 @@ begin
             '',
             'Either avoid use of `EXECUTE IMMEDIATE`, or do everything possible to endure that the code that is being executed can not be maliciously influenced by the input of end users. Developers should pay special attention to any use of `EXECUTE IMMEDIATE` that uses values from the APEX Session State as they may be able to be directly or indirectly influenced by end users.')),
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -9146,6 +9279,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -9186,6 +9320,7 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );
@@ -9226,6 +9361,86 @@ begin
         p_info                   => '',
         p_fix                    => '',
         p_time_to_fix            => null,
+        p_valid_exceptions       => '',
+        p_rule_severity_name     => 'Medium',
+        p_rule_severity_key      => 'MEDIUM',
+        p_description            => '' );
+end;
+/
+--rollback not required
+
+--changeset sert:import_sert_rule_test-rule-mik-24-3 stripComments:false endDelimiter:/ runOnChange:true
+begin
+    sert_core.data_api.import_rule(
+        p_rule_name              => 'test_rule',
+        p_rule_key               => 'TEST_RULE_MIK',
+        p_category_name          => 'Misconfiguration',
+        p_category_key           => 'MISCONFIGURATION',
+        p_risk_code              => 'A05-2021',
+        p_risk_name              => 'Security Misconfiguration',
+        p_apex_version           => 24.3,
+        p_help_url               => 'htmdb/configuring-security-attributes.html',
+        p_builder_url_key        => 'PAGE',
+        p_impact                 => 'PAGE',
+        p_active_yn              => 'Y',
+        p_internal_yn            => 'N',
+        p_rule_type              => 'CUSTOM_QUERY',
+        p_view_name              => '',
+        p_column_to_evaluate     => '',
+        p_component_id           => '',
+        p_component_name         => '',
+        p_column_name            => '',
+        p_item_name              => '',
+        p_shared_comp_name       => '',
+        p_operand                => '',
+        p_val_char               => '',
+        p_val_number             => null,
+        p_case_sensitive_yn      => 'N',
+        p_rule_criteria_type_key => '',
+        p_additional_where       => '',
+        p_custom_query           => apex_string.join(apex_t_varchar2(
+            'with a as (select browser_cache from apex_applications where application_id = #APP_ID#)',
+            'select',
+            '   #EVAL_ID# as eval_id',
+            '  ,#RULE_ID# as rule_id',
+            '  ,p.application_id as application_id',
+            '  ,p.page_id page_id',
+            '  ,null as component_id',
+            '  ,null as component_name',
+            '  ,null as column_name',
+            '  ,null as item_name',
+            '  ,null as shared_comp_name',
+            '  ,p.browser_cache || '' (page) / '' || a.browser_cache ',
+            '     || '' (app)'' as current_value',
+            '  ,''Disabled'' as valid_values',
+            '  , case when ',
+            '      (case when p.browser_cache = ''Application Default'' then a.browser_cache else p.browser_cache end) = ''Disabled'' then ''{ "result":"PASS"}'' else ''{ "result":"FAIL"}'' end as result',
+            'from',
+            '  apex_application_pages p',
+            '  ,a',
+            'where',
+            '  page_id > 0')),
+        p_info                   => apex_string.join(apex_t_varchar2(
+            '**Browser Cache** dictates how the user''s browser will store a rendered APEX Page in the browser''s cache. Normally, browsers save the contents of an application''s pages, however if the cache is disabled, the browser will not save the information and will be forced to reload the information from the server.',
+            '',
+            'From a security standpoint, Browser Cache should be disabled so that no sensitive information will not be kept at the browser level. Setting this to **Disabled** will also help prevent subtle back button issues.',
+            '',
+            'NOTE: When Browser Cache is set to **DIsabled**, APEX will include the HTTP Header directive cache-control: no-store indicating the browser should not store page content in either memory or disk. This feature will only work with browsers which support the cache-control directive')),
+        p_fix                    => apex_string.join(apex_t_varchar2(
+            'To alter the value of **Browser Cache** for a specific page:',
+            '',
+            '1.  Edit the page attributes for the page in question by clicking on it''s name in the Page Rendering tree.',
+            '2.  In the Security region, alter the value for the **Browser Cache** select list.',
+            '3.  Click **Save**.Browser Cache has three possible settings:',
+            '    1.  **Application Default** - This will take its value from the current application''s Browser Cache attribute.',
+            '    2.  **Enabled** - Allows the browser to cache information from the page',
+            '    3.  **Disabled** - Prohibits the browser from caching information for the specific page.',
+            '',
+            'The page level `Browser Cache` setting, other than Application Default, will override what is defined at the Application level.',
+            '',
+            '**NOTE**: When **Browser Cache** is set to "Disabled", APEX will include the HTTP Header directive  **cache-control: no-store** indicating the browser should not store page content in either memory or disk. This feature will only work with browsers which support the _**cache-control**_ directive.')),
+        p_time_to_fix            => null,
+        p_valid_exceptions       => '',
         p_rule_severity_name     => 'Medium',
         p_rule_severity_key      => 'MEDIUM',
         p_description            => '' );

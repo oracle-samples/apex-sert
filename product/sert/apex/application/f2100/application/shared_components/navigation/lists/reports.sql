@@ -1,4 +1,4 @@
--- file_checksum: D4A0A411F83328F93F37D1A9D190C286B14A4471ADC0E62E1AAE5A58BE0DF671
+-- file_checksum: BB1ADF848FD078F0FDEDC9CC8BFFBA33B2D219EC2286757E6F187F318ABE2E58
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -21,7 +21,7 @@ wwv_flow_imp_shared.create_list(
  p_id=>wwv_flow_imp.id(136314465783723109)
 ,p_name=>'REPORTS'
 ,p_list_status=>'PUBLIC'
-,p_version_scn=>44595483802318
+,p_version_scn=>45143439857877
 );
 wwv_flow_imp_shared.create_list_item(
  p_id=>wwv_flow_imp.id(136316196739714458)
@@ -39,14 +39,6 @@ wwv_flow_imp_shared.create_list_item(
 ,p_list_item_link_target=>'f?p=&APP_ID.:260:&SESSION.::&DEBUG.:RP:P260_EVAL_ID:&P10_EVAL_ID.:'
 ,p_list_item_icon=>'fa-area-chart'
 ,p_required_patch=>wwv_flow_imp.id(100473496993138610)
-,p_list_item_current_type=>'TARGET_PAGE'
-);
-wwv_flow_imp_shared.create_list_item(
- p_id=>wwv_flow_imp.id(93209108819007595)
-,p_list_item_display_sequence=>20
-,p_list_item_link_text=>'Exception Details'
-,p_list_item_link_target=>'f?p=&APP_ID.:270:&SESSION.::&DEBUG.::P270_EVAL_ID:&P10_EVAL_ID.:'
-,p_list_item_icon=>'fa-file-text-o'
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_imp_shared.create_list_item(

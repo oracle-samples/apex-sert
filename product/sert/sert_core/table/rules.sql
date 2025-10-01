@@ -42,6 +42,7 @@ CREATE TABLE sert_core.rules (
     fix                   CLOB,
     time_to_fix           NUMBER,
     description           VARCHAR2(4000),
+    valid_exceptions      varchar2(4000),
     created_by            VARCHAR2(250) DEFAULT ON NULL coalesce(sys_context('APEX$SESSION', 'APP_USER'),
                                                       user) NOT NULL,
     created_on            TIMESTAMP WITH LOCAL TIME ZONE DEFAULT ON NULL systimestamp NOT NULL,
@@ -78,3 +79,8 @@ ALTER TABLE sert_core.rules ADD CONSTRAINT rules_active_yn CHECK ( active_yn IN 
 ALTER TABLE sert_core.rules ADD CONSTRAINT rules_internal_yn CHECK ( internal_yn IN ( 'N', 'Y' ) );
 --rollback alter table sert_core.rules drop constraint RULES_INTERNAL_YN;
 
+--changeset scspend:alter_table_sert_core.rules_add_column_valid_exceptions_1753914363319 endDelimiter:; runOnChange:true runAlways:false rollbackEndDelimiter:; stripComments:false
+--preconditions onFail:MARK_RAN onError:HALT
+--precondition-sql-check expectedResult:0 select count(1) from all_tab_cols where owner = 'SERT_CORE' and table_name = 'RULES' and column_name = 'VALID_EXCEPTIONS';
+alter table sert_core.rules add (valid_exceptions varchar2(4000));
+--rollback alter table sert_core.rules drop column VALID_EXCEPTIONS;

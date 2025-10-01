@@ -1,4 +1,4 @@
--- file_checksum: 3041EBF4737F584CF9CC6937E8CCB7A8E90C783D8CA4C14173CA2CAA961AB54B
+-- file_checksum: 1A10D6C9F75FF6F6C2C8A5DD5B1EADFCC0DE33A5D89AF1F0556C9D4481E9704D
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -211,6 +211,20 @@ wwv_flow_imp_page.create_page_plug(
   'remember_selection', 'NO')).to_clob
 );
 wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(28718629046891501)
+,p_plug_name=>'Valid Exceptions'
+,p_parent_plug_id=>wwv_flow_imp.id(395483141786020832)
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(394422849849760056)
+,p_plug_display_sequence=>30
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'SUB_REGIONS'
+,p_location=>null
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+);
+wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(395483192939020833)
 ,p_plug_name=>'Information'
 ,p_parent_plug_id=>wwv_flow_imp.id(395483141786020832)
@@ -242,9 +256,10 @@ wwv_flow_imp_page.create_page_plug(
 ,p_parent_plug_id=>wwv_flow_imp.id(395483141786020832)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(394422849849760056)
-,p_plug_display_sequence=>30
+,p_plug_display_sequence=>40
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_plug_display_point=>'SUB_REGIONS'
+,p_location=>null
 ,p_plug_footer=>'<a href="https://docs.oracle.com/en/database/oracle/apex/" target="_blank">https://docs.oracle.com/en/database/oracle/apex/</a>'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'expand_shortcuts', 'N',
@@ -473,6 +488,25 @@ wwv_flow_imp_page.create_page_branch(
 ,p_branch_point=>'AFTER_PROCESSING'
 ,p_branch_type=>'REDIRECT_URL'
 ,p_branch_sequence=>20
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(28718748024891502)
+,p_name=>'P2010_VALID_EXCEPTIONS'
+,p_source_data_type=>'VARCHAR2'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(28718629046891501)
+,p_item_source_plug_id=>wwv_flow_imp.id(394795639431498797)
+,p_prompt=>'Valid Exceptions'
+,p_source=>'VALID_EXCEPTIONS'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_RICH_TEXT_EDITOR'
+,p_field_template=>wwv_flow_imp.id(394560104116760172)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'allow_custom_html', 'N',
+  'format', 'MARKDOWN',
+  'min_height', '180')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(339918371927672558)

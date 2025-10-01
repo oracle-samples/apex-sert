@@ -1,4 +1,4 @@
--- file_checksum: 2A87E7C5234A809863AF25EE47A677EC06F15EF69497A3406C218C80FA552C60
+-- file_checksum: 3362633E89E3589D87920B07C98F5B5D9C1D4830A88676A1FFAF4F3B95166059
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -29,6 +29,33 @@ wwv_flow_imp_page.create_page(
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'13'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(29100572512038403)
+,p_plug_name=>'Metrics'
+,p_region_template_options=>'#DEFAULT#:margin-top-md:margin-left-md:margin-right-md'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(394429964089760060)
+,p_plug_display_sequence=>10
+,p_query_type=>'TABLE'
+,p_query_table=>'ADMIN_METRICS_V'
+,p_include_rowid_column=>false
+,p_lazy_loading=>false
+,p_plug_source_type=>'NATIVE_CARDS'
+,p_plug_query_num_rows_type=>'SCROLL'
+,p_show_total_row_count=>false
+);
+wwv_flow_imp_page.create_card(
+ p_id=>wwv_flow_imp.id(29100611797038404)
+,p_region_id=>wwv_flow_imp.id(29100572512038403)
+,p_layout_type=>'GRID'
+,p_title_adv_formatting=>false
+,p_title_column_name=>'LABEL'
+,p_sub_title_adv_formatting=>false
+,p_body_adv_formatting=>false
+,p_second_body_adv_formatting=>false
+,p_badge_column_name=>'VALUE'
+,p_media_adv_formatting=>false
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(353804233789740380)

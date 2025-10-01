@@ -106,66 +106,101 @@ end calc_score;
 ----------------------------------------------------------------------------------------------------------------------------
 -- Evaluates a column for a specific criteria
 ----------------------------------------------------------------------------------------------------------------------------
-function eval_criteria
-  (
-   p_column_to_evaluate     in clob
-  ,p_return_details         in varchar2 default 'Y'
-  ,p_rule_criteria_type_key in varchar2
-  ,p_application_id         in number
-  )
-return varchar2
-is
-  l_return                varchar2(100)  := 'PASS';
-  l_source                varchar2(32765) := upper(p_column_to_evaluate);
-  l_cnt                   number;
-  l_rule_criteria_type_id number;
-begin
+  function eval_criteria (
+    p_column_to_evaluate     in clob,
+    p_return_details         in varchar2 default 'Y',
+    p_rule_criteria_type_key in varchar2,
+    p_application_id         in number
+  ) return varchar2
+  is
+    l_return                varchar2(100)   := 'PASS';
+    l_source                varchar2(32765) := upper(p_column_to_evaluate);
+    l_cnt                   number;
+    l_rule_criteria_type_id number;
+  begin
+    log_pkg.log(
+      p_log           => 'Criteria started for ' || p_rule_criteria_type_key,
+      p_log_key       => g_log_key,
+      p_log_type      => g_log_type,
+      p_application_id=> p_application_id
+    );
 
-log_pkg.log(p_log => 'Criteria started for ' || p_rule_criteria_type_key, p_log_key => g_log_key, p_log_type => g_log_type, p_application_id => p_application_id);
-log_pkg.log(p_log => 'Column to Evaluate (l_source)', p_log_clob => p_column_to_evaluate, p_log_key => g_log_key, p_log_type => g_log_type, p_application_id => p_application_id);
+    log_pkg.log(
+      p_log           => 'Column to Evaluate (l_source)',
+      p_log_clob      => p_column_to_evaluate,
+      p_log_key       => g_log_key,
+      p_log_type      => g_log_type,
+      p_application_id=> p_application_id
+    );
 
--- get the rule_criteria_type_id
-select rule_criteria_type_id into l_rule_criteria_type_id from rule_criteria_types where rule_criteria_type_key = p_rule_criteria_type_key;
+    -- get the rule_criteria_type_id
+    select rule_criteria_type_id
+      into l_rule_criteria_type_id
+      from rule_criteria_types
+    where rule_criteria_type_key = p_rule_criteria_type_key;
 
--- initialize the JSON document
-apex_json.initialize_clob_output;
-apex_json.open_object; -- {
-apex_json.open_array('reasons'); -- "reasons": [
-
--- Remove built-in substitution strings to avoid false positives
-for x in (select * from reserved_strings_v where active_yn = 'Y' and reserved_string_type = 'SUBSTITUTION_STRING')
-loop
-  l_source := REPLACE(l_source, x.reserved_string, NULL);
-end loop;
-
--- loop through all rule criteria
-for x in (select * from rule_criteria_v where rule_criteria_type_id = l_rule_criteria_type_id and active_yn = 'Y')
-loop
-
-  log_pkg.log(p_log => 'SQL for ' || x.rule_criteria_key, p_log_clob => x.rule_criteria_sql, p_log_key => g_log_key, p_log_type => g_log_type, p_application_id => p_application_id);
-
-  execute immediate x.rule_criteria_sql into l_cnt using l_source;
-  if l_cnt > 0 then
-    l_return := 'FAIL';
+    -- initialize the JSON document
+    apex_json.initialize_clob_output;
     apex_json.open_object; -- {
-    apex_json.write('reason', x.reason); -- 1
+    apex_json.open_array('reasons'); -- "reasons": [
+
+    -- Remove built-in substitution strings to avoid false positives
+    for x in (
+      select *
+        from reserved_strings_v
+      where active_yn = 'Y'
+        and reserved_string_type = 'SUBSTITUTION_STRING'
+    )
+    loop
+
+      l_source := replace(l_source, x.reserved_string, null);
+
+    end loop; -- reserved_strings_v
+
+    -- loop through all rule criteria
+    for x in (
+      select *
+        from rule_criteria_v
+      where rule_criteria_type_id = l_rule_criteria_type_id
+        and active_yn = 'Y'
+    )
+    loop
+
+      log_pkg.log(
+        p_log           => 'SQL for ' || x.rule_criteria_key,
+        p_log_clob      => x.rule_criteria_sql,
+        p_log_key       => g_log_key,
+        p_log_type      => g_log_type,
+        p_application_id=> p_application_id
+      );
+
+      execute immediate x.rule_criteria_sql into l_cnt using l_source;
+
+      if l_cnt > 0 then
+        l_return := 'FAIL';
+        apex_json.open_object; -- {
+        apex_json.write('reason', x.reason); -- 1
+        apex_json.close_object; -- }
+      end if; -- if l_cnt > 0 then
+
+    end loop; -- rule_criteria_v
+
+    -- Close the JSON document
+    apex_json.close_array; -- ]
+    apex_json.write('result', l_return); -- 1
     apex_json.close_object; -- }
-  end if;
 
-end loop;
+    log_pkg.log(
+      p_log           => 'Criteria ended for ' || p_rule_criteria_type_key,
+      p_log_key       => g_log_key,
+      p_log_type      => g_log_type,
+      p_application_id=> p_application_id
+    );
 
--- Close the JSON document
-apex_json.close_array; -- ]
-apex_json.write('result', l_return); -- 1
-apex_json.close_object; -- }
+    -- return the JSON
+    return apex_json.get_clob_output;
 
-log_pkg.log(p_log => 'Criteria ended for ' || p_rule_criteria_type_key, p_log_key => g_log_key, p_log_type => g_log_type, p_application_id => p_application_id);
-
--- return the JSON
-return apex_json.get_clob_output;
-
-end eval_criteria;
-
+  end eval_criteria;
 
 ----------------------------------------------------------------------------------------------------------------------------
 -- PROCEDURE: P R O C E S S _ R U L E S

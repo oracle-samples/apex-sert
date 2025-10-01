@@ -5,7 +5,7 @@
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
 
---changeset mipotter:create_view_sert_core.rules_v_1721804204840 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ 
+--changeset mipotter:create_view_sert_core.rules_v_1721804204840 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
 create or replace force view sert_core.rules_v
 as
 with av as (select apex_version_item as apex_version from apex_version_v)
@@ -68,6 +68,7 @@ select
   ,r.custom_query
   ,r.info
   ,r.fix
+  ,r.valid_exceptions
   ,r.time_to_fix
   ,r.rule_severity_id
   ,rs.rule_severity_name

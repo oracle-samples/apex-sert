@@ -5,7 +5,7 @@
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
 
---changeset mipotter:create_view_sert_core.rules_json_to_relational_v_1721804191191 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ 
+--changeset mipotter:create_view_sert_core.rules_json_to_relational_v_1721804191191 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
 create or replace force view sert_core.rules_json_to_relational_v as
 select
    j.rule_name
@@ -38,6 +38,7 @@ select
   ,j.info
   ,j.fix
   ,j.time_to_fix
+  ,j.valid_exceptions
   ,j.rule_severity_name
   ,j.rule_severity_key
   ,j.description
@@ -84,6 +85,7 @@ from
       ,info                   varchar path '$.info'
       ,fix                    varchar path '$.fix'
       ,time_to_fix            varchar path '$.timeToFix'
+      ,valid_exceptions       varchar path '$.validExceptions'
       ,rule_severity_name     varchar path '$.ruleSeverityName'
       ,rule_severity_key      varchar path '$.ruleSeverityKey'
       ,description            varchar path '$.description'

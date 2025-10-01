@@ -58,7 +58,7 @@ select
   ,risk_url
   ,case
     when risk_url is null then nvl(risk_name, 'n/a')
-    else '<a href="' || apex_escape.html(risk_url) || '">' || apex_escape.html(risk_name) || '</a>'
+    else '<a href="' || apex_escape.html(risk_url) || '" target="_blank">' || apex_escape.html(risk_name) || '</a>'
     end as risk
   ,help_url
   ,impact

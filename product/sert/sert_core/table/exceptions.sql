@@ -52,3 +52,15 @@ ALTER TABLE sert_core.exceptions
                                           column_name,
                                           item_name );
 --rollback alter table sert_core.exceptions drop constraint EXCEPTIONS_UN;
+
+--changeset scspend:alter_table_sert_core.exceptions_add_column_exception_score_1753928199503 endDelimiter:; runOnChange:true runAlways:false rollbackEndDelimiter:; stripComments:false
+--preconditions onFail:MARK_RAN onError:HALT
+--precondition-sql-check expectedResult:0 select count(1) from all_tab_cols where owner = 'SERT_CORE' and table_name = 'EXCEPTIONS' and column_name = 'EXCEPTION_SCORE';
+alter table sert_core.exceptions add (exception_score number);
+--rollback alter table sert_core.exceptions drop column EXCEPTION_SCORE;
+
+--changeset scspend:alter_table_sert_core.exceptions_add_column_exception_score_reason_1753928237917 endDelimiter:; runOnChange:true runAlways:false rollbackEndDelimiter:; stripComments:false
+--preconditions onFail:MARK_RAN onError:HALT
+--precondition-sql-check expectedResult:0 select count(1) from all_tab_cols where owner = 'SERT_CORE' and table_name = 'EXCEPTIONS' and column_name = 'EXCEPTION_SCORE_REASON';
+alter table sert_core.exceptions add (exception_score_reason varchar2(4000));
+--rollback alter table sert_core.exceptions drop column EXCEPTION_SCORE_REASON;

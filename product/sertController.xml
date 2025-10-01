@@ -6,7 +6,15 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
 >
 
-  <!-- Product gadm -->
+  <!-- Product sert -->
+   <includeAll
+    relativeToChangelogFile="true"
+    errorIfMissingOrEmpty="false"
+    path="sert/pre-install"
+    minDepth="1"
+    maxDepth="1"
+  />
+
   <includeAll
     relativeToChangelogFile="true"
     errorIfMissingOrEmpty="false"
@@ -24,15 +32,6 @@
   />
 
 
-  <!-- <changeSet id="0" author="liquify (generated)" runAlways="true" runOrder="last">
-    <sql dbms="oracle" endDelimiter="/" splitStatements="false" stripComments="true">
-      begin
-        dbms_utility.compile_schema(schema => 'SERT_CORE', compile_all => false);
-        dbms_utility.compile_schema(schema => 'SERT_PUB', compile_all => false);
-      end;
-      /
-    </sql>
-  </changeSet> -->
   <include
     context="@apex"
     relativeToChangelogFile="true"
@@ -46,6 +45,4 @@
     minDepth="1"
     maxDepth="1"
   />
-
-
 </databaseChangeLog>
