@@ -45,6 +45,10 @@ select  er.EVAL_RESULT_ID
        ,er.CREATED_ON
        ,er.UPDATED_BY
        ,er.UPDATED_ON
+       ,ep.valid_exceptions
+       ,ep.exception_score
+       ,ep.exception_score_reason
+       ,ep.exception_color
        ,ep.exception_id
        ,ep.created_by as exception_created_by
        ,ep.actioned_by as exception_actioned_by
