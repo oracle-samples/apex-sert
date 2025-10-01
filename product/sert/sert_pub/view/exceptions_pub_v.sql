@@ -25,6 +25,10 @@ select
   ,e.exception_key
   ,e.result
   ,e.reason
+  ,e.valid_exceptions
+  ,e.exception_score
+  ,e.exception_score_reason
+  ,e.exception_color
   ,e.created_on
   ,e.created_by
   ,e.updated_on

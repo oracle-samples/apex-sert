@@ -59,21 +59,31 @@ as
     ,p_eval_id      in number
     );
 
+  procedure get_exception_score
+    (
+     p_rule_id                in number
+    ,p_exception              in varchar2
+    ,p_exception_score        out number
+    ,p_exception_score_reason out varchar2
+    );
+
   procedure add_exception
     (
-    p_rule_set_id      in number
-    ,p_rule_id          in number
-    ,p_workspace_id     in number
-    ,p_application_id   in number
-    ,p_page_id          in number   default null
-    ,p_component_id     in varchar2 default null
-    ,p_component_name   in varchar2 default null
-    ,p_column_name      in varchar2 default null
-    ,p_item_name        in varchar2 default null
-    ,p_shared_comp_name in varchar2 default null
-    ,p_exception        in varchar2
-    ,p_current_value    in varchar2
-    ,p_eval_id          in number
+     p_rule_set_id            in number
+    ,p_rule_id                in number
+    ,p_workspace_id           in number
+    ,p_application_id         in number
+    ,p_page_id                in number   default null
+    ,p_component_id           in varchar2 default null
+    ,p_component_name         in varchar2 default null
+    ,p_column_name            in varchar2 default null
+    ,p_item_name              in varchar2 default null
+    ,p_shared_comp_name       in varchar2 default null
+    ,p_exception              in varchar2
+    ,p_current_value          in varchar2
+    ,p_eval_id                in number
+    ,p_exception_score        in number   default null
+    ,p_exception_score_reason in varchar2 default null
     );
 
   procedure download_exceptions

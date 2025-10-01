@@ -1,4 +1,4 @@
--- file_checksum: C1BC47FDA545AAC147FA06FDBCAC46B1CEC64B5CCEB55E2ABF8A57B77198F008
+-- file_checksum: 9B2801F1C5D8A4A62FCD34DD9A412943BECA4D1DD22907EAFA1417D95A7D6A23
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -21,7 +21,7 @@ wwv_flow_imp_shared.create_list(
  p_id=>wwv_flow_imp.id(513596220020445673)
 ,p_name=>'EVALUATIONS'
 ,p_list_status=>'PUBLIC'
-,p_version_scn=>41986151444105
+,p_version_scn=>45179260794731
 );
 wwv_flow_imp_shared.create_list_item(
  p_id=>wwv_flow_imp.id(513596406010445684)
@@ -39,7 +39,7 @@ wwv_flow_imp_shared.create_list_item(
 ,p_list_item_display_sequence=>20
 ,p_list_item_link_text=>'Re-Evaluate in Background'
 ,p_list_item_link_target=>'javascript:$.event.trigger(''reEvaluateBackground'');'
-,p_list_item_icon=>'fa-clock-o'
+,p_list_item_icon=>'fa-database-play'
 ,p_list_item_disp_cond_type=>'VAL_OF_ITEM_IN_COND_EQ_COND2'
 ,p_list_item_disp_condition=>'G_STALE_EVAL'
 ,p_list_item_disp_condition2=>'N'

@@ -253,27 +253,85 @@ end approve_or_reject_exception;
 
 
 ----------------------------------------------------------------------------------------------------------------------------
+-- PROCEDURE: G E T _ E X C E P T I O N _ S C O R E
+----------------------------------------------------------------------------------------------------------------------------
+-- Using AI, generates a score and reason for a specific exception
+----------------------------------------------------------------------------------------------------------------------------
+procedure get_exception_score
+  (
+   p_rule_id                in number
+  ,p_exception              in varchar2
+  ,p_exception_score        out number
+  ,p_exception_score_reason out varchar2
+  )
+is
+  l_valid_exceptions        varchar2(4000);
+  l_summary                 clob;
+ begin
+
+-- determine score of exception using AI
+if reports_pkg.get_pref_value(p_pref_key => 'AI_ENABLED') = 'Y' then
+
+  -- get the list of valid exceptions
+  select valid_exceptions into l_valid_exceptions from rules where rule_id = p_rule_id;
+
+  -- prepare the prompt and send to AI
+  if l_valid_exceptions is not null then
+
+    l_summary := apex_ai.generate
+      (
+       p_prompt            => 'Evaluate the quality of the following exception: ' || p_exception
+      ,p_system_prompt     => replace(reports_pkg.get_pref_value(p_pref_key => 'AI_EXCEPTION_PROMPT'), '{VALID_EXCEPTIONS}', l_valid_exceptions)
+      ,p_service_static_id => reports_pkg.get_pref_value(p_pref_key => 'AI_STATIC_ID')
+       );
+
+    -- log the results
+    apex_debug.message(l_summary);
+
+    -- parse the AI response to get the score and reason
+    select
+       json_value(l_summary, '$.score')  as score
+      ,json_value(l_summary, '$.reason') as reason
+    into
+       p_exception_score
+      ,p_exception_score_reason
+    from
+      dual;
+
+  end if;
+
+end if;
+
+end get_exception_score;
+
+
+----------------------------------------------------------------------------------------------------------------------------
 -- PROCEDURE: A D D _ E X C E P T I O N
 ----------------------------------------------------------------------------------------------------------------------------
 -- Adds a new exception
 ----------------------------------------------------------------------------------------------------------------------------
 procedure add_exception
   (
-   p_rule_set_id      in number
-  ,p_rule_id          in number
-  ,p_workspace_id     in number
-  ,p_application_id   in number
-  ,p_page_id          in number   default null
-  ,p_component_id     in varchar2 default null
-  ,p_component_name   in varchar2 default null
-  ,p_column_name      in varchar2 default null
-  ,p_item_name        in varchar2 default null
-  ,p_shared_comp_name in varchar2 default null
-  ,p_exception        in varchar2
-  ,p_current_value    in varchar2
-  ,p_eval_id          in number
+   p_rule_set_id            in number
+  ,p_rule_id                in number
+  ,p_workspace_id           in number
+  ,p_application_id         in number
+  ,p_page_id                in number   default null
+  ,p_component_id           in varchar2 default null
+  ,p_component_name         in varchar2 default null
+  ,p_column_name            in varchar2 default null
+  ,p_item_name              in varchar2 default null
+  ,p_shared_comp_name       in varchar2 default null
+  ,p_exception              in varchar2
+  ,p_current_value          in varchar2
+  ,p_eval_id                in number
+  ,p_exception_score        in number   default null
+  ,p_exception_score_reason in varchar2 default null
   )
 is
+  l_exception_id           number;
+  l_exception_score        number;
+  l_exception_score_reason varchar2(4000);
 begin
 
 insert into exceptions
@@ -307,7 +365,30 @@ values
   ,p_exception
   ,'PENDING'
   ,p_current_value
-  );
+  )
+returning
+  exception_id into l_exception_id;
+
+-- if exception_score is not provided, calculate it using AI
+if p_exception_score is null then
+
+  get_exception_score
+    (
+     p_rule_id                => p_rule_id
+    ,p_exception              => p_exception
+    ,p_exception_score        => l_exception_score
+    ,p_exception_score_reason => l_exception_score_reason
+    );
+
+end if;
+
+-- update the exception with the score and reason
+update exceptions set
+  exception_score = nvl(l_exception_score, p_exception_score)
+  ,exception_score_reason = nvl(l_exception_score_reason, p_exception_score_reason)
+where
+  exception_id = l_exception_id;
+
 
 -- calculate the scores
 -- eval_pkg.calc_score(p_eval_id => p_eval_id);
@@ -423,7 +504,7 @@ begin
   end if;
 
   if p_ignore_checksum = true then
-    log_pkg.log(p_log => 'p_ignore_checksum set to TRUE, component checksums will be ignored ', p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);  
+    log_pkg.log(p_log => 'p_ignore_checksum set to TRUE, component checksums will be ignored ', p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
   end if;
 
   for x in (select * from exceptions_from_json(p_exceptions => p_json_export_file))
@@ -448,6 +529,8 @@ begin
         || utl_i18n.unescape_reference(x.exception)
         || x.result
         || x.reason
+--        || x.exception_score
+--        || x.exception_score_reason
         || x.created_by
         || x.updated_by
         || x.actioned_by
@@ -570,6 +653,8 @@ begin
             ,result
             ,reason
             ,current_value
+            ,exception_score
+            ,exception_score_reason
             ,created_by
             ,created_on
             ,updated_by
@@ -593,6 +678,8 @@ begin
             ,x.result
             ,x.reason
             ,x.current_value
+            ,x.exception_score
+            ,x.exception_score_reason
             ,x.created_by
             ,to_timestamp_tz(x.created_on, 'YYYY-MM-DD"T"HH24:MI:SS.FF6TZH:TZM')
             ,x.updated_by
@@ -615,7 +702,9 @@ begin
             when dup_val_on_index then
               -- exception already exists, update status
               update exceptions
-              set result = x.result
+              set result = x.result,
+                  exception_score = x.exception_score,
+                  exception_score_reason = x.exception_score_reason              
               where rule_set_id = l_rule_set_id
               and rule_id = l_rule_id
               and workspace_id = l_workspace_id
@@ -624,7 +713,7 @@ begin
               and component_id = l_dest_component_id
               and nvl(column_name,'N/A') = nvl(x.column_name,'N/A')
               and nvl(item_name,'N/A') = nvl(x.item_name,'N/A');
-              
+
             -- increment the pass counter
             l_pass := l_pass + 1;
 
@@ -633,7 +722,7 @@ begin
 
             l_exception_import_status := 'SUCCESS';
             l_exception_import_message := NULL;
-              
+
               -- exception already exists, do not insert another one; increment the fail counter
               --log_pkg.log(p_log => 'fail:'||SQLERRM, p_log_key => l_log_key, p_log_type => 'EXCEPTION_IMPORT', p_application_id => l_application_id);
               --l_fail := l_fail + 1;
@@ -757,7 +846,7 @@ begin
   -- find the file that was just uploaded
   select blob_content into l_blob_content from apex_application_temp_files where name = p_name;
 
-  process_exceptions(p_json_export_file => l_blob_content, 
+  process_exceptions(p_json_export_file => l_blob_content,
                      p_eval_id => p_eval_id,
                      p_ignore_checksum => p_ignore_checksum);
 

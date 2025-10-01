@@ -27,6 +27,7 @@ select
   ,eval_by_long
   ,app_icon
   ,app_image
+  ,app_image2
   ,summary
   ,job_name
   ,job_status

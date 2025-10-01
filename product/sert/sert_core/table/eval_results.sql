@@ -46,10 +46,34 @@ alter table  sert_core.eval_results add
 /
 --rollback not required
 
+
+--changeset mipotter:eval_results_reset_eval_results_eval_id_idx endDelimiter:/ runOnChange:true runAlways:false stripComments:true
+--preconditions onFail:MARK_RAN onError:HALT
+--precondition-sql-check expectedResult:1 select count(1) from dba_indexes where owner not like 'SERT_CORE' and index_name = 'EVAL_RESULTS_EVAL_ID_IDX';
+declare
+  l_owner varchar2(255);
+  l_sql varchar2(255);
+begin
+  -- Lookup the current owner of the index, where it is NOT sert_core
+  select owner into l_owner
+  from dba_indexes
+  where index_name = 'EVAL_RESULTS_EVAL_ID_IDX'
+  and owner not like 'SERT_CORE';
+
+  -- Drop the index
+  l_sql := 'DROP INDEX ' || l_owner || '.EVAL_RESULTS_EVAL_ID_IDX';
+  execute immediate l_sql;
+
+exception when others then
+    raise;
+end;
+/
+--rollback not required
+
 --changeset mipotter:create_index_sert_core.eval_results_eval_results_eval_id_idx endDelimiter:; runOnChange:true runAlways:false rollbackEndDelimiter:; stripComments:false
 --preconditions onFail:MARK_RAN onError:HALT
 --precondition-sql-check expectedResult:0 select count(1) from dba_indexes where owner = 'SERT_CORE' and table_name = 'EVAL_RESULTS' and index_name = 'EVAL_RESULTS_EVAL_ID_IDX';
-create index eval_results_eval_id_idx on sert_core.eval_results (eval_id);
+create index sert_core.eval_results_eval_id_idx on sert_core.eval_results (eval_id);
 --rollback not required
 
 --changeset mipotter:create_index_sert_core.eval_results_eval_results_page_idx endDelimiter:; runOnChange:true runAlways:false rollbackEndDelimiter:; stripComments:false

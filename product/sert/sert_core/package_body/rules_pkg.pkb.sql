@@ -121,6 +121,7 @@ loop
       ,info
       ,fix
       ,time_to_fix
+      ,valid_exceptions
       ,description
       )
     values
@@ -154,6 +155,7 @@ loop
       ,x.info
       ,x.fix
       ,x.time_to_fix
+      ,x.valid_exceptions
       ,x.description
       );
 
@@ -201,6 +203,7 @@ loop
       info                  = x.info,
       fix                   = x.fix,
       time_to_fix           = x.time_to_fix,
+      valid_exceptions      = x.valid_exceptions,
       description           = x.description
     where rule_key = x.rule_key and apex_version = x.apex_version;
    -- rule not uploaded as a rule key with the same name exists
@@ -338,6 +341,7 @@ loop
     ,info
     ,fix
     ,time_to_fix
+    ,valid_exceptions
     ,description
   )
   values
@@ -371,6 +375,7 @@ loop
     ,x.info
     ,x.fix
     ,x.time_to_fix
+    ,x.valid_exceptions
     ,x.description
   )
   returning rule_id into p_rule_id;
@@ -450,6 +455,7 @@ loop
     ,info
     ,fix
     ,time_to_fix
+    ,valid_exceptions
     ,description
   )
   values
@@ -483,6 +489,7 @@ loop
     ,x.info
     ,x.fix
     ,x.time_to_fix
+    ,x.valid_exceptions
     ,x.description
   )
   returning rule_id into p_rule_id;
@@ -560,6 +567,7 @@ begin
       ,info
       ,fix
       ,time_to_fix
+      ,valid_exceptions
       ,description
       )
     select
@@ -592,6 +600,7 @@ begin
       ,info
       ,fix
       ,time_to_fix
+      ,valid_exceptions
       ,description
     from  rules r1
     where r1.apex_version = l_prev_apex_version
@@ -697,6 +706,8 @@ begin
         ,reason
         ,current_value
         ,component_name
+        ,exception_score
+        ,exception_score_reason
         ,created_on
         ,created_by
         ,updated_on
@@ -718,6 +729,8 @@ begin
         ,exception_rec.reason
         ,exception_rec.current_value
         ,exception_rec.component_name
+        ,exception_rec.exception_score
+        ,exception_rec.exception_score_reason
         ,exception_rec.created_on
         ,exception_rec.created_by
         ,exception_rec.updated_on

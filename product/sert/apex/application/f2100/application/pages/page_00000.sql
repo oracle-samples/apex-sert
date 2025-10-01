@@ -1,4 +1,4 @@
--- file_checksum: A05DD2174E686B708C71E1C68D0ED4AC66653AEB93CDA62D8583ECF7E1DB37E0
+-- file_checksum: 9073EAD09B23E35B44AAA89CD92E4DBF9992CB8D250E2EB22EC018775F48D16C
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -85,7 +85,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(511921980148949486)
-,p_plug_display_sequence=>50
+,p_plug_display_sequence=>2
 ,p_location=>null
 ,p_list_id=>wwv_flow_imp.id(136314465783723109)
 ,p_plug_source_type=>'NATIVE_LIST'
@@ -97,7 +97,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_name=>'Stale Exception'
 ,p_region_template_options=>'#DEFAULT#:t-Alert--horizontal:t-Alert--defaultIcons:t-Alert--danger'
 ,p_plug_template=>wwv_flow_imp.id(511915446136949475)
-,p_plug_display_sequence=>20
+,p_plug_display_sequence=>1
 ,p_location=>null
 ,p_plug_source=>'The value of this component has changed since an exception was added or approved.'
 ,p_plug_display_condition_type=>'EXISTS'
@@ -112,7 +112,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
 ,p_component_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(511999637997949547)
-,p_plug_display_sequence=>10
+,p_plug_display_sequence=>0
 ,p_plug_display_point=>'REGION_POSITION_01'
 ,p_location=>null
 ,p_menu_id=>wwv_flow_imp.id(511883866849949405)

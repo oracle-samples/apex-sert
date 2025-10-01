@@ -1,6 +1,14 @@
 set serveroutput on
+set define ^
+set serveroutput on size unlimited
+set sqlformat    default
+set termout      on
+set timing       off
+set verify       off
 
 declare
+  l_drop_ws   varchar2(128) := '^1';
+
   procedure drop_user(p_user in varchar2)
   as
     e_user_not_found exception;
@@ -46,6 +54,8 @@ declare
     -- apex_extension.remove_menu_entry(p_label => 'APEX SERT', p_workspace => 'SERT');
   exception when e_workspace_not_found then null;
   end remove_apex_workspace;
+  -- variable
+
 begin
 
   dbms_output.put_line('Clear changelog tables');
@@ -53,9 +63,13 @@ begin
   clear_lb_table(p_table => 'SERT_DATABASECHANGELOG_ACTIONS');
   clear_lb_table(p_table => 'SERT_DATABASECHANGELOGLOCK');
 
-  dbms_output.put_line('Drop APEX workspace');
-  remove_apex_workspace('SERT');
-  -- commit;
+  if ( lower(l_drop_ws) = 'y' ) then
+    dbms_output.put_line('Drop APEX-SERT workspace');
+    remove_apex_workspace('SERT');
+    commit;
+  else
+    dbms_output.put_line('preserve APEX-SERT workspace');
+  end if;
   dbms_output.put_line('Drop sert schemas');
   drop_user('sert_core');
   drop_user('sert_pub');

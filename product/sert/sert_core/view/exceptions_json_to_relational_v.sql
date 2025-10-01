@@ -20,6 +20,11 @@ select
     ,j.item_name
     ,j.shared_comp_name
     ,j.result
+    ,case
+        when j.result in ('PENDING') then 'warning'
+        when j.result in ('APPROVED') then 'success'
+        when j.result in ('REJECTED','STALE') then 'danger'
+        else 'info' end as result_color
     ,j.reason
     ,j.current_value
     ,j.created_by

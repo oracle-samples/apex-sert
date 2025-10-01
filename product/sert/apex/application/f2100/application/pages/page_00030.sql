@@ -1,4 +1,4 @@
--- file_checksum: 65C05A065F2F4381B5609A9D45CFACEE9750FF5848B62D6802AB36352DEFD979
+-- file_checksum: 219A628EF992B0A723FB8212230755BF8229C5C460125C398999B6B16DF70A3A
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -137,6 +137,9 @@ wwv_flow_imp_page.create_report_region(
 '       CREATED_BY,',
 '       RESULT,',
 '       REASON,',
+'       exception_score,',
+'       exception_score_reason,',
+'       exception_color,',
 '       ACTIONED_BY,',
 '       ACTIONED_ON,',
 '       EXCEPTION_ID,       ',
@@ -190,7 +193,7 @@ wwv_flow_imp_page.create_report_columns(
  p_id=>wwv_flow_imp.id(524318802598777936)
 ,p_query_column_id=>2
 ,p_column_alias=>'CREATED_ON'
-,p_column_display_sequence=>120
+,p_column_display_sequence=>50
 ,p_column_heading=>'Created On'
 ,p_heading_alignment=>'LEFT'
 ,p_derived_column=>'N'
@@ -200,7 +203,7 @@ wwv_flow_imp_page.create_report_columns(
  p_id=>wwv_flow_imp.id(524318877995777937)
 ,p_query_column_id=>3
 ,p_column_alias=>'CREATED_BY'
-,p_column_display_sequence=>130
+,p_column_display_sequence=>60
 ,p_column_heading=>'Created By'
 ,p_heading_alignment=>'LEFT'
 ,p_derived_column=>'N'
@@ -210,7 +213,7 @@ wwv_flow_imp_page.create_report_columns(
  p_id=>wwv_flow_imp.id(524436758939721452)
 ,p_query_column_id=>4
 ,p_column_alias=>'RESULT'
-,p_column_display_sequence=>140
+,p_column_display_sequence=>70
 ,p_column_heading=>'Result'
 ,p_heading_alignment=>'LEFT'
 ,p_derived_column=>'N'
@@ -220,17 +223,54 @@ wwv_flow_imp_page.create_report_columns(
  p_id=>wwv_flow_imp.id(524436856170721453)
 ,p_query_column_id=>5
 ,p_column_alias=>'REASON'
-,p_column_display_sequence=>150
+,p_column_display_sequence=>80
 ,p_column_heading=>'Reason'
 ,p_heading_alignment=>'LEFT'
 ,p_derived_column=>'N'
 ,p_include_in_export=>'Y'
 );
 wwv_flow_imp_page.create_report_columns(
- p_id=>wwv_flow_imp.id(524436986602721454)
+ p_id=>wwv_flow_imp.id(28718963048891504)
 ,p_query_column_id=>6
+,p_column_alias=>'EXCEPTION_SCORE'
+,p_column_display_sequence=>30
+,p_column_heading=>'Exception Score'
+,p_column_html_expression=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'{if EXCEPTION_SCORE/}',
+'  <span class="t-Badge t-Badge--#EXCEPTION_COLOR#" role="status" aria-label="#EXCEPTION_SCORE#" title="#EXCEPTION_SCORE#">',
+'     <span class="t-Badge-value">#EXCEPTION_SCORE#</span>',
+'  </span>',
+'{else/}',
+'  n/a',
+'{endif/}'))
+,p_column_alignment=>'RIGHT'
+,p_heading_alignment=>'RIGHT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_imp_page.create_report_columns(
+ p_id=>wwv_flow_imp.id(28719017273891505)
+,p_query_column_id=>7
+,p_column_alias=>'EXCEPTION_SCORE_REASON'
+,p_column_display_sequence=>40
+,p_column_heading=>'Exception Score Reason'
+,p_heading_alignment=>'LEFT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_imp_page.create_report_columns(
+ p_id=>wwv_flow_imp.id(28723535687891550)
+,p_query_column_id=>8
+,p_column_alias=>'EXCEPTION_COLOR'
+,p_column_display_sequence=>140
+,p_hidden_column=>'Y'
+,p_derived_column=>'N'
+);
+wwv_flow_imp_page.create_report_columns(
+ p_id=>wwv_flow_imp.id(524436986602721454)
+,p_query_column_id=>9
 ,p_column_alias=>'ACTIONED_BY'
-,p_column_display_sequence=>160
+,p_column_display_sequence=>90
 ,p_column_heading=>'Actioned By'
 ,p_heading_alignment=>'LEFT'
 ,p_derived_column=>'N'
@@ -238,9 +278,9 @@ wwv_flow_imp_page.create_report_columns(
 );
 wwv_flow_imp_page.create_report_columns(
  p_id=>wwv_flow_imp.id(524437131229721455)
-,p_query_column_id=>7
+,p_query_column_id=>10
 ,p_column_alias=>'ACTIONED_ON'
-,p_column_display_sequence=>170
+,p_column_display_sequence=>100
 ,p_column_heading=>'Actioned On'
 ,p_heading_alignment=>'LEFT'
 ,p_derived_column=>'N'
@@ -248,25 +288,25 @@ wwv_flow_imp_page.create_report_columns(
 );
 wwv_flow_imp_page.create_report_columns(
  p_id=>wwv_flow_imp.id(523686985247218575)
-,p_query_column_id=>8
+,p_query_column_id=>11
 ,p_column_alias=>'EXCEPTION_ID'
-,p_column_display_sequence=>180
+,p_column_display_sequence=>110
 ,p_hidden_column=>'Y'
 ,p_derived_column=>'N'
 );
 wwv_flow_imp_page.create_report_columns(
  p_id=>wwv_flow_imp.id(524318989809777938)
-,p_query_column_id=>9
+,p_query_column_id=>12
 ,p_column_alias=>'UPDATED_ON'
-,p_column_display_sequence=>190
+,p_column_display_sequence=>120
 ,p_hidden_column=>'Y'
 ,p_derived_column=>'N'
 );
 wwv_flow_imp_page.create_report_columns(
  p_id=>wwv_flow_imp.id(524319131601777939)
-,p_query_column_id=>10
+,p_query_column_id=>13
 ,p_column_alias=>'UPDATED_BY'
-,p_column_display_sequence=>200
+,p_column_display_sequence=>130
 ,p_hidden_column=>'Y'
 ,p_derived_column=>'N'
 );
@@ -1041,8 +1081,27 @@ wwv_flow_imp_shared.create_invokeapi_comp_param(
 ,p_value=>'P30_COMPONENT_NAME'
 );
 wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(524322444191777972)
+ p_id=>wwv_flow_imp.id(28718847346891503)
 ,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Evaluate Exception with AI'
+,p_process_sql_clob=>'null;'
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'if :REQUEST in (''SUBMIT_EXCEPTION'',''RESUBMIT_EXCEPTION'') and sert_core.reports_pkg.get_pref_value(p_pref_key => ''USE_AI'') = ''Y'' then',
+'  return true;',
+'else',
+'  return false;',
+'end if;'))
+,p_process_when_type=>'FUNCTION_BODY'
+,p_process_when2=>'PLSQL'
+,p_internal_uid=>28718847346891503
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(524322444191777972)
+,p_process_sequence=>30
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_INVOKE_API'
 ,p_process_name=>'Approve or Reject Exception'
@@ -1117,7 +1176,7 @@ wwv_flow_imp_shared.create_invokeapi_comp_param(
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(524321290800777961)
-,p_process_sequence=>30
+,p_process_sequence=>40
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'Close Dialog after Exception is Created'

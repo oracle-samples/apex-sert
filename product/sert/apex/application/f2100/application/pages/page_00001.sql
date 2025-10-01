@@ -1,4 +1,4 @@
--- file_checksum: 8C8F583842FBCDCBC5C5904ABB86EC7FC0FC54DEDAE1E6EB1C9B4515F77F1643
+-- file_checksum: 5EC7AF7CB8716D55F4F6A879898E16AFCB83FFE7B360C1377744DA23CC92F246
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
@@ -132,21 +132,14 @@ wwv_flow_imp_page.create_page_plug(
 '  ,null as actions',
 '  ,job_status',
 '  ,job_status_css ',
-'  ,case ',
-'    when app_icon is not null then ',
-'        ''r/'' || workspace || ''/'' || application_id || ''/files/static/v6/'' ||app_icon',
-'    else null',
-'   end as app_image2',
 '  ,app_image',
+'  ,app_image2',
 '  ,approved_score as score',
 '  ,score_css',
 '  ,exception_cnt',
 '  ,apex_version ',
 '  ,eval_on',
 '  ,rule_set_active_yn',
-'  ,case when rule_Set_active_yn = ''N'' then ''<span class="t-Badge t-Badge--warning t-Badge--sm" role="status" aria-label="INACTIVE rule-set" title="INACTIVE rule-set"> <span class="t-Badge-value">INACTIVE</span></span>'' ',
-'     else '''' ',
-'   end as rule_set_state',
 'from   ',
 '  evals_pub_v ep',
 ''))
@@ -179,7 +172,13 @@ wwv_flow_imp_page.create_page_plug(
     '<span class="t-Badge t-Badge--&JOB_STATUS_CSS. u-pullRight">',
     '     <span class="t-Badge-value">&JOB_STATUS.</span>',
     '</span>')),
-  'OVERLINE', '&RULE_SET. (&APEX_VERSION.) &RULE_SET_STATE!RAW.',
+  'OVERLINE', wwv_flow_string.join(wwv_flow_t_varchar2(
+    '&RULE_SET. (&APEX_VERSION.)',
+    '',
+    '{case RULE_SET_ACTIVE_YN/}',
+    '  {when N/}',
+    '  <span class="fa fa-warning u-danger-text"></span> Inactive',
+    '{endcase/}')),
   'REMOVE_PADDING', 'N',
   'TITLE', '&TITLE.')).to_clob
 );
@@ -203,18 +202,6 @@ wwv_flow_imp_page.create_region_column(
 ,p_data_type=>'VARCHAR2'
 ,p_session_state_data_type=>'VARCHAR2'
 ,p_display_sequence=>240
-,p_is_group=>false
-,p_use_as_row_header=>false
-,p_is_primary_key=>false
-);
-wwv_flow_imp_page.create_region_column(
- p_id=>wwv_flow_imp.id(94244343987095665)
-,p_name=>'RULE_SET_STATE'
-,p_source_type=>'DB_COLUMN'
-,p_source_expression=>'RULE_SET_STATE'
-,p_data_type=>'VARCHAR2'
-,p_session_state_data_type=>'VARCHAR2'
-,p_display_sequence=>250
 ,p_is_group=>false
 ,p_use_as_row_header=>false
 ,p_is_primary_key=>false
@@ -984,7 +971,7 @@ wwv_flow_imp_page.create_component_action(
 ,p_link_target=>'#'
 ,p_link_attributes=>'id="&EVAL_ID."'
 ,p_button_display_type=>'ICON'
-,p_icon_css_classes=>'fa-clock-o'
+,p_icon_css_classes=>'fa-database-play'
 ,p_action_css_classes=>'reEvaluationInBackground'
 ,p_is_hot=>false
 ,p_show_as_disabled=>false

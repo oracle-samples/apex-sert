@@ -5,7 +5,7 @@
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
 
---changeset mipotter:create_view_sert_core.exceptions_pub_v_1721804294778 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ 
+--changeset mipotter:create_view_sert_core.exceptions_pub_v_1721804294778 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
 create or replace force view sert_core.exceptions_pub_v
 as
 select
@@ -35,6 +35,10 @@ select
     as exception_key
   ,e.result
   ,e.reason
+  ,e.valid_exceptions
+  ,e.exception_score
+  ,e.exception_score_reason
+  ,e.exception_color
   ,e.created_on
   ,e.created_by
   ,e.updated_on

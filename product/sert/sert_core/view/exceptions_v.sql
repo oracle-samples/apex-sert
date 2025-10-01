@@ -5,7 +5,7 @@
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
 
---changeset mipotter:create_view_sert_core.exceptions_v_1721804304583 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ 
+--changeset mipotter:create_view_sert_core.exceptions_v_1721804304583 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
 create or replace force view sert_core.exceptions_v
 as
 select
@@ -14,6 +14,7 @@ select
   ,rs.rule_set_key
   ,e.rule_id
   ,r.rule_key
+  ,r.valid_exceptions
   ,rs.apex_version
   ,e.workspace_id
   ,e.application_id
@@ -33,6 +34,14 @@ select
   ,e.updated_by
   ,e.actioned_by
   ,e.actioned_on
+  ,e.exception_score
+  ,e.exception_score_reason
+  ,case
+     when e.exception_score in (1,2) then 'danger'
+     when e.exception_score = 3 then 'warning'
+     when e.exception_score in (4,5) then 'success'
+     else null end
+    as exception_color
   ,ora_hash
     (
     r.rule_key

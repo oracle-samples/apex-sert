@@ -15,28 +15,30 @@ select
     (
     json_object
       (
-       'ruleSetKey'         is rule_set_key
-      ,'ruleKey'            is rule_key
-      ,'apexVersion'        is apex_version
-      ,'exception'          is utl_i18n.escape_reference(exception)
-      ,'workspaceId'        is workspace_id
-      ,'applicationId'      is application_id
-      ,'pageId'             is page_id
-      ,'componentId'        is component_id
-      ,'columnName'         is column_name
-      ,'itemName'           is item_name
-      ,'sharedCompName'     is shared_comp_name
-      ,'result'             is result
-      ,'reason'             is reason
-      ,'currentValue'       is current_value
-      ,'createdBy'          is created_by
-      ,'createdOn'          is created_on
-      ,'updatedBy'          is updated_by
-      ,'updatedOn'          is updated_on
-      ,'actionedBy'         is actioned_by
-      ,'actionedOn'         is actioned_on
-      ,'componentName'      is component_name
-      ,'checksum'           is checksum
+       'ruleSetKey'           is rule_set_key
+      ,'ruleKey'              is rule_key
+      ,'apexVersion'          is apex_version
+      ,'exception'            is utl_i18n.escape_reference(exception)
+      ,'workspaceId'          is workspace_id
+      ,'applicationId'        is application_id
+      ,'pageId'               is page_id
+      ,'componentId'          is component_id
+      ,'columnName'           is column_name
+      ,'itemName'             is item_name
+      ,'sharedCompName'       is shared_comp_name
+      ,'result'               is result
+      ,'reason'               is reason
+      ,'exceptionScore'       is exception_score
+      ,'exceptionScoreReason' is exception_score_reason
+      ,'currentValue'         is current_value
+      ,'createdBy'            is created_by
+      ,'createdOn'            is created_on
+      ,'updatedBy'            is updated_by
+      ,'updatedOn'            is updated_on
+      ,'actionedBy'           is actioned_by
+      ,'actionedOn'           is actioned_on
+      ,'componentName'        is component_name
+      ,'checksum'             is checksum
       )
     format json returning clob
   ) as json_doc
