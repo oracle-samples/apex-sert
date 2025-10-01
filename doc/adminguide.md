@@ -1,165 +1,112 @@
-# APEX-SERT User Guide
+# APEX-SERT Administrator Guide
 
 ## 1. Overview
 
 APEX-SERT is an APEX application that evaluates a selected APEX application for security vulnerabilities. The selected application will be evaluated on many topics including: Authentication, Authorization, SQL Injection, Cross Site Scripting (XSS), URL Tampering and many more. After an evaluation is complete, the user will receive a score for their application and a dashboard to review and modify any security vulnerabilities (issues). Each point of risk is described and a suggested action available to make correcting any security risks quick and easy. APEX-SERT also allows a user to provide exceptions to any issues that may not necessarily be vulnerabilities. A user with the Approver role can then approve or reject the exception based on the provided input and the score can then be reevaluated.
 
-The APEX-SERT User Guide is provided as a reference for using APEX-SERT. It is intended for any APEX application developer, development manager and those with similar roles. This User Guide defines the different security terminology, attributes and attribute sets and categories used for the evaluation scores, and the different exceptions statuses used throughout APEX-SERT.
+The APEX-SERT Admin Application is used to configure your instance of APEX-SERT, manage users and roles, and perform other administrative tasks. It is designed to be used by the DBAs or Security or System Administrators/Managers; access to this application should not be given out to all developers, nor is it required to perform the core functions of APEX-SERT. Upon installation of APEX-SERT, the APEX-SERT Admin application uses APEX builder Authentication, so developers in the SERT workspace can access the application via the builder.
 
-This User Guide also covers the following processes that a user can do within APEX-SERT:
 
-[How to Run APEX-SERT](#2-running-apex-sert)
+For example: https://servername.com/apex/f?p=SERT_ADMIN
 
-[How to Run an Evaluation on an App](#33-evaluate-application)
+## TOC
 
-[Filtering Issues](#4-evaluation-dashboard)
+[Home Page](#2-home-page)
 
-[How to Download and Upload Exceptions](#4431-download-exceptions)
+## 2. Home Page
 
-[How to Edit/Fix an Issue directly in the builder](#431-smart-actions)
+The APEX-SERT admnistration homepage is a simple landing page that highlights some basic statistics on your SERT installation.
+It will show the number of Rulesets defined in your installation, the total number of rules that exist, and the total number of evaluations and exceptions in the system.
 
-[How to Create an Exception for the Issue](#431-smart-actions)
+from the homepage you can use the hamburger/mega menu to navigate the application.
 
-[How to Create Exceptions in bulk for a rule](#4433-bulk-exceptions)
+![homepage](./images/sert-admin-homepage.png)
 
-[How to Edit or Delete an Exception](#443-exceptions)
+text
 
-[How to Approve or Reject an Exception(s)](#4313-approvereject-exceptions)
+## 3. Setup
 
-[How to View an Issue's Details](#43-dashboard-smart-search)
+The Setup section of APEX-SERT Admin allows configuration of most parts of APEX_SERT.  in most cases, the only required areas to consider are some preference values, and the ability to purge stale versions.
 
-[How to Look up Information on How to fix the Issue Step by Step](#431-smart-actions)
+### 3.1 Preferences
 
-<!--
-How to Add a Note to an Issue
+| Preference | Preference Key | Description | Sample Value |
+|:---| :---: |  :---: | ---: |
+| APEX Office Print Server URL  | AOP_URL         |Set this value if AOP was enabled at install | `https://myserver.com` |
+| EMAIL FROM (sender)           | EMAIL_FROM      | email sender for automated emails via SERT | `noreply@myemail.com` |
+|High Score Value               |HIGH_SCORE_VALUE | minimum score for a "green" result | `95`|
+|Low Score Value                |LOW_SCORE_VALUE  | minimum score to avoid the red-zone |`70`|
+|Log Evaluations                |LOG_EVALUATIONS  | log all checks in evaluations (debugging) |`N`|
+|Log Imports                    |LOG_IMPORTS| Log Imports of Rules and exceptions|`Y`  |
+|Sert Help URL |	SERT_HELP_URL| provide a URL to access Oracle Help |	https://docs.oracle.com/en/database/oracle/apex/ |
+|AI Enabled| AI_ENABLED | enable AI functionality for SERT| N|Y|
+|AI Static ID|AI_STATIC_ID| static ID for a defined generative AI service in your app/workspace| open_ai|
+|AI Exception prompt|AI_EXCEPTION_PROMPT| a prompt to assess exception quality| (check your system for the default prompt)|
 
-How to Check for more information on the issue
--->
+## 4. Rules
+Rules are what APEX-SERT uses when evaluating an APEX application. each rule defines where and how APEX-SERT should look for a security vulnerability, and configures expected, valid values, Background on the finding and informatino on how to fix the finding
 
-Refer to the APEX-SERT Administration Guide for information on administrative tasks that can be performed throughout the APEX-SERT, APEX-SERT Admin, and APEX Maintenance applications.
+A rule is automatically stale if it relates to a version of APEX other than the currently installed version.
 
-### 1.1. Security - Why You Should Care
+**Only** rules for the currently installed major version can be *active*.
 
-Security is hard. If it’s not, then you’re probably not doing it right. And unfortunately, more and more companies of all sizes and demographics are failing to get security right. Whether it be a major game manufacturer or credit card issuer being hacked, or a federal employee with privileges to too much data handing documents over to WikiLeaks, the news is filled with examples of companies that should have, and you would expect would have known better having their security compromised in a very public way.
+It is possible to create custom rules for your own installation.
 
-This guide, along with APEX-SERT, will help you understand the potential security risks that may occur within an APEX application, how to identify them, and how to do your best to mitigate them.
+### Information
 
-NOTE : APEX-SERT focuses specifically on application level security. There are many other areas of security that should be addressed, including but not limited to: the application server, firewalls, database security, APEX instance level settings, etc.
+- **Rule Name:** descriptive name for the rule
+- **Rule Key:** `UNIQUE_RULE_KEY`
+- **Category:** Picklist of available categories
+- **Risk:** OWASP top 10 risk
+- **Impact:** area of APEX impacted by the rule
+- **APEX Version:** major version of APEX this rule is created for
+- **Time to Fix (hours):** *estimate*
+- **Severity:** Low / Medium / High
+- **Active:**  *switch*
 
-### 1.2. Security Terminology
+### Rule Details
 
-When talking about web security, there are many common terms of which you should have at least a basic understanding. Outlined in this section are the areas which web-based systems are potentially vulnerable.
+- **Rule Type:** APEX View / Custom Query
+- **View Name:** selected view is rule type is APEX View
+- **Custom Query** customised query if using Custom Query type. This has specific requirements for the select list, and should return one row per finding.
+- **View Comments:**
+  >description of the selected view
+- **Column to Evaluate:** *single select LOV of available columns*
+- **Component ID:** *column representing component_id*
+- **Component/Additional Name:** *(not specified)*
+- **Additional WHERE Clause:**  *restrict the query if needed*
+  ```sql
+   and page_id > 0
+  ```
+-
 
-#### 1.2.1. Authentication
+## 5. Jobs
 
-Authentication is the act of “logging in” to an application. Within APEX you can dictate which pages require a user to be logged-in to be able to view them. While this is a very basic level of security, the wrong setting on a page could potentially allow un-authenticated user to access data that they should not see.
+text
 
-#### 1.2.2. Authorization
+## 6. Logs
 
-Authorization is a layer below Authentication. Even though the user may be logged into the application, are they authorized to see the certain aspects of the application? Authorization schemes can be applied at various levels within APEX from the Page all the way down to individual items on a form or columns within a report, allowing you to restrict specific data on a page to only those who are authorized to see it.
+text
 
-#### 1.2.3. SQL Injection
+# 000 remove below here
 
-SQL Injection is a code injection technique that exploits a security vulnerability occurring in the database layer of an application. The vulnerability is present when user input is either incorrectly filtered for string literal escape characters embedded in SQL statements or user input is not strongly typed and thereby unexpectedly executed.
-
-Within APEX, SQL injection attacks can be introduced in one of 3 general ways:
-
-• Use of &ITEM. notation within a SQL statement
-• Calls to DBMS_SQL that could potentially make use of user input
-• Calls to EXECUTE IMMEDIATE that could potentially make use of user input
-
-In each of these circumstances, the possibility that user entered data might be used as part of the SQL Statement being executed is what introduces the risk. For example, suppose there is a a form online that allows a user to sign on with a username and password which ultimately executes this query:
 
 ```sql
   SELECT COUNT(*) FROM users
   WHERE username = '&USERNAME.'
     AND password = '&PASSWORD.'
 ```
-If the user were to enter this as their password: `i_dont_know' OR 'x' = 'x`
-
-
-The resulting SQL would be:
-
-```sql
-  SELECT COUNT(*) FROM users
-  WHERE  username = 'SCOTT'
-  AND    password = 'i_dont_know' OR 'x' = 'x'
-```
-
-This will erroneously return 1 rather than No Data Found and allow the user to log in. By using bind variables, this can be avoided:
-
-```sql
-  SELECT COUNT(*) FROM users
-  WHERE  username = :USERNAME
-  AND    password = :PASSWORD
-```
-
-
-Now, if you enter this as your password: `i_dont_know' OR 'x' = 'x`
-
-Unless that is specifically your password, the database will return No Data Found.
-
-Because of the potential risk, great care should be taken when using any of these methods inside of any SQL or PL/SQL executed by APEX.
-
-#### 1.2.4. Cross Site Scripting (XSS)
-
-Cross Site Scripting (XSS) is a type of computer security vulnerability typically found in web applications that enables attackers to inject client-side script (such as JavaScript) into web pages viewed buy others. XSS attacks may be used to bypass access control, expose cookie information, capture and send data to other sites, etc.
-
-An example of XSS within APEX would be a form where a user is allowed to enter free-form text and later that text is rendered back to the screen without being properly escaped. For instance if the user were to enter the following value in a COMMENT field:
-
-```javascript
-<script type=”text/javascript”>
- alert('Hello world');
-</script>
-```
-
-If the data were emitted unescaped into an APEX page, the javascript would actually be run. Therefore great care should be taken when displaying user input back to an APEX page.
-
-#### 1.2.5. URL Tampering
-
-URL Tampering is potentially the most dangerous and most likely form of security breach as it does not take any programming skills to initiate and it is not an attack that most developers are trained to protect against. Any curious or malicious user can access and manipulate the URL and, if proper security measures are not in place, may be able to access data that was not meant for them.
-
-Historically, APEX links have been coded to pass arguments un-checked on the URL as shown :
-
-   `http://server/apex/f?p=134:10:24612647691::NO::P10_ATTRIBUTE_ID:83`
-
-It would be very easy for a user to simply change the value being passed to P10_ATTRIBUTE_ID and potentially see something they may not be authorized to see.
-
-
-
-## 2. Running APEX-SERT
-
-To run APEX-SERT, select Launch APEX-SERT through the builder extension link
-
-1. Click the "Extensions" icon to the left of the Administration icon
-1. select SERT then Evaluations
 
 ![image of builder Extension menu APEX-SERT -> Evaluations](./images/sert-extension-75p.png)
 
-There is no need to re-enter your credentials; APEX-SERT will securely verify that you are authenticated as a workspace developer or administrator when you click on the Launch APEX-SERT link.
-
-APEX-SERT will open in a new browser tab:
-
-<!-- ![GIF image clicking on extension builder menu > Sert > Evaluations ](./images/launch-sert.gif) -->
+text
 
 <img src="./images/launch-sert.gif" alt="GIF of user launching SERT" width=50% height=50%>
 
-
-
-## 3. Home Page
-
-The APEX homepage is the starting point for all evaluations.
+text
 
 ![image of APEX-SERT homepage, showing the selection of Application and Ruleset with  run in background switch on and 2 recent scans in a report](./images/sert-apex-homepage.png)
 
-* APEX-SERT provides for a *single* evaluation of a given application & Rule Set combination at any one time.
-* Any developer can log into SERT and see, review, rescan, or work on the Evaluation
-* Application Evaluations become *stale* when the applciation has been modified since the last time the evaluation was executed
-* Evaluations can be executed in the background by enabling the Background switch, and clicking evaulate
-* Existing Evaluations can be repeated in the report by clicking the right side icons
-  * Triangle icon "Re-evaluate" to evaluate immediately
-  * Clock icon to "Re-Evaluate in Background"
-  * Trash icon to delete the Scan.
 
 > [!TIP]
 > Deleting an evaluation will also delete any associated Exceptions you have created.

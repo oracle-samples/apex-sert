@@ -1,5 +1,11 @@
 # Release Notes
 
+## 24.2.18
+
+* [GAT-469] - Implement AI support for scoring exception justifications
+* [GAT-476] - performance: sert_core.evals_pub_v is very poor when eval_results is large (100K+) #48
+* [GAT-475] - fix schema for eval_results_eval_id_idx
+
 ## 24.2.17
 
 * [GAT-466] - Rule "List Entry Does Not Contain &ITEM. Syntax" - wrong component_id #42
