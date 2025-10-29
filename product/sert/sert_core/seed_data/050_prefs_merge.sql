@@ -14,7 +14,7 @@ begin
             from dual
             union select 'Log Imports' as pref_name
             , 'LOG_IMPORTS' as pref_key
-            , 'Y' as pref_value
+            , 'N' as pref_value
             from dual
             union select 'Low Score Value' as pref_name
             , 'LOW_SCORE_VALUE' as pref_key
@@ -34,6 +34,10 @@ begin
             , '${sert_email_from}' as pref_value
             from dual
             where '${sert_email_from}' is not null
+            -- union select 'EVALUALATION HISTORY' as pref_name
+            -- , 'EVAL_HISTORY' as pref_key
+            -- , 'N' as pref_value
+            -- from dual
     ) src
     on ( src.pref_key = dst.pref_key)
       when matched then
@@ -43,4 +47,25 @@ begin
         values (src.pref_name,src.pref_key,src.pref_value);
 end;
 /
+--rollback not required
+
+--changeset mipotter:050_prefs_merge_log_eval_history endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ stripComments:false
+begin
+        sert_core.prefs_api.upsert_pref(
+            p_pref_name   => 'Log Evaluation History',
+            p_pref_key    => 'LOG_EVAL_HISTORY',
+            p_pref_value  => 'N',
+            p_internal_yn => 'N');
+end;
+/
+--changeset mipotter:050_prefs_merge_log_eval_result_history endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ stripComments:false
+begin
+        sert_core.prefs_api.upsert_pref(
+            p_pref_name   => 'Log Eval Result History',
+            p_pref_key    => 'LOG_EVAL_RESULT_HISTORY',
+            p_pref_value  => 'N',
+            p_internal_yn => 'N');
+end;
+/
+
 --rollback not required
