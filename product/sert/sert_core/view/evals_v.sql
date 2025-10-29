@@ -6,10 +6,13 @@
 --------------------------------------------------------------------------------
 
 --changeset mipotter:create_view_sert_core.evals_v_1721804243664 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
-create or replace force view sert_core.evals_v
-as
+-- View: sert_core.evals_v
+-- Purpose: overview of evaluation runs with application/workspace details and rule set metadata for dashboards and filtering.
+-- Method: joins evals to apex_applications and rule_sets; left-joins apex_workspaces via old-style outer join on workspace_id.
+
+create or replace force view sert_core.evals_v as
 select
-   e.eval_id
+  e.eval_id
   ,e.workspace_id
   ,a.workspace
   ,w.path_prefix
@@ -19,7 +22,7 @@ select
   ,e.rule_set_id
   ,rs.rule_set_name
   ,rs.rule_set_key
-  ,rs.active_yn rule_set_active_yn
+  ,rs.active_yn as rule_set_active_yn
   ,e.eval_on
   ,e.eval_on_date
   ,e.eval_by
@@ -35,7 +38,7 @@ select
   ,e.updated_by
   ,e.updated_on
 from
-   evals e
+  evals e
   ,apex_applications a
   ,apex_workspaces w
   ,rule_sets rs

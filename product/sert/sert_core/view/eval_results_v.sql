@@ -6,8 +6,11 @@
 --------------------------------------------------------------------------------
 
 --changeset mipotter:create_view_sert_core.eval_results_v_1721804236611 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
-create or replace force view sert_core.eval_results_v
-as
+-- View: sert_core.eval_results_v
+-- Purpose: consolidate evaluation results with derived status, aggregated reasons, and comment/exception counts for consumption by UI/public views.
+-- Method: ctes supply comment counts and exception details; json_table extracts reasons/result from er.result JSON; left-join counts by eval_result_id; listagg reasons; prefer exception result over PASS, truncate current_value via dbms_lob.substr.
+
+create or replace force view sert_core.eval_results_v as
 with
   comment_cnt   as (select * from comment_cnt_v)
  ,exception_cnt as (select result as result2, cnt, current_value, eval_result_id from exception_cnt_v)

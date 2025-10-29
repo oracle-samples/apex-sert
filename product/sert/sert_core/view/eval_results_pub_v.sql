@@ -6,8 +6,11 @@
 --------------------------------------------------------------------------------
 
 --changeset mipotter:create_view_sert_core.eval_results_pub_v_1721804342058 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
-create or replace force view sert_core.eval_results_pub_v
-as
+-- View: sert_core.eval_results_pub_v
+-- Purpose: public-facing evaluation results with rule metadata and display-friendly fields for UI consumption.
+-- Method: join eval_results_v to rules_pub_v; derive description, page labels, severity, result_color, and a link-safe risk via apex_escape.html; substitute rule_criteria_type_name when valid_values = 'Criteria'.
+
+create or replace force view sert_core.eval_results_pub_v as
 select
    er.eval_result_id
   ,er.eval_id
@@ -17,9 +20,13 @@ select
   ,er.workspace_id
   ,er.application_id
   ,er.page_id
+  --  page (id: name when page scoped), page_name ('Shared Component' when page_id is null),
   ,case when er.page_id is not null then er.page_id || ': ' || er.page_name else null end as page
   ,case when er.page_id is null then 'Shared Component' else er.page_name end as page_name
+  --  full_page_name ('id - name' or 'Shared Component')
   ,case when er.page_id is not null then er.page_id || ' - ' || er.page_name else 'Shared Component' end as full_page_name
+  --  description - composite path: shared component (type/name) then page id:name, region_name, component_name,
+  --                column_name, and item_name (prefixed by region when present), with ' / ' separators
   ,case when r.impact = 'SC' then shared_comp_type || case when shared_comp_type is not null then ' / ' else null end || shared_comp_name else null end
     || case when er.page_id is not null then er.page_id || ': '  || er.page_name else null end
     || case when er.region_name       is not null then ' / ' || er.region_name else null end

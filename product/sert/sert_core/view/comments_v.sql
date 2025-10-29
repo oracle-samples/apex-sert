@@ -5,11 +5,14 @@
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
 
---changeset mipotter:create_view_sert_core.comments_v_1721804353244 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ 
-create or replace force view sert_core.comments_v
-as
+--changeset mipotter:create_view_sert_core.comments_v_1721804353244 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
+-- View: sert_core.comments_v
+-- Purpose: expose raw comment records for downstream joins and aggregations (e.g., counts by eval_result).
+-- Method: simple projection of all columns from comments; no filtering or transformation.
+
+create or replace force view sert_core.comments_v as
 select
-   c.comment_id
+  c.comment_id
   ,c.rule_set_id
   ,c.rule_id
   ,c.workspace_id

@@ -6,10 +6,13 @@
 --------------------------------------------------------------------------------
 
 --changeset mipotter:create_view_sert_core.comments_pub_v_1721804356169 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
-create or replace force view sert_core.comments_pub_v
-as
+-- View: sert_core.comments_pub_v
+-- Purpose: public-safe projection of comments limited to the current workspace; escapes comment text for HTML display.
+-- Method: selects from comments_v, applies apex_escape.html to comments, and filters by workspace_id = nv('G_WORKSPACE_ID').
+
+create or replace force view sert_core.comments_pub_v as
 select
-   c.comment_id
+  c.comment_id
   ,apex_escape.html(c.comments) as comments
   ,c.rule_set_id
   ,c.rule_id

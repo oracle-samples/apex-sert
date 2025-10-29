@@ -6,10 +6,13 @@
 --------------------------------------------------------------------------------
 
 --changeset mipotter:create_view_sert_core.apex_version_pub_v_1721804378393 endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
-create or replace force view sert_core.apex_version_pub_v
-as
+-- View: sert_core.apex_version_pub_v
+-- Purpose: surface APEX version numbers for external consumers; mirrors apex_version_v for grantable/public use.
+-- Method: simple projection of three columns from apex_version_v; no filtering or transformation.
+
+create or replace force view sert_core.apex_version_pub_v as
 select
-   apex_version
+  apex_version
   ,apex_version_item
   ,sert_apex_version
 from
