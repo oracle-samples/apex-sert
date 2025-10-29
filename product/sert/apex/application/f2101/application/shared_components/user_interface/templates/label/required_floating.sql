@@ -1,9 +1,9 @@
--- file_checksum: 7F2B2B4B6B908A90AC0C01FC8F367EABBFF67C13334DC821B3B65AE8281A1C0D
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+-- file_checksum: D1FF37862C0C6C03169BC119F57CB6B674C2D62DEA7DB4B7BF9A48448283212C
 prompt --application/shared_components/user_interface/templates/label/required_floating
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.6'
+,p_release=>'24.2.9'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

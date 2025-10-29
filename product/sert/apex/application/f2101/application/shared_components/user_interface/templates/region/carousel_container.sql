@@ -1,9 +1,9 @@
--- file_checksum: C44C4B4C2DC4951094CD99DA6CBF1A7976046178BDA90A363642B88F387B8725
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+-- file_checksum: 809D9FFFA2E9554A543C4940A650197F4FF719838455D89A9C0BA96643C8FD8F
 prompt --application/shared_components/user_interface/templates/region/carousel_container
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.6'
+,p_release=>'24.2.9'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
