@@ -8,7 +8,18 @@
 --changeset mipotter:create_package_body_sert_core.sert_util stripComments:false endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
 create or replace package body sert_core.sert_util
 as
-
+----------------------------------------------------------------------------------------------------------------------------
+  -- set_build_option (by application_id)
+  -- purpose: set the status of an APEX build option in the given application by numeric id.
+  -- behavior: looks up build_option_id in apex_application_build_options and calls
+  --   apex_application_admin.set_build_option_status with the resolved id and target status.
+  -- parameters:
+  --   p_application_id      - apex internal application id
+  --   p_build_option_name   - build option name as defined in the application
+  --   p_build_status        - target status; defaults to apex_application_admin.c_build_option_status_include
+  -- notes: raises any exception (e.g. option not found). requires privileges to call apex_application_admin
+  --   and session context that can access the target application's workspace.
+----------------------------------------------------------------------------------------------------------------------------
   procedure set_build_option(
     p_application_id    in number,
     p_build_option_name in varchar2,
@@ -35,14 +46,18 @@ as
     raise;
   end set_build_option;
 ----------------------------------------------------------------------------------------------------------------------------
--- PROCEDURE: S E T _ B U I L D _ O P T I O N
--- signature 2
+  -- set_build_option (by workspace and alias)
+  -- purpose: convenience overload to set a build option by APEX workspace name and application alias.
+  -- behavior: resolves workspace id and sets session context via apex_util.set_security_group_id, queries
+  --   apex_applications to find application_id for the alias in that workspace, then delegates to the
+  --   application_id overload.
+  -- parameters:
+  --   p_workspace           - apex workspace name
+  --   p_application_alias   - apex application alias
+  --   p_build_option_name   - build option name as defined in the application
+  --   p_build_status        - target status; defaults to apex_application_admin.c_build_option_status_include
+  -- notes: sets the session's security group id; caller is responsible for broader context management.
 ----------------------------------------------------------------------------------------------------------------------------
--- set build status, default is INCLUDE, options are
--- apex_application_admin.c_build_option_status_include
--- apex_application_admin.c_build_option_status_exclude
-----------------------------------------------------------------------------------------------------------------------------
-
   procedure set_build_option(
     p_workspace      in varchar2,
     p_application_alias in varchar2,
@@ -70,14 +85,17 @@ as
       p_build_status => p_build_status );
 
   end set_build_option;
-
-----------------------------------------------------------------------------------------------------------------------------
--- FUNCTION: m a t c h _ s t r i n g.
-----------------------------------------------------------------------------------------------------------------------------
--- strips whitespace, and compares if string 1 matches string 2
--- is string 1 is SHORTER than string 2, match up to length of string 1
--- returns TRUE if matched
-----------------------------------------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------------------------------------
+  -- match_string
+  -- purpose: compare two strings for equality after removing all whitespace. if p_string1 is shorter than p_string2,
+  --   compare only the first length(p_string1) characters of p_string2 (prefix match).
+  -- behavior: uses regexp_replace to strip whitespace; treats both nulls as equal; otherwise requires exact match
+  --   after the optional prefix truncation.
+  -- parameters:
+  --   p_string1, p_string2  - strings to compare
+  -- returns: boolean - true if matched, false otherwise
+  -- edge cases: nulls considered equal; empty p_string1 matches when stripped p_string2 is also empty.
+  ----------------------------------------------------------------------------------------------------------------------------
   function match_string (
     p_string1 in varchar2,
     p_string2 in varchar2
@@ -90,19 +108,19 @@ as
     l_string2 := REGEXP_REPLACE(p_string2, '[[:space:]]', '');
     if length(l_string1) <= length(l_string2) then
       l_string2 := substr(l_string2,1,length(l_string1));
-    -- else
-    --   l_string1 := substr(l_string1,1,length(l_string2));
-    end if;
-    -- return (coalesce(l_string1,'N/A') = coalesce(l_string2,'N/A');
+    end if; -- if length(l_string1) <= length(l_string2)
+
     return ( l_string1 = l_string2 or (l_string1 is null and l_string2 is null) );
   end match_string;
 
-----------------------------------------------------------------------------------------------------------------------------
--- m a t c h _ s t r i n g _ y n
--- returns Y is strings match excluding whitespace
--- is string 1 is SHORTER than string 2, match up to length of string 1
--- returns N otherwise
-----------------------------------------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------------------------------------
+  -- match_string_yn
+  -- purpose: varchar2 wrapper over match_string, returning 'Y' when strings match under the same rules,
+  --   otherwise 'N'. useful for SQL contexts and simple flag semantics.
+  -- parameters:
+  --   p_string1, p_string2  - strings to compare
+  -- returns: 'Y' or 'N'
+  ----------------------------------------------------------------------------------------------------------------------------
   function match_string_yn (
     p_string1 in varchar2,
     p_string2 in varchar2
@@ -113,7 +131,8 @@ as
       return 'Y';
     else
       return 'N';
-    end if;
+    end if; -- if match_string(p_string1,p_string2)
+
   end match_string_yn;
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------

@@ -1,14 +1,14 @@
--- file_checksum: E232512975D39AC5416341C0FC9BE9128E100BFD011E5E9BDD3E4BF309B262AA
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+-- file_checksum: 5AF4AB8F15EF9DAF8AEC4A5AD5B54D0E102676E6B2DEE0A6ACFF5CE4AF9B3EB2
 prompt --application/plugin_settings
 begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.6'
+,p_release=>'24.2.9'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

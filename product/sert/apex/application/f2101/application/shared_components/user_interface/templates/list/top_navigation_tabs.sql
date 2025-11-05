@@ -1,9 +1,9 @@
--- file_checksum: 9B697280D6C07577B29E1A5058A471409D858133FF59B5B1D3391769377F21BF
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+-- file_checksum: 17AEE6F6797AE1A71596F35D42DB5EE71FE5F26BB75750AD431D2593D735D0FD
 prompt --application/shared_components/user_interface/templates/list/top_navigation_tabs
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.6'
+,p_release=>'24.2.9'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

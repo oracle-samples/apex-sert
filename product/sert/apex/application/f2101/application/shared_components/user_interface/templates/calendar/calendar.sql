@@ -1,9 +1,9 @@
--- file_checksum: 74A4E3ADA611DA9747089E05ADCC5F19F20094D3DADB3938A397D706452878A9
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+-- file_checksum: 6553E59B81318AA147BF200C2F7C99E557C0D010C83EDAE3B0D648C1F600F584
 prompt --application/shared_components/user_interface/templates/calendar/calendar
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.6'
+,p_release=>'24.2.9'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

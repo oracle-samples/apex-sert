@@ -1,5 +1,13 @@
 # Release Notes
 
+## 24.2.19
+* [GAT-473] - have exception json download files use predictable names (no timestamp)
+* [GAT-477] - ORA-40478: output value too large (maximum: 4000) on download exceptions
+* [GAT-478] - Add a preference to enable/disable eval_history logging
+* [GAT-479] - APEX 25.1 rule preparation
+* [GAT-481] - Page Item Encryption - do not flag native image and start/stop html table region types
+* [GAT-482] - Maximum Row Count, Max Rows to Query - Classic Report, set consistent value of 1000
+
 ## 24.2.18
 
 * [GAT-469] - Implement AI support for scoring exception justifications

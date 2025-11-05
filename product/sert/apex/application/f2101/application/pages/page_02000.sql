@@ -1,9 +1,9 @@
--- file_checksum: 6E042DA1DF4200DAD8994427C5B69BE1C78CF61CC52ADF5526D822B90EBE3E83
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+-- file_checksum: 5F3032AA24207AEC6C26E45096C0333F5F30547B58DD1B59C8D29314BE35B8B5
 prompt --application/pages/page_02000
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.6'
+,p_release=>'24.2.9'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
@@ -531,7 +531,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(21763784031841204)
 ,p_name=>'P2000_RULE_NAME'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>60
+,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(434517064655835277)
 ,p_prompt=>'Rule'
 ,p_source=>'RULE_NAME'
@@ -544,6 +544,28 @@ wwv_flow_imp_page.create_page_item(
 ,p_fc_show_counts=>true
 ,p_fc_zero_count_entries=>'H'
 ,p_fc_filter_values=>true
+,p_fc_sort_by_top_counts=>true
+,p_fc_show_selected_first=>false
+,p_fc_show_chart=>false
+,p_suggestions_type=>'DYNAMIC'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(48160896984585101)
+,p_name=>'P2000_APEX_VERSION'
+,p_source_data_type=>'VARCHAR2'
+,p_item_sequence=>60
+,p_item_plug_id=>wwv_flow_imp.id(434517064655835277)
+,p_prompt=>'Apex Version'
+,p_source=>'APEX_VERSION'
+,p_source_type=>'FACET_COLUMN'
+,p_display_as=>'NATIVE_CHECKBOX'
+,p_lov_sort_direction=>'ASC'
+,p_item_template_options=>'#DEFAULT#'
+,p_fc_show_label=>true
+,p_fc_compute_counts=>true
+,p_fc_show_counts=>true
+,p_fc_zero_count_entries=>'H'
+,p_fc_filter_values=>false
 ,p_fc_sort_by_top_counts=>true
 ,p_fc_show_selected_first=>false
 ,p_fc_show_chart=>false
@@ -636,7 +658,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(354104238230418959)
 ,p_name=>'P2000_ACTIVE_VALUE'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>50
+,p_item_sequence=>70
 ,p_item_plug_id=>wwv_flow_imp.id(434517064655835277)
 ,p_prompt=>'Status'
 ,p_source=>'ACTIVE_VALUE'

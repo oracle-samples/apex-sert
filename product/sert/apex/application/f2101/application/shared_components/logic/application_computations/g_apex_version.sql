@@ -1,9 +1,9 @@
--- file_checksum: 73C2DBC85673A9A76E72E43845C9D0249870BA2ECDF10A86EC747F962AE0C105
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+-- file_checksum: 569FED3D177E15ABBDF071FD5840BD37F891075ED56DDE7DD6D1DDFFBCA53556
 prompt --application/shared_components/logic/application_computations/g_apex_version
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.6'
+,p_release=>'24.2.9'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

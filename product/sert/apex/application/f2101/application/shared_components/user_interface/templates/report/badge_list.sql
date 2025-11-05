@@ -1,9 +1,9 @@
--- file_checksum: 2CAB1996B031D6B0EA2E118FB02E28BBB0B150CAF8FF746E8AF12E15919D5C2C
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+-- file_checksum: BBB1A04006FA1B290B1220E4B66D559F31534A4CE579AA0F6259C490CD8E9EB1
 prompt --application/shared_components/user_interface/templates/report/badge_list
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.6'
+,p_release=>'24.2.9'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
