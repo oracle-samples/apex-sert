@@ -24,9 +24,8 @@ create or replace package body sert_core.eval_pkg as
 -- returns: number
 ----------------------------------------------------------------------------------------------------------------------------
 
-  function count_binds (
-    p_sql in clob
-  )
+  function count_binds(
+    p_sql in clob )
     return number
   is
   begin
@@ -45,9 +44,8 @@ create or replace package body sert_core.eval_pkg as
 --   p_range_key - varchar2
 -- returns: number
 ----------------------------------------------------------------------------------------------------------------------------
-  function get_score_range (
-    p_range_key in varchar2
-  )
+  function get_score_range(
+    p_range_key in varchar2 )
     return number
   is
   begin
@@ -75,54 +73,74 @@ create or replace package body sert_core.eval_pkg as
 -- purpose: compute evaluation scores (overall, pending, approved) for a given eval_id.
 -- behavior: if no results exist in eval_results_v then sets all scores to 100; otherwise computes percentage metrics over
 --   PASS, PASS|PENDING, PASS|APPROVED, rounding to whole numbers; updates evals for p_eval_id.
+--  Derives effective_result per eval_results row: if JSON result is PASS then PASS; else override with exception.
+--  result when an exception exists; otherwise use JSON result.
+--  Computes denom and conditional counts in one pass; returns percentages with denom=0 -> 100.
+
+-- Note: Uses only base tables and json_value(), avoiding eval_results_v/exception_cnt_v.
+
 -- parameters:
 --   p_eval_id - number
 ----------------------------------------------------------------------------------------------------------------------------
-  procedure calc_score (
-    p_eval_id in number
-  ) is
-    l_denominator number;
+  procedure calc_score(
+    p_eval_id in number )
+  is
+    l_score           evals.score%type;
+    l_pending_score   evals.pending_score%type;
+    l_approved_score  evals.approved_score%type;
   begin
-    select count(*)
-      into l_denominator
-      from eval_results_v
-     where eval_id = p_eval_id;
 
-    if l_denominator = 0 then
+    with eff as
+      (
+        select
+          case
+            when json_value(er.result, '$.result' returning varchar2(20)) = 'PASS'
+              then 'PASS'
+            else nvl(ex.result, json_value(er.result, '$.result' returning varchar2(20)))
+          end as effective_result
+        from
+          sert_core.eval_results er
+          left join sert_core.evals e on  er.eval_id = e.eval_id
+          left join sert_core.exceptions ex
+            on     ex.rule_set_id    = e.rule_set_id
+              and ex.workspace_id   = e.workspace_id
+              and ex.application_id = e.application_id
+              and ex.rule_id        = er.rule_id
+              and nvl(ex.page_id,          -1   ) = nvl(er.page_id,          -1   )
+              and nvl(ex.component_id,     'N/A') = nvl(er.component_id,     'N/A')
+              and nvl(ex.column_name,      'N/A') = nvl(er.column_name,      'N/A')
+              and nvl(ex.item_name,        'N/A') = nvl(er.item_name,        'N/A')
+              and nvl(ex.shared_comp_name, 'N/A') = nvl(er.shared_comp_name, 'N/A')
+        where
+          e.eval_id = p_eval_id
+      )
+    select
+      round((case when denom = 0 then 1 else pass_cnt / denom end) * 100) as score,
+      round((case when denom = 0 then 1 else pass_or_pending_cnt / denom end) * 100) as pending_score,
+      round((case when denom = 0 then 1 else pass_or_approved_cnt / denom end) * 100) as approved_score
+    into
+      l_score,
+      l_pending_score,
+      l_approved_score
+    from
+      (
+        select
+          count(*)                                                   as denom,
+          sum(case when effective_result = 'PASS' then 1 else 0 end) as pass_cnt,
+          sum(case when effective_result in ('PASS','PENDING') then 1 else 0 end)
+                                                                      as pass_or_pending_cnt,
+          sum(case when effective_result in ('PASS','APPROVED') then 1 else 0 end)
+                                                                      as pass_or_approved_cnt
+        from
+          eff
+      );
 
-      update evals
-         set score          = 100,
-             pending_score  = 100,
-             approved_score = 100
-       where eval_id = p_eval_id;
-
-    else
-
-      update evals
-         set score =
-               round(
-                 (select count(*)
-                    from eval_results_v
-                   where eval_id = p_eval_id
-                     and result = 'PASS') / l_denominator * 100
-               ),
-             pending_score =
-               round(
-                 (select count(*)
-                    from eval_results_v
-                   where eval_id = p_eval_id
-                     and result in ('PASS','PENDING')) / l_denominator * 100
-               ),
-             approved_score =
-               round(
-                 (select count(*)
-                    from eval_results_v
-                   where eval_id = p_eval_id
-                     and result in ('PASS','APPROVED')) / l_denominator * 100
-               )
-       where eval_id = p_eval_id;
-
-    end if; -- l_denominator = 0
+    update evals e
+       set score          = l_score,
+           pending_score  = l_pending_score,
+           approved_score = l_approved_score
+     where
+       e.eval_id = p_eval_id;
   end calc_score;
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -142,12 +160,12 @@ create or replace package body sert_core.eval_pkg as
 --   p_application_id         - number used for logging
 -- returns: varchar2 JSON
 ----------------------------------------------------------------------------------------------------------------------------
-  function eval_criteria (
+  function eval_criteria(
     p_column_to_evaluate     in clob,
     p_return_details         in varchar2 default 'Y',
     p_rule_criteria_type_key in varchar2,
-    p_application_id         in number
-  ) return varchar2
+    p_application_id         in number )
+    return varchar2
   is
     l_return                 varchar2(100)    := 'PASS';
     l_source                 varchar2(32765)  := upper(p_column_to_evaluate);
@@ -259,12 +277,12 @@ create or replace package body sert_core.eval_pkg as
 --   p_eval_id        - number (target evaluation)
 --   p_rule_set_id    - number
 ----------------------------------------------------------------------------------------------------------------------------
-  procedure process_rules (
+  procedure process_rules(
     p_application_id in number,
     p_page_id        in number default null,
     p_eval_id        in number,
-    p_rule_set_id    in number
-  ) is
+    p_rule_set_id    in number )
+  is
     cursor c_rules is
       select r.*
         from rules r,
@@ -734,15 +752,15 @@ create or replace package body sert_core.eval_pkg as
 --   p_application_id, p_page_id, p_eval_id, p_rule_set_key, p_eval_by, p_run_in_background, p_eval_id_out
 -- notes: updates evals.job_status and timestamps; logs errors and marks FAILED on exception.
 ----------------------------------------------------------------------------------------------------------------------------
-  procedure eval (
+  procedure eval(
     p_application_id    in number,
     p_page_id           in number   default null,
     p_eval_id           in number   default null,
     p_rule_set_key      in varchar2 default 'INTERNAL',
     p_eval_by           in varchar2 default coalesce(sys_context('APEX$SESSION','APP_USER'), user),
     p_run_in_background in varchar2 default 'Y',
-    p_eval_id_out       out number
-  ) is
+    p_eval_id_out       out number )
+  is
     l_rule_set_id  rule_sets.rule_set_id%type;
     l_eval_id      evals.eval_id%type;
     l_workspace_id number;
@@ -881,10 +899,10 @@ create or replace package body sert_core.eval_pkg as
 --   p_eval_id - number
 --   p_delete_comments - 'Y'/'N' (default 'Y')
 ----------------------------------------------------------------------------------------------------------------------------
-  procedure delete_eval (
-    p_eval_id        in number,
-    p_delete_comments in varchar2 default 'Y'
-  ) is
+  procedure delete_eval(
+    p_eval_id         in number,
+    p_delete_comments in varchar2 default 'Y' )
+  is
   begin
     -- delete all comments and exceptions, if selected
     if p_delete_comments = 'Y' then
@@ -922,10 +940,9 @@ create or replace package body sert_core.eval_pkg as
 --   p_builder_session_id  - number (APEX builder session)
 -- returns: varchar2 link attribute string
 ----------------------------------------------------------------------------------------------------------------------------
-  function apex_link (
+  function apex_link(
     p_eval_result_id     in number,
-    p_builder_session_id in number
-  )
+    p_builder_session_id in number )
     return varchar2
   is
     l_data_link varchar2(1000);
