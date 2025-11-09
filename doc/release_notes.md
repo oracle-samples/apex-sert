@@ -1,10 +1,26 @@
 # Release Notes
 
+## 24.2.20
+
+* [GAT-485] - Button AuthZ Inconsistency cater for using page AuthZ when no AuthZ on button
+* [GAT-486] - Interactive Report Column AuthZ Inconsistency support pages AuthZ when column has not authZ
+* [GAT-487] - List Entry AuthZ Inconsistency cater for must_no_be_public_user and none for target page
+* [GAT-488] - Interactive Grid Column AuthZ Inconsistency: support page level AuthZ
+* [GAT-489] - Classic Report Column AuthZ Inconsistency:: support page level AuthZ
+* [GAT-490] - Interactive Report Link AuthZ Inconsistency: support page level AuthZ
+* [GAT-491] - improve performance of bulk exceptions LOV
+* [GAT-492] - EVAL_RESULTS_V fails when column current_value is too long, even when using substr
+* [GAT-493] - improve performance of bulk exceptions
+* [GAT-494] - improve performance of calc_score
+* [GAT-496] - Application 2101:2010: View Comments item shows view comments from all installed APEX versions, should show only latest
+* [GAT-497] - SQLi incorrect &ITEM. syntax regular expression causes too many false positives
+
 ## 24.2.19
-* [GAT-473] - have exception json download files use predictable names (no timestamp)
-* [GAT-477] - ORA-40478: output value too large (maximum: 4000) on download exceptions
-* [GAT-478] - Add a preference to enable/disable eval_history logging
+
 * [GAT-479] - APEX 25.1 rule preparation
+* [GAT-473] - have exception json download files use predictable names (no timestamp)
+* [GAT-478] - Add a preference to enable/disable eval_history logging
+* [GAT-477] - ORA-40478: output value too large (maximum: 4000) on download exceptions
 * [GAT-481] - Page Item Encryption - do not flag native image and start/stop html table region types
 * [GAT-482] - Maximum Row Count, Max Rows to Query - Classic Report, set consistent value of 1000
 
