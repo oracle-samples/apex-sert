@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: B0E22237A58005AFE2EB198F3221F57E6287107FA8B1FC88CECE7A0ABA0CDD9F
+-- file_checksum: DC313B2D4335D6805174EA94F2C5F5523A26CC1CD29719A037953EFF2056D370
 prompt --application/create_application
 begin
 --   Manifest
@@ -60,7 +60,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_value_01=>'SERT v2'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>16
-,p_version_scn=>45713031153805
+,p_version_scn=>45773250889295
 ,p_print_server_type=>'NATIVE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'Y'

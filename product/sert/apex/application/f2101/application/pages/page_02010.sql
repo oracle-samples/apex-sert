@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: F97C823E977D120923594F7332107D2E050D956780423B327E51FAD2E1A742AE
+-- file_checksum: C7A1F7341ECF6DBD84A896894DB80520D63B726EC98625291E5860888FD74CBF
 prompt --application/pages/page_02010
 begin
 --   Manifest
@@ -1750,7 +1750,11 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P2010_VIEW_COMMENTS'
 ,p_attribute_01=>'SQL_STATEMENT'
-,p_attribute_03=>'select comments from all_tab_comments where table_name = :P2010_VIEW_NAME'
+,p_attribute_03=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select comments ',
+'from all_tab_comments ',
+'where table_name = :P2010_VIEW_NAME',
+'and owner = APEX_UTIL.GET_APEX_OWNER;'))
 ,p_attribute_07=>'P2010_VIEW_NAME'
 ,p_attribute_08=>'Y'
 ,p_attribute_09=>'N'
