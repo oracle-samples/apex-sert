@@ -1,9 +1,9 @@
--- file_checksum: E909E1303E3E7FAE690F5A52430CF1BBABAFA3AA015C206AEB6F27808F243A03
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+-- file_checksum: 835E3D2E1BB3CC5FAB666A2029AC727CDC4554236464CB8DD6DCE01124E6D5C8
 prompt --application/shared_components/user_interface/templates/report/value_attribute_pairs_column
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.6'
+,p_release=>'24.2.9'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

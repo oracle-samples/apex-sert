@@ -1,9 +1,9 @@
--- file_checksum: 850B1489E97AA95CBC63A951B7321C65AB6B79A69897613CDBDBD555203987EF
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+-- file_checksum: DF5623F01A383CC1430F5C52B217E957E4FAADBFF1C0E8607C7E9B734E294FCF
 prompt --application/pages/page_00270
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.6'
+,p_release=>'24.2.9'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -309,6 +309,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_column_label=>'Result Color'
 ,p_column_type=>'STRING'
 ,p_display_text_as=>'HIDDEN_ESCAPE_SC'
+,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(120046455516318990)
@@ -318,6 +319,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_column_label=>'Application ID'
 ,p_column_type=>'NUMBER'
 ,p_display_text_as=>'HIDDEN_ESCAPE_SC'
+,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(28723414054891549)
@@ -327,6 +329,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_column_label=>'Exception Color'
 ,p_column_type=>'STRING'
 ,p_display_text_as=>'HIDDEN_ESCAPE_SC'
+,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_rpt(
  p_id=>wwv_flow_imp.id(142279040265062710)

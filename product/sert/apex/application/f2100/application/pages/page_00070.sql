@@ -1,9 +1,9 @@
--- file_checksum: EDBA42F59BB1AB53E02353C9360916F5F2334D110AB92BCCF47334A44B82DE1D
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+-- file_checksum: AC4F36FF4F12D8F9DC563A5EAEB6AC75610AD8A38FB9DF62118E6C4EEDE1D601
 prompt --application/pages/page_00070
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.6'
+,p_release=>'24.2.9'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -1642,72 +1642,18 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'Add Exceptions'
 ,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'declare',
-'  l_exception_score          number;',
-'  l_exception_score_reason   varchar2(4000);',
 'begin',
-'',
-'-- generate the score with AI one time',
-'exceptions_api.get_exception_score',
-'  (',
-'   p_rule_id                => :P70_SELECT_RULE_RAISE',
-'  ,p_exception              => :P70_EXCEPTION',
-'  ,p_exception_score        => l_exception_score',
-'  ,p_exception_score_reason => l_exception_score_reason',
+'  exceptions_api.bulk_add_exception (',
+'     p_eval_id        => :P10_EVAL_ID',
+'    ,p_workspace_id   => :G_WORKSPACE_ID',
+'    ,p_application_id => :G_APPLICATION_ID',
+'    ,p_rule_id        => :P70_SELECT_RULE_RAISE',
+'    ,p_exception      => :P70_EXCEPTION',
 '  );',
-'',
-'-- loop through all values and apply the exception',
-'for i in',
-'  (',
-'  select',
-'    workspace_id',
-'   ,application_id',
-'   ,page_id',
-'   ,rule_id',
-'   ,rule_set_id',
-'   ,component_id',
-'   ,component_name',
-'   ,column_name',
-'   ,item_name',
-'   ,shared_comp_name',
-'   ,current_value',
-'   ,eval_id',
-'  from ',
-'    eval_results_pub_v',
-'  where',
-'    rule_id = :P70_SELECT_RULE_RAISE',
-'    and result = ''FAIL''',
-'    and application_id = :G_APPLICATION_ID',
-'    and workspace_id = :G_WORKSPACE_ID',
-'    and eval_id = :P10_EVAL_ID)',
-'loop',
-'  exceptions_api.add_exception',
-'    (',
-'     p_rule_set_id            => i.rule_set_id',
-'    ,p_rule_id                => :P70_SELECT_RULE_RAISE',
-'    ,p_workspace_id           => i.workspace_id',
-'    ,p_application_id         => i.application_id',
-'    ,p_page_id                => i.page_id',
-'    ,p_component_id           => i.component_id',
-'    ,p_component_name         => i.component_name',
-'    ,p_column_name            => i.column_name',
-'    ,p_item_name              => i.item_name',
-'    ,p_shared_comp_name       => i.shared_comp_name',
-'    ,p_exception              => :P70_EXCEPTION',
-'    ,p_current_value          => i.current_value',
-'    ,p_eval_id                => i.eval_id',
-'    ,p_exception_score        => l_exception_score',
-'    ,p_exception_score_reason => l_exception_score_reason',
-'    );',
-'end loop;',
-'',
-'eval_pkg.calc_score(:P10_EVAL_ID);',
-'',
+'  ',
+'  eval_pkg.calc_score(:P10_EVAL_ID);  ',
 'end;',
-'',
-'',
-'',
-'  '))
+''))
 ,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(111092574030344070)
