@@ -33,7 +33,7 @@ select
   ,er.column_name
   ,er.item_name
   ,er.shared_comp_name
-  ,dbms_lob.substr(er.current_value,3999,1) as current_value
+  ,dbms_lob.substr(er.current_value,3000,1) as current_value
   ,er.valid_values
   ,er.created_by
   ,er.created_on
@@ -80,7 +80,7 @@ group by
   ,er.column_name
   ,er.item_name
   ,er.shared_comp_name
-  ,dbms_lob.substr(er.current_value,3999,1)
+  ,dbms_lob.substr(er.current_value,3000,1)
   ,er.valid_values
   ,er.created_by
   ,er.created_on

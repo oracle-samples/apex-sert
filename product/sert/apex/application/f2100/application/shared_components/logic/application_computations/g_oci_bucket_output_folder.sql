@@ -1,9 +1,9 @@
--- file_checksum: C9CF3712D40F59059455AE186F93E8816DE9FF6D41AAD0E806C2BD7CC17ED6B2
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+-- file_checksum: 8A171B2CB9305E7C70B449CD5417A633C124E6308E34C650E596D3AF2DA428FF
 prompt --application/shared_components/logic/application_computations/g_oci_bucket_output_folder
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.6'
+,p_release=>'24.2.9'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

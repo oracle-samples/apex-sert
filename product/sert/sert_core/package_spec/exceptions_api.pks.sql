@@ -67,6 +67,15 @@ as
     ,p_exception_score_reason out varchar2
     );
 
+  procedure bulk_add_exception
+    (
+     p_eval_id                in number
+    ,p_workspace_id           in number
+    ,p_application_id         in number
+    ,p_rule_id                in number
+    ,p_exception              in varchar2
+    );
+
   procedure add_exception
     (
      p_rule_set_id            in number

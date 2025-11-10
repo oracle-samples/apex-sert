@@ -1,9 +1,9 @@
-prompt app_checksum: F6AD513BA7D6614E26C7B4A5F990E6681E6B7667C211EDB64D5FD850FD2F0EE3
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+prompt app_checksum: 541E3D9AE4055A0560F78312FA183B67986F1A5F3E785DE2D68B0EF1B54424BB
 -- file_checksum: 62CF4CE92A0A831494212FAE1FDABBF75752D4AFAB65350B6D012C755FC3EAAB
 prompt --install
 @@application/set_environment.sql

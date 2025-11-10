@@ -349,6 +349,86 @@ as
 
   end get_exception_score;
 
+  procedure bulk_add_exception
+    (
+     p_eval_id                in number
+    ,p_workspace_id           in number
+    ,p_application_id         in number
+    ,p_rule_id                in number
+    ,p_exception              in varchar2
+    )
+  is
+    l_exception_score        number;
+    l_exception_score_reason varchar2(4000);
+  begin
+    -- grab scores if AI is enabled.
+    get_exception_score (
+       p_rule_id                => p_rule_id
+      ,p_exception              => p_exception
+      ,p_exception_score        => l_exception_score
+      ,p_exception_score_reason => l_exception_score_reason
+    );
+
+    insert into sert_core.exceptions
+      ( rule_set_id
+      , rule_id
+      , workspace_id
+      , application_id
+      , page_id
+      , component_id
+      , component_name
+      , column_name
+      , item_name
+      , shared_comp_name
+      , exception
+      , exception_score
+      , exception_score_reason
+      , result
+      , current_value
+      )
+    select  e.rule_set_id
+          , er.rule_id
+          , e.workspace_id
+          , er.application_id
+          , er.page_id , er.component_id
+          , er.component_name
+          , er.column_name
+          , er.item_name
+          , er.shared_comp_name
+          , p_exception
+          , l_exception_score
+          , l_exception_score_reason
+          , 'PENDING'
+          , dbms_lob.substr(er.current_value , 4000 , 1 )
+    from sert_core.eval_results er
+    join sert_core.evals e on e.eval_id = er.eval_id
+    where er.rule_id = p_rule_id
+    and json_value(er.result, '$.result' returning varchar2(10)) = 'FAIL'
+    and er.application_id = p_application_id
+    and e.workspace_id = p_workspace_id
+    and er.eval_id = p_eval_id
+    and not exists
+      ( select 1
+        from  sert_core.exceptions x
+        where x.rule_set_id = e.rule_set_id
+        and x.rule_id = er.rule_id
+        and x.workspace_id = e.workspace_id
+        and x.application_id= er.application_id
+        and nvl(x.page_id,-1) = nvl(er.page_id,-1)
+        and nvl(x.component_id,'N/A') = nvl(er.component_id,'N/A')
+        and nvl(x.column_name,'N/A') = nvl(er.column_name,'N/A')
+        and nvl(x.item_name,'N/A') = nvl(er.item_name,'N/A')
+      )
+    order by e.rule_set_id
+              , er.rule_id
+              , e.workspace_id
+              , er.application_id
+              , er.page_id
+              , er.component_id
+              , er.column_name
+              , er.item_name
+    ;
+end bulk_add_exception;
 
   ----------------------------------------------------------------------------------------------------------------------------
   -- PROCEDURE: A D D _ E X C E P T I O N

@@ -1,9 +1,9 @@
--- file_checksum: 3D55F1B6F1B1951075B3C397FF1439B8AE44395E889FD490DDA31D023A7693EC
 -------------------------------------------------------------------------------
 -- Copyright (c) 2024,2025 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
+-- file_checksum: B2BA5E3E43BD15D70B42A0662181FD0CFC98F044E971478DE5DBD4F4982A0582
 prompt --application/shared_components/logic/application_items/g_icon
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.6'
+,p_release=>'24.2.9'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
