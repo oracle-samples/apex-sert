@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:ora="http://www.oracle.com/xml/ns/dbchangelog-ext"
+   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="pre_install"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="privilege"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="role"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="sequence"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="table"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="temp_table"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="index"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="constraint_pk"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="constraint_other"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="constraint_fk"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="type"/>
+
+  <!-- Operational Data Store tables -->
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="staging_table"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="final_dimension"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="final_fact"/>
+
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="view"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="package_spec"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="package_body"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="trigger"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="context"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="procedure"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="function"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="tapi"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="seed_data"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="schedule"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="job"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="synonym"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="grant"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="rest_module"/>
+  <includeAll relativeToChangelogFile="true" errorIfMissingOrEmpty="false" path="post_install"/>
+</databaseChangeLog>
