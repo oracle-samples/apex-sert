@@ -279,10 +279,53 @@ as
     update exceptions set
       result = p_result
       ,reason = p_reason
-      ,actioned_by = coalesce(sys_context('APEX$SESSION','APP_USER'),p_app_user)
+      ,actioned_by = upper(coalesce(p_app_user,sys_context('APEX$SESSION','APP_USER') ) )
       ,actioned_on = systimestamp
     where
       exception_id = p_exception_id;
+
+    -- calculate the scores
+    -- eval_pkg.calc_score(p_eval_id => p_eval_id);
+
+  end approve_or_reject_exception;
+
+  ----------------------------------------------------------------------------------------------------------------------------
+  -- PROCEDURE: A P P R O V E _ O R _ R E J E C T _ E X C E P T I O N
+  -- BULK ACTION : either approve or reject an exception in builk based on rule_id
+  -- purpose: change an exception's status to the supplied result with reason and audit info.
+  -- behavior: updates exceptions with p_result, p_reason, actioned_by, actioned_on for the provided id.
+  -- parameters:
+  --   p_rule_id      - target rule for bulk update
+  --   p_result       - new status ('APPROVED'|'REJECTED'|...)
+  --   p_reason       - rationale for the change
+  --   p_app_user     - acting user (used when APEX session user is not set)
+  --   p_eval_id      - evaluation id associated (reserved for scoring recalculation)
+  ----------------------------------------------------------------------------------------------------------------------------
+
+  procedure approve_or_reject_exception
+    (   p_rule_id   in number
+      , p_result    in varchar2
+      , p_reason    in varchar2
+      , p_app_user  in varchar2
+      , p_eval_id   in number )
+  is
+  begin
+
+    merge into exceptions e
+    using (
+        select exception_id
+        from   eval_results_exc_pub_v
+        where  result = 'PENDING'
+          and  rule_id = p_rule_id
+          and  upper(exception_created_by) <> upper(coalesce(p_app_user,sys_context('APEX$SESSION','APP_USER') ) )
+          and  eval_id = p_eval_id
+    ) src
+    on (e.exception_id = src.exception_id)
+    when matched then update set
+        e.result      = p_result,
+        e.reason      = p_reason,
+        e.actioned_by = upper(coalesce(p_app_user,sys_context('APEX$SESSION','APP_USER') ) ),
+        e.actioned_on = SYSTIMESTAMP;
 
     -- calculate the scores
     -- eval_pkg.calc_score(p_eval_id => p_eval_id);
