@@ -1,5 +1,32 @@
 # Release Notes
 
+## 24.2.23
+
+[SERT Guardian](guardian/sert-guardian.md) is a new "opt-in" feature for security specialists and technical leads.
+
+* [GAT-376] - SERT Guardian: A holistic view of findings across a whole instance in one place
+* [GAT-512] - Create Guardian star schema
+* [GAT-513] - Create SG ETL Controller
+* [GAT-514] - Create Guardian application
+* [GAT-515] - Add Guardian Documentation
+
+## 24.2.22
+
+* [GAT-501] - Create new lov for Select Rule in Exception bulk approve/reject to improve performance
+* [GAT-500] - Exception bulk approve/reject performance improvement
+* [GAT-503] - Amend rule exception select process - performance
+* [GAT-504] - Amend rule exception accept/reject project - performance
+* [GAT-509] - improve admin app 2101:2010 to provide documentation link for ease of test/verifying
+* [GAT-516] - improve reporting (add and cleanup columns) for Reports -> Evaluation Details
+
+## 24.2.21
+
+* [GAT-502] - Replace new lov in line code with a view rules_by_exception_v.
+* [GAT-507] - procedure to mitigate invalidation of exceptions_api on db updates
+* [GAT-484] - remove preferences for docgen as they are redundant
+* [GAT-498] - show the most recent evaluator for a scan
+* [GAT-499] - Rules: Interactive Grid SQLi and Interactive Report SQLi display nothing in About this Rule or How to Fix sections.
+
 ## 24.2.20
 
 * [GAT-485] - Button AuthZ Inconsistency cater for using page AuthZ when no AuthZ on button

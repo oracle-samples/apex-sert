@@ -1,4 +1,4 @@
-# APEX-SERT 24.1 Installation Guide
+# APEX-SERT Installation Guide
 
 [Preface](#1-preface)
 
@@ -18,10 +18,8 @@ The APEX SERT Installation Guide is provided as a reference to install APEX-SERT
 
 The following typeset conventions are used throughout this document:
 
-Plain Text
 Plain text is nothing more than standard, narrative text. No special actions are required.
 
-`Fixed Width`
 `Fixed width`  is used to denote input required from the user. When something is in the fixed width font, that text should be entered into the corresponding field or region.
 
 **Bold** is used to indicate that you should perform an action, such as clicking a link or pressing a
@@ -56,7 +54,7 @@ APEX-SERT 24.2 is supported only on Oracle APEX 24.2 and higher. If you are usi
 
 #### 2.1.1.3 Requirements for AOP
 
-to use the AOP report pages, you MUST have your own APEX Office Print Server. 
+To use the AOP report pages, you MUST have your own APEX Office Print Server. 
 
 #### 2.1.1.4 Requirements for DocGen
 
@@ -82,7 +80,7 @@ In order to install APEX-SERT, you will need access to the following system reso
 * Oracle APEX instance administration account
 * SQLCL  24.2 or higher
 
-If you do not have access to all of the above, then it is not possible to install APEX-SERT. Please consult with your local system administrators and/or DBAs for assistance. 
+If you do not have access to all of the above, then it is not possible to install APEX-SERT. Please consult with your local system administrators and/or DBAs for assistance.
 
 #### 2.1.3 Tablespaces
 
@@ -120,7 +118,16 @@ Now, you have a validly configured account that can install APEX-SERT
 
 APEX-SERT installs via a single installation script. This script must be run as the installing schema ( we will reference ACDC), and only takes a few minutes to complete if you are executing the installation locally to the database. 
 
-Prior to installation, EDIT the sert.properties file to define your configuration.
+Prior to installation, EDIT the `sert.properties` file to define your configuration.
+
+Configuration options include:
+
+* set workspace name
+* set application ids for SERT Admin, and SERT
+* set administration email address and reply to address
+* default tablespaces for data and temp tablespaces
+* optional install of [SERT Guardian](guardian/sert-guardian.md) module
+* optional use of AOP printserver
 
 If you wish to pre-specify the Application ID for the SERT application, and it's companion Administration application, then put a valid, available application ID against sert_app_id and sert_admin_id
 
@@ -155,6 +162,30 @@ sert_mode = standalone
 # explicitly define the tablespaces you install into. This only have effect on first install
 sert_data_tablespace =
 sert_temp_tablespace =
+
+# ======================================================================
+# SERT Guardian Properties
+# ======================================================================
+
+# Conditional context to install guardian
+# Must be set to "runtime" to install guardian or "none"
+# e.g.
+# guardian_switch = runtime
+guardian_switch = none
+
+# Set sert_guardian_app_id to empty value to auto-allocate Application ID
+# e.g.
+# sert_guardian_app_id =
+# sert_guardian_app_id = 38223
+sert_guardian_app_id = 2102
+
+# Set the Authentication Scheme from the included options:
+#   "Builder Extension Sign-In" - enables you to integrate this application with the APEX development environment.
+#   "SAML Sign-In"              - supports authentication with SAML2 identity providers
+#   "Oracle APEX Accounts"      - internal user accounts that are managed in the Oracle APEX user repository.
+# e.g.
+# guardian_authn_scheme = Builder Extension Sign-In
+guardian_authn_scheme = Builder Extension Sign-In
 ```
 
 The installation will create two schema in your database:

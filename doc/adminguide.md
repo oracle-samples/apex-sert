@@ -267,7 +267,7 @@ On the footer of the drawer are 5 actions to allow the user to process the findi
 ##### 4.3.1.2 Create/Edit Exception
 
 Once you have determined there is no *fix* for the finding, you can create an exception for it.
-ANy 2 developers in the workspace can create and approve an exception. the simple rule is: One cannot approve one's own exception. Any *other* developer can approve the exceptions your create.
+Any 2 developers in the workspace can create and approve an exception. the simple rule is: One cannot approve one's own exception. Any *other* developer can approve the exceptions your create.
 
 Any developer can withdraw and exception. and for stale  exceptions, any developer can withdraw, or resubmit the exception without change.
 
@@ -287,7 +287,7 @@ COmments are intended to provide an ability to have some notes around a finding,
 
 The left sidebar serves as a mini-dashboard within an Evaluation.
 
-1. the first section on top shows the overall scores for the evaluation, with badges showing the percentage scored including Aprpoved exceptions, then including Approved and Pending Exceptions, and finally the raw baseline score before any exceptions have been applied.
+1. the first section on top shows the overall scores for the evaluation, with badges showing the percentage scored including Approved exceptions, then including Approved and Pending Exceptions, and finally the raw baseline score before any exceptions have been applied.
 1. The second region shows a vertical chart of Results by status. Clicking on a status will add a filter to the smart search.
 1. the final region is Failures by Category, helping users prioritise by type of finding.
 
