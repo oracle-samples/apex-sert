@@ -1,10 +1,10 @@
 -------------------------------------------------------------------------------
--- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Copyright (c) 2024-2026 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 541E3D9AE4055A0560F78312FA183B67986F1A5F3E785DE2D68B0EF1B54424BB
--- file_checksum: 62CF4CE92A0A831494212FAE1FDABBF75752D4AFAB65350B6D012C755FC3EAAB
+prompt app_checksum: 07E934ECCF40C38C1B96480F9940AA9FB6F93F1B1DB22411DE6ECC1C76C9FFCF
+-- file_checksum: ABC858A305BD3C6B55136B50900F9DB0298618E81AC1C1DE5143A91FE574F7E1
 prompt --install
 @@application/set_environment.sql
 @@application/delete_application.sql
@@ -82,6 +82,7 @@ prompt --install
 @@application/shared_components/user_interface/lovs/category_lov.sql
 @@application/shared_components/user_interface/lovs/rules_lov.sql
 @@application/shared_components/user_interface/lovs/rules_lov_exceptions_ar.sql
+@@application/shared_components/user_interface/lovs/rules_lov_exceptions_ar_bulk.sql
 @@application/shared_components/user_interface/lovs/rules_lov_raise_exceptions.sql
 @@application/shared_components/user_interface/lovs/rule_severity_v.sql
 @@application/pages/page_groups.sql

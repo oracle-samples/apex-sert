@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
--- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Copyright (c) 2024-2026 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 420777C5A35B2FC977AC70C16B7A1C20EE3B614B17B0B31F06FEB8F85D24B4F5
+prompt app_checksum: 45A64BAA9F0FB50AB6BEB21177054A69F4BD0E01A06D9F670AD086D448BE7E5D
 -- file_checksum: 8AB974387CE5D3769B4CE3AB30EC8458889D5F2C4FD0B00414C2BF9BD50B4016
 prompt --install
 @@application/set_environment.sql

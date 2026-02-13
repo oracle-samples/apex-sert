@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
--- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Copyright (c) 2024-2026 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: D6449EBCA6D6E581443768E8464B2F26A67646EBE3E9E9E97566722A10A55FB3
+-- file_checksum: 87D8B64AF806DEF89A1C08CA9E15295D2188ED427494BA2E05A124FD8E85B4EA
 prompt --application/pages/page_00280
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.9'
+,p_release=>'24.2.11'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -41,35 +41,23 @@ wwv_flow_imp_page.create_page_plug(
 ,p_query_type=>'SQL'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select ',
-'  ca1.category_id, ',
-'  ca1.category_name,',
-'  er1.eval_result_id,',
-'  er1.rule_id,',
-'  er1.rule_name,',
-'  er1.description,',
-'  er1.component_name,',
-'  er1.application_id,',
-'  er1.eval_id,                 ',
-'  er1.result, ',
-'  er1.page_id, ',
-'  er1.component_id,',
-'  er1.item_name,',
-'  er1.current_value,',
-'  ru1.info,',
-'  ru1.fix,',
-'  decode(er1.result,''FAIL'',NULL,er1.result) approved_flag',
-'from',
-'   sert_core.eval_results_pub_v er1,',
-'   sert_core.categories_v ca1,',
-'   sert_core.rules_pub_v ru1',
-'where 1=1',
-'and er1.eval_id = :P280_EVAL_ID  --SYS_CONTEXT(''SV_SERT_CTX'', ''COLLECTION_ID'')',
-'and er1.result not like ''%PASS%''',
-'and er1.category_key = ca1.category_key',
-'and ca1.category_key = ru1.category_key',
-'and ru1.rule_id = er1.rule_id',
-'and (:P280_CATEGORY is null or :P280_CATEGORY = ca1.category_key)',
-'order by ca1.category_id, er1.rule_id'))
+'  category_name,',
+'  eval_result_id,',
+'  eval_id,                 ',
+'  rule_name,',
+'  description,',
+'  component_name,',
+'  application_id,',
+'  result, ',
+'  page_id, ',
+'  component_id,',
+'  item_name,',
+'  current_value,',
+'  valid_values,',
+'  exception_justification',
+'from eval_results_exc_pub_v ',
+'where result <> ''PASS''',
+'order by category_name, rule_name'))
 ,p_plug_source_type=>'NATIVE_IR'
 ,p_ajax_items_to_submit=>'P280_EVAL_ID'
 ,p_prn_content_disposition=>'ATTACHMENT'
@@ -117,17 +105,6 @@ wwv_flow_imp_page.create_worksheet(
 ,p_internal_uid=>98616151675746613
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(142337665731024877)
-,p_db_column_name=>'CATEGORY_ID'
-,p_display_order=>10
-,p_column_identifier=>'A'
-,p_column_label=>'Category Id'
-,p_column_type=>'NUMBER'
-,p_heading_alignment=>'RIGHT'
-,p_column_alignment=>'RIGHT'
-,p_use_as_row_header=>'N'
-);
-wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(142337757627024878)
 ,p_db_column_name=>'CATEGORY_NAME'
 ,p_display_order=>20
@@ -143,17 +120,6 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_display_order=>30
 ,p_column_identifier=>'C'
 ,p_column_label=>'Eval Result Id'
-,p_column_type=>'NUMBER'
-,p_heading_alignment=>'RIGHT'
-,p_column_alignment=>'RIGHT'
-,p_use_as_row_header=>'N'
-);
-wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(142357307808019230)
-,p_db_column_name=>'RULE_ID'
-,p_display_order=>40
-,p_column_identifier=>'D'
-,p_column_label=>'Rule Id'
 ,p_column_type=>'NUMBER'
 ,p_heading_alignment=>'RIGHT'
 ,p_column_alignment=>'RIGHT'
@@ -263,31 +229,21 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(142358417610019241)
-,p_db_column_name=>'APPROVED_FLAG'
+ p_id=>wwv_flow_imp.id(77022075779233901)
+,p_db_column_name=>'VALID_VALUES'
 ,p_display_order=>150
-,p_column_identifier=>'O'
-,p_column_label=>'Approved Flag'
+,p_column_identifier=>'T'
+,p_column_label=>'Valid Values'
 ,p_column_type=>'STRING'
 ,p_heading_alignment=>'LEFT'
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(56709609369811192)
-,p_db_column_name=>'INFO'
+ p_id=>wwv_flow_imp.id(77022165490233902)
+,p_db_column_name=>'EXCEPTION_JUSTIFICATION'
 ,p_display_order=>160
-,p_column_identifier=>'R'
-,p_column_label=>'Info'
-,p_column_type=>'STRING'
-,p_heading_alignment=>'LEFT'
-,p_use_as_row_header=>'N'
-);
-wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(56709703838811193)
-,p_db_column_name=>'FIX'
-,p_display_order=>170
-,p_column_identifier=>'S'
-,p_column_label=>'Fix'
+,p_column_identifier=>'U'
+,p_column_label=>'Exception Justification'
 ,p_column_type=>'STRING'
 ,p_heading_alignment=>'LEFT'
 ,p_use_as_row_header=>'N'
@@ -299,7 +255,7 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_report_alias=>'492095'
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
-,p_report_columns=>'APPLICATION_ID:CATEGORY_NAME:RULE_NAME:PAGE_ID:DESCRIPTION:RESULT:CURRENT_VALUE'
+,p_report_columns=>'APPLICATION_ID:CATEGORY_NAME:RULE_NAME:PAGE_ID:DESCRIPTION:RESULT:EXCEPTION_JUSTIFICATION:CURRENT_VALUE:VALID_VALUES:'
 ,p_sort_column_1=>'CATEGORY_NAME'
 ,p_sort_direction_1=>'ASC'
 ,p_sort_column_2=>'RULE_NAME'
