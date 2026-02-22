@@ -16,4 +16,8 @@
         file="product/sertController.xml"
         relativeToChangelogFile="true"/>
 
+    <include
+        file="product/guardianController.xml"
+        relativeToChangelogFile="true"/>
+
 </databaseChangeLog>

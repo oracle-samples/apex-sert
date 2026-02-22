@@ -27,7 +27,7 @@ create or replace package body sert_core.eval_pkg as
   function count_binds(
     p_sql in clob )
     return number
-  is
+  as
   begin
     return wwv_flow_utilities.get_binds(p_sql).count;
   end count_binds;
@@ -47,7 +47,7 @@ create or replace package body sert_core.eval_pkg as
   function get_score_range(
     p_range_key in varchar2 )
     return number
-  is
+  as
   begin
     for c_pref in (
       select pref_value as val
@@ -84,7 +84,7 @@ create or replace package body sert_core.eval_pkg as
 ----------------------------------------------------------------------------------------------------------------------------
   procedure calc_score(
     p_eval_id in number )
-  is
+  as
     l_score           evals.score%type;
     l_pending_score   evals.pending_score%type;
     l_approved_score  evals.approved_score%type;
@@ -166,7 +166,7 @@ create or replace package body sert_core.eval_pkg as
     p_rule_criteria_type_key in varchar2,
     p_application_id         in number )
     return varchar2
-  is
+  as
     l_return                 varchar2(100)    := 'PASS';
     l_source                 varchar2(32765)  := upper(p_column_to_evaluate);
     l_cnt                    number;
@@ -282,7 +282,7 @@ create or replace package body sert_core.eval_pkg as
     p_page_id        in number default null,
     p_eval_id        in number,
     p_rule_set_id    in number )
-  is
+  as
     cursor c_rules is
       select r.*
         from rules r,
@@ -572,9 +572,10 @@ create or replace package body sert_core.eval_pkg as
 
     -- change the status and update the score
     update evals
-       set job_status  = 'COMPLETED',
+       set job_status   = 'COMPLETED',
            eval_on_date = sysdate,
-           eval_on      = systimestamp
+           eval_on      = systimestamp,
+           eval_by      = coalesce(sys_context('APEX$SESSION','APP_USER'), user)
      where eval_id = p_eval_id;
 
     calc_score(p_eval_id => p_eval_id);
@@ -760,13 +761,14 @@ create or replace package body sert_core.eval_pkg as
     p_eval_by           in varchar2 default coalesce(sys_context('APEX$SESSION','APP_USER'), user),
     p_run_in_background in varchar2 default 'Y',
     p_eval_id_out       out number )
-  is
+  as
     l_rule_set_id  rule_sets.rule_set_id%type;
     l_eval_id      evals.eval_id%type;
     l_workspace_id number;
     l_job_name     varchar2(250);
   begin
     -- set logging
+    -- validate_exceptions_api();
     select pref_value
       into log_pkg.g_log_evals
       from prefs
@@ -845,17 +847,17 @@ create or replace package body sert_core.eval_pkg as
         job_name  => l_job_name,
         job_type  => 'PLSQL_BLOCK',
         job_action => 'declare l_eval_id number; begin
-    eval_pkg.process_rules
-      (
-       p_application_id => ' || p_application_id ||
-        case when p_page_id is not null then '
-      ,p_page_id       => ' || p_page_id else null end || '
-      ,p_eval_id        => ' || p_eval_id_out || '
-      ,p_rule_set_id    => ' || l_rule_set_id || '
-      );
-    end;',
-        start_date => systimestamp,
-        enabled    => true
+          eval_pkg.process_rules
+            (
+            p_application_id => ' || p_application_id ||
+              case when p_page_id is not null then '
+            ,p_page_id       => ' || p_page_id else null end || '
+            ,p_eval_id        => ' || p_eval_id_out || '
+            ,p_rule_set_id    => ' || l_rule_set_id || '
+            );
+          end;',
+              start_date => systimestamp,
+              enabled    => true
       );
 
       -- update the evaluation record with the job_name and status
@@ -902,7 +904,7 @@ create or replace package body sert_core.eval_pkg as
   procedure delete_eval(
     p_eval_id         in number,
     p_delete_comments in varchar2 default 'Y' )
-  is
+  as
   begin
     -- delete all comments and exceptions, if selected
     if p_delete_comments = 'Y' then
@@ -944,7 +946,7 @@ create or replace package body sert_core.eval_pkg as
     p_eval_result_id     in number,
     p_builder_session_id in number )
     return varchar2
-  is
+  as
     l_data_link varchar2(1000);
     l_task      varchar2(1) := 'N';
     l_url       varchar2(1000);

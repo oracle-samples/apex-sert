@@ -45,6 +45,15 @@ as
     p_string2 in varchar2
   ) return varchar2;
 
+----------------------------------------------------------------------------------------------------------------------------
+-- R E C O M P I L E _ C O R E _ P A C K A G E S
+-- loops through any invalid packages and directly recompiles them.
+-- primarily used as a simple means to mitigate invalidation of packages that use views with sql_macro.
+-- On DB updates, the package can become invalid, and require recompilation directly
+----------------------------------------------------------------------------------------------------------------------------
+
+  procedure recompile_core_packages;
+
 end sert_util;
 /
 --rollback not required

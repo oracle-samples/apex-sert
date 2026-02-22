@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
--- Copyright (c) 2024,2025 Oracle and/or its affiliates.
+-- Copyright (c) 2024-2026 Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: A704384AB1E6BA285FA15F4726F00D792DC7842053CAC2198918BE4A94D424DB
+-- file_checksum: 382D0A544313148EFD0BA71AA82146CC449300E85C736DFA14E24734EAD90C43
 prompt --application/shared_components/user_interface/lovs/rules_lov_raise_exceptions
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.9'
+,p_release=>'24.2.11'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -21,18 +21,15 @@ wwv_flow_imp_shared.create_list_of_values(
  p_id=>wwv_flow_imp.id(111355678132003733)
 ,p_lov_name=>'RULES_LOV_RAISE_EXCEPTIONS'
 ,p_lov_query=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'with tab as ',
-'(select rule_name,category_name,rule_id,count(*) cnt',
-'from eval_results_pub_v ',
-'where eval_id = :P10_EVAL_ID',
-'  and result = ''FAIL''',
+'select category_name ||'' - ''||rule_name||'' (''||count(*)||'')'' d, rule_id r',
+'from sert_core.rules_by_category_eval_v',
+'where 1=1 ',
 '  and application_id = :G_APPLICATION_ID',
 '  and workspace_id = :G_WORKSPACE_ID',
-'group by rule_name,category_name,rule_id',
-')',
-'select category_name ||'' - ''||rule_name||'' (''||cnt||'')'' d, rule_id r',
-'from tab',
-'order by cnt desc, category_name,rule_name ',
+'  and eval_id = :P10_EVAL_ID',
+'  and result = ''FAIL''',
+'group by category_name, rule_name, rule_id',
+'order by count(*) desc, category_name,rule_name',
 ''))
 ,p_source_type=>'SQL'
 ,p_location=>'LOCAL'
@@ -41,7 +38,7 @@ wwv_flow_imp_shared.create_list_of_values(
 ,p_display_column_name=>'D'
 ,p_group_sort_direction=>'ASC'
 ,p_default_sort_direction=>'ASC'
-,p_version_scn=>41902775368606
+,p_version_scn=>45760915466346
 );
 wwv_flow_imp.component_end;
 end;

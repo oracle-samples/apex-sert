@@ -50,6 +50,18 @@ as
     ,p_eval_id     in number
     );
 
+  ----------------------------------------------------------------------------------------------------------------------------
+  -- PROCEDURE: A P P R O V E _ O R _ R E J E C T _ E X C E P T I O N
+  -- Either approve or reject an exception
+  -- purpose: change an exception's status to the supplied result with reason and audit info.
+  -- behavior: updates exceptions with p_result, p_reason, actioned_by, actioned_on for the provided id.
+  -- parameters:
+  --   p_exception_id - target exception
+  --   p_result       - new status ('APPROVED'|'REJECTED'|...)
+  --   p_reason       - rationale for the change
+  --   p_app_user     - acting user (used when APEX session user is not set)
+  --   p_eval_id      - evaluation id associated (reserved for scoring recalculation)
+  ----------------------------------------------------------------------------------------------------------------------------
   procedure approve_or_reject_exception
     (
     p_exception_id in number
@@ -58,6 +70,24 @@ as
     ,p_app_user     in varchar2
     ,p_eval_id      in number
     );
+  ----------------------------------------------------------------------------------------------------------------------------
+  -- PROCEDURE: A P P R O V E _ O R _ R E J E C T _ E X C E P T I O N
+  -- Either approve or reject an exception in builk based on rule_id
+  -- purpose: change an exception's status to the supplied result with reason and audit info.
+  -- behavior: updates exceptions with p_result, p_reason, actioned_by, actioned_on for the provided id.
+  -- parameters:
+  --   p_exception_id - target exception
+  --   p_result       - new status ('APPROVED'|'REJECTED'|...)
+  --   p_reason       - rationale for the change
+  --   p_app_user     - acting user (used when APEX session user is not set)
+  --   p_eval_id      - evaluation id associated (reserved for scoring recalculation)
+  ----------------------------------------------------------------------------------------------------------------------------
+  procedure approve_or_reject_exception
+      (   p_rule_id   in number
+        , p_result    in varchar2
+        , p_reason    in varchar2
+        , p_app_user  in varchar2
+        , p_eval_id   in number );
 
   procedure get_exception_score
     (

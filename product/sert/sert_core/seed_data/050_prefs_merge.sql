@@ -58,14 +58,54 @@ begin
             p_internal_yn => 'N');
 end;
 /
+--rollback not required
+
 --changeset mipotter:050_prefs_merge_log_eval_result_history endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ stripComments:false
 begin
-        sert_core.prefs_api.upsert_pref(
-            p_pref_name   => 'Log Eval Result History',
-            p_pref_key    => 'LOG_EVAL_RESULT_HISTORY',
-            p_pref_value  => 'N',
-            p_internal_yn => 'N');
+  sert_core.prefs_api.upsert_pref(
+      p_pref_name   => 'Log Eval Result History',
+      p_pref_key    => 'LOG_EVAL_RESULT_HISTORY',
+      p_pref_value  => 'N',
+      p_internal_yn => 'N');
 end;
 /
+--rollback not required
 
+--changeset mipotter:050_prefs_merge_auto_scan endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ stripComments:false
+declare
+  l_value varchar2(250) := '${sert_auto_scan}';
+begin
+  if upper(l_value) = 'Y' then
+    l_value := 'Y';
+  else
+    l_value := 'N';
+  end if;
+
+  sert_core.prefs_api.upsert_pref(
+      p_pref_name   => 'Auto Scan All Apps',
+      p_pref_key    => 'AUTO_SCAN',
+      p_pref_value  => l_value,
+      p_internal_yn => 'N');
+end;
+/
+--rollback not required
+
+--changeset mipotter:050_prefs_merge_auto_scan_ignore_ws endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ stripComments:false
+declare
+  l_value varchar2(250) := '${sert_auto_scan_ignore_ws}';
+begin
+  -- if not defined, ignore SERT workspace
+  if l_value = '$'||'{sert_auto_scan_ignore_ws}' then
+    l_value := upper('${sert_apex_workspace}');
+  else
+    l_value := upper('${sert_auto_scan_ignore_ws}');
+  end if;
+
+  sert_core.prefs_api.upsert_pref(
+      p_pref_name   => 'Ignore Workspaces for auto Scan',
+      p_pref_key    => 'AUTO_SCAN_IGNORE_WS',
+      p_pref_value  => l_value,
+      p_internal_yn => 'N');
+end;
+/
 --rollback not required

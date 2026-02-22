@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ora="http://www.oracle.com/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+>
+  <!--
+    The following includes will run when guardian_switch is set to "runtime"
+    If the guardian_switch context result is "none" or not assigned, liquibase skips the file because "none" isn't in the context list in install_prod.sql.
+
+    Checks:
+        "# guardian_switch = "      -> ☑️ does not run when commented out (not configured)
+        "guardian_switch = "        -> ☑️ does not run when null
+        "guardian_switch = none"    -> ☑️ does not run assigned to none
+        "guardian_switch = runtime" -> ☑️ runs when assigned to runtime
+  -->
+
+  <changeSet id="guardian_install" author="mlancast" runAlways="true">
+    <ora:runOracleScript ownerName="mlancast" sourceType="STRING" objectType="SCRIPT" objectName="guardian_install">
+        <ora:source>
+              prompt .
+              prompt "------------------------------------------------"
+              prompt "-- SERT Guardian Installation"
+              prompt "------------------------------------------------"
+              prompt guardian_switch       = ${guardian_switch}
+              prompt sert_guardian_app_id  = ${sert_guardian_app_id}
+              prompt guardian_authn_scheme = ${guardian_authn_scheme}
+
+              declare
+                  l_status varchar2(255) := '${guardian_switch}';
+              begin
+                  if l_status is null then
+                      dbms_output.put_line('INFO: No value assigned to "guardian_switch" in sert.properties. Skipping Guardian installation.');
+                  elsif l_status != 'runtime' then
+                      dbms_output.put_line('Skipping Guardian installation.');
+                  end if;
+              end;
+        </ora:source>
+    </ora:runOracleScript>
+  </changeSet>
+
+  <include context="@${guardian_switch}" relativeToChangelogFile="true" file="guardian/sert_core/schema.xml"/>
+  <include context="@${guardian_switch} and @apex" relativeToChangelogFile="true" file="guardian/apex/apexController.xml"/>
+
+  <changeSet id="end_guardian_install" author="mlancast" runAlways="true">
+    <ora:runOracleScript ownerName="mlancast" sourceType="STRING" objectType="SCRIPT" objectName="end_guardian_install">
+        <ora:source>
+              prompt "------------------------------------------------"
+              prompt "-- End of SERT Guardian Installation"
+              prompt "------------------------------------------------"
+       </ora:source>
+    </ora:runOracleScript>
+  </changeSet>
+
+</databaseChangeLog>

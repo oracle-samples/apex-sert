@@ -136,6 +136,40 @@ as
   end match_string_yn;
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
+
+  procedure recompile_core_packages
+  is
+    l_sql varchar2(1024);
+  begin
+    -- in 19.28 ADB and 19.27 PDB we are seeing one package (exceptions_api)
+    -- remain invalid, direct compilation then succeeds. this is a generic
+    -- workaround to attempt a explicit compile
+
+    -- Loop through all invalid packages and package bodies in the SERT_CORE schema
+    for cur_rec in (
+      -- Query dba_objects to find invalid packages and package bodies
+      select object_name, object_type
+      from user_objects
+      where status = 'INVALID'
+      and object_type in ('PACKAGE', 'PACKAGE BODY')
+    ) loop
+      if cur_rec.object_type = 'PACKAGE' then
+        l_sql := 'alter package SERT_CORE.' || cur_rec.object_name || ' compile';
+      else
+        l_sql := 'alter package SERT_CORE.' || cur_rec.object_name || ' compile body';
+      end if;
+
+      -- Attempt to recompile the object
+      begin
+        execute immediate l_sql;
+      exception
+        -- Catch any exceptions that occur during recompilation
+        when others then
+          raise;
+      end;
+    end loop;
+  end recompile_core_packages;
+
 end sert_util;
 /
 --rollback not required
