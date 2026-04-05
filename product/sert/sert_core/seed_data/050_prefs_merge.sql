@@ -109,3 +109,15 @@ begin
 end;
 /
 --rollback not required
+--changeset mipotter:prefs_merge_DELETE_EVAL_EXCEPTIONS endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/ stripComments:false
+declare
+  l_value varchar2(250) := 'N';
+begin
+  sert_core.prefs_api.upsert_pref(
+      p_pref_name   => 'Automatically Delete comments and exceptions when deleting an evaluation',
+      p_pref_key    => 'DELETE_EVAL_EXCEPTIONS',
+      p_pref_value  => l_value,
+      p_internal_yn => 'N');
+end;
+/
+--rollback not required
