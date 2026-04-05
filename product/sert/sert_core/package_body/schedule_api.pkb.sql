@@ -9,6 +9,107 @@
 create or replace package body sert_core.schedule_api
 as
 
+
+function scheduler_job_name (
+   p_app_id       in number
+  ,p_rule_set_key in varchar2 )
+   return varchar2
+as
+begin
+   return 'SERT_CORE.SERT_SCHEDULED_EVAL_' || p_app_id || '_' || replace(p_rule_set_key,'-','_');
+end scheduler_job_name;
+
+function normalize_weekdays (
+   p_weekdays in varchar2 )
+   return varchar2
+as
+   l_weekdays varchar2(100);
+begin
+   if p_weekdays is null then
+      return null;
+   end if;
+
+   l_weekdays := upper(replace(replace(trim(p_weekdays), ' ', null), ';', ','));
+
+   while instr(l_weekdays, ',,') > 0 loop
+      l_weekdays := replace(l_weekdays, ',,', ',');
+   end loop;
+
+   l_weekdays := trim(both ',' from l_weekdays);
+
+   return l_weekdays;
+end normalize_weekdays;
+
+procedure resolve_schedule_time (
+   p_hour24  in  number
+  ,p_minute  in  number
+  ,p_hour_out   out number
+  ,p_minute_out out number )
+as
+begin
+   p_hour_out   := coalesce(p_hour24, trunc(dbms_random.value(0, 24)));
+   p_minute_out := coalesce(p_minute, trunc(dbms_random.value(0, 60)));
+
+   if p_hour_out not between 0 and 23 then
+      raise_application_error(-20001, 'Hour must be between 0 and 23.');
+   end if;
+
+   if p_minute_out not between 0 and 59 then
+      raise_application_error(-20002, 'Minute must be between 0 and 59.');
+   end if;
+end resolve_schedule_time;
+
+function build_repeat_interval (
+   p_schedule_mode in varchar2
+  ,p_weekdays      in varchar2
+  ,p_hour24        in number
+  ,p_minute        in number )
+   return varchar2
+as
+   l_schedule_mode varchar2(20) := upper(trim(p_schedule_mode));
+   l_weekdays      varchar2(100);
+begin
+   l_weekdays := normalize_weekdays(p_weekdays);
+
+   if l_schedule_mode not in ('DAILY', 'WEEKLY') then
+      raise_application_error(-20003, 'Schedule mode must be DAILY or WEEKLY.');
+   end if;
+
+   if l_schedule_mode = 'WEEKLY' and l_weekdays is null then
+      raise_application_error(-20004, 'Weekdays are required for WEEKLY schedules.');
+   end if;
+
+   if l_schedule_mode = 'DAILY' then
+      return 'FREQ=DAILY;BYHOUR=' || p_hour24 || ';BYMINUTE=' || p_minute || ';BYSECOND=0;';
+   end if;
+
+   return 'FREQ=WEEKLY;BYDAY=' || l_weekdays || ';BYHOUR=' || p_hour24 || ';BYMINUTE=' || p_minute || ';BYSECOND=0;';
+end build_repeat_interval;
+
+procedure create_schedule_job_core (
+   p_repeat_interval in varchar2
+  ,p_app_id          in number
+  ,p_rule_set_key    in varchar2 )
+as
+   l_job_name varchar2(261);
+begin
+   l_job_name := scheduler_job_name(
+      p_app_id       => p_app_id
+     ,p_rule_set_key => p_rule_set_key );
+
+   dbms_scheduler.create_job(
+      job_name        => l_job_name
+     ,job_type        => 'PLSQL_BLOCK'
+     ,start_date      => systimestamp
+     ,job_action      => 'declare l_eval_id number; begin eval_pkg.eval(p_application_id => ' || p_app_id || ', p_rule_set_key => ''' || p_rule_set_key || ''', p_eval_id_out => l_eval_id); end;'
+     ,repeat_interval => p_repeat_interval
+     ,enabled         => true
+     ,auto_drop       => false
+   );
+
+   -- execute immediate 'grant alter on ' || replace(l_job_name, 'SERT_CORE.', 'sert_core.') || ' to sert_core';
+end create_schedule_job_core;
+
 ----------------------------------------------------------------------------------------------------------------------------
 -- PROCEDURE: A D D _ S C H E D U L E _ J O B
 ----------------------------------------------------------------------------------------------------------------------------
@@ -30,23 +131,83 @@ begin
 
   select to_char(cast(to_timestamp(p_hour || '.' || p_min || ' ' || p_ampm,'HH:MI PM') at time zone 'gmt' as date),'HH24') into l_hour from dual;
 
-  dbms_scheduler.create_job(
-     job_name        => 'SERT_CORE.SERT_SCHEDULED_EVAL_' || p_app_id || '_' || replace(p_rule_set_key,'-','_')
-    ,job_type        => 'PLSQL_BLOCK'
-    ,start_date      => systimestamp
-    ,job_action      => 'declare l_eval_id number; begin eval_pkg.eval(p_application_id => ' || p_app_id || ', p_rule_set_key => ''' || p_rule_set_key || ''', p_eval_id_out => l_eval_id); end;'
-    ,repeat_interval => 'FREQ=daily;BYDAY=' || p_frequency || ';BYHOUR=' || l_hour || ';BYMINUTE=' || p_min || '; bysecond=0;'
-    ,enabled         => true
-    ,auto_drop       => false
-    );
-
-  execute immediate 'grant alter on sert_core.sert_scheduled_eval_' || p_app_id || '_' || replace(p_rule_set_key,'-','_') || ' to sert_core';
+  create_schedule_job_core(
+     p_repeat_interval => 'FREQ=daily;BYDAY=' || p_frequency || ';BYHOUR=' || l_hour || ';BYMINUTE=' || p_min || '; bysecond=0;'
+    ,p_app_id          => p_app_id
+    ,p_rule_set_key    => p_rule_set_key );
 
 exception
   when others then
     log_pkg.log(p_log => 'Error in add_schedule_job:' || SQLERRM, p_log_type => 'UNHANDLED');
     --do not abort, continue creating other scan jobs
 end add_schedule_job;
+
+----------------------------------------------------------------------------------------------------------------------------
+-- PROCEDURE: A D D _ S C H E D U L E _ J O B _ F L E X
+----------------------------------------------------------------------------------------------------------------------------
+-- Adds a new scheduled job using explicit schedule mode and 24-hour time input
+----------------------------------------------------------------------------------------------------------------------------
+-- add_schedule_job_flex
+-- purpose: create one scheduled evaluation job without changing legacy scheduling callers.
+-- behavior: validates schedule mode and weekday selection, resolves omitted hour/minute with random values,
+--   and creates a dbms_scheduler job with a mode-appropriate repeat interval.
+-- parameters:
+--   p_schedule_mode - recurrence mode; supported values are DAILY and WEEKLY.
+--   p_weekdays      - comma-separated DBMS_SCHEDULER weekday tokens for weekly schedules.
+--   p_hour24        - optional hour in 24-hour time, range 0..23; randomized when null.
+--   p_minute        - optional minute, range 0..59; randomized when null.
+--   p_eval_id       - retained for parity with the legacy API; not used in job creation.
+--   p_app_id        - target application id.
+--   p_rule_set_key  - rule set business key.
+-- usage:
+--   sert_core.schedule_api.add_schedule_job_flex(
+--      p_schedule_mode => 'WEEKLY',
+--      p_weekdays      => 'MON,WED,FRI',
+--      p_hour24        => 14,
+--      p_minute        => 30,
+--      p_eval_id       => 0,
+--      p_app_id        => 100,
+--      p_rule_set_key  => 'INTERNAL'
+--   );
+----------------------------------------------------------------------------------------------------------------------------
+procedure add_schedule_job_flex
+  (
+   p_schedule_mode in varchar2
+  ,p_weekdays      in varchar2 default null
+  ,p_hour24        in number   default null
+  ,p_minute        in number   default null
+  ,p_eval_id       in number
+  ,p_app_id        in number
+  ,p_rule_set_key  in varchar2
+  )
+is
+   l_hour24         number;
+   l_minute         number;
+   l_repeat_interval varchar2(4000);
+begin
+   -- resolve explicit or randomized execution time before creating the scheduler job
+   resolve_schedule_time(
+      p_hour24     => p_hour24
+     ,p_minute     => p_minute
+     ,p_hour_out   => l_hour24
+     ,p_minute_out => l_minute );
+
+   -- build the recurrence string from the normalized mode and weekday selection
+   l_repeat_interval := build_repeat_interval(
+      p_schedule_mode => p_schedule_mode
+     ,p_weekdays      => p_weekdays
+     ,p_hour24        => l_hour24
+     ,p_minute        => l_minute );
+
+   create_schedule_job_core(
+      p_repeat_interval => l_repeat_interval
+     ,p_app_id          => p_app_id
+     ,p_rule_set_key    => p_rule_set_key );
+exception
+   when others then
+      log_pkg.log(p_log => 'Error in add_schedule_job_flex:' || sqlerrm, p_log_type => 'UNHANDLED');
+      -- do not abort, continue creating other scan jobs
+end add_schedule_job_flex;
 
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -138,6 +299,133 @@ exception
     log_pkg.log(p_log => 'An unhandled error has occured:' || SQLERRM, p_log_type => 'UNHANDLED');
     raise;
 end schedule_jobs;
+
+----------------------------------------------------------------------------------------------------------------------------
+-- PROCEDURE: S C H E D U L E _ J O B S _ F L E X
+----------------------------------------------------------------------------------------------------------------------------
+-- Schedules evaluation scans assigned via APEX_COLLECTIONS using schedule mode and 24-hour time input
+----------------------------------------------------------------------------------------------------------------------------
+-- schedule_jobs_flex
+-- purpose: batch-create scheduled evaluation jobs for applications loaded into the SERT_SCANS collection.
+-- behavior: iterates the application collection and delegates job creation to add_schedule_job_flex while
+--   preserving the legacy batch scheduling API for existing callers.
+-- parameters:
+--   p_schedule_mode - recurrence mode; supported values are DAILY and WEEKLY.
+--   p_weekdays      - comma-separated DBMS_SCHEDULER weekday tokens for weekly schedules.
+--   p_hour24        - optional hour in 24-hour time, range 0..23; randomized when null.
+--   p_minute        - optional minute, range 0..59; randomized when null.
+--   p_rule_set_key  - rule set business key.
+-- usage:
+--   sert_core.schedule_api.schedule_jobs_flex(
+--      p_schedule_mode => 'DAILY',
+--      p_weekdays      => null,
+--      p_hour24        => null,
+--      p_minute        => null,
+--      p_rule_set_key  => 'INTERNAL'
+--   );
+----------------------------------------------------------------------------------------------------------------------------
+procedure schedule_jobs_flex (
+   p_schedule_mode in varchar2
+  ,p_weekdays      in varchar2 default null
+  ,p_hour24        in number   default null
+  ,p_minute        in number   default null
+  ,p_rule_set_key  in varchar2
+  ) is
+
+   l_count number(4) := 0;
+
+begin
+
+   -- schedule a SERT scan job for every app in the collection using the new flexible API
+   for l_rec in (select n001 from apex_collections
+                 where collection_name = 'SERT_SCANS'
+                 order by seq_id)
+   loop
+
+      log_pkg.log(p_log => 'Scheduling flexible scan of app: ' || l_rec.n001);
+      sert_core.schedule_api.add_schedule_job_flex (
+         p_schedule_mode => p_schedule_mode,
+         p_weekdays      => p_weekdays,
+         p_hour24        => p_hour24,
+         p_minute        => p_minute,
+         p_eval_id       => 0,
+         p_app_id        => l_rec.n001,
+         p_rule_set_key  => p_rule_set_key
+      );
+
+      l_count := l_count + 1;
+
+   end loop;
+
+   log_pkg.log(p_log => 'END: rules_pkg.schedule_jobs_flex. Schedule ' || l_count || ' scan jobs');
+
+exception
+   when others then
+      log_pkg.log(p_log => 'An unhandled error has occured:' || sqlerrm, p_log_type => 'UNHANDLED');
+      raise;
+end schedule_jobs_flex;
+
+----------------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: G E T _ S C H E D U L E D _ J O B S
+----------------------------------------------------------------------------------------------------------------------------
+-- Returns scheduler job metadata for one application id as a pipelined rowset
+----------------------------------------------------------------------------------------------------------------------------
+-- get_scheduled_jobs
+-- purpose: expose scheduled job metadata from user_scheduler_jobs for one application id.
+-- behavior: filters scheduler rows by the SERT scheduled-evaluation job naming convention and pipes matching rows.
+-- parameters:
+--   p_application_id - application id embedded in the scheduled job name.
+-- returns:
+--   schedule_job_nt - pipelined collection of scheduler job metadata rows.
+-- usage:
+--   select *
+--     from table(sert_core.schedule_api.get_scheduled_jobs(p_application_id => 100));
+----------------------------------------------------------------------------------------------------------------------------
+function get_scheduled_jobs (
+   p_application_id in number )
+   return sert_core.schedule_job_nt
+   pipelined
+as
+begin
+   -- pipe scheduler rows that match the application-specific SERT scheduled evaluation naming convention
+   for l_rec in (
+      select job_name,
+             client_id,
+             start_date,
+             repeat_interval,
+             enabled,
+             state,
+             run_count,
+             failure_count,
+             last_start_date,
+             last_run_duration,
+             next_run_date
+        from user_scheduler_jobs
+       where job_name = 'SERT_SCHEDULED_EVAL_' || p_application_id || '_SERT_SECURITY')
+   loop
+      pipe row (
+         sert_core.schedule_job_ot(
+            l_rec.job_name,
+            l_rec.client_id,
+            l_rec.start_date,
+            l_rec.repeat_interval,
+            l_rec.enabled,
+            l_rec.state,
+            l_rec.run_count,
+            l_rec.failure_count,
+            l_rec.last_start_date,
+            l_rec.last_run_duration,
+            l_rec.next_run_date
+         )
+      );
+   end loop;
+
+   return;
+exception
+   when others then
+      log_pkg.log(p_log => 'Error in get_scheduled_jobs:' || sqlerrm, p_log_type => 'UNHANDLED');
+      raise;
+end get_scheduled_jobs;
 
 --------------------------------------------------------------------------------
 -- This procedure runs application SERT scan against all attribute sets.
