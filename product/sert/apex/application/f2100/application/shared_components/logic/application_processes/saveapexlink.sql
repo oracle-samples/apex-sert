@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: F344B14795100B972E074F8A0140CD0D8504D5AA4236A97343A72BC0D9BB94DF
+-- file_checksum: 455A913287C4F8C522947926BEFA5D0D8B3062659C543AEFA7FC6DDC8A112812
 prompt --application/shared_components/logic/application_processes/saveapexlink
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

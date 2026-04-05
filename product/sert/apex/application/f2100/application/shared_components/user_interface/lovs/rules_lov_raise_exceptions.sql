@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 382D0A544313148EFD0BA71AA82146CC449300E85C736DFA14E24734EAD90C43
+-- file_checksum: 6AD3041D90D2C2DD93C5024745AEB5D5DA4C5E18051649F83784C2DCCB724684
 prompt --application/shared_components/user_interface/lovs/rules_lov_raise_exceptions
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

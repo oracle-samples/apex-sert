@@ -3,12 +3,12 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 750AD9ACAC2BDD7582538E2C50E50A7A42463C8C9DA4FA4B926684F20BCF20A6
+-- file_checksum: 4C7DB390587FABA7AFDDFD91810754A624EBEA65104F73ABB59A296C9BABF512
 prompt --application/plugin_settings
 begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

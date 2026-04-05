@@ -1,4 +1,4 @@
--- file_checksum: B183E248845515A348416E0E3FF0F992CE9A96D186D412A8E7CB39943293D0C8
+-- file_checksum: D10713CA444D7936235115AD09DE740A6E84425A34FF1E7D7697A269B0E3BBF7
 prompt --application/shared_components/navigation/breadcrumbs/breadcrumb
 begin
 --   Manifest
@@ -6,7 +6,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: E1ACBF7DA7C24FFF530FE593C911E1F93957695DB902841EC8033E82930A660E
+-- file_checksum: E07C2952065B2FB5F2018CFD6EC1016F7D456CA96BE81A828BA99386542C0676
 prompt --application/shared_components/user_interface/templates/report/value_attribute_pairs_column
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

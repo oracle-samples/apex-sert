@@ -1,4 +1,4 @@
--- file_checksum: D82457617F71A10F8DD5BE7A68F2B35DC6E28CAB2CE1B559AB352AABC2CA6537
+-- file_checksum: 7ABC66421F8543B91F86E5952C426E72F70CDE4D0DE8EEDF0B45DE99A8221912
 prompt --application/shared_components/logic/application_items/g_log_key
 begin
 --   Manifest
@@ -6,7 +6,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

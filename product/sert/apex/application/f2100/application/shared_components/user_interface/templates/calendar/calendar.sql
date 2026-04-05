@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 02CB1F540EC7C774A8E2C089D80F8C178C5B3DA34B05361FA5B4EC8082D4F073
+-- file_checksum: E76A2A63FBC2A1CAFF4BED6FEF815FECBF51D07755C73D8B259E2889F4B2E9E0
 prompt --application/shared_components/user_interface/templates/calendar/calendar
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

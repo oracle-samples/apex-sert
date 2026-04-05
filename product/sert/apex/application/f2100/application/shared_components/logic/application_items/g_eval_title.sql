@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 90D64E3EEC3EF3DF56DD79D951483F9F9B9151AC1C2752D515B625B31FF0F21B
+-- file_checksum: EC90733F4AEB00CD9B337C8B1921AC3CA7758AEDCA4300EE783806082CB7CA8C
 prompt --application/shared_components/logic/application_items/g_eval_title
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

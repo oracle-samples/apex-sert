@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 2D865E0BF8C6BDC9CEBDC18271BFE3A4858225E61ED97FD0B685353025BE1171
+-- file_checksum: DF1AC46C63F1D0FE202EBD1185EC6D21DF659000D34FC430D753923AD99047D0
 prompt --application/shared_components/plugins/dynamic_action/be_apexrnd_aop_da
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

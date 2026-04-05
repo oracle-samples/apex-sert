@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: A06FCD24DA80B29E3E47710424BE2E9CD0FA45B0CCB98FBA4AE923ED82741C11
+-- file_checksum: E490FDF869648ADFCB40A5948DE7F58C8CC72FAC3F5BC31E943DFC6AA0A6555B
 prompt --application/shared_components/logic/application_computations/g_stale_eval
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

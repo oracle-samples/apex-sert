@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: B66D708C2A6CE64103A6AAF23A36059369AD5E59460F6BA9A402F76CBE4EB23B
+-- file_checksum: 67507ECBDADF04F9F32DE22923FDD05822B38E374A18110ECDE908C59D45DE83
 prompt --application/shared_components/globalization/dyntranslations
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

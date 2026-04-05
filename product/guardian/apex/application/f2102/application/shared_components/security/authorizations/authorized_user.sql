@@ -1,4 +1,4 @@
--- file_checksum: 83CF2AC117B4001FF2D54F872D5255936538BFB7FA36F7DB40790C1395D16E05
+-- file_checksum: 893149A9F448CBFAE85E0A7C73D41C02F1FEE4BB9B2D4AC37AF85146389821B3
 prompt --application/shared_components/security/authorizations/authorized_user
 begin
 --   Manifest
@@ -6,7 +6,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

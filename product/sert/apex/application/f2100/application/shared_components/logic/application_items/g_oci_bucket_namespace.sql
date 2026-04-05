@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: CF62DC9F112DCD369CF932BE18D9129375EBD2FE61F39E781B53C7EF0D416E26
+-- file_checksum: 8900E269A533208FEE6DEC9F01C47FC58648F7ADA031DEFFB9F4DD74C9DEC02C
 prompt --application/shared_components/logic/application_items/g_oci_bucket_namespace
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

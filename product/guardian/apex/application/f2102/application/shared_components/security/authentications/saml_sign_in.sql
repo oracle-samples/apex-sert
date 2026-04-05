@@ -1,4 +1,4 @@
--- file_checksum: D90DE71394B2EDC214B3A5EC6499309DBEF48937593BFE2753F1B415446FBFCA
+-- file_checksum: A1FE91CF929A83EE54C9B6B334E86E4EDD8F6A12F85C1F10139B6135E8C55B97
 prompt --application/shared_components/security/authentications/saml_sign_in
 begin
 --   Manifest
@@ -6,7 +6,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

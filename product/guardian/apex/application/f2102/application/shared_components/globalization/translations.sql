@@ -1,4 +1,4 @@
--- file_checksum: BB1F9C89F5DBF9AD2AFDF8B38C4B5A99138C2A7B35C3A50249C66C55D17266C1
+-- file_checksum: 9E1B5825F1714BC3C83258FC5BFD6C9562D72913185B50D730FC6A8008E43267
 prompt --application/shared_components/globalization/translations
 begin
 --   Manifest
@@ -6,7 +6,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

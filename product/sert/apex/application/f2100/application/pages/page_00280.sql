@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 87D8B64AF806DEF89A1C08CA9E15295D2188ED427494BA2E05A124FD8E85B4EA
+-- file_checksum: 586C7D0F2D7AEDE95BE008251AA2883929EA6C4C16C40B4967E2412759150DE5
 prompt --application/pages/page_00280
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -595,10 +595,9 @@ wwv_flow_imp_page.create_page_process(
 'begin',
 'for x in (select * from evals_pub_v where eval_id = :P280_EVAL_ID)',
 'loop',
-'  eval_pkg.delete_eval',
-'    (',
+'  eval_pkg.delete_eval (',
 '    p_eval_id           => :P280_EVAL_ID',
-'    );',
+'    ,p_delete_comments  => :G_DELETE_EVAL_EXCEPTIONS );',
 'end loop;',
 'end;'))
 ,p_process_clob_language=>'PLSQL'

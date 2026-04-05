@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: C1A25696C8836CA97B55963227CBB07D4859BA1FC6D9148E22B726C030AC5C63
+-- file_checksum: 6EAA568323B4C118202ACC640C4F405E8F3884EEB82489186744A1EC314922CF
 prompt --application/shared_components/user_interface/templates/report/search_results
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

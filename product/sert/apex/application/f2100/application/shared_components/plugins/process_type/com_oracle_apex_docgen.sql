@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 58DDCDAB1DA08AB49514EF94530BE73F25F20EC0DE966BDB6045928416A2401A
+-- file_checksum: FA233AA8E4D1E89053444A713A12D8B078CEAF13A004E96022781D64BF3AE4B3
 prompt --application/shared_components/plugins/process_type/com_oracle_apex_docgen
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

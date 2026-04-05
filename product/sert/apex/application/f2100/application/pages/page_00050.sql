@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: D8B3846B39FCCA9E4683E23F80F4047836473A707669B025704D516177941B1F
+-- file_checksum: 372FA15372960BDA5286FABC5F2FBF7F35D60DCFEEE60764B6F3BF424A8EC790
 prompt --application/pages/page_00050
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -94,14 +94,27 @@ wwv_flow_imp_page.create_report_region(
 ,p_query_type=>'SQL'
 ,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select ',
-'  substr',
-'    (',
-'     j.repeat_interval',
-'    ,instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY='')',
-'    ,instr(j.repeat_interval || '';'', '';'', instr(j.repeat_interval, ''BYDAY='')) - (instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY=''))',
-'    ) ',
-'    || '' at '' || TO_CHAR(TO_TIMESTAMP_TZ(TO_CHAR(j.next_run_date, ''YYYY-MM-DD HHPM:MI:SS TZH:TZM''),''YYYY-MM-DD HHPM:MI:SS TZH:TZM'') at time zone sessiontimezone, ''HH:MIPM'') ',
-'  as schedule',
+'  case',
+'    when instr(j.repeat_interval, ''FREQ=DAILY'') > 0 then',
+'      ''Daily at '' || to_char(to_timestamp_tz(to_char(j.next_run_date, ''YYYY-MM-DD HH24:MI:SS TZH:TZM''),''YYYY-MM-DD HH24:MI:SS TZH:TZM'') at time zone sessiontimezone, ''HH24:MI'')',
+'    when instr(j.repeat_interval, ''FREQ=WEEKLY'') > 0 then',
+'      ''Weekly on '' ||',
+'      substr',
+'      (',
+'         j.repeat_interval',
+'        ,instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY='')',
+'        ,instr(j.repeat_interval || '';'', '';'', instr(j.repeat_interval, ''BYDAY='')) - (instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY=''))',
+'      )',
+'      || '' at '' || to_char(to_timestamp_tz(to_char(j.next_run_date, ''YYYY-MM-DD HH24:MI:SS TZH:TZM''),''YYYY-MM-DD HH24:MI:SS TZH:TZM'') at time zone sessiontimezone, ''HH24:MI'')',
+'    else',
+'      substr',
+'      (',
+'         j.repeat_interval',
+'        ,instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY='')',
+'        ,instr(j.repeat_interval || '';'', '';'', instr(j.repeat_interval, ''BYDAY='')) - (instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY=''))',
+'      )',
+'      || '' at '' || to_char(to_timestamp_tz(to_char(j.next_run_date, ''YYYY-MM-DD HH24:MI:SS TZH:TZM''),''YYYY-MM-DD HH24:MI:SS TZH:TZM'') at time zone sessiontimezone, ''HH24:MI'')',
+'  end as schedule',
 'FROM ',
 '  user_scheduler_jobs j',
 'where ',
@@ -196,12 +209,64 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_condition_type=>'EXISTS'
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(970500000000000001)
+,p_name=>'P50_SCHEDULE_MODE'
+,p_item_sequence=>5
+,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
+,p_prompt=>'Schedule Mode'
+,p_display_as=>'NATIVE_RADIOGROUP'
+,p_lov=>'STATIC2:Daily;DAILY,Weekly;WEEKLY'
+,p_field_template=>wwv_flow_imp.id(512259205067949615)
+,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--radioButtonGroup'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'number_of_columns', '2')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(970500000000000002)
+,p_name=>'P50_HOUR24'
+,p_item_sequence=>15
+,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
+,p_prompt=>'Hour (24hr)'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>'STATIC2:00;0,01;1,02;2,03;3,04;4,05;5,06;6,07;7,08;8,09;9,10;10,11;11,12;12,13;13,14;14,15;15,16;16,17;17,18;18,19;19,20;20,21;21,22;22,23;23'
+,p_lov_display_null=>'YES'
+,p_lov_null_text=>'- Random -'
+,p_cHeight=>1
+,p_colspan=>2
+,p_field_template=>wwv_flow_imp.id(512259205067949615)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(970500000000000003)
+,p_name=>'P50_MINUTE'
+,p_item_sequence=>25
+,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
+,p_prompt=>'Minute'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>'STATIC2:00;0,05;5,10;10,15;15,20;20,25;25,30;30,35;35,40;40,45;45,50;50,55;55'
+,p_lov_display_null=>'YES'
+,p_lov_null_text=>'- Random -'
+,p_cHeight=>1
+,p_begin_on_new_line=>'N'
+,p_colspan=>2
+,p_field_template=>wwv_flow_imp.id(512259205067949615)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+);
+
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(137417442669888650)
 ,p_name=>'P50_FREQUENCY'
-,p_is_required=>true
+,p_is_required=>false
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
-,p_prompt=>'Frequency'
+,p_prompt=>'Weekdays (Legacy)'
 ,p_display_as=>'NATIVE_CHECKBOX'
 ,p_lov=>'STATIC2:Mon;MON,Tue;TUE,Wed;WED,Thu;THU,Fri;FRI,Sat;SAT,Sun;SUN'
 ,p_field_template=>wwv_flow_imp.id(512259205067949615)
@@ -215,7 +280,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(137417654229888652)
 ,p_name=>'P50_HOUR'
-,p_is_required=>true
+,p_is_required=>false
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
 ,p_prompt=>'Hour'
@@ -232,7 +297,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(137417813343888653)
 ,p_name=>'P50_MIN'
-,p_is_required=>true
+,p_is_required=>false
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
 ,p_prompt=>'Min'
@@ -250,7 +315,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(137417849866888654)
 ,p_name=>'P50_AMPM'
-,p_is_required=>true
+,p_is_required=>false
 ,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
 ,p_prompt=>'AM/PM'
@@ -340,7 +405,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'Add Schedule Job'
 ,p_attribute_01=>'PLSQL_PACKAGE'
 ,p_attribute_03=>'SCHEDULE_API'
-,p_attribute_04=>'ADD_SCHEDULE_JOB'
+,p_attribute_04=>'ADD_SCHEDULE_JOB_FLEX'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(138505580979167106)
 ,p_process_success_message=>'Scheduled evaluation added'
@@ -350,49 +415,49 @@ wwv_flow_imp_shared.create_invokeapi_comp_param(
  p_id=>wwv_flow_imp.id(138603193160977731)
 ,p_page_process_id=>wwv_flow_imp.id(138518196069093330)
 ,p_page_id=>50
-,p_name=>'p_frequency'
+,p_name=>'p_schedule_mode'
 ,p_direction=>'IN'
 ,p_data_type=>'VARCHAR2'
 ,p_has_default=>false
 ,p_display_sequence=>10
 ,p_value_type=>'ITEM'
-,p_value=>'P50_FREQUENCY'
+,p_value=>'P50_SCHEDULE_MODE'
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
  p_id=>wwv_flow_imp.id(138603266435977732)
 ,p_page_process_id=>wwv_flow_imp.id(138518196069093330)
 ,p_page_id=>50
-,p_name=>'p_hour'
+,p_name=>'p_weekdays'
 ,p_direction=>'IN'
-,p_data_type=>'NUMBER'
+,p_data_type=>'VARCHAR2'
 ,p_has_default=>false
 ,p_display_sequence=>20
 ,p_value_type=>'ITEM'
-,p_value=>'P50_HOUR'
+,p_value=>'P50_FREQUENCY'
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
  p_id=>wwv_flow_imp.id(138603336464977733)
 ,p_page_process_id=>wwv_flow_imp.id(138518196069093330)
 ,p_page_id=>50
-,p_name=>'p_min'
+,p_name=>'p_hour24'
 ,p_direction=>'IN'
 ,p_data_type=>'NUMBER'
 ,p_has_default=>false
 ,p_display_sequence=>30
 ,p_value_type=>'ITEM'
-,p_value=>'P50_MIN'
+,p_value=>'P50_HOUR24'
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
  p_id=>wwv_flow_imp.id(138603496683977734)
 ,p_page_process_id=>wwv_flow_imp.id(138518196069093330)
 ,p_page_id=>50
-,p_name=>'p_ampm'
+,p_name=>'p_minute'
 ,p_direction=>'IN'
-,p_data_type=>'VARCHAR2'
+,p_data_type=>'NUMBER'
 ,p_has_default=>false
 ,p_display_sequence=>40
 ,p_value_type=>'ITEM'
-,p_value=>'P50_AMPM'
+,p_value=>'P50_MINUTE'
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
  p_id=>wwv_flow_imp.id(138603569137977735)

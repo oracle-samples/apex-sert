@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 937BB3A3157815FF418F18F01A36ADD6FA4810F39FBC26FDECA082FE1D02BC2A
+-- file_checksum: 8E6EE0C0698CB188803736F7D7E0EBFB5C6EDD097F40FB7202A11ECD22625CA8
 prompt --application/shared_components/user_interface/templates/list/cards
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263

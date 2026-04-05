@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 0F77748C329647EDCADB19F9BF26DB3DAF38637D533874A7FD017859692C8547
+-- file_checksum: EE28B546815196B9076D6BA049409DF6B3396733336C8E4A25DABCEB1923D2B1
 prompt --application/pages/page_06000
 begin
 --   Manifest
@@ -11,7 +11,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
@@ -39,14 +39,27 @@ wwv_flow_imp_page.create_report_region(
 ,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select',
 '   job_name',
-'  ,     substr',
-'      (',
-'       repeat_interval',
-'      ,instr(repeat_interval, ''BYDAY='') + length(''BYDAY='')',
-'      ,instr(repeat_interval || '';'', '';'', instr(repeat_interval, ''BYDAY='')) - (instr(repeat_interval, ''BYDAY='') + length(''BYDAY=''))',
-'      ) ',
-'      || '' at '' || TO_CHAR(TO_TIMESTAMP_TZ(TO_CHAR(next_run_date, ''YYYY-MM-DD HHPM:MI:SS TZH:TZM''),''YYYY-MM-DD HHPM:MI:SS TZH:TZM'') at time zone sessiontimezone, ''HH:MIPM'') ',
-'    as repeat_interval',
+'  , case',
+'      when instr(repeat_interval, ''FREQ=DAILY'') > 0 then',
+'        ''Daily at '' || to_char(to_timestamp_tz(to_char(next_run_date, ''YYYY-MM-DD HH24:MI:SS TZH:TZM''),''YYYY-MM-DD HH24:MI:SS TZH:TZM'') at time zone sessiontimezone, ''HH24:MI'')',
+'      when instr(repeat_interval, ''FREQ=WEEKLY'') > 0 then',
+'        ''Weekly on '' ||',
+'        substr',
+'        (',
+'           repeat_interval',
+'          ,instr(repeat_interval, ''BYDAY='') + length(''BYDAY='')',
+'          ,instr(repeat_interval || '';'', '';'', instr(repeat_interval, ''BYDAY='')) - (instr(repeat_interval, ''BYDAY='') + length(''BYDAY=''))',
+'        )',
+'        || '' at '' || to_char(to_timestamp_tz(to_char(next_run_date, ''YYYY-MM-DD HH24:MI:SS TZH:TZM''),''YYYY-MM-DD HH24:MI:SS TZH:TZM'') at time zone sessiontimezone, ''HH24:MI'')',
+'      else',
+'        substr',
+'        (',
+'           repeat_interval',
+'          ,instr(repeat_interval, ''BYDAY='') + length(''BYDAY='')',
+'          ,instr(repeat_interval || '';'', '';'', instr(repeat_interval, ''BYDAY='')) - (instr(repeat_interval, ''BYDAY='') + length(''BYDAY=''))',
+'        )',
+'        || '' at '' || to_char(to_timestamp_tz(to_char(next_run_date, ''YYYY-MM-DD HH24:MI:SS TZH:TZM''),''YYYY-MM-DD HH24:MI:SS TZH:TZM'') at time zone sessiontimezone, ''HH24:MI'')',
+'    end as repeat_interval',
 '',
 '  ,state',
 '  ,run_count',

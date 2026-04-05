@@ -1,9 +1,9 @@
--- file_checksum: 88C5D735F1108FC8BE08D895BAF09D218143D977C87292587A99E59F7160193A
+-- file_checksum: 22C8C78943AC204D45981C6E7AB99BA036D493EFFD3F1604D5676F0A056765A0
 prompt --application/plugin_settings
 begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

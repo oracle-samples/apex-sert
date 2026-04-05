@@ -3,8 +3,8 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 07E934ECCF40C38C1B96480F9940AA9FB6F93F1B1DB22411DE6ECC1C76C9FFCF
--- file_checksum: ABC858A305BD3C6B55136B50900F9DB0298618E81AC1C1DE5143A91FE574F7E1
+prompt app_checksum: 0303B8341102AA68B46B01DB5326CC4AEE2E11F6C546A184197CB864A30E5D57
+-- file_checksum: 0710DD97001066980A609C890CC60C619CA02AEE2090F4CAA4BE268F252FA7C3
 prompt --install
 @@application/set_environment.sql
 @@application/delete_application.sql
@@ -46,6 +46,7 @@ prompt --install
 @@application/shared_components/logic/application_items/g_application_id.sql
 @@application/shared_components/logic/application_items/g_button_link.sql
 @@application/shared_components/logic/application_items/g_category_name.sql
+@@application/shared_components/logic/application_items/g_delete_eval_exceptions.sql
 @@application/shared_components/logic/application_items/g_email_from.sql
 @@application/shared_components/logic/application_items/g_eval_result_id.sql
 @@application/shared_components/logic/application_items/g_eval_title.sql
@@ -64,6 +65,7 @@ prompt --install
 @@application/shared_components/logic/application_items/g_workspace_name.sql
 @@application/shared_components/logic/application_computations/g_application_id.sql
 @@application/shared_components/logic/application_computations/g_stale_eval.sql
+@@application/shared_components/logic/application_computations/g_delete_eval_exceptions.sql
 @@application/shared_components/logic/application_computations/g_email_from.sql
 @@application/shared_components/logic/application_computations/g_release_version.sql
 @@application/shared_components/logic/application_computations/g_aop_url.sql
