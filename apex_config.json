@@ -1,0 +1,28 @@
+[
+  {
+    "id-lo": "1000",
+    "id-hi": "1999",
+    "extract_to_path": "nonprod/sert/apex/application",
+    "controller_path": "nonprod/sert/apex/apexController.xml"
+  },
+  {
+    "id":               "2100",
+    "extract_to_path":  "product/sert/apex/application",
+    "controller_path":  "product/sert/apex/apexController.xml"
+  },
+  {
+    "id":               "2101",
+    "extract_to_path":  "product/sert/apex/application",
+    "controller_path":  "product/sert/apex/apexController.xml"
+  },
+  {
+    "id":               "2102",
+    "extract_to_path":  "product/guardian/apex/application",
+    "controller_path":  "product/guardian/apex/apexController.xml"
+  },
+  {
+      "id": "default",
+      "product": "sert",
+      "preserveInstallXML": true
+  }
+]
