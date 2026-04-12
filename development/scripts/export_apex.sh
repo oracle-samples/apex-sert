@@ -169,7 +169,7 @@ for app_id in "$@"; do
     info "Exporting to: $raw_extract_to"
     sql -name "$SQLC_CONN" <<SQLEOF
 whenever sqlerror exit failure
-lb generate-apex-object -applicationid ${app_id} -split -skipexportdate -exporiginalids -ovf -audittype NULL -dir ${extract_to}
+lb generate-apex-object -applicationid ${app_id} -split -skipexportdate -ovf -audittype DATES_ONLY -dir ${extract_to}
 exit
 SQLEOF
     sql_rc=$?
@@ -195,7 +195,7 @@ SQLEOF
     fi
 
     # ── Remove apex_install.xml generated alongside the split export ─────────
-    local apex_install_xml="${extract_to}/apex_install.xml"
+    apex_install_xml="${extract_to}/apex_install.xml"
     if [[ -f "$apex_install_xml" ]]; then
         info "Removing generated apex_install.xml ..."
         rm -f "$apex_install_xml"
