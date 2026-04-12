@@ -14,8 +14,8 @@ grant DWROLE to SERT_PUB
 /
 
 begin
-    dbms_cloud_admin.enable_resource_principal();
-    dbms_cloud_admin.enable_resource_principal(username => 'SERT_PUB');
+  dbms_cloud_admin.enable_resource_principal();
+  dbms_cloud_admin.enable_resource_principal(username => 'SERT_PUB');
 end;
 /
 --rollback not required
