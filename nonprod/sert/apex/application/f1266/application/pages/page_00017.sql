@@ -1,12 +1,12 @@
--- file_checksum: 7A0631B941C93C57D8764F55601D3B8FEDBAF763F6BF8FBD66B4CC51FFE01906
+-- file_checksum: F6391F0ADD7614BE5BAFB22E58225CAD5674164EC35F6B8F119B315D295D9FF0
 prompt --application/pages/page_00017
 begin
 --   Manifest
 --     PAGE: 00017
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083
@@ -20,7 +20,7 @@ wwv_flow_imp_page.create_page(
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(21548711573636577)
 ,p_page_template_options=>'#DEFAULT#'
-,p_required_role=>wwv_flow_imp.id(21560368603834707)
+,p_required_role=>wwv_flow_imp.id(43623144320207869)
 ,p_protection_level=>'C'
 ,p_page_component_map=>'23'
 );
@@ -129,8 +129,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_warn_on_unsaved_changes=>'I'
 ,p_lov_display_extra=>'NO'
 ,p_escape_on_http_output=>'N'
-,p_attribute_01=>'NONE'
-,p_attribute_03=>'Y'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'execute_validations', 'Y',
+  'page_action_on_selection', 'NONE')).to_clob
 ,p_ai_enabled=>false
 );
 wwv_flow_imp.component_end;

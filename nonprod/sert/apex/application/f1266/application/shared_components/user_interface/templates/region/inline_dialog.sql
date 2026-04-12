@@ -1,12 +1,12 @@
--- file_checksum: F07FCF1A4FB4EA994B4FE84F93ADFD5E7583D3E5FBC6382A6D9CDF97803FF5AE
+-- file_checksum: 15402ADD6E32638EA94EAF68EF39D6B60030B155C5265AB2BDBC4CAD1787381D
 prompt --application/shared_components/user_interface/templates/region/inline_dialog
 begin
 --   Manifest
 --     REGION TEMPLATE: INLINE_DIALOG
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

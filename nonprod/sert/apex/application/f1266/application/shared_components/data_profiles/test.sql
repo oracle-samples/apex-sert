@@ -1,12 +1,12 @@
--- file_checksum: 542586DA6529DA3B96E6D131D2BD57F8B1C11DD03224373637BCDBBFE8025EB8
+-- file_checksum: C7F8CFACD87A7E3D22ED103A0EBB92BE0DA27C8DC0BB81BE9CACDC9556BB3FA7
 prompt --application/shared_components/data_profiles/test
 begin
 --   Manifest
 --     DATA PROFILE: test
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

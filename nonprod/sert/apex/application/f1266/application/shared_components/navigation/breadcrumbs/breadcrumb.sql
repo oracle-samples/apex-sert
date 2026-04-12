@@ -1,12 +1,12 @@
--- file_checksum: E10C96B678540DA303F12B5D1176E88A0E1B57682F3142650FA88C5FF9ABBB5A
+-- file_checksum: 785B8DB20A4C41C62FADF60FD21C6A63BB9B35708DB52AF47A3EC0373DBA06BA
 prompt --application/shared_components/navigation/breadcrumbs/breadcrumb
 begin
 --   Manifest
 --     MENU:  Breadcrumb
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083
@@ -64,7 +64,8 @@ wwv_flow_imp_shared.create_menu_option(
  p_id=>wwv_flow_imp.id(21556238763694531)
 ,p_parent_id=>wwv_flow_imp.id(21536956445570385)
 ,p_short_name=>'Access Control'
-,p_link=>'f?p=&APP_ID.:16:&SESSION.::&DEBUG.:::'
+,p_long_name=>'Access Control security'
+,p_link=>'f?p=&APP_ID.:161:&SESSION.::&DEBUG.:::'
 ,p_page_id=>16
 );
 wwv_flow_imp_shared.create_menu_option(

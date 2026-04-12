@@ -1,12 +1,12 @@
--- file_checksum: C1825DEA3A484E9EABB56DDF0A77EA879CDAF65356D267B9144DE11161F5A0AB
+-- file_checksum: F7E1F1D714FBAB18486B6BF286480A70C9CC7DB47EC06A2C5AC51552CF36D338
 prompt --application/shared_components/user_interface/templates/report/standard
 begin
 --   Manifest
 --     ROW TEMPLATE: STANDARD
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

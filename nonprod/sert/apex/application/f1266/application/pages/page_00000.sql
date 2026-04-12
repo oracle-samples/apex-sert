@@ -1,12 +1,12 @@
--- file_checksum: B1A27195EF206D7680BDC4DE00E67218CE399D80B9BBE65FA77628A60350FC23
+-- file_checksum: 133E2F958A2D2E01226BED324A3AAC449ECF252E7E7CBCE67C176C6E5CE2FD3E
 prompt --application/pages/page_00000
 begin
 --   Manifest
 --     PAGE: 00000
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

@@ -4,13 +4,12 @@
   xmlns:ora="http://www.oracle.com/xml/ns/dbchangelog-ext"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.25.xsd"
 >
+  <preConditions>
+    <dbms  type="oracle"/>
+    <runningAs  username="ACDC"/>
+  </preConditions>
 
   <changeSet id="apex_f1266" author="aes-ace" runOnChange="true">
-    <!-- precondition -->
-    <preConditions onFail="CONTINUE" onError="HALT">
-        <sqlCheck  expectedResult="Y">select gbu_core.ace_util_lb_precons.apex_lb_precon(p_application_id=>1266) v_result from dual</sqlCheck>
-    </preConditions>
-
     <!-- SQL Block for Setting Workspace Name and Parsing Schema -->
     <!-- remove block comment if this section is needed
     <sql endDelimiter="/">

@@ -1,12 +1,12 @@
--- file_checksum: 3FDE53502D8DFD85D6B605AF652CBD29125632FE7E6EB180DEB7FCA4B0F375A8
+-- file_checksum: 57DE3AD02C29A4B990E1B3765F0F474D14156E2AC2D75011DEAA36FF5734EEDB
 prompt --application/shared_components/user_interface/templates/list/top_navigation_mega_menu
 begin
 --   Manifest
 --     REGION TEMPLATE: TOP_NAVIGATION_MEGA_MENU
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

@@ -1,12 +1,12 @@
--- file_checksum: AC298A77EB914A5D82949A7B19ECB29ABA7D8F58D3DB68B5870265E332B0540F
+-- file_checksum: D5339D4ADEC0DC26EF2917117E0F34F95E2DBB211FAD4D6AF549335EA82C68B2
 prompt --application/pages/page_00015
 begin
 --   Manifest
 --     PAGE: 00015
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083
@@ -84,8 +84,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_warn_on_unsaved_changes=>'I'
 ,p_lov_display_extra=>'NO'
 ,p_escape_on_http_output=>'N'
-,p_attribute_01=>'NONE'
-,p_attribute_03=>'Y'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'execute_validations', 'Y',
+  'page_action_on_selection', 'NONE')).to_clob
 ,p_ai_enabled=>false
 );
 wwv_flow_imp.component_end;

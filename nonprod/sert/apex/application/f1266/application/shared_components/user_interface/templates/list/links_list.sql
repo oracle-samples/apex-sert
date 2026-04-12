@@ -1,12 +1,12 @@
--- file_checksum: FC8E686F0486AADAB98FC97103A0E245EB2419D6D592D6C9C0214EAA5A9CA86A
+-- file_checksum: B54B33202752506A4FD0BF14FA0712F700E52255B854A54F08B6A4DDDD685374
 prompt --application/shared_components/user_interface/templates/list/links_list
 begin
 --   Manifest
 --     REGION TEMPLATE: LINKS_LIST
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

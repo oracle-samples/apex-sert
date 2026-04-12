@@ -1,12 +1,12 @@
--- file_checksum: C926AAE07236E2DD5ED566F3855205CD75FA155A3B39F3CCF3299070A62A2E7A
+-- file_checksum: F6793F711539D61E1C77A375C9ABD0F81DD075B996F5047CFB923541EC8C9C15
 prompt --application/shared_components/user_interface/themes
 begin
 --   Manifest
 --     THEME: 1266
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083
@@ -21,6 +21,7 @@ wwv_flow_imp_shared.create_theme(
 ,p_navigation_type=>'L'
 ,p_nav_bar_type=>'LIST'
 ,p_is_locked=>false
+,p_current_theme_style_id=>wwv_flow_imp.id(26088047369749176)
 ,p_default_page_template=>wwv_flow_imp.id(43741515325394135)
 ,p_default_dialog_template=>wwv_flow_imp.id(43742882598394139)
 ,p_error_template=>wwv_flow_imp.id(43744976526394141)

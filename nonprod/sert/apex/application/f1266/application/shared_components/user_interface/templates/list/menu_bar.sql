@@ -1,12 +1,12 @@
--- file_checksum: 6E6E81DC23FCF0D2C84F8663780099D67C2F9A00EB903D39E58B596578AFDE8E
+-- file_checksum: B807A0E2876AF8F7725422BAFC654B9E1F5463CC8A427C2C80131A017E388037
 prompt --application/shared_components/user_interface/templates/list/menu_bar
 begin
 --   Manifest
 --     REGION TEMPLATE: MENU_BAR
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

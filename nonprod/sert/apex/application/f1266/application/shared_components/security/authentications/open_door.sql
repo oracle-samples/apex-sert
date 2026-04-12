@@ -1,12 +1,12 @@
--- file_checksum: 5CAFD5213DF718C095EB015F9E7B3A2F8660E814A1B6950EF2113A17A2217D3D
+-- file_checksum: D001F4366C9D62D8ABB5A9ACF61F124C00E4053967BCCD19DA654DE072A1E4A5
 prompt --application/shared_components/security/authentications/open_door
 begin
 --   Manifest
 --     AUTHENTICATION: Open Door
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

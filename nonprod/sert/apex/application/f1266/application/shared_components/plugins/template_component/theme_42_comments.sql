@@ -1,12 +1,12 @@
--- file_checksum: 59A733B882F7A60CC3A650C4FBF86CD03CCD0C2C10CFB7583ECC858548709350
+-- file_checksum: ED6638078EE2E6DB67498EC69107F978B4821242C2C1D23F2515B0C0A160B47E
 prompt --application/shared_components/plugins/template_component/theme_42_comments
 begin
 --   Manifest
 --     PLUGIN: THEME_42$COMMENTS
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

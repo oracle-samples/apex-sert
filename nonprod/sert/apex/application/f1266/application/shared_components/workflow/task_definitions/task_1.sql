@@ -1,12 +1,12 @@
--- file_checksum: 66481CE65FAED45C9A5A4B3794DBF207CB5993F1139781614FE79FCEBD1F7540
+-- file_checksum: A4DB4F62533A30BE477C039C8BCE28EA4C92EDC64FDFA80DE6CAAD68C8BC8E06
 prompt --application/shared_components/workflow/task_definitions/task_1
 begin
 --   Manifest
 --     TASK_DEF: task 1
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

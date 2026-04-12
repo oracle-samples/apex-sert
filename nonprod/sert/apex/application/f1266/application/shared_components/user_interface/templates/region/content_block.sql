@@ -1,12 +1,12 @@
--- file_checksum: EA8215A252EA14BA2FA9705A86230E018AA29D34A55899E0625D9C1C8F46DF9B
+-- file_checksum: 645272F29258117CCEBC56EA8BAAB133E9A6A4642D1E0032F6F15914321A1DAC
 prompt --application/shared_components/user_interface/templates/region/content_block
 begin
 --   Manifest
 --     REGION TEMPLATE: CONTENT_BLOCK
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

@@ -1,12 +1,12 @@
--- file_checksum: CBA18F95D741ACB558C645A470847F3726040E9E1551F2E3A27310159C72BB05
+-- file_checksum: CED50ACD89E1FF682406AEE961415827E55164D7AFBF0F3D1A64F22746537647
 prompt --application/shared_components/user_interface/templates/report/badge_list
 begin
 --   Manifest
 --     ROW TEMPLATE: BADGE_LIST
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

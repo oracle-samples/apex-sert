@@ -1,12 +1,12 @@
--- file_checksum: EFC8C3F946A9B10B75527C354EE9FE58584F087DEB34B1C7C3CAC826D2ABC487
+-- file_checksum: 56A17110E8296FC233E693A5382364414DED7D6CED20F77D1AD997594810066A
 prompt --application/create_application
 begin
 --   Manifest
 --     FLOW: 1266
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083
@@ -55,6 +55,7 @@ wwv_imp_workspace.create_flow(
 ,p_tokenize_row_search=>'N'
 ,p_friendly_url=>'N'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
+,p_version_scn=>46612869259990
 ,p_print_server_type=>'INSTANCE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'N'

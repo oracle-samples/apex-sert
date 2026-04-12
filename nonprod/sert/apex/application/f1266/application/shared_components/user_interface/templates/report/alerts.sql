@@ -1,12 +1,12 @@
--- file_checksum: A6825B9DBFE1E2866F7E18B52683857C82BAC5B6155D90544BCE7A1409F413D1
+-- file_checksum: 402EC8FB11F06BA1947DD5A176036AF5BD165FD49631983626A98F0227D59C47
 prompt --application/shared_components/user_interface/templates/report/alerts
 begin
 --   Manifest
 --     ROW TEMPLATE: ALERTS
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

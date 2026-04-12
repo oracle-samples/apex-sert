@@ -1,12 +1,12 @@
--- file_checksum: 962C1484A1E6CE84FC67EFE44039A5C00E632A084DE71A3C5513D6777DCCCAAB
+-- file_checksum: A00B5B51E8B78181A29343D740B704CF18D87A4D2665E855EA126B9FEA8B810D
 prompt --application/shared_components/user_interface/templates/page/left_side_column
 begin
 --   Manifest
 --     TEMPLATE: LEFT_SIDE_COLUMN
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

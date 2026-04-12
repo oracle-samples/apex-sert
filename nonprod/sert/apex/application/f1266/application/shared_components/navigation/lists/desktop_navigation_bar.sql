@@ -1,12 +1,12 @@
--- file_checksum: 5C18FC88F257FB58B29B67E25F10ACCDE37C0B8781B359B2FBC7E41179BDBB0C
+-- file_checksum: ADAED13C9D0EE98BA02100BF15FB23FF3963B01A9F7A58EEDDD82DB19533ED33
 prompt --application/shared_components/navigation/lists/desktop_navigation_bar
 begin
 --   Manifest
 --     LIST: Desktop Navigation Bar
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

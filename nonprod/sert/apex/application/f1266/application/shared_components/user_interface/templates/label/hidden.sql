@@ -1,12 +1,12 @@
--- file_checksum: 4CBCCD3AB1B081D46F57A503E34FCD5357E471607C5C64584913C23D4A79E907
+-- file_checksum: D61D9E140609DE85AD20AC02EF970C6FE44453F8A04854DA9FA5C39C5F097D1D
 prompt --application/shared_components/user_interface/templates/label/hidden
 begin
 --   Manifest
 --     LABEL TEMPLATE: HIDDEN
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

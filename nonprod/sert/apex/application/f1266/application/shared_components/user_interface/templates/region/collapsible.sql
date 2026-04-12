@@ -1,12 +1,12 @@
--- file_checksum: 6CC929E405C94A2495AFC4BE900B5C54883DE183525768A31683709BAF6B969C
+-- file_checksum: DA132731D5BCFE7420001BC15F25D18F62D2BBF6262AF00A42E415C5C8746678
 prompt --application/shared_components/user_interface/templates/region/collapsible
 begin
 --   Manifest
 --     REGION TEMPLATE: COLLAPSIBLE
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

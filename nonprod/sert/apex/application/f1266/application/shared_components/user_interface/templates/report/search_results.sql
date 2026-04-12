@@ -1,12 +1,12 @@
--- file_checksum: C8DC6B94A81ABF6F0B4A186F54A192835C476C66D419340C8855FBFEFD3B9ECC
+-- file_checksum: 7DA969FB00AA7A593A5A24CB164ADBF74696459A2CED94CF74CFF98C4DB365C7
 prompt --application/shared_components/user_interface/templates/report/search_results
 begin
 --   Manifest
 --     ROW TEMPLATE: SEARCH_RESULTS
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

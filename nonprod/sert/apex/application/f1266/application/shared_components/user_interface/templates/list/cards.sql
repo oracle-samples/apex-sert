@@ -1,12 +1,12 @@
--- file_checksum: 185BC0A5827334A3A5CBAD0AA327E927250F4641DFAAA98D86C5C3EE9571A30A
+-- file_checksum: 1D695DF0A10D818792DEC24FCE6D6E8C06A68240040CADB8722D313200A3C598
 prompt --application/shared_components/user_interface/templates/list/cards
 begin
 --   Manifest
 --     REGION TEMPLATE: CARDS
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

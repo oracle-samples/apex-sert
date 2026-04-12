@@ -1,12 +1,12 @@
--- file_checksum: B3E6307F5CCDDF4ABF2100A5678BE2FAF6C0B6497A2A76C01F84F032332416CD
+-- file_checksum: 214FDE4C3CAFC3C4B108F3E2D39ED7499F0C32B3B66DCF7A58054E41E577B993
 prompt --application/shared_components/user_interface/templates/region/blank_with_attributes_no_grid
 begin
 --   Manifest
 --     REGION TEMPLATE: BLANK_WITH_ATTRIBUTES_NO_GRID
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

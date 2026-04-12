@@ -1,12 +1,12 @@
--- file_checksum: 8F89633642099FFD9E9987012F1200E6CBC6DDC2684C2E66A712695643BC3F87
+-- file_checksum: 71291AEA45FD88808BDFE67480E309738116C1C5EE1081EEA36B88217F1CE7FA
 prompt --application/shared_components/navigation/lists/tabs
 begin
 --   Manifest
 --     LIST: Tabs
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

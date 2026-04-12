@@ -1,12 +1,12 @@
--- file_checksum: A5AB6C5249BDB39CE46092A08031B9978CBDCA412ADEFAED356667AB98048176
+-- file_checksum: 8E9E0B04B62336A9F659BE74EFD86BF59062C0EE5269DBA0173B80F966F5EFAD
 prompt --application/shared_components/user_interface/templates/label/optional_above
 begin
 --   Manifest
 --     LABEL TEMPLATE: OPTIONAL_ABOVE
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

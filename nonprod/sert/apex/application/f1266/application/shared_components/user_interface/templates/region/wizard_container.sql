@@ -1,12 +1,12 @@
--- file_checksum: 625E727224970B736B39DD3BBACC098406D25AF7151EFFD55002A0BD398331A9
+-- file_checksum: 8C957B56287F8951B7280BC4544BEDA527042C5D9636ED8931FA703C8E8AF094
 prompt --application/shared_components/user_interface/templates/region/wizard_container
 begin
 --   Manifest
 --     REGION TEMPLATE: WIZARD_CONTAINER
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

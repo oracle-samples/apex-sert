@@ -1,12 +1,12 @@
--- file_checksum: 8C4199258138EA21CED93A3AF08B84476D4A425A00C1F4A0EDC29812126E7A69
+-- file_checksum: 4B33EC7A36AB5814D241DD538C3435F77E57E93B63D8E75755377FBB7DDE0A30
 prompt --application/shared_components/plugins/template_component/theme_42_timeline
 begin
 --   Manifest
 --     PLUGIN: THEME_42$TIMELINE
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

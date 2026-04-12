@@ -1,12 +1,12 @@
--- file_checksum: A6C75E28215AA6F417CFD1D65050DFB9D927DDC3662F601FD37666C2A7C8AE51
+-- file_checksum: AF17CE51E06627741B7BDC1258323E9D7E96B501D5A4D061A5424554FCFA1FC7
 prompt --application/shared_components/user_interface/templates/button/text_with_icon
 begin
 --   Manifest
 --     BUTTON TEMPLATE: TEXT_WITH_ICON
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

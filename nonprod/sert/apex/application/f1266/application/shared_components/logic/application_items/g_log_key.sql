@@ -1,8 +1,8 @@
--- file_checksum: 66904F222B3D548B5FF2E7369A4534D326218A9F66B6C7F11B25ED87A63CB4AC
-prompt --application/shared_components/logic/application_items/a_bad_name
+-- file_checksum: C97E2D6FD8911B34B18790CD8245D41A8A7D331E8613B61AAECFDE90505F4195
+prompt --application/shared_components/logic/application_items/g_log_key
 begin
 --   Manifest
---     APPLICATION ITEM: A_BAD_NAME
+--     APPLICATION ITEM: G_LOG_KEY
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
@@ -13,11 +13,10 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'SERT_CORE'
 );
 wwv_flow_imp_shared.create_flow_item(
- p_id=>wwv_flow_imp.id(100546905771885799)
-,p_name=>'A_BAD_NAME'
-,p_scope=>'GLOBAL'
-,p_protection_level=>'N'
-,p_version_scn=>1
+ p_id=>wwv_flow_imp.id(81225061675274753)
+,p_name=>'G_LOG_KEY'
+,p_protection_level=>'I'
+,p_version_scn=>46612869259492
 );
 wwv_flow_imp.component_end;
 end;
