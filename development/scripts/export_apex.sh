@@ -18,6 +18,69 @@ err()  { echo "ERROR: $*" >&2; exit 1; }
 warn() { echo "WARN:  $*" >&2; }
 info() { echo "  $*"; }
 
+# sha256_file <path>   — uppercase SHA-256 of a file
+sha256_file() {
+    if command -v sha256sum &>/dev/null; then
+        sha256sum "$1" | awk '{print toupper($1)}'
+    else
+        shasum -a 256 "$1" | awk '{print toupper($1)}'
+    fi
+}
+
+# sha256_string <str>  — uppercase SHA-256 of a string (no trailing newline added)
+sha256_string() {
+    if command -v sha256sum &>/dev/null; then
+        printf '%s' "$1" | sha256sum | awk '{print toupper($1)}'
+    else
+        printf '%s' "$1" | shasum -a 256 | awk '{print toupper($1)}'
+    fi
+}
+
+# stamp_checksums <app_dir>
+# Phase 1 — calculate SHA-256 of every .sql file's raw exported content
+# Phase 2 — derive app_checksum as SHA-256 of all file checksums concatenated (sorted path order)
+# Phase 3 — prepend two header lines to every .sql file
+stamp_checksums() {
+    local app_dir=$1
+    local checksum_map
+    checksum_map=$(mktemp /tmp/apex_checksums_XXXXXX)
+
+    # Collect .sql files, null-delimited then sorted for determinism
+    local file_count=0
+    while IFS= read -r -d '' f; do
+        fc=$(sha256_file "$f")
+        printf '%s\t%s\n' "$f" "$fc" >> "$checksum_map"
+        (( file_count++ )) || true
+    done < <(find "$app_dir" -name "*.sql" -print0 | sort -z)
+
+    if [[ $file_count -eq 0 ]]; then
+        rm -f "$checksum_map"
+        info "No .sql files found — skipping checksum."
+        return
+    fi
+
+    info "Stamping checksums for $file_count .sql file(s)..."
+
+    # app_checksum = SHA-256 of all per-file checksums concatenated (no separators)
+    local combined app_checksum
+    combined=$(cut -f2 "$checksum_map" | tr -d '\n')
+    app_checksum=$(sha256_string "$combined")
+    info "App checksum: $app_checksum"
+
+    # Prepend headers to each file
+    while IFS=$'\t' read -r f fc; do
+        [[ -z "$f" ]] && continue
+        {
+            printf 'prompt app_checksum: %s\n' "$app_checksum"
+            printf '-- file_checksum: %s\n'    "$fc"
+            cat "$f"
+        } > "${f}.tmp" && mv "${f}.tmp" "$f"
+    done < "$checksum_map"
+
+    rm -f "$checksum_map"
+    info "Checksums stamped."
+}
+
 # ── Prerequisites ─────────────────────────────────────────────────────────────
 [[ -z "${SQLC_CONN:-}" ]]  && err "SQLC_CONN environment variable is not set."
 [[ $# -eq 0 ]]             && { echo "Usage: $(basename "$0") <app_id> [<app_id> ...]"; exit 1; }
@@ -130,6 +193,9 @@ SQLEOF
         rm -f "$install_xml_backup"
         info "install.xml restored."
     fi
+
+    # ── Stamp checksums ───────────────────────────────────────────────────────
+    stamp_checksums "$app_dir"
 
     echo "  App $app_id exported successfully."
     echo
