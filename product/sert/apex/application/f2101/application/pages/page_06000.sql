@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: EE28B546815196B9076D6BA049409DF6B3396733336C8E4A25DABCEB1923D2B1
+-- file_checksum: 28D826B9BF394E5295C93CDA1E16F1229A7474EEC7DA6C9429E9879003BE828A
 prompt --application/pages/page_06000
 begin
 --   Manifest

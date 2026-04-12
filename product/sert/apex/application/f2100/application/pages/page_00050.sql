@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 372FA15372960BDA5286FABC5F2FBF7F35D60DCFEEE60764B6F3BF424A8EC790
+-- file_checksum: 08F27DB3D3A5CFDD2427A168384653B432D673296212ECA9DA25831DFA42C30D
 prompt --application/pages/page_00050
 begin
 --   Manifest
@@ -29,7 +29,7 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#:js-dialog-class-t-Drawer--pullOutEnd'
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
-,p_page_component_map=>'03'
+,p_page_component_map=>'23'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(137417363109888649)
@@ -69,24 +69,105 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_template=>wwv_flow_imp.id(511920605950949485)
 ,p_plug_display_sequence=>50
 ,p_location=>null
-,p_plug_display_condition_type=>'EXISTS'
-,p_plug_display_when_condition=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select ',
-'  1 ',
-'from ',
-'  user_scheduler_jobs ',
-'where ',
-'  job_name = ''SERT_SCHEDULED_EVAL_'' || :P50_APP_ID || ''_'' || :P50_RULE_SET_KEY'))
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'expand_shortcuts', 'N',
   'output_as', 'HTML')).to_clob
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(77023848114233919)
+,p_plug_name=>'Scheduled scan'
+,p_title=>'Schedule'
+,p_parent_plug_id=>wwv_flow_imp.id(138519379536093342)
+,p_region_template_options=>'#DEFAULT#'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(511927713915949491)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'SUB_REGIONS'
+,p_query_type=>'SQL'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select',
+'  ''Scheduled Scan''                                              as card_title,',
+'  -- friendly schedule string (reuses existing page 50 logic)',
+'  case',
+'    when instr(j.repeat_interval, ''FREQ=DAILY'') > 0 then',
+'      ''Daily at ''',
+'      || to_char( j.next_run_date at time zone sessiontimezone, ''HH24:MI'' )',
+'    when instr(j.repeat_interval, ''FREQ=WEEKLY'') > 0 then',
+'      ''Weekly on ''',
+'      || substr( j.repeat_interval,',
+'                 instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY=''),',
+'                 instr(j.repeat_interval || '';'', '';'', instr(j.repeat_interval, ''BYDAY=''))',
+'                 - ( instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY='') ) )',
+'      || '' at ''',
+'      || to_char( j.next_run_date at time zone sessiontimezone, ''HH24:MI'' )',
+'    else',
+'      j.repeat_interval',
+'  end                                                           as schedule_display,',
+'  -- next run',
+'  ''Next scheduled: ''||to_char( j.next_run_date at time zone sessiontimezone,',
+'           ''YYYY-MM-DD HH24:MI'' )                              as next_run_display,',
+'  -- state badge',
+'  j.state                                                       as state_label,',
+'  case j.state',
+'    when ''SCHEDULED'' then ''u-success''',
+'    when ''RUNNING''   then ''u-info''',
+'    when ''DISABLED''  then ''u-danger''',
+'    else                  ''u-warning''',
+'  end                                                           as state_color,',
+'  -- secondary detail row',
+'  to_char( j.last_start_date at time zone sessiontimezone,',
+'           ''YYYY-MM-DD HH24:MI'' )                              as last_run_display,',
+'  j.run_count,',
+'  j.failure_count,',
+'  substr(j.client_id, 1, instr(j.client_id, '':'') - 1) as client_id,',
+'  j.job_name                                                    as pk_col',
+'from table( schedule_api.get_scheduled_jobs(',
+'              p_application_id => :P50_APP_ID ) )      j',
+''))
+,p_lazy_loading=>false
+,p_plug_source_type=>'NATIVE_CARDS'
+,p_ajax_items_to_submit=>'P50_APP_ID'
+,p_plug_query_num_rows_type=>'SCROLL'
+,p_show_total_row_count=>false
+);
+wwv_flow_imp_page.create_card(
+ p_id=>wwv_flow_imp.id(77023996592233920)
+,p_region_id=>wwv_flow_imp.id(77023848114233919)
+,p_layout_type=>'GRID'
+,p_title_adv_formatting=>false
+,p_title_column_name=>'CARD_TITLE'
+,p_sub_title_adv_formatting=>false
+,p_sub_title_column_name=>'CLIENT_ID'
+,p_body_adv_formatting=>false
+,p_body_column_name=>'SCHEDULE_DISPLAY'
+,p_second_body_adv_formatting=>false
+,p_second_body_column_name=>'NEXT_RUN_DISPLAY'
+,p_badge_column_name=>'STATE_LABEL'
+,p_badge_label=>'&STATE_LABEL.'
+,p_badge_css_classes=>'&STATE_COLOR.'
+,p_media_adv_formatting=>false
+);
+wwv_flow_imp_page.create_card_action(
+ p_id=>wwv_flow_imp.id(77024028536233921)
+,p_card_id=>wwv_flow_imp.id(77023996592233920)
+,p_action_type=>'BUTTON'
+,p_position=>'PRIMARY'
+,p_display_sequence=>10
+,p_label=>'Remove Scheduled Scan'
+,p_link_target_type=>'REDIRECT_URL'
+,p_link_target=>'#'
+,p_link_attributes=>'id="&JOB_NAME."'
+,p_button_display_type=>'TEXT_WITH_ICON'
+,p_icon_css_classes=>'fa-remove u-danger'
+,p_action_css_classes=>'deleteSchedule'
+,p_is_hot=>false
 );
 wwv_flow_imp_page.create_report_region(
  p_id=>wwv_flow_imp.id(138506096308167111)
 ,p_name=>'Scheduled Evaluation'
 ,p_parent_plug_id=>wwv_flow_imp.id(138519379536093342)
 ,p_template=>wwv_flow_imp.id(511920605950949485)
-,p_display_sequence=>20
+,p_display_sequence=>30
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#:t-Report--stretch:t-Report--staticRowColors:t-Report--rowHighlightOff:t-Report--horizontalBorders'
 ,p_display_point=>'SUB_REGIONS'
@@ -130,6 +211,7 @@ wwv_flow_imp_page.create_report_region(
 ,p_prn_output=>'N'
 ,p_sort_null=>'L'
 ,p_plug_query_strip_html=>'N'
+,p_required_patch=>wwv_flow_imp.id(511883277556949400)
 );
 wwv_flow_imp_page.create_report_columns(
  p_id=>wwv_flow_imp.id(138604096002977740)
@@ -147,10 +229,11 @@ wwv_flow_imp_page.create_page_plug(
 ,p_parent_plug_id=>wwv_flow_imp.id(138519379536093342)
 ,p_region_template_options=>'#DEFAULT#:t-Alert--colorBG:t-Alert--horizontal:t-Alert--defaultIcons:t-Alert--info:t-Alert--removeHeading js-removeLandmark'
 ,p_plug_template=>wwv_flow_imp.id(511915446136949475)
-,p_plug_display_sequence=>10
+,p_plug_display_sequence=>20
 ,p_plug_display_point=>'SUB_REGIONS'
 ,p_location=>null
 ,p_plug_source=>'There is a scheduled evaluation for this application & rule set'
+,p_required_patch=>wwv_flow_imp.id(511883277556949400)
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'expand_shortcuts', 'N',
   'output_as', 'HTML')).to_clob
@@ -209,10 +292,104 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_condition_type=>'EXISTS'
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(137417442669888650)
+,p_name=>'P50_FREQUENCY'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
+,p_prompt=>'Days of Week'
+,p_display_as=>'NATIVE_POPUP_LOV'
+,p_lov=>'STATIC2:Mon;MON,Tue;TUE,Wed;WED,Thu;THU,Fri;FRI,Sat;SAT,Sun;SUN'
+,p_lov_display_null=>'YES'
+,p_cSize=>30
+,p_field_template=>wwv_flow_imp.id(512259205067949615)
+,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs:t-Form-fieldContainer--indicatorLabel'
+,p_lov_display_extra=>'YES'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'case_sensitive', 'N',
+  'display_as', 'POPUP',
+  'fetch_on_search', 'Y',
+  'initial_fetch', 'FIRST_ROWSET',
+  'manual_entry', 'N',
+  'match_type', 'CONTAINS',
+  'min_chars', '0')).to_clob
+,p_multi_value_type=>'SEPARATED'
+,p_multi_value_separator=>','
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(137417654229888652)
+,p_name=>'P50_HOUR'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
+,p_prompt=>'Hour'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>'STATIC2:1;01,2;02,3;03,4;04,5;05,6;06,7;07,8;08,9;09,10;10,11;11,12;12'
+,p_cHeight=>1
+,p_colspan=>2
+,p_field_template=>wwv_flow_imp.id(512259205067949615)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_required_patch=>wwv_flow_imp.id(511883277556949400)
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(137417813343888653)
+,p_name=>'P50_MIN'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
+,p_prompt=>'Min'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>'STATIC2:00;00,15;15,30;30,45;45'
+,p_cHeight=>1
+,p_begin_on_new_line=>'N'
+,p_colspan=>2
+,p_field_template=>wwv_flow_imp.id(512259205067949615)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_required_patch=>wwv_flow_imp.id(511883277556949400)
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(137417849866888654)
+,p_name=>'P50_AMPM'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
+,p_prompt=>'AM/PM'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>'STATIC:AM;AM,PM;PM'
+,p_cHeight=>1
+,p_begin_on_new_line=>'N'
+,p_colspan=>2
+,p_field_template=>wwv_flow_imp.id(512259205067949615)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_required_patch=>wwv_flow_imp.id(511883277556949400)
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(138518601143093334)
+,p_name=>'P50_APP_ID'
+,p_item_sequence=>10
+,p_display_as=>'NATIVE_HIDDEN'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'value_protected', 'Y')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(138518688744093335)
+,p_name=>'P50_RULE_SET_KEY'
+,p_item_sequence=>20
+,p_display_as=>'NATIVE_HIDDEN'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'value_protected', 'Y')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(970500000000000001)
 ,p_name=>'P50_SCHEDULE_MODE'
 ,p_item_sequence=>5
 ,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
+,p_item_default=>'WEEKLY'
 ,p_prompt=>'Schedule Mode'
 ,p_display_as=>'NATIVE_RADIOGROUP'
 ,p_lov=>'STATIC2:Daily;DAILY,Weekly;WEEKLY'
@@ -220,7 +397,8 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--radioButtonGroup'
 ,p_lov_display_extra=>'NO'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'number_of_columns', '2')).to_clob
+  'number_of_columns', '2',
+  'page_action_on_selection', 'NONE')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(970500000000000002)
@@ -259,93 +437,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'page_action_on_selection', 'NONE')).to_clob
 );
-
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(137417442669888650)
-,p_name=>'P50_FREQUENCY'
-,p_is_required=>false
-,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
-,p_prompt=>'Weekdays (Legacy)'
-,p_display_as=>'NATIVE_CHECKBOX'
-,p_lov=>'STATIC2:Mon;MON,Tue;TUE,Wed;WED,Thu;THU,Fri;FRI,Sat;SAT,Sun;SUN'
-,p_field_template=>wwv_flow_imp.id(512259205067949615)
-,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs:t-Form-fieldContainer--indicatorLabel:t-Form-fieldContainer--radioButtonGroup'
-,p_lov_display_extra=>'YES'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'number_of_columns', '7')).to_clob
-,p_multi_value_type=>'SEPARATED'
-,p_multi_value_separator=>','
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(137417654229888652)
-,p_name=>'P50_HOUR'
-,p_is_required=>false
-,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
-,p_prompt=>'Hour'
-,p_display_as=>'NATIVE_SELECT_LIST'
-,p_lov=>'STATIC2:1;01,2;02,3;03,4;04,5;05,6;06,7;07,8;08,9;09,10;10,11;11,12;12'
-,p_cHeight=>1
-,p_colspan=>2
-,p_field_template=>wwv_flow_imp.id(512259205067949615)
-,p_item_template_options=>'#DEFAULT#'
-,p_lov_display_extra=>'NO'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'page_action_on_selection', 'NONE')).to_clob
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(137417813343888653)
-,p_name=>'P50_MIN'
-,p_is_required=>false
-,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
-,p_prompt=>'Min'
-,p_display_as=>'NATIVE_SELECT_LIST'
-,p_lov=>'STATIC2:00;00,15;15,30;30,45;45'
-,p_cHeight=>1
-,p_begin_on_new_line=>'N'
-,p_colspan=>2
-,p_field_template=>wwv_flow_imp.id(512259205067949615)
-,p_item_template_options=>'#DEFAULT#'
-,p_lov_display_extra=>'NO'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'page_action_on_selection', 'NONE')).to_clob
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(137417849866888654)
-,p_name=>'P50_AMPM'
-,p_is_required=>false
-,p_item_sequence=>40
-,p_item_plug_id=>wwv_flow_imp.id(137417363109888649)
-,p_prompt=>'AM/PM'
-,p_display_as=>'NATIVE_SELECT_LIST'
-,p_lov=>'STATIC:AM;AM,PM;PM'
-,p_cHeight=>1
-,p_begin_on_new_line=>'N'
-,p_colspan=>2
-,p_field_template=>wwv_flow_imp.id(512259205067949615)
-,p_item_template_options=>'#DEFAULT#'
-,p_lov_display_extra=>'NO'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'page_action_on_selection', 'NONE')).to_clob
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(138518601143093334)
-,p_name=>'P50_APP_ID'
-,p_item_sequence=>10
-,p_display_as=>'NATIVE_HIDDEN'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'value_protected', 'Y')).to_clob
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(138518688744093335)
-,p_name=>'P50_RULE_SET_KEY'
-,p_item_sequence=>20
-,p_display_as=>'NATIVE_HIDDEN'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'value_protected', 'Y')).to_clob
-);
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(138505865334167109)
 ,p_name=>'Close Dialog'
@@ -368,8 +459,8 @@ wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(138518970501093338)
 ,p_name=>'Remove Schedule'
 ,p_event_sequence=>20
-,p_triggering_element_type=>'BUTTON'
-,p_triggering_button_id=>wwv_flow_imp.id(138519604295093344)
+,p_triggering_element_type=>'JQUERY_SELECTOR'
+,p_triggering_element=>'.deleteSchedule'
 ,p_bind_type=>'bind'
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'click'

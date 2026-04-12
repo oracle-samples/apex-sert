@@ -10,6 +10,25 @@ create or replace package body sert_core.schedule_api
 as
 
 
+----------------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: S C H E D U L E R _ J O B _ N A M E
+----------------------------------------------------------------------------------------------------------------------------
+-- Builds the scheduler job name for one application and rule set key
+----------------------------------------------------------------------------------------------------------------------------
+-- scheduler_job_name
+-- purpose: generate the fully qualified scheduler job name used by SERT scheduled evaluations.
+-- behavior: concatenates application id and rule set key into the SERT naming convention and normalizes dashes.
+-- parameters:
+--   p_app_id       - application id included in the scheduler job name.
+--   p_rule_set_key - rule set business key included in the scheduler job name.
+-- returns:
+--   varchar2 - fully qualified scheduler job name.
+-- usage:
+--   l_job_name := scheduler_job_name(
+--      p_app_id       => 100,
+--      p_rule_set_key => 'INTERNAL'
+--   );
+----------------------------------------------------------------------------------------------------------------------------
 function scheduler_job_name (
    p_app_id       in number
   ,p_rule_set_key in varchar2 )
@@ -19,6 +38,21 @@ begin
    return 'SERT_CORE.SERT_SCHEDULED_EVAL_' || p_app_id || '_' || replace(p_rule_set_key,'-','_');
 end scheduler_job_name;
 
+----------------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: N O R M A L I Z E _ W E E K D A Y S
+----------------------------------------------------------------------------------------------------------------------------
+-- Normalizes DBMS_SCHEDULER weekday token strings into canonical comma-separated form
+----------------------------------------------------------------------------------------------------------------------------
+-- normalize_weekdays
+-- purpose: sanitize weekday token input before it is embedded in scheduler repeat interval expressions.
+-- behavior: trims whitespace, uppercases tokens, replaces semicolons, collapses duplicate commas, and trims edge commas.
+-- parameters:
+--   p_weekdays - weekday token string (for example MON,WED,FRI).
+-- returns:
+--   varchar2 - normalized weekday token string or null when input is null.
+-- usage:
+--   l_weekdays := normalize_weekdays(p_weekdays => ' mon ; wed, fri ');
+----------------------------------------------------------------------------------------------------------------------------
 function normalize_weekdays (
    p_weekdays in varchar2 )
    return varchar2
@@ -59,6 +93,29 @@ begin
    end if;
 end resolve_schedule_time;
 
+----------------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: B U I L D _ R E P E A T _ I N T E R V A L
+----------------------------------------------------------------------------------------------------------------------------
+-- Builds the DBMS_SCHEDULER repeat interval expression for daily or weekly recurrence
+----------------------------------------------------------------------------------------------------------------------------
+-- build_repeat_interval
+-- purpose: construct a valid scheduler repeat interval string from schedule mode, weekdays, and execution time.
+-- behavior: validates mode and weekday requirements, then returns DAILY or WEEKLY interval text with BYHOUR/BYMINUTE.
+-- parameters:
+--   p_schedule_mode - recurrence mode; supported values are DAILY and WEEKLY.
+--   p_weekdays      - weekday token list required for WEEKLY mode.
+--   p_hour24        - execution hour in 24-hour format.
+--   p_minute        - execution minute.
+-- returns:
+--   varchar2 - DBMS_SCHEDULER repeat interval expression.
+-- usage:
+--   l_repeat_interval := build_repeat_interval(
+--      p_schedule_mode => 'WEEKLY',
+--      p_weekdays      => 'MON,WED,FRI',
+--      p_hour24        => 14,
+--      p_minute        => 30
+--   );
+----------------------------------------------------------------------------------------------------------------------------
 function build_repeat_interval (
    p_schedule_mode in varchar2
   ,p_weekdays      in varchar2
@@ -115,31 +172,53 @@ end create_schedule_job_core;
 ----------------------------------------------------------------------------------------------------------------------------
 -- Adds a new scheduled job for a specific app / rule set combination
 ----------------------------------------------------------------------------------------------------------------------------
-procedure add_schedule_job
-  (
+-- add_schedule_job
+-- purpose: create one scheduler job using legacy 12-hour time inputs for backward-compatible callers.
+-- behavior: converts hour/minute/ampm into 24-hour format, composes the repeat interval, and creates the job.
+-- parameters:
+--   p_frequency    - recurrence day expression used in the interval string.
+--   p_hour         - hour component in 12-hour format.
+--   p_min          - minute component.
+--   p_ampm         - meridian indicator (AM/PM).
+--   p_eval_id      - retained for API parity; not used by this routine.
+--   p_app_id       - target application id.
+--   p_rule_set_key - rule set business key.
+-- usage:
+--   sert_core.schedule_api.add_schedule_job(
+--      p_frequency    => 'MON,TUE,WED,THU,FRI',
+--      p_hour         => '09',
+--      p_min          => 30,
+--      p_ampm         => 'AM',
+--      p_eval_id      => 0,
+--      p_app_id       => 100,
+--      p_rule_set_key => 'INTERNAL'
+--   );
+----------------------------------------------------------------------------------------------------------------------------
+procedure add_schedule_job (
    p_frequency    in varchar2
   ,p_hour         in varchar2
   ,p_min          in number
   ,p_ampm         in varchar2
   ,p_eval_id      in number
   ,p_app_id       in number
-  ,p_rule_set_key in varchar2
-  )
+  ,p_rule_set_key in varchar2 )
 is
-  l_hour number;
+   l_hour number;
 begin
 
-  select to_char(cast(to_timestamp(p_hour || '.' || p_min || ' ' || p_ampm,'HH:MI PM') at time zone 'gmt' as date),'HH24') into l_hour from dual;
+   select to_char(cast(to_timestamp(p_hour || '.' || p_min || ' ' || p_ampm, 'HH:MI PM') at time zone 'gmt' as date), 'HH24')
+     into l_hour
+     from dual;
 
-  create_schedule_job_core(
-     p_repeat_interval => 'FREQ=daily;BYDAY=' || p_frequency || ';BYHOUR=' || l_hour || ';BYMINUTE=' || p_min || '; bysecond=0;'
-    ,p_app_id          => p_app_id
-    ,p_rule_set_key    => p_rule_set_key );
+   create_schedule_job_core(
+      p_repeat_interval => 'FREQ=daily;BYDAY=' || p_frequency || ';BYHOUR=' || l_hour || ';BYMINUTE=' || p_min || '; bysecond=0;'
+      ,p_app_id          => p_app_id
+      ,p_rule_set_key    => p_rule_set_key );
 
 exception
-  when others then
-    log_pkg.log(p_log => 'Error in add_schedule_job:' || SQLERRM, p_log_type => 'UNHANDLED');
-    --do not abort, continue creating other scan jobs
+   when others then
+      log_pkg.log(p_log => 'Error in add_schedule_job:' || sqlerrm, p_log_type => 'UNHANDLED');
+      -- do not abort, continue creating other scan jobs
 end add_schedule_job;
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -215,16 +294,24 @@ end add_schedule_job_flex;
 ----------------------------------------------------------------------------------------------------------------------------
 -- Removes an existing scheduled evaluation
 ----------------------------------------------------------------------------------------------------------------------------
-procedure remove_schedule_job
-  (
+-- remove_schedule_job
+-- purpose: remove a scheduled evaluation job using application id and rule set key inputs.
+-- behavior: derives the scheduler job name from input keys and calls dbms_scheduler.drop_job.
+-- parameters:
+--   p_app_id       - application id segment of the scheduler job name.
+--   p_rule_set_key - rule set key segment of the scheduler job name.
+-- usage:
+--   sert_core.schedule_api.remove_schedule_job(
+--      p_app_id       => 100,
+--      p_rule_set_key => 'INTERNAL'
+--   );
+----------------------------------------------------------------------------------------------------------------------------
+procedure remove_schedule_job (
    p_app_id       in number
-  ,p_rule_set_key in varchar2
-  )
+  ,p_rule_set_key in varchar2 )
 is
 begin
-
-  dbms_scheduler.drop_job(job_name => 'SERT_CORE.SERT_SCHEDULED_EVAL_' || p_app_id || '_' || replace(p_rule_set_key,'-','_'));
-
+   dbms_scheduler.drop_job(job_name => 'SERT_CORE.SERT_SCHEDULED_EVAL_' || p_app_id || '_' || replace(p_rule_set_key, '-', '_'));
 end remove_schedule_job;
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -232,13 +319,21 @@ end remove_schedule_job;
 ----------------------------------------------------------------------------------------------------------------------------
 -- Removes an existing scheduled evaluation job
 ----------------------------------------------------------------------------------------------------------------------------
-procedure remove_schedule_job(
-   p_job_name     in varchar2
-  ) is
+-- remove_schedule_job
+-- purpose: remove a scheduled evaluation job using an explicit scheduler job name.
+-- behavior: passes the supplied job name directly to dbms_scheduler.drop_job.
+-- parameters:
+--   p_job_name - fully qualified scheduler job name.
+-- usage:
+--   sert_core.schedule_api.remove_schedule_job(
+--      p_job_name => 'SERT_CORE.SERT_SCHEDULED_EVAL_100_INTERNAL'
+--   );
+----------------------------------------------------------------------------------------------------------------------------
+procedure remove_schedule_job (
+   p_job_name in varchar2 )
+is
 begin
-
-  dbms_scheduler.drop_job(job_name => p_job_name);
-
+   dbms_scheduler.drop_job(job_name => p_job_name);
 end remove_schedule_job;
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -246,12 +341,21 @@ end remove_schedule_job;
 ----------------------------------------------------------------------------------------------------------------------------
 -- Runs an existing scheduled evaluation job
 ----------------------------------------------------------------------------------------------------------------------------
-procedure run_schedule_job(
-   p_job_name     in varchar2
-  ) is
+-- run_schedule_job
+-- purpose: execute a scheduler job immediately by name.
+-- behavior: calls dbms_scheduler.run_job for the supplied scheduler job identifier.
+-- parameters:
+--   p_job_name - fully qualified scheduler job name.
+-- usage:
+--   sert_core.schedule_api.run_schedule_job(
+--      p_job_name => 'SERT_CORE.SERT_SCHEDULED_EVAL_100_INTERNAL'
+--   );
+----------------------------------------------------------------------------------------------------------------------------
+procedure run_schedule_job (
+   p_job_name in varchar2 )
+is
 begin
-
-  dbms_scheduler.run_job(job_name => p_job_name);
+   dbms_scheduler.run_job(job_name => p_job_name);
 end run_schedule_job;
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -259,45 +363,62 @@ end run_schedule_job;
 ----------------------------------------------------------------------------------------------------------------------------
 -- Schedules evaluations scans assigned via APEX_COLLECTIONS in SERT ADMIN app
 ----------------------------------------------------------------------------------------------------------------------------
+-- schedule_jobs
+-- purpose: schedule scan jobs for all application ids currently staged in the SERT_SCANS collection.
+-- behavior: iterates collection rows and delegates each job creation to add_schedule_job.
+-- parameters:
+--   p_frequency    - recurrence day expression used in the interval string.
+--   p_hour         - hour component in 12-hour format.
+--   p_min          - minute component.
+--   p_ampm         - meridian indicator (AM/PM).
+--   p_rule_set_key - rule set business key applied to each scheduled job.
+-- usage:
+--   sert_core.schedule_api.schedule_jobs(
+--      p_frequency    => 'MON,TUE,WED,THU,FRI',
+--      p_hour         => '09',
+--      p_min          => 30,
+--      p_ampm         => 'AM',
+--      p_rule_set_key => 'INTERNAL'
+--   );
+----------------------------------------------------------------------------------------------------------------------------
 procedure schedule_jobs (
    p_frequency    in varchar2
   ,p_hour         in varchar2
   ,p_min          in number
   ,p_ampm         in varchar2
-  ,p_rule_set_key in varchar2
-  ) is
-
-  l_count NUMBER(4) := 0;
+  ,p_rule_set_key in varchar2 )
+is
+   l_count number(4) := 0;
 
 begin
 
-  --schedule a SERT scan job for every app in a collection
-  for l_rec in (select n001 from apex_collections
-                where collection_name = 'SERT_SCANS'
-                order by seq_id)
-  loop
-
-    log_pkg.log(p_log => 'Scheduling scan of app: ' || l_rec.n001);
+   -- schedule a SERT scan job for every app in a collection
+   for l_rec in (
+      select n001
+        from apex_collections
+       where collection_name = 'SERT_SCANS'
+       order by seq_id)
+   loop
+      log_pkg.log(p_log => 'Scheduling scan of app: ' || l_rec.n001);
       sert_core.schedule_api.add_schedule_job (
-        p_frequency => p_frequency,
-        p_hour      => p_hour,
-        p_min       => p_min,
-        p_ampm      => p_ampm,
-        p_eval_id   => 0,
-        p_app_id    => l_rec.n001,
-        p_rule_set_key => p_rule_set_key
-        );
+         p_frequency    => p_frequency,
+         p_hour         => p_hour,
+         p_min          => p_min,
+         p_ampm         => p_ampm,
+         p_eval_id      => 0,
+         p_app_id       => l_rec.n001,
+         p_rule_set_key => p_rule_set_key
+      );
 
       l_count := l_count + 1;
+   end loop;
 
-  end loop;
-
-  log_pkg.log(p_log => 'END: rules_pkg.schedule_jobs. Schedule ' || l_count || ' scan jobs');
+   log_pkg.log(p_log => 'END: rules_pkg.schedule_jobs. Schedule ' || l_count || ' scan jobs');
 
 exception
-  when OTHERS then
-    log_pkg.log(p_log => 'An unhandled error has occured:' || SQLERRM, p_log_type => 'UNHANDLED');
-    raise;
+   when others then
+      log_pkg.log(p_log => 'An unhandled error has occured:' || sqlerrm, p_log_type => 'UNHANDLED');
+      raise;
 end schedule_jobs;
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -329,17 +450,19 @@ procedure schedule_jobs_flex (
   ,p_weekdays      in varchar2 default null
   ,p_hour24        in number   default null
   ,p_minute        in number   default null
-  ,p_rule_set_key  in varchar2
-  ) is
+  ,p_rule_set_key  in varchar2 )
+is
 
    l_count number(4) := 0;
 
 begin
 
    -- schedule a SERT scan job for every app in the collection using the new flexible API
-   for l_rec in (select n001 from apex_collections
-                 where collection_name = 'SERT_SCANS'
-                 order by seq_id)
+   for l_rec in (
+      select n001
+        from apex_collections
+       where collection_name = 'SERT_SCANS'
+       order by seq_id)
    loop
 
       log_pkg.log(p_log => 'Scheduling flexible scan of app: ' || l_rec.n001);
@@ -427,144 +550,146 @@ exception
       raise;
 end get_scheduled_jobs;
 
---------------------------------------------------------------------------------
--- This procedure runs application SERT scan against all attribute sets.
--- Output is returned in JSON format.
--- Procedure is run as part of the PIPELINE integration process.
---
--- Parameters:
--- p_application_id : string with valid application ids, comma separated.
--- p_result : results of the evaluations in JSON format
---
--- Applications in the INTERNAL workspace will be excluded from all evaluations.
---
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+-- PROCEDURE: P R O C E S S _ E V A L _ S U M M A R Y _ R E S U L T S
+----------------------------------------------------------------------------------------------------------------------------
+-- Runs on-demand evaluations for selected applications and returns a JSON summary payload
+----------------------------------------------------------------------------------------------------------------------------
+-- process_eval_summary_results
+-- purpose: execute evaluation scans for eligible applications and return aggregated pass/fail summary JSON.
+-- behavior: validates candidate applications, runs evals for pending apps, and merges summary metadata into output JSON.
+-- parameters:
+--   p_application_id_list - comma-separated list of application ids requested for evaluation.
+--   p_result              - output CLOB containing the generated evaluation summary JSON.
+-- usage:
+--   sert_core.schedule_api.process_eval_summary_results(
+--      p_application_id_list => '100,101,102',
+--      p_result              => l_result
+--   );
+----------------------------------------------------------------------------------------------------------------------------
 procedure process_eval_summary_results (
-  p_application_id_list in varchar2,
-  p_result out clob)
+   p_application_id_list in varchar2
+  ,p_result              out clob )
 --------------------------------------------------------------------------------
-IS
-  l_proc_name                varchar2(100) := 'process_eval_summary_results';
-  l_application_id           varchar2(1000);
-  l_eval_id                  EVALS.EVAL_ID%TYPE;
-  l_rule_set_key             RULE_SETS.RULE_SET_KEY%TYPE;
-  l_app_found                varchar2(1) := 'N';
-  l_eval_completed           varchar2(1) := 'N';
-  l_apps_scanned             varchar2(4000);
-  l_clob CLOB;
+is
+   l_proc_name      varchar2(100) := 'process_eval_summary_results';
+   l_application_id varchar2(1000);
+   l_eval_id        evals.eval_id%type;
+   l_rule_set_key   rule_sets.rule_set_key%type;
+   l_app_found      varchar2(1) := 'N';
+   l_eval_completed varchar2(1) := 'N';
+   l_apps_scanned   varchar2(4000);
+   l_clob           clob;
 
+   cursor c_apps (p_application_id number)
+   is
+      select 'Y'
+        from apex_applications
+       where workspace not in ('INTERNAL', 'TOWER', 'COM.ORACLE.CUST.REPOSITORY')
+         and application_name not in ('APEX-SERT', 'APEX-SERT Administration')
+         and application_id = p_application_id;
 
-  cursor c_apps (p_application_id number) is
-    select 'Y'
-    from apex_applications
-    where workspace not in('INTERNAL','TOWER','COM.ORACLE.CUST.REPOSITORY')
-    and application_name not in ('APEX-SERT','APEX-SERT Administration')
-    and application_id = p_application_id;
-
-
-  cursor c_app_eval_completed (p_application_id number) is
-    select 'Y'
-    from  sert_core.evals_pub_v
-    where application_id = p_application_id
-    and upper(job_status) = 'COMPLETED';
+   cursor c_app_eval_completed (p_application_id number)
+   is
+      select 'Y'
+        from sert_core.evals_pub_v
+       where application_id = p_application_id
+         and upper(job_status) = 'COMPLETED';
 
 --------------------------------------------------------------------------------
-BEGIN
+begin
+   log_pkg.log(p_log => 'START: ' || l_proc_name);
+   log_pkg.log(p_log => 'p_application_id_list:' || p_application_id_list);
 
-  log_pkg.log(p_log => 'START: ' || l_proc_name);
-  log_pkg.log(p_log => 'p_application_id_list:' || p_application_id_list);
+   if p_application_id_list is not null then
+      -- only 1 active rule set at a time
+      select rule_set_key
+        into l_rule_set_key
+        from sert_core.rule_sets
+       where active_yn = 'Y'
+         and apex_version = (select apex_version from sert_core.apex_version_v);
 
-  if p_application_id_list is not null then
+      -- for every application id passed as a parameter
+      for r_app_id in (
+         select trim(column_value) app_id
+           from table(apex_string.split(p_application_id_list, ','))
+          order by 1)
+      loop
+         l_application_id := r_app_id.app_id;
 
-    --only 1 active rule set at a time
-    select rule_set_key
-    into l_rule_set_key
-    from sert_core.rule_sets
-    where active_yn = 'Y'
-    and apex_version = (select apex_version from sert_core.apex_version_v);
+         -- validate if application needs to be scanned
+         l_app_found := 'N';
+         open c_apps(l_application_id);
+         fetch c_apps into l_app_found;
+         close c_apps;
 
-    --for every application id passed as a parameter
-    for r_app_id in (
-      select trim(column_value) app_id
-      from table(apex_string.split(p_application_id_list, ','))
-      order by 1
-    )
-    loop
-      l_application_id := r_app_id.app_id;
+         if l_app_found = 'Y' then
+            l_eval_completed := 'N';
+            open c_app_eval_completed(l_application_id);
+            fetch c_app_eval_completed into l_eval_completed;
+            close c_app_eval_completed;
 
-      --validate if application needs to be scanned
-      l_app_found := 'N';
-      open c_apps (l_application_id);
-      fetch c_apps into l_app_found;
-      close c_apps;
+            if l_eval_completed = 'N' then
+               log_pkg.log(p_log => 'Eval application_id: ' || l_application_id);
 
+               eval_pkg.eval(
+                  p_application_id    => l_application_id
+                 ,p_rule_set_key      => l_rule_set_key
+                 ,p_run_in_background => 'N'
+                 ,p_eval_id_out       => l_eval_id);
 
-      if l_app_found = 'Y' then
+               l_apps_scanned := l_apps_scanned || l_application_id || ',';
+            end if; -- l_eval_completed check
+         end if; -- valid app to scan check
+      end loop;
 
-        l_eval_completed := 'N';
-        open c_app_eval_completed(l_application_id);
-        fetch c_app_eval_completed into l_eval_completed;
-        close c_app_eval_completed;
+      -- return evaluations summary results into a JSON array
+      with json_v as (
+            select json_object('applications' value json_arrayagg(json_doc returning clob) returning clob) as json_doc
+                  ,sum(json_value(json_doc, '$.failed_count')) as count_fail
+              from sert_core.eval_results_summary_json_v
+             where application_id in (
+                      select trim(column_value)
+                        from table(apex_string.split(p_application_id_list, ','))
+                   )
+         )
+         ,apps_failed as (
+            select listagg(application_id, ',') within group (order by application_id) as app_fail_list
+              from sert_core.eval_results_summary_json_v
+             where json_value(json_doc, '$.result') = 'fail'
+               and application_id in (
+                      select trim(column_value)
+                        from table(apex_string.split(p_application_id_list, ','))
+                   )
+         )
+      select json_mergepatch(
+                json_v.json_doc
+               ,json_object(
+                   'result' value case
+                                 when json_v.count_fail > 0 then 'fail'
+                                 else 'pass'
+                              end
+                  ,'applications_failed' value apps_failed.app_fail_list
+                ) returning clob
+                pretty
+             )
+        into l_clob
+        from json_v
+            ,apps_failed;
+   else
+      log_pkg.log(p_log => 'p_application_id_list null, no scan.');
+   end if; -- p_application_id not null
 
-        if l_eval_completed = 'N' then
-          log_pkg.log(p_log => 'Eval application_id: '||l_application_id);
+   p_result := l_clob;
 
-          eval_pkg.eval (
-            p_application_id => l_application_id,
-            p_rule_set_key => l_rule_set_key,
-            p_run_in_background => 'N',
-            p_eval_id_out => l_eval_id);
+   log_pkg.log(p_log => 'Applications scanned: ' || substr(l_apps_scanned, 1, length(l_apps_scanned) - 1));
+   log_pkg.log(p_log => 'END: ' || l_proc_name);
 
-          l_apps_scanned := l_apps_scanned || l_application_id || ',';
-
-        end if; --l_eval_completed check
-
-      end if;  --valid app to scan check
-
-    end loop;
-
-    --return evaluations summary results into a JSON array
-    with json_v as (
-      select json_object ('applications' value json_arrayagg(json_doc returning clob) returning clob) json_doc,
-             sum(json_value(json_doc, '$.failed_count')) as count_fail
-      from sert_core.eval_results_summary_json_v
-      where application_id in (
-                              select trim(column_value)
-                              from table(apex_string.split(p_application_id_list, ','))
-                              )
-      ),
-      apps_failed as (
-      select listagg(application_id, ',') within group (order by application_id) app_fail_list
-      from sert_core.eval_results_summary_json_v
-      where json_value(json_doc, '$.result') = 'fail'
-      and application_id in (
-                            select trim(column_value)
-                            from table(apex_string.split(p_application_id_list, ','))
-                            )
-      )
-     select json_mergepatch(json_v.json_doc,
-                            json_object('result' value case when json_v.count_fail > 0 then 'fail' else 'pass' end,
-                                        'applications_failed' value apps_failed.app_fail_list) returning clob
-                            pretty
-                            )
-    into l_clob
-    from json_v,apps_failed;
-
-  else
-    log_pkg.log(p_log => 'p_application_id_list null, no scan.');
-
-  end if;   --p_application_id not null
-
-  p_result := l_clob;
-
-  log_pkg.log(p_log => 'Applications scanned: '||substr(l_apps_scanned,1,length(l_apps_scanned)-1));
-  log_pkg.log(p_log => 'END: '||l_proc_name);
-
-EXCEPTION
-  WHEN OTHERS THEN
-    log_pkg.log(p_log => 'Error in:' || l_proc_name || ' ' || SQLERRM, p_log_type => 'UNHANDLED');
-    raise_application_error(-20000, DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
-END process_eval_summary_results;
+exception
+   when others then
+      log_pkg.log(p_log => 'Error in:' || l_proc_name || ' ' || sqlerrm, p_log_type => 'UNHANDLED');
+      raise_application_error(-20000, dbms_utility.format_error_backtrace);
+end process_eval_summary_results;
 
 
 ----------------------------------------------------------------------------------------------------------------------------

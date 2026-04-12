@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: CE03B7C34E9885FC6AD9392004B0FA5FE2412662C0D6D481AEEAB3C4E2E4E314
+-- file_checksum: 009D3682CDCB837225AC8B9B832686801DBB9A6998BF38327361FBB38766E7FB
 prompt --application/pages/page_06030
 begin
 --   Manifest
@@ -226,6 +226,135 @@ wwv_flow_imp_page.create_page_item(
   'value_protected', 'Y')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(119623707960710535)
+,p_name=>'P6030_FREQUENCY'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
+,p_prompt=>'Days of week'
+,p_display_as=>'NATIVE_POPUP_LOV'
+,p_lov=>'STATIC2:Mon;MON,Tue;TUE,Wed;WED,Thu;THU,Fri;FRI,Sat;SAT,Sun;SUN'
+,p_lov_display_null=>'YES'
+,p_cSize=>30
+,p_field_template=>wwv_flow_imp.id(394561407168760174)
+,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs:t-Form-fieldContainer--indicatorLabel:t-Form-fieldContainer--radioButtonGroup'
+,p_lov_display_extra=>'YES'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'case_sensitive', 'N',
+  'display_as', 'POPUP',
+  'fetch_on_search', 'Y',
+  'initial_fetch', 'FIRST_ROWSET',
+  'manual_entry', 'N',
+  'match_type', 'CONTAINS',
+  'min_chars', '0')).to_clob
+,p_multi_value_type=>'SEPARATED'
+,p_multi_value_separator=>','
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(119623919520710537)
+,p_name=>'P6030_HOUR'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
+,p_prompt=>'Hour'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>'STATIC2:1;01,2;02,3;03,4;04,5;05,6;06,7;07,8;08,9;09,10;10,11;11,12;12'
+,p_cHeight=>1
+,p_colspan=>2
+,p_field_template=>wwv_flow_imp.id(394561407168760174)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_required_patch=>wwv_flow_imp.id(394385489811759930)
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(119624078634710538)
+,p_name=>'P6030_MIN'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
+,p_prompt=>'Min'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>'STATIC2:00;00,15;15,30;30,45;45'
+,p_cHeight=>1
+,p_begin_on_new_line=>'N'
+,p_colspan=>2
+,p_field_template=>wwv_flow_imp.id(394561407168760174)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_required_patch=>wwv_flow_imp.id(394385489811759930)
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(119624115157710539)
+,p_name=>'P6030_AMPM'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
+,p_prompt=>'AM/PM'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>'STATIC:AM;AM,PM;PM'
+,p_cHeight=>1
+,p_begin_on_new_line=>'N'
+,p_colspan=>2
+,p_field_template=>wwv_flow_imp.id(394561407168760174)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_required_patch=>wwv_flow_imp.id(394385489811759930)
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(120729367752915279)
+,p_name=>'P6030_APP_ID'
+,p_item_sequence=>10
+,p_prompt=>'Application'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select',
+'  application_id || '' - '' || application_name as a',
+' ,application_id',
+'from',
+'  apex_applications',
+'where workspace not in(''INTERNAL'',''COM.ORACLE.CUST.REPOSITORY'')  ',
+'and application_name not in (''APEX-SERT'',''APEX-SERT Administration'')  ',
+'union all',
+'select',
+'  ''All'' as a',
+' ,0',
+'from dual',
+'order by 2'))
+,p_lov_display_null=>'YES'
+,p_cHeight=>1
+,p_field_template=>wwv_flow_imp.id(394561407168760174)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(120729455353915280)
+,p_name=>'P6030_RULE_SET_KEY'
+,p_item_sequence=>20
+,p_prompt=>'Rule Set'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select',
+'  rule_set_name || '' ('' || apex_version || '')'' as a',
+' ,rule_set_key ',
+'from',
+'  rule_sets_pub_v',
+'where',
+'  cnt > 0',
+'order by',
+'  rule_set_name'))
+,p_lov_display_null=>'YES'
+,p_cHeight=>1
+,p_field_template=>wwv_flow_imp.id(394561407168760174)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(970603000000000001)
 ,p_name=>'P6030_SCHEDULE_MODE'
 ,p_item_sequence=>5
@@ -234,11 +363,11 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_RADIOGROUP'
 ,p_lov=>'STATIC2:Daily;DAILY,Weekly;WEEKLY'
 ,p_field_template=>wwv_flow_imp.id(394561407168760174)
-,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--radioButtonGroup'
+,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs:t-Form-fieldContainer--radioButtonGroup'
 ,p_lov_display_extra=>'NO'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'number_of_columns', '2')).to_clob
-,p_ai_enabled=>false
+  'number_of_columns', '2',
+  'page_action_on_selection', 'NONE')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(970603000000000002)
@@ -278,133 +407,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'page_action_on_selection', 'NONE')).to_clob
 ,p_ai_enabled=>false
-);
-
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(119623707960710535)
-,p_name=>'P6030_FREQUENCY'
-,p_is_required=>false
-,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
-,p_prompt=>'Weekdays (Legacy)'
-,p_display_as=>'NATIVE_CHECKBOX'
-,p_lov=>'STATIC2:Mon;MON,Tue;TUE,Wed;WED,Thu;THU,Fri;FRI,Sat;SAT,Sun;SUN'
-,p_field_template=>wwv_flow_imp.id(394561407168760174)
-,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs:t-Form-fieldContainer--indicatorLabel:t-Form-fieldContainer--radioButtonGroup'
-,p_lov_display_extra=>'YES'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'number_of_columns', '7')).to_clob
-,p_multi_value_type=>'SEPARATED'
-,p_multi_value_separator=>','
-,p_ai_enabled=>false
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(119623919520710537)
-,p_name=>'P6030_HOUR'
-,p_is_required=>false
-,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
-,p_prompt=>'Hour'
-,p_display_as=>'NATIVE_SELECT_LIST'
-,p_lov=>'STATIC2:1;01,2;02,3;03,4;04,5;05,6;06,7;07,8;08,9;09,10;10,11;11,12;12'
-,p_cHeight=>1
-,p_colspan=>2
-,p_field_template=>wwv_flow_imp.id(394561407168760174)
-,p_item_template_options=>'#DEFAULT#'
-,p_lov_display_extra=>'NO'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'page_action_on_selection', 'NONE')).to_clob
-,p_ai_enabled=>false
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(119624078634710538)
-,p_name=>'P6030_MIN'
-,p_is_required=>false
-,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
-,p_prompt=>'Min'
-,p_display_as=>'NATIVE_SELECT_LIST'
-,p_lov=>'STATIC2:00;00,15;15,30;30,45;45'
-,p_cHeight=>1
-,p_begin_on_new_line=>'N'
-,p_colspan=>2
-,p_field_template=>wwv_flow_imp.id(394561407168760174)
-,p_item_template_options=>'#DEFAULT#'
-,p_lov_display_extra=>'NO'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'page_action_on_selection', 'NONE')).to_clob
-,p_ai_enabled=>false
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(119624115157710539)
-,p_name=>'P6030_AMPM'
-,p_is_required=>false
-,p_item_sequence=>40
-,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
-,p_prompt=>'AM/PM'
-,p_display_as=>'NATIVE_SELECT_LIST'
-,p_lov=>'STATIC:AM;AM,PM;PM'
-,p_cHeight=>1
-,p_begin_on_new_line=>'N'
-,p_colspan=>2
-,p_field_template=>wwv_flow_imp.id(394561407168760174)
-,p_item_template_options=>'#DEFAULT#'
-,p_lov_display_extra=>'NO'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'page_action_on_selection', 'NONE')).to_clob
-,p_ai_enabled=>false
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(120729367752915279)
-,p_name=>'P6030_APP_ID'
-,p_item_sequence=>10
-,p_prompt=>'Application'
-,p_display_as=>'NATIVE_SELECT_LIST'
-,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select',
-'  application_id || '' - '' || application_name as a',
-' ,application_id',
-'from',
-'  apex_applications',
-'where workspace not in(''INTERNAL'',''TOWER'',''COM.ORACLE.CUST.REPOSITORY'')  ',
-'and application_name not in (''APEX-SERT'',''APEX-SERT Administration'')  ',
-'union all',
-'select',
-'  ''All'' as a',
-' ,0',
-'from dual',
-'order by 2'))
-,p_lov_display_null=>'YES'
-,p_cHeight=>1
-,p_field_template=>wwv_flow_imp.id(394561407168760174)
-,p_item_template_options=>'#DEFAULT#'
-,p_lov_display_extra=>'NO'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'page_action_on_selection', 'NONE')).to_clob
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(120729455353915280)
-,p_name=>'P6030_RULE_SET_KEY'
-,p_item_sequence=>20
-,p_prompt=>'Rule Set'
-,p_display_as=>'NATIVE_SELECT_LIST'
-,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select',
-'  rule_set_name || '' ('' || apex_version || '')'' as a',
-' ,rule_set_key ',
-'from',
-'  rule_sets_pub_v',
-'where',
-'  cnt > 0',
-'order by',
-'  rule_set_name'))
-,p_lov_display_null=>'YES'
-,p_cHeight=>1
-,p_field_template=>wwv_flow_imp.id(394561407168760174)
-,p_item_template_options=>'#DEFAULT#'
-,p_lov_display_extra=>'NO'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'page_action_on_selection', 'NONE')).to_clob
 );
 wwv_flow_imp_page.create_page_validation(
  p_id=>wwv_flow_imp.id(69667456510499044)

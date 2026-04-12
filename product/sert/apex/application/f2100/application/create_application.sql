@@ -1,4 +1,4 @@
--- file_checksum: 4EB312175578ED8641E0C6F28CC413A371219B1764D349AFC2DE53771627C8A6
+-- file_checksum: CC065D7A7BFEBBE77938E609A57D5451357A1A2B829FC0CC74C2AD72F1C987DC
 prompt --application/create_application
 begin
 --   Manifest
@@ -55,7 +55,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_value_01=>'APEX-SERT'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>204
-,p_version_scn=>46455362230280
+,p_version_scn=>46700706340239
 ,p_print_server_type=>'INSTANCE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'Y'
