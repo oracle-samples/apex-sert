@@ -72,7 +72,7 @@ stamp_checksums() {
         [[ -z "$f" ]] && continue
         {
             printf 'prompt app_checksum: %s\n' "$app_checksum"
-            printf '-- file_checksum: %s\n'    "$fc"
+            printf '%s\n' "-- file_checksum: ${fc}"
             cat "$f"
         } > "${f}.tmp" && mv "${f}.tmp" "$f"
     done < "$checksum_map"
@@ -192,6 +192,13 @@ SQLEOF
         cp "$install_xml_backup" "$install_xml"
         rm -f "$install_xml_backup"
         info "install.xml restored."
+    fi
+
+    # ── Remove apex_install.xml generated alongside the split export ─────────
+    local apex_install_xml="${extract_to}/apex_install.xml"
+    if [[ -f "$apex_install_xml" ]]; then
+        info "Removing generated apex_install.xml ..."
+        rm -f "$apex_install_xml"
     fi
 
     # ── Stamp checksums ───────────────────────────────────────────────────────
