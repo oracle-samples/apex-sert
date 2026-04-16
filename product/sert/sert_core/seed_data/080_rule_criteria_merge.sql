@@ -26,11 +26,12 @@ begin
   l_rule_criteria_key       := 'INCORRECT_ITEM_SUBSTITUTION_SYNTAX_SQLI';
   l_rule_criteria_type_key  := 'SQLI';
   l_reason                  := 'Incorrect item substitution syntax';
-  l_rule_criteria_sql       := q'"with string as ( select :l_source as s from dual)
-select count(*)
-from string
-where REGEXP_LIKE((string.s), '&[[:alnum:]]+.', 'ix')
-and regexp_instr (s, '([^[:alnum:]_])(&[[:alpha:]][_}*[[:alnum:]]*\.)', 1, 1, 0, 'i',1 ) > 0"';
+  l_rule_criteria_sql       := q'"with string as ( 
+  select sert_core.linter_util.sql_injection_item_syntax(:l_source) as s from dual
+  ) 
+  select count(*) 
+  from string 
+  where s = 'FAIL'"';
 
   sert_core.rule_criteria_api.upsert_rule_criteria (
         p_rule_criteria_name      => l_rule_criteria_name ,
@@ -139,7 +140,8 @@ begin
 select count(*)
 from string
 where REGEXP_LIKE((string.s), '&[[:alnum:]]+.', 'ix')
-and regexp_instr (s, '([^[:alnum:]_])(&[[:alpha:]][_}*[[:alnum:]]*\.)', 1, 1, 0, 'i',1 ) > 0"';
+and regexp_instr (s, '([^[:alnum:]_])(&[[:alpha:]][_[:alnum:]]*\.)', 1, 1, 0, 'i',1 ) > 0"';
+[_}*[[:alnum:]]
 
   sert_core.rule_criteria_api.upsert_rule_criteria (
         p_rule_criteria_name      => l_rule_criteria_name ,
