@@ -18,10 +18,9 @@
     path="sert/db/_dba"
   />
 
-  <includeAll
+  <include
     relativeToChangelogFile="true"
-    errorIfMissingOrEmpty="false"
-    path="sert/db/unit_test"
+    file="sert/db/unit_test/schemaController.xml"
   />
   <include
     context="@apex"
