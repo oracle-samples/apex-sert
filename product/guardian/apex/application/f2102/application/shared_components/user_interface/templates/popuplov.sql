@@ -1,4 +1,5 @@
--- file_checksum: AD5087D15EB7704E20D2B960E5B018661A1E09E5AD9B356206D87059B4248F7E
+prompt app_checksum: F24062FCE39D7AC19F9EA2292B88008E6F55784EDB74E6D62BAD565878490F78
+-- file_checksum: 910332D141D6A9D77FEC82ED943877ABBB4D898CAD2A79B4ECEBB6E4651A4482
 prompt --application/shared_components/user_interface/templates/popuplov
 begin
 --   Manifest
@@ -6,7 +7,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.14'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

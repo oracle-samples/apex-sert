@@ -1,4 +1,5 @@
--- file_checksum: 4CEF386A2D7E9B4CC4F927E229418D9CBBE4B47F29A2034E333EF364C738ADC4
+prompt app_checksum: F24062FCE39D7AC19F9EA2292B88008E6F55784EDB74E6D62BAD565878490F78
+-- file_checksum: D0F0FD6E9D1FCCDD4813CAAC63FC50BC29C18A9C6CFBF2FCEDBE7DACB27ACF17
 prompt --application/pages/page_00001
 begin
 --   Manifest
@@ -6,7 +7,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.14'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883
@@ -62,6 +63,7 @@ wwv_flow_imp_page.create_page(
 ,p_required_role=>wwv_flow_imp.id(30658409527755022737)
 ,p_protection_level=>'C'
 ,p_page_component_map=>'13'
+,p_last_updated_on=>wwv_flow_imp.dz('20260416220955Z')
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(30658411073534022746)
@@ -826,8 +828,24 @@ wwv_flow_imp_page.create_page_button(
 ,p_security_scheme=>wwv_flow_imp.id(30658409527755022737)
 );
 wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(34696168307661278009)
+ p_id=>wwv_flow_imp.id(10976571360317081767)
 ,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(30658411073534022746)
+,p_button_name=>'SCHEDULE_ETL'
+,p_button_action=>'REDIRECT_URL'
+,p_button_template_options=>'#DEFAULT#:t-Button--noUI:t-Button--iconLeft'
+,p_button_template_id=>2082829544945815391
+,p_button_image_alt=>'Setup Schedule'
+,p_button_position=>'NEXT'
+,p_button_redirect_url=>'f?p=&APP_ID.:10:&SESSION.::&DEBUG.:::'
+,p_warn_on_unsaved_changes=>null
+,p_icon_css_classes=>'fa-clock'
+,p_security_scheme=>wwv_flow_imp.id(30658409527755022737)
+,p_updated_on=>wwv_flow_imp.dz('20260416220955Z')
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(34696168307661278009)
+,p_button_sequence=>30
 ,p_button_plug_id=>wwv_flow_imp.id(30658411073534022746)
 ,p_button_name=>'Synchronize'
 ,p_button_action=>'DEFINED_BY_DA'
@@ -837,6 +855,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_position=>'NEXT'
 ,p_warn_on_unsaved_changes=>null
 ,p_icon_css_classes=>'fa-database-arrow-up'
+,p_updated_on=>wwv_flow_imp.dz('20260416193715Z')
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(32429705941548839846)

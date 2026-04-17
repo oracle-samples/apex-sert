@@ -1,4 +1,5 @@
--- file_checksum: E47B12E11BD693A10F3C74B6F0524419D28519AA1ADF6B04335436C9E53DE046
+prompt app_checksum: F24062FCE39D7AC19F9EA2292B88008E6F55784EDB74E6D62BAD565878490F78
+-- file_checksum: 2F75EC69E7CBF4C0F48E56B55A6B80C6E9150D0C9C153D7A609888286FBC87EE
 prompt --application/shared_components/workflow/workflows/sert_guardian_etl
 begin
 --   Manifest
@@ -6,7 +7,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.14'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

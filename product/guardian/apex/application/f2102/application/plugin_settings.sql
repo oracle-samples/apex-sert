@@ -1,9 +1,10 @@
--- file_checksum: 22C8C78943AC204D45981C6E7AB99BA036D493EFFD3F1604D5676F0A056765A0
+prompt app_checksum: F24062FCE39D7AC19F9EA2292B88008E6F55784EDB74E6D62BAD565878490F78
+-- file_checksum: 12354C3681EA3A0C88F5B7267475BD6B8E9552F6703597DF3FBE65C5854E9080
 prompt --application/plugin_settings
 begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.14'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

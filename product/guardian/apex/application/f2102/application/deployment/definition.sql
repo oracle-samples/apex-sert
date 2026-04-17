@@ -1,9 +1,9 @@
 prompt app_checksum: F24062FCE39D7AC19F9EA2292B88008E6F55784EDB74E6D62BAD565878490F78
--- file_checksum: E4C1D04FAAE2D0B507AD4AAB628298467F6F7C621CCE91A88DFDF11A86EA2F0E
-prompt --application/shared_components/logic/application_settings
+-- file_checksum: C2C6C8525C228627EF15D855B2E20D7C48B8BA3F3803017CBECEB5AF63E97945
+prompt --application/deployment/definition
 begin
 --   Manifest
---     APPLICATION SETTINGS: 2102
+--     INSTALL: 2102
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'

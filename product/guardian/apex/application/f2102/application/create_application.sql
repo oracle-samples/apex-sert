@@ -1,4 +1,5 @@
--- file_checksum: 772995428E7273381F7E1A64E9048672C613C0B41FAF67F2B3046B3BA01B7387
+prompt app_checksum: F24062FCE39D7AC19F9EA2292B88008E6F55784EDB74E6D62BAD565878490F78
+-- file_checksum: 47E3F62ACF340FD19F78C6AFAB0E7E86CCEE077EBD46E4472B403EA574F5D205
 prompt --application/create_application
 begin
 --   Manifest
@@ -6,7 +7,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.14'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883
@@ -50,9 +51,10 @@ wwv_imp_workspace.create_flow(
 ,p_auto_time_zone=>'N'
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'SERT Guardian'
+,p_last_updated_on=>wwv_flow_imp.dz('20260416220955Z')
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>6
-,p_version_scn=>46227287385865
+,p_version_scn=>5173816
 ,p_print_server_type=>'INSTANCE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'Y'

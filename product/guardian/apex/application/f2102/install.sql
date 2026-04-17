@@ -1,5 +1,5 @@
-prompt app_checksum: 2240386C1D8B7B8258D5A604BF7A83E45330243E0B16BE503B90685F899AC345
--- file_checksum: C46B1DAC492EA96E7B854F8BD6B4DC79B5942F96C2E1D5222CE9DC3F2A2E5D8F
+prompt app_checksum: F24062FCE39D7AC19F9EA2292B88008E6F55784EDB74E6D62BAD565878490F78
+-- file_checksum: DE488177D5CC38DF6EC511F543A0BD1B50AE0722E284D17CCE5A6D045F2D6C09
 prompt --install
 @@application/set_environment.sql
 @@application/delete_application.sql
@@ -25,7 +25,6 @@ prompt --install
 @@application/shared_components/user_interface/lovs/workflow_console_lov_initiated.sql
 @@application/shared_components/user_interface/lovs/workflow_console_lov_workflow_state.sql
 @@application/pages/page_groups.sql
-@@application/comments.sql
 @@application/shared_components/navigation/breadcrumbs/breadcrumb.sql
 @@application/shared_components/navigation/breadcrumbentry.sql
 @@application/shared_components/user_interface/templates/popuplov.sql
@@ -35,7 +34,6 @@ prompt --install
 @@application/shared_components/user_interface/template_opt_groups.sql
 @@application/shared_components/user_interface/template_options.sql
 @@application/shared_components/globalization/language.sql
-@@application/shared_components/globalization/translations.sql
 @@application/shared_components/logic/build_options.sql
 @@application/shared_components/globalization/messages.sql
 @@application/shared_components/globalization/dyntranslations.sql
@@ -51,5 +49,9 @@ prompt --install
 @@application/pages/page_00005.sql
 @@application/pages/page_00006.sql
 @@application/pages/page_00007.sql
+@@application/pages/page_00010.sql
 @@application/pages/page_09999.sql
+@@application/deployment/definition.sql
+@@application/deployment/checks.sql
+@@application/deployment/buildoptions.sql
 @@application/end_environment.sql
