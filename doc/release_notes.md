@@ -1,7 +1,33 @@
 # Release Notes
+
+## 24.2.25 
+
+### Updated Security Rule: Unprotected Substitution Variables
+
+An existing rule for detecting unprotected APEX substitution variables (`&WORD.` / `&WORD`) was overhauled. A new `linter_util` package provides a proper PL/SQL tokenizer (`tokenize_plsql`, `stmt_has_unprotected_subst`, `sql_injection_item_syntax`) that strips comments, upper-cases statements, and checks each statement individually — replacing a simpler pattern-match approach. The rule criteria in `080_rule_criteria_merge.sql` was updated to invoke this logic, returning `FAIL` only when an unprotected substitution variable appears outside an `apex_escape` wrapper.
+
+### Scheduling Refactor
+
+- `schedule_api`: new `add_schedule_job_flex` procedure supporting explicit `DAILY`/`WEEKLY` modes with 24-hour time input; also adds `schedule_job_ot` object type and `schedule_job_nt` nested-table type for structured job metadata.
+- APEX 2100 page 50: conditional show/hide of scheduling UI items during active scheduling workflows.
+- **Guardian**: new `sg_scheduler` package (`create_schedule`, `remove_schedule`, `job_exists`) bringing the same scheduling capability to Guardian (app 2102 page 10).
+
+### Exception Summary Download
+
+`data_api` gains `exceptions_summary` (returns JSON CLOB grouped by `rule_key`) and `apex_download_exceptions_summary` for streaming it as a file download from APEX.
+
+### New Preference
+
+`DELETE_EVAL_EXCEPTIONS` preference added (default `'N'`) — controls whether comments and exceptions are automatically deleted when an evaluation is deleted.
+
+### Infrastructure & Dev Scripts
+
+New `export_apex.sh`, `push_release.sh`, `sert_eval.sh`, and `add_license.sh` scripts; seed scripts split into per-APEX-version JSON files (`24_1`, `24_2`, `25_1`); version bumped to `24.2.24` across apps 2100, 2101, and 2102.
+
 ## 24.2.24
 
 This release improves rule accuracy, adds more control over evaluation cleanup, and makes rule management a little easier in the APEX UI. It also includes updated APEX application exports and a broad round of PL/SQL cleanup and refactoring work.
+
 ### Functional changes
 
 #### Improved duplicate submission rule logic
