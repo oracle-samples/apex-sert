@@ -1,12 +1,12 @@
--- file_checksum: 4D3DDC4D0BED22FFCC0A0D626CADFDE58E6A06E9DE0D62050B37F18E61E33CF9
+-- file_checksum: 38433783C18C82D0B69965EAD4B9F722D9AECC38578D179BED856D243494D4B1
 prompt --application/shared_components/automations/auto_1
 begin
 --   Manifest
 --     AUTOMATION: AUTO_1
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

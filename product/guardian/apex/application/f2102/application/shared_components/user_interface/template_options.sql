@@ -1,4 +1,5 @@
--- file_checksum: 603C395AEF5A484FE3E627623685267C97B897E4BA9923FB4973826263BAA358
+prompt app_checksum: 8F8731917A0435ECB64029293CE8ADA7F9A127EC84A6C907C03DC4A0522EABF3
+-- file_checksum: 13A090A054C0D3DB0A0A292331E693DA9713EBCF79E18CD8E4AAD6CA46629ED9
 prompt --application/shared_components/user_interface/template_options
 begin
 --   Manifest
@@ -6,7 +7,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

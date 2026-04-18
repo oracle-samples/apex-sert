@@ -1,12 +1,12 @@
--- file_checksum: 375315078D32E3509F5357858140C6B04662E7D16055B2BE589C9F8EBD95228A
+-- file_checksum: 8F45827522BDC645336B6F92B4E070AC0C988583FE3E60989991C494C1B5C4E4
 prompt --application/shared_components/globalization/messages
 begin
 --   Manifest
 --     MESSAGES: 1266
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

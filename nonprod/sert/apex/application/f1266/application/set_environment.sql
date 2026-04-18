@@ -1,4 +1,4 @@
--- file_checksum: C2AC72B6D32B134EA368B5546954BE24D6ED370BEC37B310C68986056163BB3B
+-- file_checksum: 95B9658F09F94F391544EA9A47F17EE9302DAA029844BDB78369FD06A1A6963B
 prompt --application/set_environment
 set define off verify off feedback off
 whenever sqlerror exit sql.sqlcode rollback
@@ -19,8 +19,8 @@ whenever sqlerror exit sql.sqlcode rollback
 --------------------------------------------------------------------------------
 begin
 wwv_flow_imp.import_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

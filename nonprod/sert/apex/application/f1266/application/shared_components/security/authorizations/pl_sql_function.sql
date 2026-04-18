@@ -1,12 +1,12 @@
--- file_checksum: 7FBA88D1AA7495663EF3C793F4499BA62DC93C63566F078E7BE40166B3E58B06
+-- file_checksum: 60245547B224364F6F1E442BC726E31802B3B0A5DA30606D32F709B453F3D911
 prompt --application/shared_components/security/authorizations/pl_sql_function
 begin
 --   Manifest
 --     SECURITY SCHEME: PL/SQL Function
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

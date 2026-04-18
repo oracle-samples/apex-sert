@@ -1,12 +1,12 @@
--- file_checksum: D84B8D3926B3F5C83306DDF228CCC5996B6FB831952A10B7BAFFF2CCE191985E
+-- file_checksum: 0743E5CD1842C10E436DEB56B8035D4E0D5D2E2169D6D4351B46AE8EA9C0FDE8
 prompt --application/shared_components/user_interface/templates/report/comments
 begin
 --   Manifest
 --     ROW TEMPLATE: COMMENTS
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

@@ -3,8 +3,8 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 07E934ECCF40C38C1B96480F9940AA9FB6F93F1B1DB22411DE6ECC1C76C9FFCF
--- file_checksum: ABC858A305BD3C6B55136B50900F9DB0298618E81AC1C1DE5143A91FE574F7E1
+prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
+-- file_checksum: 59E941EA6F1EB5CB149251C6E53D560F6F3D34B3ED3A397D6D41D83CE2B82464
 prompt --install
 @@application/set_environment.sql
 @@application/delete_application.sql
@@ -46,6 +46,7 @@ prompt --install
 @@application/shared_components/logic/application_items/g_application_id.sql
 @@application/shared_components/logic/application_items/g_button_link.sql
 @@application/shared_components/logic/application_items/g_category_name.sql
+@@application/shared_components/logic/application_items/g_delete_eval_exceptions.sql
 @@application/shared_components/logic/application_items/g_email_from.sql
 @@application/shared_components/logic/application_items/g_eval_result_id.sql
 @@application/shared_components/logic/application_items/g_eval_title.sql
@@ -64,6 +65,7 @@ prompt --install
 @@application/shared_components/logic/application_items/g_workspace_name.sql
 @@application/shared_components/logic/application_computations/g_application_id.sql
 @@application/shared_components/logic/application_computations/g_stale_eval.sql
+@@application/shared_components/logic/application_computations/g_delete_eval_exceptions.sql
 @@application/shared_components/logic/application_computations/g_email_from.sql
 @@application/shared_components/logic/application_computations/g_release_version.sql
 @@application/shared_components/logic/application_computations/g_aop_url.sql
@@ -86,7 +88,6 @@ prompt --install
 @@application/shared_components/user_interface/lovs/rules_lov_raise_exceptions.sql
 @@application/shared_components/user_interface/lovs/rule_severity_v.sql
 @@application/pages/page_groups.sql
-@@application/comments.sql
 @@application/shared_components/navigation/breadcrumbs/breadcrumb.sql
 @@application/shared_components/navigation/breadcrumbentry.sql
 @@application/shared_components/user_interface/templates/page/drawer.sql
@@ -164,7 +165,6 @@ prompt --install
 @@application/shared_components/user_interface/template_opt_groups.sql
 @@application/shared_components/user_interface/template_options.sql
 @@application/shared_components/globalization/language.sql
-@@application/shared_components/globalization/translations.sql
 @@application/shared_components/logic/build_options.sql
 @@application/shared_components/globalization/messages.sql
 @@application/shared_components/globalization/dyntranslations.sql

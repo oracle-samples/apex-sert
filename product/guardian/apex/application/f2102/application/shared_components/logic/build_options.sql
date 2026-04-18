@@ -1,4 +1,5 @@
--- file_checksum: 2A80080777F89FC93AB998A74B76DFA01400D2EFA81CD4CAF2BD93C0A7B137F1
+prompt app_checksum: 8F8731917A0435ECB64029293CE8ADA7F9A127EC84A6C907C03DC4A0522EABF3
+-- file_checksum: B0F74142B1553DD9A05BC10B1C5C62A9E959E103D77B2B19C2E59A064CE9257B
 prompt --application/shared_components/logic/build_options
 begin
 --   Manifest
@@ -6,7 +7,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

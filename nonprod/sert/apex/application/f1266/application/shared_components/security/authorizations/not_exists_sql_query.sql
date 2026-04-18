@@ -1,12 +1,12 @@
--- file_checksum: 5E6964D0DFA7EF10BE880ABDEF97905C6FAECE909AAC78D06594879C4617850B
+-- file_checksum: 378A58E90DEF2F3FB816FB0F247AF135DB4E1BCEAD8AF448ED42A1DC69E5409E
 prompt --application/shared_components/security/authorizations/not_exists_sql_query
 begin
 --   Manifest
 --     SECURITY SCHEME: NOT Exists SQL Query
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

@@ -1,12 +1,12 @@
--- file_checksum: C23752A6BE5DA7DF35F4608993423DB7C6790118BC9E6BBD6CD12DAAFD8C186C
+-- file_checksum: CD7DC30718B9EEAB7BCF6FD78203765A5C8E142F29DBBE9F151BCB8860D18156
 prompt --application/pages/page_00005
 begin
 --   Manifest
 --     PAGE: 00005
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083
@@ -44,10 +44,11 @@ wwv_flow_imp_page.create_page_item(
 ,p_cSize=>30
 ,p_field_template=>wwv_flow_imp.id(43706081860394077)
 ,p_item_template_options=>'#DEFAULT#'
-,p_attribute_01=>'N'
-,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
-,p_attribute_05=>'BOTH'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(18922868805067829)
@@ -61,10 +62,11 @@ wwv_flow_imp_page.create_page_item(
 ,p_cSize=>30
 ,p_field_template=>wwv_flow_imp.id(43706081860394077)
 ,p_item_template_options=>'#DEFAULT#'
-,p_attribute_01=>'N'
-,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
-,p_attribute_05=>'BOTH'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(18922940996067830)
@@ -78,10 +80,11 @@ wwv_flow_imp_page.create_page_item(
 ,p_cSize=>30
 ,p_field_template=>wwv_flow_imp.id(43706081860394077)
 ,p_item_template_options=>'#DEFAULT#'
-,p_attribute_01=>'N'
-,p_attribute_02=>'N'
-,p_attribute_04=>'TEXT'
-,p_attribute_05=>'BOTH'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'disabled', 'N',
+  'submit_when_enter_pressed', 'N',
+  'subtype', 'TEXT',
+  'trim_spaces', 'BOTH')).to_clob
 );
 wwv_flow_imp.component_end;
 end;

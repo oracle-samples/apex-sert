@@ -1,12 +1,12 @@
--- file_checksum: CD6F8BA3150E79C4079F2DF10C7D99D60CF9D5A4AF620625DAC108441FF82257
+-- file_checksum: FAF6A5E2F0288927EE1992EDF1496A6275D760AC49E967F0D3F3F8F5DFD8A40C
 prompt --application/shared_components/user_interface/templates/region/search_results_container
 begin
 --   Manifest
 --     REGION TEMPLATE: SEARCH_RESULTS_CONTAINER
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

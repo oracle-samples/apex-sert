@@ -3,7 +3,8 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 69E22737BA13EF3EF776F14A12644AD0589E4C95CA8290908B2CA4F6D1275889
+prompt app_checksum: E617569B1FE376F5908F222125ECF01717D1CFD85D7168B02EA64312089B60BE
+-- file_checksum: 26B8CCD4114E3D7F17A5BC40BF9E719B33FCAC4018998B0829DCD2F5C9FA3AB9
 prompt --application/shared_components/user_interface/templates/report/value_attribute_pairs_row
 begin
 --   Manifest
@@ -11,7 +12,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742

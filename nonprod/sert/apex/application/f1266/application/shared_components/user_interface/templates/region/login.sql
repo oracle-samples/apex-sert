@@ -1,12 +1,12 @@
--- file_checksum: D5C6DD79756EEC8F7F290A25778D378606A4727B226940A3946EF8B17D0EF70D
+-- file_checksum: 34407411B9CF0654A0358E7B3242BA728ED7AB7EEDD6EB23D6ADCCCD6735E4BC
 prompt --application/shared_components/user_interface/templates/region/login
 begin
 --   Manifest
 --     REGION TEMPLATE: LOGIN
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

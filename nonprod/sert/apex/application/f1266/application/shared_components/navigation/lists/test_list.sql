@@ -1,12 +1,12 @@
--- file_checksum: 5B74B6D19F7FEB7699A7FCA8AED9388ABA3A1A9B95EA827B116284264696B6D3
+-- file_checksum: 542D61660F6E6131E6288FB0CAD449D1EC1102D3CDA2611A31B5AE8269082A8D
 prompt --application/shared_components/navigation/lists/test_list
 begin
 --   Manifest
 --     LIST: test_list
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

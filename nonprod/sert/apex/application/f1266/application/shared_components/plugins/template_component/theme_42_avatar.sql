@@ -1,12 +1,12 @@
--- file_checksum: F96C20EE5B8E255C49541D93F13EB1AB7F14D7D5F6F17A3E0701B4569AA27578
+-- file_checksum: 4E568D876CCC5E6763EFF7F6FF0E8A7632E735136CA317809154A89B69FA6560
 prompt --application/shared_components/plugins/template_component/theme_42_avatar
 begin
 --   Manifest
 --     PLUGIN: THEME_42$AVATAR
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

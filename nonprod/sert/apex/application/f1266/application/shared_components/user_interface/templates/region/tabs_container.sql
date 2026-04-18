@@ -1,12 +1,12 @@
--- file_checksum: F2D18E09AD04D16B5A31F9A55D12F0A84A9DDA76316F2E8062EBDD4E98CF72FB
+-- file_checksum: A02E8135669A7256FFBB55759E00AB874A7D1B984A240AD4F50573FF7AE68CE4
 prompt --application/shared_components/user_interface/templates/region/tabs_container
 begin
 --   Manifest
 --     REGION TEMPLATE: TABS_CONTAINER
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

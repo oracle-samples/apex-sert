@@ -1,12 +1,12 @@
--- file_checksum: 99C3CD1371B7F37DD2B2E3C02B9A79BFBD985B511DF54B349A111114837EAAED
+-- file_checksum: F1F45D7AE95662456FA474A71C169474D6748ADF3E650A7D4DB8F5FD79B56901
 prompt --application/shared_components/user_interface/templates/report/contextual_info
 begin
 --   Manifest
 --     ROW TEMPLATE: CONTEXTUAL_INFO
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

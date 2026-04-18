@@ -3,7 +3,8 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 45C2ACEB26BA8C4CCB10AD4A3A87AD487188A92A3DCF357E9D2473015259FD0C
+prompt app_checksum: E617569B1FE376F5908F222125ECF01717D1CFD85D7168B02EA64312089B60BE
+-- file_checksum: 24403E01DDE3ABE132A34C2B559C0B1D42BAEBF9B8657E3812C5D71BC51B18CD
 prompt --application/create_application
 begin
 --   Manifest
@@ -11,7 +12,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
@@ -60,7 +61,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_value_01=>'SERT v2'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>16
-,p_version_scn=>45773250889295
+,p_version_scn=>46709442017681
 ,p_print_server_type=>'NATIVE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'Y'

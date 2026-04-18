@@ -1,4 +1,5 @@
--- file_checksum: 84D070CE4B65AEC6088F607DDEF2232705762AC11C2E84672DD66467D32A9723
+prompt app_checksum: 8F8731917A0435ECB64029293CE8ADA7F9A127EC84A6C907C03DC4A0522EABF3
+-- file_checksum: 5C6C74DA88E42A8F9E38A96DDC9747AD0DECAAB443017CE707769E000CD57CBD
 prompt --application/shared_components/security/authentications/builder_extension_sign_in
 begin
 --   Manifest
@@ -6,7 +7,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883
@@ -19,6 +20,8 @@ wwv_flow_imp_shared.create_authentication(
 ,p_use_secure_cookie_yn=>'N'
 ,p_ras_mode=>0
 ,p_version_scn=>45830494398965
+,p_created_on=>wwv_flow_imp.dz('20260416193315Z')
+,p_updated_on=>wwv_flow_imp.dz('20260416193315Z')
 );
 wwv_flow_imp.component_end;
 end;

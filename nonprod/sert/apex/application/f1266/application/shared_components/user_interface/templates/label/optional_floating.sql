@@ -1,12 +1,12 @@
--- file_checksum: 9A5C4DC06AE0056F9820CB8AEA757C6B6D18485E8A013C4BD72C05E453975BF7
+-- file_checksum: DF67ADDE5EF6128613A8B0721ED8B498AE11598800264E04AE101B9B512CD677
 prompt --application/shared_components/user_interface/templates/label/optional_floating
 begin
 --   Manifest
 --     LABEL TEMPLATE: OPTIONAL_FLOATING
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

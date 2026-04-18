@@ -1,5 +1,5 @@
-prompt app_checksum: B0A28CD8BBC7622F9C2D632E765A153D2B017A310301D1211F692599D6DBB567
--- file_checksum: E8C66E741DD1E4797028726A269BFD075BBFCE436182290010B3DBD73045AD50
+prompt app_checksum: 2DE9A600B35DA758AB5065B23A022765E1A26789CE4DD1077A96B8C82547917F
+-- file_checksum: 69675E02B08AC671E28D68A4D1F1F1B123D5D3D50AA96339B7F93583593DE52B
 prompt --install
 @@application/set_environment.sql
 @@application/delete_application.sql
@@ -34,6 +34,7 @@ prompt --install
 @@application/shared_components/logic/application_items/a_very_bad_name.sql
 @@application/shared_components/logic/application_items/g_bad_name.sql
 @@application/shared_components/logic/application_items/g_good_name.sql
+@@application/shared_components/logic/application_items/g_log_key.sql
 @@application/shared_components/logic/application_items/xss_script_alert_escaped.sql
 @@application/shared_components/logic/application_items/xss_script_alert_unescaped.sql
 @@application/shared_components/logic/application_computations/a_app_computation_condition_expression.sql

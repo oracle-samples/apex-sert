@@ -1,12 +1,12 @@
--- file_checksum: DC20B7EC4709E7BC30B03AE3D39A19FF96FC42AF275716CEFE2F2315F96E69D2
+-- file_checksum: 0B917807BBEF76E528AA61D6BD9A12D0C648F05C3A70AF1011B88036770C4FF6
 prompt --application/shared_components/plugins/template_component/theme_42_badge
 begin
 --   Manifest
 --     PLUGIN: THEME_42$BADGE
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

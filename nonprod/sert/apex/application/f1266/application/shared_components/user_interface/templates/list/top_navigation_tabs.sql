@@ -1,12 +1,12 @@
--- file_checksum: 815AF13DB8D14D2CFC78FD8CDAE339C5126AE2AB0784F58274FD9FCA3B23D1D2
+-- file_checksum: 41DF2650544EA50F0195D7C4F6BF4C23AF3BBA42D798D52C0D0C298498583DC4
 prompt --application/shared_components/user_interface/templates/list/top_navigation_tabs
 begin
 --   Manifest
 --     REGION TEMPLATE: TOP_NAVIGATION_TABS
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

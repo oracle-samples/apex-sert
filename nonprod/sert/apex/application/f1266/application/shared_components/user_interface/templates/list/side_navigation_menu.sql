@@ -1,12 +1,12 @@
--- file_checksum: 001A683A268C184300B2970731960A7AD74C67F604C503981F017591619A946D
+-- file_checksum: 503FA8173042314CDCEAAB2D98F92C5B66A15BB90A8D222F7D0F0A6F1CE9B607
 prompt --application/shared_components/user_interface/templates/list/side_navigation_menu
 begin
 --   Manifest
 --     REGION TEMPLATE: SIDE_NAVIGATION_MENU
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

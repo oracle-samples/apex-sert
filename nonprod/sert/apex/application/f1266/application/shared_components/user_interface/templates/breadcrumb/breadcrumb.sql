@@ -1,12 +1,12 @@
--- file_checksum: 30C9F8266EC4DD00F071272E765A86DA68B10D65B98D67638EEDF620800F8D0D
+-- file_checksum: 157037E878791CC7D05DCBD7506B2441B792D17FB53ECF58ABC236BF0E5BE31E
 prompt --application/shared_components/user_interface/templates/breadcrumb/breadcrumb
 begin
 --   Manifest
 --     MENU TEMPLATE: BREADCRUMB
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

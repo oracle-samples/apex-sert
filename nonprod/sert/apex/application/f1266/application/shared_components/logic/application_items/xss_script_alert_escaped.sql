@@ -1,12 +1,12 @@
--- file_checksum: 8A10A711B9E81EE9D31D80530DB3B1451170CE112B96BD44DB6EA94BA69C6DF5
+-- file_checksum: DEC413E6585BB9A917052BA69B43EECA4242775DF74008B414F6952B27DA6B19
 prompt --application/shared_components/logic/application_items/xss_script_alert_escaped
 begin
 --   Manifest
 --     APPLICATION ITEM: XSS_SCRIPT_ALERT_ESCAPED
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

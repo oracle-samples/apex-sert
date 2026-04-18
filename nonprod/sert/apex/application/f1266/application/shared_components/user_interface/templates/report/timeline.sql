@@ -1,12 +1,12 @@
--- file_checksum: A69C7E219C91484679840CF879090CAB45312A93677CC77D7B45991C3BB43A86
+-- file_checksum: C5D299655D9626D6845C902AE8ED8A31F56CE32A6BBDE93D82AE01D36000814D
 prompt --application/shared_components/user_interface/templates/report/timeline
 begin
 --   Manifest
 --     ROW TEMPLATE: TIMELINE
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

@@ -1,12 +1,12 @@
--- file_checksum: 01FCD02CECE789B0778F6AFDA89B015E1D219F6453A94010751EECD8C3902F62
+-- file_checksum: E35595C5A94498F594550AFDF6AE471EFD9A4DA62594DC34E2A59A080E5CC187
 prompt --workspace/remote_servers/test_ep
 begin
 --   Manifest
 --     REMOTE SERVER: test_ep
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

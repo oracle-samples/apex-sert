@@ -1,12 +1,12 @@
--- file_checksum: F2412CE4BCA02F13A6DCD43258FC10D70D1DD2EED3B51BEA2C30E65E9882EA5C
+-- file_checksum: 1A5DD487E4F2572986CB6D1883586F16FCC635003183BC0A3940095B264D70D5
 prompt --application/shared_components/user_interface/templates/region/buttons_container
 begin
 --   Manifest
 --     REGION TEMPLATE: BUTTONS_CONTAINER
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

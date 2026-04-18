@@ -1,12 +1,12 @@
--- file_checksum: 549D95697B7AA7E407E94F0C67C8D56E16EC23CACC3927E5513559AC8E0AB5AD
+-- file_checksum: 66904F222B3D548B5FF2E7369A4534D326218A9F66B6C7F11B25ED87A63CB4AC
 prompt --application/shared_components/logic/application_items/a_bad_name
 begin
 --   Manifest
 --     APPLICATION ITEM: A_BAD_NAME
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

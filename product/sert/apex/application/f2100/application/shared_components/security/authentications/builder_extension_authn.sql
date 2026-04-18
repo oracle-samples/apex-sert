@@ -3,7 +3,8 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: F8D460105792620BEAEEA26740906378156FCC1D3B88DD7DA1A99DADCEFEF141
+prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
+-- file_checksum: 16DDEE9C04146542BA78E54D187A268E6F4291EE1781BF53EE374B8687E8FC60
 prompt --application/shared_components/security/authentications/builder_extension_authn
 begin
 --   Manifest
@@ -11,7 +12,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -24,6 +25,8 @@ wwv_flow_imp_shared.create_authentication(
 ,p_use_secure_cookie_yn=>'N'
 ,p_ras_mode=>0
 ,p_version_scn=>39194514307376
+,p_created_on=>wwv_flow_imp.dz('20260412021315Z')
+,p_updated_on=>wwv_flow_imp.dz('20260412021315Z')
 );
 wwv_flow_imp.component_end;
 end;

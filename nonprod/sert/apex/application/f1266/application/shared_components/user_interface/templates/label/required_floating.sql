@@ -1,12 +1,12 @@
--- file_checksum: 80FE59CD7DA506C0C17BBC364FAA98B899D2432AE03014B5A516C31371CE9E94
+-- file_checksum: 988CD1D35F161E5BBDAFA82D2C43C0F5C3DA4955D2C0E088F6107FF4F813FE15
 prompt --application/shared_components/user_interface/templates/label/required_floating
 begin
 --   Manifest
 --     LABEL TEMPLATE: REQUIRED_FLOATING
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

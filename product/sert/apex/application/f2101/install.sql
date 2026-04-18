@@ -3,8 +3,8 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 45A64BAA9F0FB50AB6BEB21177054A69F4BD0E01A06D9F670AD086D448BE7E5D
--- file_checksum: 8AB974387CE5D3769B4CE3AB30EC8458889D5F2C4FD0B00414C2BF9BD50B4016
+prompt app_checksum: E617569B1FE376F5908F222125ECF01717D1CFD85D7168B02EA64312089B60BE
+-- file_checksum: 6908F8A598DC29A67E6FF2C3832E48EFDB8532198A94D44309324ACB3A3C882E
 prompt --install
 @@application/set_environment.sql
 @@application/delete_application.sql
@@ -38,7 +38,6 @@ prompt --install
 @@application/shared_components/user_interface/lovs/rule_set_types_rule_set_type_name.sql
 @@application/shared_components/user_interface/lovs/rule_severity.sql
 @@application/pages/page_groups.sql
-@@application/comments.sql
 @@application/shared_components/navigation/breadcrumbs/breadcrumb.sql
 @@application/shared_components/navigation/breadcrumbentry.sql
 @@application/shared_components/user_interface/templates/page/drawer.sql
@@ -116,7 +115,6 @@ prompt --install
 @@application/shared_components/user_interface/template_opt_groups.sql
 @@application/shared_components/user_interface/template_options.sql
 @@application/shared_components/globalization/language.sql
-@@application/shared_components/globalization/translations.sql
 @@application/shared_components/logic/build_options.sql
 @@application/shared_components/globalization/messages.sql
 @@application/shared_components/globalization/dyntranslations.sql
@@ -174,4 +172,7 @@ prompt --install
 @@application/pages/page_06020.sql
 @@application/pages/page_06030.sql
 @@application/pages/page_09999.sql
+@@application/deployment/definition.sql
+@@application/deployment/checks.sql
+@@application/deployment/buildoptions.sql
 @@application/end_environment.sql

@@ -1,0 +1,3 @@
+-- liquibase formatted sql
+-- Scratch file for formatting and reviews.
+--changeset nonprod:scratchfile stripComments:false endDelimiter:/  runOnChange:true

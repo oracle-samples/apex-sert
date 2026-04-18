@@ -1,12 +1,12 @@
--- file_checksum: 07913AF20B6E0F8716D8F1041C03F4964E45800F0315968F146BF4695701C091
+-- file_checksum: C5CD0B9480021B94F149A67F0A65D29D3E46D67CE8A43D1FECD7DEDC26789BA6
 prompt --application/shared_components/user_interface/templates/page/modal_dialog
 begin
 --   Manifest
 --     TEMPLATE: MODAL_DIALOG
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083
