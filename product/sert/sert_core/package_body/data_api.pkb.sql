@@ -1059,6 +1059,66 @@ exception
         raise;
 end create_rule_set_rules;
 
+-- ==============================================================================
+-- - exceptions_summary(p_workspace_id, p_application_id):
+--   - Queries exceptions grouped by rule_key and exception text.
+--   - Both parameters are optional; when supplied they are applied as equality
+--     filters on exceptions.workspace_id / exceptions.application_id.
+--   - Returns a JSON CLOB: array of objects with rule_key, exception,
+--     exception_count, ordered by rule_key then exception.
+-- ==============================================================================
+function exceptions_summary (
+    p_workspace_id   in sert_core.exceptions.workspace_id%type   default null,
+    p_application_id in sert_core.exceptions.application_id%type default null )
+    return clob
+is
+    l_result clob;
+begin
+    select json_arrayagg(
+               json_object(
+                   'rule_key'        value r.rule_key,
+                   'exception'       value e.exception,
+                   'exception_count' value e.cnt
+               )
+               order by r.rule_key, e.exception
+           )
+      into l_result
+      from (
+               select rule_id,
+                      exception,
+                      count(*) as cnt
+                 from sert_core.exceptions
+                where ( p_workspace_id   is null or workspace_id   = p_workspace_id   )
+                  and ( p_application_id is null or application_id = p_application_id )
+                group by rule_id, exception
+           ) e
+      join sert_core.rules r on r.rule_id = e.rule_id;
+
+    return l_result;
+end exceptions_summary;
+
+-- ==============================================================================
+-- - apex_download_exceptions_summary(p_workspace_id, p_application_id):
+--   - Builds filename "exceptions_summary.json".
+--   - Passes optional filters through to exceptions_summary.
+--   - Downloads the JSON CLOB to the client via apex_http.download.
+-- ==============================================================================
+procedure apex_download_exceptions_summary (
+    p_workspace_id   in sert_core.exceptions.workspace_id%type   default null,
+    p_application_id in sert_core.exceptions.application_id%type default null )
+is
+    l_clob clob;
+begin
+    l_clob := exceptions_summary(
+                  p_workspace_id   => p_workspace_id,
+                  p_application_id => p_application_id );
+
+    apex_http.download(
+        p_clob         => l_clob,
+        p_content_type => 'application/json',
+        p_filename     => 'exceptions_summary.json');
+end apex_download_exceptions_summary;
+
 end data_api;
 /
 --rollback drop package body sert_core.data_api;

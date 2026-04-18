@@ -85,6 +85,21 @@ procedure create_rule_set_rules (
     p_apex_version in sert_core.rule_sets.apex_version%type
     );
 
+--==============================================================================
+-- Function exceptions_summary
+--==============================================================================
+-- Returns a JSON CLOB summarising exception counts grouped by rule_key and
+-- exception text.  Both filter parameters are optional; omit to include all.
+--==============================================================================
+function exceptions_summary (
+    p_workspace_id   in sert_core.exceptions.workspace_id%type   default null,
+    p_application_id in sert_core.exceptions.application_id%type default null )
+    return clob;
+
+procedure apex_download_exceptions_summary (
+    p_workspace_id   in sert_core.exceptions.workspace_id%type   default null,
+    p_application_id in sert_core.exceptions.application_id%type default null );
+
 end data_api;
 /
 --rollback drop package sert_core.data_api;
