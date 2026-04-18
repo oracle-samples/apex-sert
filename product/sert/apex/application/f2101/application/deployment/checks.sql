@@ -3,15 +3,16 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 5A1B2137269C207A795083CDBD52BAFFBF8A9B271D06177DF2E78C2AE667CF31
-prompt --application/shared_components/globalization/translations
+prompt app_checksum: E617569B1FE376F5908F222125ECF01717D1CFD85D7168B02EA64312089B60BE
+-- file_checksum: D708042693823D80EF77946CCE0FC2DE479773ED7017ABD2BDB0FAADDA88B0FD
+prompt --application/deployment/checks
 begin
 --   Manifest
---     TRANSLATIONS: 2101
+--     INSTALL CHECKS: 2101
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.14'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
