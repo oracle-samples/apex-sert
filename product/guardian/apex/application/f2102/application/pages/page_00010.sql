@@ -1,5 +1,5 @@
-prompt app_checksum: F24062FCE39D7AC19F9EA2292B88008E6F55784EDB74E6D62BAD565878490F78
--- file_checksum: A1516E283A8F6D46D6EEE79887D1BF982DC871A8ABB49CCBA7EC9B19908135BC
+prompt app_checksum: 8F8731917A0435ECB64029293CE8ADA7F9A127EC84A6C907C03DC4A0522EABF3
+-- file_checksum: C1174930B875D105DF12F9A8A2539CB43895C53D39271AC076D7A623ED939C66
 prompt --application/pages/page_00010
 begin
 --   Manifest
@@ -25,8 +25,8 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#:js-dialog-class-t-Drawer--pullOutEnd'
 ,p_required_role=>wwv_flow_imp.id(30658409527755022737)
 ,p_protection_level=>'C'
-,p_page_component_map=>'22'
-,p_last_updated_on=>wwv_flow_imp.dz('20260416213335Z')
+,p_page_component_map=>'16'
+,p_last_updated_on=>wwv_flow_imp.dz('20260417034208Z')
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(55260645777814403841)
@@ -116,9 +116,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_warn_on_unsaved_changes=>'I'
 ,p_is_persistent=>'N'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'number_alignment', 'LEFT',
-  'virtual_keyboard', 'DECIMAL')).to_clob
-,p_updated_on=>wwv_flow_imp.dz('20260416202946Z')
+  'number_alignment', 'left',
+  'virtual_keyboard', 'numeric')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260417034208Z')
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(24143584059543050074)
@@ -134,9 +134,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_warn_on_unsaved_changes=>'I'
 ,p_is_persistent=>'N'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'number_alignment', 'LEFT',
-  'virtual_keyboard', 'DECIMAL')).to_clob
-,p_updated_on=>wwv_flow_imp.dz('20260416202946Z')
+  'number_alignment', 'left',
+  'virtual_keyboard', 'numeric')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260417034208Z')
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(58115785167254349744)
@@ -208,9 +208,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_warn_on_unsaved_changes=>'I'
 ,p_is_persistent=>'N'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'number_alignment', 'LEFT',
-  'virtual_keyboard', 'DECIMAL')).to_clob
-,p_updated_on=>wwv_flow_imp.dz('20260416202946Z')
+  'number_alignment', 'left',
+  'virtual_keyboard', 'numeric')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260417034208Z')
 );
 wwv_flow_imp_page.create_page_computation(
  p_id=>wwv_flow_imp.id(88833722461148405176)
