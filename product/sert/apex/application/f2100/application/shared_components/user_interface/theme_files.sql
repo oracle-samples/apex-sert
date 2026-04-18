@@ -3,7 +3,8 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: A38489274DF122C32D71923A20DADAC6006B3FBC1D60CF46EBABB19938F03C99
+prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
+-- file_checksum: 8BBA35D93BCA954DF03618EC3AB4BD4DB3E41386D19511327C68B4B1E3DAB983
 prompt --application/shared_components/user_interface/theme_files
 begin
 --   Manifest
@@ -11,7 +12,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.14'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -26,6 +27,8 @@ wwv_flow_imp_shared.create_theme_file(
 ,p_mime_type=>'text/css'
 ,p_file_charset=>'utf-8'
 ,p_file_content => wwv_flow_imp.varchar2_to_blob(wwv_flow_imp.g_varchar2_table)
+,p_created_on=>wwv_flow_imp.dz('20260412021313Z')
+,p_updated_on=>wwv_flow_imp.dz('20260412021313Z')
 );
 wwv_flow_imp.component_end;
 end;

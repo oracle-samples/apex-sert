@@ -3,7 +3,8 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 08F27DB3D3A5CFDD2427A168384653B432D673296212ECA9DA25831DFA42C30D
+prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
+-- file_checksum: 4BDD8CE99FB2F0355332BF4E3A054179F85C8BDED0D31CE26AB5EE82AB963B1E
 prompt --application/pages/page_00050
 begin
 --   Manifest
@@ -11,7 +12,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.14'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -30,6 +31,7 @@ wwv_flow_imp_page.create_page(
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'23'
+,p_last_updated_on=>wwv_flow_imp.dz('20260417165034Z')
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(137417363109888649)
@@ -411,12 +413,13 @@ wwv_flow_imp_page.create_page_item(
 ,p_lov_display_null=>'YES'
 ,p_lov_null_text=>'- Random -'
 ,p_cHeight=>1
-,p_colspan=>2
+,p_colspan=>6
 ,p_field_template=>wwv_flow_imp.id(512259205067949615)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_lov_display_extra=>'NO'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'page_action_on_selection', 'NONE')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260417165034Z')
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(970500000000000003)
@@ -430,12 +433,13 @@ wwv_flow_imp_page.create_page_item(
 ,p_lov_null_text=>'- Random -'
 ,p_cHeight=>1
 ,p_begin_on_new_line=>'N'
-,p_colspan=>2
+,p_colspan=>6
 ,p_field_template=>wwv_flow_imp.id(512259205067949615)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_lov_display_extra=>'NO'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'page_action_on_selection', 'NONE')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260417165034Z')
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(138505865334167109)
@@ -487,6 +491,38 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_SUBMIT_PAGE'
 ,p_attribute_01=>'REMOVE'
 ,p_attribute_02=>'Y'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(8155645059992117)
+,p_name=>'Show-Hide-Items'
+,p_event_sequence=>30
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P50_SCHEDULE_MODE'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+,p_created_on=>wwv_flow_imp.dz('20260417164812Z')
+,p_updated_on=>wwv_flow_imp.dz('20260417164812Z')
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(8155739080992118)
+,p_event_id=>wwv_flow_imp.id(8155645059992117)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'var freq = $v("P50_SCHEDULE_MODE");',
+'',
+'',
+'if (freq === "WEEKLY") {',
+'    apex.item("P50_FREQUENCY").show();',
+'} else {',
+'    apex.item("P50_FREQUENCY").hide();',
+'}',
+''))
+,p_created_on=>wwv_flow_imp.dz('20260417164812Z')
+,p_updated_on=>wwv_flow_imp.dz('20260417164812Z')
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(138518196069093330)

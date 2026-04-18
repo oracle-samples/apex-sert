@@ -3,7 +3,8 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: DF1AC46C63F1D0FE202EBD1185EC6D21DF659000D34FC430D753923AD99047D0
+prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
+-- file_checksum: D0619ECAC4ADDBC7F44343E4AA4F847DF636374DAC4BDC9A0829E31FDD309398
 prompt --application/shared_components/plugins/dynamic_action/be_apexrnd_aop_da
 begin
 --   Manifest
@@ -11,7 +12,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.14'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -1997,6 +1998,8 @@ wwv_flow_imp_shared.create_plugin_file(
 ,p_mime_type=>'text/css'
 ,p_file_charset=>'utf-8'
 ,p_file_content=>wwv_flow_imp.varchar2_to_blob(wwv_flow_imp.g_varchar2_table)
+,p_created_on=>wwv_flow_imp.dz('20260412021316Z')
+,p_updated_on=>wwv_flow_imp.dz('20260412021316Z')
 );
 end;
 /
@@ -2203,6 +2206,8 @@ wwv_flow_imp_shared.create_plugin_file(
 ,p_mime_type=>'application/javascript'
 ,p_file_charset=>'utf-8'
 ,p_file_content=>wwv_flow_imp.varchar2_to_blob(wwv_flow_imp.g_varchar2_table)
+,p_created_on=>wwv_flow_imp.dz('20260412021316Z')
+,p_updated_on=>wwv_flow_imp.dz('20260412021316Z')
 );
 end;
 /
@@ -2284,6 +2289,8 @@ wwv_flow_imp_shared.create_plugin_file(
 ,p_mime_type=>'application/javascript'
 ,p_file_charset=>'utf-8'
 ,p_file_content=>wwv_flow_imp.varchar2_to_blob(wwv_flow_imp.g_varchar2_table)
+,p_created_on=>wwv_flow_imp.dz('20260412021316Z')
+,p_updated_on=>wwv_flow_imp.dz('20260412021316Z')
 );
 end;
 /
@@ -4006,6 +4013,8 @@ wwv_flow_imp_shared.create_plugin_file(
 ,p_mime_type=>'application/javascript'
 ,p_file_charset=>'utf-8'
 ,p_file_content=>wwv_flow_imp.varchar2_to_blob(wwv_flow_imp.g_varchar2_table)
+,p_created_on=>wwv_flow_imp.dz('20260412021316Z')
+,p_updated_on=>wwv_flow_imp.dz('20260412021316Z')
 );
 end;
 /
