@@ -1079,8 +1079,10 @@ begin
                    'rule_key'        value r.rule_key,
                    'exception'       value e.exception,
                    'exception_count' value e.cnt
+                   returning clob
                )
                order by r.rule_key, e.exception
+               returning clob
            )
       into l_result
       from (
