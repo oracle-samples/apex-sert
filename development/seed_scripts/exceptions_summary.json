@@ -8,20 +8,6 @@
    },
    {
       "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
-      "exception": "older copy , not used on current version",
-      "exception_count": 133,
-      "exception_score": 1,
-      "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
-      "exception": "This is allowed because to add a duplicate record the Primary key is not unique",
-      "exception_count": 108,
-      "exception_score": 1,
-      "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
       "exception": "Read only page, no data is changed/inserted into the DB \r\nPages mainly used for reporting and filtering data on the client side.\r\nDuplicate submissions should be allowed.",
       "exception_count": 59,
       "exception_score": 5,
@@ -40,13 +26,6 @@
       "exception_count": 39,
       "exception_score": 5,
       "score_reason": "The justification directly addresses the misconfiguration concern with specific facts showing why the flagged condition is acceptable, mitigated, or not applicable here. It gives concrete security or design context that makes the exception credible to a reviewer."
-   },
-   {
-      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
-      "exception": "System Page",
-      "exception_count": 22,
-      "exception_score": 1,
-      "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
    },
    {
       "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
@@ -71,38 +50,10 @@
    },
    {
       "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
-      "exception": "This page enables users to filter rows. Hence Allow Duplicate submissions is enabled by default. Therefore , this is an exception.",
-      "exception_count": 5,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
-      "exception": "This page does not have any insert or update rows into the database. Hence Allow Duplicate submissions is enabled by default. Therefore , this is an exception.",
-      "exception_count": 4,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
       "exception": "Allowed for report pages",
       "exception_count": 3,
       "exception_score": 5,
       "score_reason": "The justification directly addresses the misconfiguration concern with specific facts showing why the flagged condition is acceptable, mitigated, or not applicable here. It gives concrete security or design context that makes the exception credible to a reviewer."
-   },
-   {
-      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
-      "exception": "No data is being inserted as part of this page . Hence this is set to Yes by default and an exception",
-      "exception_count": 2,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
-      "exception": "Use of printing functionality on page requires being able to resubmit page for normal operation.",
-      "exception_count": 2,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
@@ -120,13 +71,6 @@
    },
    {
       "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
-      "exception": "Page 1 - Home is for sure not a DML form or any kind of page that inserts data/rows in the database, so it's fine if it allows duplicate page submission. Other pages in the app are also having this value set which I guess it's the default.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
       "exception": "Page is read only and no data is inserted in the backend DB. Duplicate submissions should be allowed.",
       "exception_count": 1,
       "exception_score": 5,
@@ -141,38 +85,10 @@
    },
    {
       "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
-      "exception": "This is a Gantt chart where the user can click in the bars to see the details of every item. If I not allow duplicated submissions only one item can be viewed.",
-      "exception_count": 1,
-      "exception_score": 1,
-      "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
-      "exception": "This is an Alert page and the page closes immediately after clicking any of the buttons .\r\nHence Allow Duplicate submissions is enabled by default. Therefore , this is an exception.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
-      "exception": "This is not a DML form so marked YES.",
-      "exception_count": 1,
-      "exception_score": 1,
-      "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
       "exception": "This page Allows user to Filter data . Hence this is set to Yes by default and an exception",
       "exception_count": 1,
       "exception_score": 5,
       "score_reason": "The justification directly addresses the misconfiguration concern with specific facts showing why the flagged condition is acceptable, mitigated, or not applicable here. It gives concrete security or design context that makes the exception credible to a reviewer."
-   },
-   {
-      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
-      "exception": "This page closes on single click by default and user will not be able to click Submit again. Hence Allow Duplicate submissions is enabled by default. Therefore , this is an exception.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
@@ -196,6 +112,181 @@
       "score_reason": "The justification directly addresses the misconfiguration concern with specific facts showing why the flagged condition is acceptable, mitigated, or not applicable here. It gives concrete security or design context that makes the exception credible to a reviewer."
    },
    {
+      "rule_key": "APPLICATION_PROCESS_SQLI",
+      "exception": "False Flag: URL parameters are getting flagged (\"&session=\")",
+      "exception_count": 1,
+      "exception_score": 5,
+      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
+   },
+   {
+      "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
+      "exception": "Accepted exception. The SERT Advisor finding “Button Authorization Inconsistency” is not applicable for the listed components. The page is protected by an Authorization Scheme and the referenced buttons are configured with the same Authorization Scheme; the report appears to be a false positive. In addition, access to the button is inherently constrained by page access, since a user must already satisfy authentication and page authorization before the button can be rendered or invoked.",
+      "exception_count": 21,
+      "exception_score": 5,
+      "score_reason": "The justification directly addresses the access control concern by explaining how equivalent or stronger authorization is enforced at the relevant boundary. It gives enough context to show the finding is a credible false positive or acceptable-by-design case."
+   },
+   {
+      "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
+      "exception": "I can confirm both page and next button have the same Authorization scheme, Global_Base_Auth.",
+      "exception_count": 1,
+      "exception_score": 5,
+      "score_reason": "The justification directly addresses the access control concern by explaining how equivalent or stronger authorization is enforced at the relevant boundary. It gives enough context to show the finding is a credible false positive or acceptable-by-design case."
+   },
+   {
+      "rule_key": "CARDS_SQLI",
+      "exception": "SQL operates on data already loaded into APEX memory, not querying DB directly. No exploitable SQL injection risk.",
+      "exception_count": 1,
+      "exception_score": 5,
+      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
+   },
+   {
+      "rule_key": "CARDS_SQLI",
+      "exception": "This is a false flag, this error is flagging #WORKSPACE_FILES# which is a protected substitution string",
+      "exception_count": 1,
+      "exception_score": 5,
+      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
+      "exception": "Using APEX_ESCAPE.STRIPHTML to sanitize page item values in column; no XSS risk",
+      "exception_count": 8,
+      "exception_score": 5,
+      "score_reason": "The justification directly addresses the XSS concern by explaining that untrusted content is escaped, sanitized, or otherwise not rendered in an executable way. It provides concrete mitigation detail that makes the exception credible."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_SQLI",
+      "exception": "False Flag: URL parameters are getting flagged (\"&body=\")",
+      "exception_count": 1,
+      "exception_score": 5,
+      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_SQLI",
+      "exception": "False flag, this error is flagging \"&nbsp;\" in an HTML allowlist",
+      "exception_count": 1,
+      "exception_score": 5,
+      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "Accepted exception. These Dynamic Content regions intentionally use bind variables and server-side PL/SQL to build HTML for runtime status and log output (for example, “no job selected”, job identifiers, and the tail of an ingestion log). This is display-only functionality to improve UX and does not create an execution path for script injection. Any values that originate from page items or external responses are treated as untrusted and are explicitly output-escaped using APEX_ESCAPE.HTML (and APEX_ESCAPE.HTML_ATTRIBUTE where applicable) before being concatenated into HTML. Bind variables are used only to parameterize the output and service calls, and the rendered content is controlled and sanitized, so this SERT finding is accepted for these components.",
+      "exception_count": 2,
+      "exception_score": 5,
+      "score_reason": "The justification directly addresses the XSS concern by explaining that untrusted content is escaped, sanitized, or otherwise not rendered in an executable way. It provides concrete mitigation detail that makes the exception credible."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "Acknowledge the risk and leave the code as is. The code is already escaped. False positive? apex_lang.message (\r\n           'APEX.FEATURE.ACL.BULK_USER.CREATE_CONFIRM',\r\n           apex_escape.html(:P10014_VALID_COUNT),\r\n           apex_escape.html(:P10014_ROLE)",
+      "exception_count": 1,
+      "exception_score": 5,
+      "score_reason": "The justification directly addresses the XSS concern by explaining that untrusted content is escaped, sanitized, or otherwise not rendered in an executable way. It provides concrete mitigation detail that makes the exception credible."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_SQLI",
+      "exception": "False Flag: URL parameters are getting flagged (\"&URLD=\")",
+      "exception_count": 1,
+      "exception_score": 5,
+      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_SQLI",
+      "exception": "False Flag: URL parameters are getting flagged (\"&session=\", \"&share_id=\") and REGEXP/Replace functions are getting flagged (\"f\\?p=&APP_ID\\.:\", \"&HC\\.\", \"&SESSION. > replaced by :APP_SESSION\")",
+      "exception_count": 1,
+      "exception_score": 5,
+      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
+      "exception": "Accepted exception. This “Interactive Report Column Authorization Inconsistency” finding is not applicable for the listed components. The affected pages are protected by the configured Authorization Scheme, and the referenced report columns are not used as an independent access control boundary. A review of the page and component settings confirms the same Authorization Scheme is applied as intended. The report output appears to be a SERT false positive, and no unintended access is introduced because the page-level authorization remains the controlling security check.",
+      "exception_count": 6,
+      "exception_score": 5,
+      "score_reason": "The justification directly addresses the access control concern by explaining how equivalent or stronger authorization is enforced at the relevant boundary. It gives enough context to show the finding is a credible false positive or acceptable-by-design case."
+   },
+   {
+      "rule_key": "ERROR_HANDLING_FUNCTION",
+      "exception": "No additional Error handling needed as there is no input data traffic from the users. Read only or mac some info input.",
+      "exception_count": 1,
+      "exception_score": 4,
+      "score_reason": "The explanation is clearly relevant to the misconfiguration concern and provides a plausible mitigation or false-positive basis. It is strong overall, but it would be more defensible with one more concrete detail about the control or scope."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "Accepted exception. Multiple hidden items are intentionally not Value Protected because they are used as temporary runtime placeholders to pass non-sensitive values between Dynamic Actions, JavaScript, and AJAX/PL/SQL callbacks. These items are not used for authentication, authorization, or other security decisions, and all server-side processes validate input values and enforce access checks independently.",
+      "exception_count": 22,
+      "exception_score": 4,
+      "score_reason": "The explanation is clearly relevant to the misconfiguration concern and provides a plausible mitigation or false-positive basis. It is strong overall, but it would be more defensible with one more concrete detail about the control or scope."
+   },
+   {
+      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
+      "exception": "Accepted exception. On Page 40 (Tool Simulator), items P40_TOOLS_MD, P40_JSON_PAYLOAD, P40_FULL_RESPONSE, P40_MODEL_USED, and P40_OUTPUT are intentionally configured with Session State Protection = Unrestricted because they are populated and updated at runtime by page Dynamic Actions and AJAX callbacks as part of the tool execution flow. These items act only as transient state holders for request/response payloads and UI rendering, they do not store credentials or privileged flags, and they are not used for authentication or authorization decisions. All server-side processes that consume these values validate inputs and enforce access checks independently, so restricting SSP would break required functionality without improving security.",
+      "exception_count": 5,
+      "exception_score": 4,
+      "score_reason": "The explanation is clearly relevant to the misconfiguration concern and provides a plausible mitigation or false-positive basis. It is strong overall, but it would be more defensible with one more concrete detail about the control or scope."
+   },
+   {
+      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
+      "exception": "Accepted exception. On the ACE Assistant Chat page, the flagged items must remain Session State Protection = Unrestricted because their values are updated at runtime by Dynamic Actions and AJAX callbacks as part of the chat flow while the user is already on the page. These items function only as transient client-side state for UI updates and request/response handling, they do not store credentials or privileged flags, and they are not used to make authentication or authorization decisions. All server-side processes that consume these values validate inputs and enforce access checks independently, so restricting SSP would break required chat functionality without improving security.",
+      "exception_count": 3,
+      "exception_score": 4,
+      "score_reason": "The explanation is clearly relevant to the misconfiguration concern and provides a plausible mitigation or false-positive basis. It is strong overall, but it would be more defensible with one more concrete detail about the control or scope."
+   },
+   {
+      "rule_key": "RUN_AUTHORIZATION_ON_PUBLIC_PAGES",
+      "exception": "Accepted exception. This application does not expose public pages. All pages require the configured authentication scheme and are protected by page-level authorization, so “Run Authorization on Public Pages” is not applicable here. Review confirms there are no intended unauthenticated entry points in this app, and access is always enforced before any page processing is executed.",
+      "exception_count": 1,
+      "exception_score": 4,
+      "score_reason": "The explanation is clearly relevant to the misconfiguration concern and provides a plausible mitigation or false-positive basis. It is strong overall, but it would be more defensible with one more concrete detail about the control or scope."
+   },
+   {
+      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
+      "exception": "This page enables users to filter rows. Hence Allow Duplicate submissions is enabled by default. Therefore , this is an exception.",
+      "exception_count": 5,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
+      "exception": "This page does not have any insert or update rows into the database. Hence Allow Duplicate submissions is enabled by default. Therefore , this is an exception.",
+      "exception_count": 4,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
+      "exception": "No data is being inserted as part of this page . Hence this is set to Yes by default and an exception",
+      "exception_count": 2,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
+      "exception": "Use of printing functionality on page requires being able to resubmit page for normal operation.",
+      "exception_count": 2,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
+      "exception": "Page 1 - Home is for sure not a DML form or any kind of page that inserts data/rows in the database, so it's fine if it allows duplicate page submission. Other pages in the app are also having this value set which I guess it's the default.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
+      "exception": "This is an Alert page and the page closes immediately after clicking any of the buttons .\r\nHence Allow Duplicate submissions is enabled by default. Therefore , this is an exception.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
+      "exception": "This page closes on single click by default and user will not be able to click Submit again. Hence Allow Duplicate submissions is enabled by default. Therefore , this is an exception.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
       "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
       "exception": "User cannot click the Submit multiple times for this page as the pop-up closes immediately after Submit . Hence this is set to Yes by default and an exception",
       "exception_count": 1,
@@ -210,18 +301,823 @@
       "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
-      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
-      "exception": "this page need multiple submission",
-      "exception_count": 1,
-      "exception_score": 1,
-      "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
       "rule_key": "APPLICATION_AUTHORIZATION_SCHEME",
       "exception": "Given the various users of our application, authorization is controlled at the page level. Setting an authorization scheme across the entire application does not add any value.",
       "exception_count": 1,
       "exception_score": 3,
       "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
+   },
+   {
+      "rule_key": "APPLICATION_ITEMS_ESCAPED",
+      "exception": "EXC-008: No end user entered data; no XSS risk",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "APPLICATION_ITEMS_SESSION_STATE",
+      "exception": "Application Item is used as a resource identifier in backend GET calls to retrieve binary content. No dynamic SQL or string manipulation is performed. Finding is a false positive.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "APPLICATION_REJOIN_SESSIONS",
+      "exception": "We are handling rejoin sessions at page level as one of our page is required to rejoin sessions . So can't disable rejoin sessions at application level",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "BUILD_STATUS",
+      "exception": "By design -- this is an evaluation of a non-production system.  This will be updated when we go into production.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "BUILD_STATUS",
+      "exception": "I plan on updating build status once everything is approved and no further changes are needed.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "BUILD_STATUS",
+      "exception": "The APEX application is currently deployed in a Development (DEV) environment, where the application Build Status is intentionally not set to “Run Only”.\r\n\r\nThis configuration is required to support:\r\n- Ongoing development and testing activities\r\n- Page design changes using App Builder\r\n- Debugging, validations, and component modifications\r\n- Rapid iteration by developers\r\n\r\nBefore production deployment, the application Build Status will be:\r\n1. Set to “Run Only”\r\n2. Configured in accordance with Oracle APEX security best practices and SERT recommendations",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "BUILD_STATUS",
+      "exception": "There is no details of the issue or risk here. Hence this should be an exception.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "BUILD_STATUS",
+      "exception": "required for app support",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
+      "exception": "The target page is not a literal value, but the target page is the same page and it's set to the same authorization as the component (Administrator)",
+      "exception_count": 3,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
+   },
+   {
+      "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
+      "exception": "False Flag - Item is set to same AuthZ as Page",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
+   },
+   {
+      "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
+      "exception": "False positive. All elements on the page are protected by an authorization scheme.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
+   },
+   {
+      "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
+      "exception": "button set to same as page, which is set to same as menu",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
+      "exception": "IR column is authz is set to same as page, app_access.\r\nLink is to external app, new tab, jira, which imposes it's own authn/authz",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
+      "exception": "authz on column in report is same as page and menu",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
+      "exception": "Using the Escaped character option removes the Hyper link so I have to leave this option off like suggested in the Help section.",
+      "exception_count": 54,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
+      "exception": "Cannot apply Escaped Character option because makes links unreadable so per the Help screen left option off",
+      "exception_count": 51,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
+      "exception": "Accepted exception. These reports intentionally renders developer controlled HTML for icons, badges, and action buttons; all data driven values are escaped (HTML, attribute, and URL) so untrusted input cannot execute, and disabling column escaping is required for correct formatting.",
+      "exception_count": 49,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
+      "exception": "Unescaped column does not contain user-entered data; no XSS risk",
+      "exception_count": 30,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
+      "exception": "Column contains mix of static HTML and user-entered data; escaping user-entered content with APEX_ESCAPE.STRIPHTML",
+      "exception_count": 21,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
+      "exception": "EXC-009: End user entered data escaped in query; no XSS risk",
+      "exception_count": 6,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
+      "exception": "Columns are escaped in the region source",
+      "exception_count": 3,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
+      "exception": "No end user entered data; no XSS risk",
+      "exception_count": 2,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
+      "exception": "EXC-008: No end user entered data; no XSS risk",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "CLASSIC_REPORT_SQLI",
+      "exception": "EXC-004: Code contains & character which is not part of &ITEM. syntax. No risk of SQL Injection.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation suggests the flagged SQL injection pattern may be a false positive or otherwise low risk, but it does not provide enough technical detail to prove the query path is safe. A reviewer would need clearer evidence that user input cannot influence executable SQL."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "False Positive, This application is used internally by our team. A fine-tuned model is integrated, so this behavior is added as an exception.",
+      "exception_count": 9,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "EXC-009: End user entered data escaped in query; no XSS risk",
+      "exception_count": 8,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "EXC-008: No end user entered data; no XSS risk",
+      "exception_count": 6,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "Text is escaped in region source",
+      "exception_count": 6,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "Input already escaped.",
+      "exception_count": 3,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "All dynamic data displayed in the HTML is processed using the apex_escape.html function, which prevents XSS. The Apex-sert alert does not apply in this case, as there is no actual risk.",
+      "exception_count": 2,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "This is a default page, but dynamic content cannot be escaped.",
+      "exception_count": 2,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "APEX_ESCAPE.HTML escapes all the necessary special characters in the l_summary content. Even after escaping all special characters in the bind variable, it's not getting auto resolved. Hence, raising an exception.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "Bind variable is escaped",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "False positive (page contains binds, yes, but they're escaped)",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "Return values in question actually are escaped, as noted on this default APEX page:return '<p>' ||\r\n       apex_lang.message (\r\n           'APEX.FEATURE.ACL.BULK_USER.CREATE_CONFIRM',\r\n           apex_escape.html(:P10044_VALID_COUNT),\r\n           apex_escape.html(:P10044_ROLE)\r\n       ) ||\r\n       '</p>';",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "Returning Bind variables are escaped using apex.escape.html function\r\napex_escape.html(:P10044_VALID_COUNT), apex_escape.html(:P10044_ROLE)",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "Returning Bind variables are escaped using apex.escape.html function.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
+      "exception": "These bind variables are now escaped before being passed to apex_lang.message(). But still it's not getting auto resolved. Hence, raising an exception.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "DYNAMIC_CONTENT_SQLI",
+      "exception": "False Flag: This error is flagging &lt; and &gt;",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation suggests the flagged SQL injection pattern may be a false positive or otherwise low risk, but it does not provide enough technical detail to prove the query path is safe. A reviewer would need clearer evidence that user input cannot influence executable SQL."
+   },
+   {
+      "rule_key": "ERROR_HANDLING_FUNCTION",
+      "exception": "Not applicable. No errors raised using pl/sql",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ERROR_HANDLING_FUNCTION",
+      "exception": "We have an error capture methodology using a dedicated package. The only issue to deploying it immediately is the required to internally test. This will be considered a top task during the future remediation sprint.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ERROR_HANDLING_FUNCTION",
+      "exception": "We have different error handling functions at every level. We have used PL/SQL, Javascript, user input validation present at every point of the application. So no need to keep any default error handling function at application level",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "Bulk Process, some of these are false flags. Others are used via PPR/AJAX and therefore can't be protected",
+      "exception_count": 671,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "These are False flags and/or business justified APEX-SERT doen's pick up on the new way that APEX stores hidden items",
+      "exception_count": 202,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "Hidden item is already value protected or its value is modified via dynamic action or javascript.",
+      "exception_count": 96,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "Item is modified via dynamic action or Java script or on page load and Value Protected is Set as No. It should be added as an Exception.",
+      "exception_count": 31,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "SERT Error: Item value is protected!",
+      "exception_count": 31,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "All items flagged as Hidden Item Value Projected, have been confirm to Item Setting - Value Protected set to On/Yes.\r\n\r\nThis apparently is know issue with Apex-Sert, it does not recognize setting is on.",
+      "exception_count": 16,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "Hidden item is already value protected.",
+      "exception_count": 14,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "hidden item is protected, sert does not recognize",
+      "exception_count": 8,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "False flag - Value is set to \"Value Protected\"",
+      "exception_count": 2,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "Value is protected, sert does not recognize.",
+      "exception_count": 2,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "All Hidden Item Value Protected that I have seen are false positives.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "Page uses icons (thumbs ups and thumbs down) to help user make a decision. DA stores resulting value in a hidden page item that must remain unprotected to accept the value of the thumbs selection. Can remediate, with additional time required.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "Per Fail Result document. Hidden item must have Value Protected, On. Verified it is in fact on.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "Required for functionality",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "Result details state hidden values must have Value Protected on, verified setting is on.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "This is a known bug. The value is protected.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
+      "exception": "Value is set to protected. sert does not recognize.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "INCLUDE_JQUERY_MIGRATE",
+      "exception": "I am requesting an exception for the Include jQuery Migrate requirement because some legacy pages in the tool rely on older JavaScript code for key features such as buttons and links. Removing jQuery Migrate at this stage would disrupt existing functionality. I recognize the importance of updating legacy code and plan to refactor these components in the future to improve security and compatibility.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "INTERACTIVE_GRID_COLUMN_AUTHZ_INCONSISTENCY",
+      "exception": "IR column is authz is set to same as page, app_access.\r\nLink is to external app, new tab, jira, which imposes it's own authn/authz",
+      "exception_count": 2,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
+   },
+   {
+      "rule_key": "INTERACTIVE_GRID_COLUMN_AUTHZ_INCONSISTENCY",
+      "exception": "Menu, page, grid, column are all in fact set to same authz, app access.\r\nColumn is link to external app, new tab, jira, which in turn imposes it's own authn/authz",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
+      "exception": "Menu, Page, Grid and Column are all set to same authz.\r\nColumn is link to another page in app, which in turn imposes it's own authz",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
+      "exception": "Menu, Page, Grid, and Column are in fact all set to same Authz, App Access\r\nThis column is link to external system, new tab, jira, which imposes it's own authn, authz",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
+      "exception": "column set to same as grid, set to same as page, and menu",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
+      "exception": "No end user entered data; no XSS risk",
+      "exception_count": 124,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
+      "exception": "Editing the D-Link to use the suggested Escaped selection makes the hyperlinks disappear so have to leave this option off.",
+      "exception_count": 115,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
+      "exception": "Column is escaped within region source",
+      "exception_count": 46,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
+      "exception": "Not able to use Escaped Character option due to it not making the link readable. So per the Help screen I left option off",
+      "exception_count": 45,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
+      "exception": "Display of some HTML is intentional; escaped column in SQL query using APEX_ESCAPE.HTML_ALLOWLIST",
+      "exception_count": 4,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
+      "exception": "Accepted exception. This Interactive Report column intentionally renders developer-controlled HTML (icons, badges, buttons, and formatted status text) for correct UI presentation. All data-driven values are escaped using APEX_ESCAPE.HTML and APEX_ESCAPE.HTML_ATTRIBUTE (and URLs are generated via APEX_UTIL.PREPARE_URL), so untrusted input cannot inject executable script. Disabling column escaping is required for the intended formatting and does not introduce additional XSS risk for this region.",
+      "exception_count": 3,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
+      "exception": "No end user entered data; no XSS risk.",
+      "exception_count": 3,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
+      "exception": "No HTML possible; page item type is Percent graph; no Escape special characters setting on column",
+      "exception_count": 2,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
+      "exception": "Using APEX_ESCAPE.HTML_ALLOWLIST to allow minimal HTML but protect against XSS",
+      "exception_count": 2,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
+      "exception": "EXC-008: No end user entered data; no XSS risk",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
+      "exception": "The default feature produces HTML output that is not compatible with the report when 'Escape Special Characters' is turned off, resulting in rendering issues.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
+      "exception": "This is a standard page, but Status column contains HTML code which cannot be escaped.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_LINK_AUTHZ_INCONSISTENCY",
+      "exception": "IR column is authz is set to same as page, app_access.\r\nLink is to external app, new tab, jira, which imposes it's own authn/authz",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_LINK_TEXT_ITEM_SYNTAX",
+      "exception": "EXC-005:  False positive: Link contains an ampersand but not a substitution string",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "INTERACTIVE_REPORT_LINK_TEXT_ITEM_SYNTAX",
+      "exception": "IDs of some entity are passed and they are always escaped.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
+      "exception": "Items are used via JS/AJAX/PPR so they cannot have session protection in the smae way. Additional server side validation takes place.",
+      "exception_count": 75,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
+      "exception": "Needed for PPR/AJAX",
+      "exception_count": 18,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
+      "exception": "By design.  This is a page item used to pass in data that is then validated by pl/sql to ensure user has access to it.",
+      "exception_count": 10,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
+      "exception": "Needed for deep linking",
+      "exception_count": 10,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
+      "exception": "Accepted exception. The listed items must use Session State Protection = Unrestricted because their values are set at runtime by Dynamic Actions and AJAX callbacks (for example, passing a selected document ID or an object storage bucket name during upload and create flows). These items do not grant access or privileges on their own. All server-side processes that use these values independently validate the inputs and enforce authorization checks, so changing the protection level would break required functionality without reducing actual risk.",
+      "exception_count": 7,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
+      "exception": "Required for partial page refresh of configuration settings.",
+      "exception_count": 6,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
+      "exception": "item is protected sert does not recognize",
+      "exception_count": 2,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
+      "exception": "Session State Protection is set to Default provided by the APEX application framework. Raising an exception.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
+      "exception": "This is noted. it is required to be unprotected as the page item source is a function body with a dynamic action 'set value'. It can be remediated by changing the approach.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "LEGACY_REGION_TYPES",
+      "exception": "The Region is required to display the dynamic content using PL/SQL and this is the only option. Hence this should be an exception.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "LIST_ENTRY_DOES_NOT_CONTAIN_ITEM_SYNTAX",
+      "exception": "Item is escaped",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "LIST_ENTRY_DOES_NOT_CONTAIN_ITEM_SYNTAX",
+      "exception": "This is escaped via !HTML syntax",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
+   },
+   {
+      "rule_key": "LIST_SQLI",
+      "exception": "False Flag: REGEXP/Replace functions are getting flagged (\"f\\?p=&APP_ID\\.:\", \"&HC\\.\")",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation suggests the flagged SQL injection pattern may be a false positive or otherwise low risk, but it does not provide enough technical detail to prove the query path is safe. A reviewer would need clearer evidence that user input cannot influence executable SQL."
+   },
+   {
+      "rule_key": "LIST_SQLI",
+      "exception": "False Flags: Static URL parameters \"&param=\" are getting flagged",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The explanation suggests the flagged SQL injection pattern may be a false positive or otherwise low risk, but it does not provide enough technical detail to prove the query path is safe. A reviewer would need clearer evidence that user input cannot influence executable SQL."
+   },
+   {
+      "rule_key": "MAXIMUM_ROW_COUNT",
+      "exception": "Maximum Row Count is intentionally left NULL or set to a high number; page is available to privileged users only and there is a legitimate business need to be able to produce reports for analysis that are not limited to a specific set of rows.",
+      "exception_count": 86,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "MAXIMUM_ROW_COUNT",
+      "exception": "EXC-013: Maximum Row Count is intentionally left NULL or set to a high number; page is available to privileged users only and there is a legitimate business need to be able to produce reports for analysis that are not limited to a specific set of rows",
+      "exception_count": 41,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "MAXIMUM_ROW_COUNT",
+      "exception": "The recommended limitation of processing only 500 rows is impractical for this audit table, which can contain thousands of rows. Limiting the processing to 500 rows would result in valuable records being excluded from the report, which is not acceptable. Users will typically leverage facets to filter data.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "MAXIMUM_SESSION_LENGTH",
+      "exception": "The default session length which is 8 hours is fine. This cannot be reduced as the user may need to use the application for more time . This should be an exception.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "MAX_ROWS_TO_QUERY_CLASSIC_REPORT",
+      "exception": "Business justified, these reports require a large number of rows",
+      "exception_count": 4,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "MAX_ROWS_TO_QUERY_CLASSIC_REPORT",
+      "exception": "Page was created default by the APEX create wizard. Everything is set to default. Raising an exception.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "PAGE_ACCESS_PROTECTION",
+      "exception": "Access is controlled from a page level this Authorization Scheme and validation query.",
+      "exception_count": 69,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "PAGE_ACCESS_PROTECTION",
+      "exception": "These pages are set as unrestricted to allow for HC and MID routing, these items are validated server side",
+      "exception_count": 29,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "PAGE_ACCESS_PROTECTION",
+      "exception": "By design.  This is the one page where we allow links with request IDs, providing required functionality for people to directly respond to email alerts.  We have pl/sql verifying that the user has the correct authorization before forwarding them to the appropriate request page.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "PAGE_ITEM_ENCRYPTION",
+      "exception": "Data is only visible to the Admin group and users who have the right Authorization Scheme such as Senior Leadership",
+      "exception_count": 420,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "PAGE_ITEM_ENCRYPTION",
+      "exception": "False Flag - Already set to Yes",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "PAGE_PROCESS_SQLI",
+      "exception": "These are false flags, SERT is picking up strings with \"&\" in them. These are getting flagged becuase we use \"REGEXP_SUBSTR(apex_page_path, 'f\\?p=&APP_ID\\.:(\\d+):'\" or \"&nbsp;\" in a process",
+      "exception_count": 24,
+      "exception_score": 3,
+      "score_reason": "The explanation suggests the flagged SQL injection pattern may be a false positive or otherwise low risk, but it does not provide enough technical detail to prove the query path is safe. A reviewer would need clearer evidence that user input cannot influence executable SQL."
+   },
+   {
+      "rule_key": "PAGE_PROCESS_SQLI",
+      "exception": "EXC-004: Code contains & character which is not part of &ITEM. syntax. No risk of SQL Injection.",
+      "exception_count": 6,
+      "exception_score": 3,
+      "score_reason": "The explanation suggests the flagged SQL injection pattern may be a false positive or otherwise low risk, but it does not provide enough technical detail to prove the query path is safe. A reviewer would need clearer evidence that user input cannot influence executable SQL."
+   },
+   {
+      "rule_key": "RUN_AUTHORIZATION_ON_PUBLIC_PAGES",
+      "exception": "SERT Error.  This is coming from the global page, which has no content at all and no option to change run authorization.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "RUN_AUTHORIZATION_ON_PUBLIC_PAGES",
+      "exception": "The default Authorization scheme is defined at application level. Hence this is an exception.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "SESSION_STATE_PROTECTION",
+      "exception": "Tied to session state protection of page 15 and page 15 item p15_id. Following rebuild of hyperlinks to include cs protection, this setting will revert to 'enabled'. Additional time is needed to refactor all code under get_url that generates hyperlinks for approved users.",
+      "exception_count": 1,
+      "exception_score": 3,
+      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
+   },
+   {
+      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
+      "exception": "older copy , not used on current version",
+      "exception_count": 133,
+      "exception_score": 1,
+      "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
+   },
+   {
+      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
+      "exception": "This is allowed because to add a duplicate record the Primary key is not unique",
+      "exception_count": 108,
+      "exception_score": 1,
+      "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
+   },
+   {
+      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
+      "exception": "System Page",
+      "exception_count": 22,
+      "exception_score": 1,
+      "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
+   },
+   {
+      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
+      "exception": "This is a Gantt chart where the user can click in the bars to see the details of every item. If I not allow duplicated submissions only one item can be viewed.",
+      "exception_count": 1,
+      "exception_score": 1,
+      "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
+   },
+   {
+      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
+      "exception": "This is not a DML form so marked YES.",
+      "exception_count": 1,
+      "exception_score": 1,
+      "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
+   },
+   {
+      "rule_key": "ALLOW_DUPLICATE_SUBMISSIONS",
+      "exception": "this page need multiple submission",
+      "exception_count": 1,
+      "exception_score": 1,
+      "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
    },
    {
       "rule_key": "APPLICATION_AUTHORIZATION_SCHEME",
@@ -236,13 +1132,6 @@
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly justify the access control exception and does not show a concrete authorization control that mitigates the risk. It is too vague, generic, or unsupported for a reviewer to accept."
-   },
-   {
-      "rule_key": "APPLICATION_ITEMS_ESCAPED",
-      "exception": "EXC-008: No end user entered data; no XSS risk",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
    },
    {
       "rule_key": "APPLICATION_ITEMS_ESCAPED",
@@ -274,13 +1163,6 @@
    },
    {
       "rule_key": "APPLICATION_ITEMS_SESSION_STATE",
-      "exception": "Application Item is used as a resource identifier in backend GET calls to retrieve binary content. No dynamic SQL or string manipulation is performed. Finding is a false positive.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "APPLICATION_ITEMS_SESSION_STATE",
       "exception": "Need for deep-linking to application content, the value is protected by crypto",
       "exception_count": 1,
       "exception_score": 1,
@@ -292,20 +1174,6 @@
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the XSS risk and does not show a concrete escaping, sanitization, or false-positive basis. It is too vague or incomplete to support the exception."
-   },
-   {
-      "rule_key": "APPLICATION_PROCESS_SQLI",
-      "exception": "False Flag: URL parameters are getting flagged (\"&session=\")",
-      "exception_count": 1,
-      "exception_score": 5,
-      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
-   },
-   {
-      "rule_key": "APPLICATION_REJOIN_SESSIONS",
-      "exception": "We are handling rejoin sessions at page level as one of our page is required to rejoin sessions . So can't disable rejoin sessions at application level",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "BREADCRUMB_AUTHZ_INCONSISTENCY",
@@ -337,13 +1205,6 @@
    },
    {
       "rule_key": "BUILD_STATUS",
-      "exception": "By design -- this is an evaluation of a non-production system.  This will be updated when we go into production.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "BUILD_STATUS",
       "exception": "Developers need access to the application",
       "exception_count": 1,
       "exception_score": 1,
@@ -372,13 +1233,6 @@
    },
    {
       "rule_key": "BUILD_STATUS",
-      "exception": "I plan on updating build status once everything is approved and no further changes are needed.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "BUILD_STATUS",
       "exception": "I tried to fix this issue by reading the document. It locked myself out of the application. I'm the only user of my workspace and I'm an admin user too. But after changing Build Status to Run only, I got locked out of the application and I couldn't edit my app anymore. I raised a ticket in apex ops team to regain my access. They were able to change the Build Status to run and develop again. Got explanation from them as well that this change should not be done if the developers are working on this app",
       "exception_count": 1,
       "exception_score": 1,
@@ -400,24 +1254,10 @@
    },
    {
       "rule_key": "BUILD_STATUS",
-      "exception": "The APEX application is currently deployed in a Development (DEV) environment, where the application Build Status is intentionally not set to “Run Only”.\r\n\r\nThis configuration is required to support:\r\n- Ongoing development and testing activities\r\n- Page design changes using App Builder\r\n- Debugging, validations, and component modifications\r\n- Rapid iteration by developers\r\n\r\nBefore production deployment, the application Build Status will be:\r\n1. Set to “Run Only”\r\n2. Configured in accordance with Oracle APEX security best practices and SERT recommendations",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "BUILD_STATUS",
       "exception": "The application requires access in both Run and Develop modes to enable critical administrative activities, including running scheduled backups and weekly data uploads. These operations are essential for business continuity and reliable system maintenance. Restricting the application to Run only would hinder our ability to perform these necessary tasks in a timely and efficient manner.\r\n\r\nAccess to Develop mode will be limited to authorized personnel only, and all updates and configurations made during this period will follow established change management and security protocols. We will periodically review Develop mode usage and aim to revert to Run only mode when administrative operations can be fully automated or managed externally.",
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "BUILD_STATUS",
-      "exception": "There is no details of the issue or risk here. Hence this should be an exception.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "BUILD_STATUS",
@@ -476,13 +1316,6 @@
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
    },
    {
-      "rule_key": "BUILD_STATUS",
-      "exception": "required for app support",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
       "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
       "exception": "EXC-007: Authorization Scheme (or absence of one) on the component is intentional and appropriate",
       "exception_count": 163,
@@ -530,13 +1363,6 @@
       "exception_count": 23,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly justify the access control exception and does not show a concrete authorization control that mitigates the risk. It is too vague, generic, or unsupported for a reviewer to accept."
-   },
-   {
-      "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
-      "exception": "Accepted exception. The SERT Advisor finding “Button Authorization Inconsistency” is not applicable for the listed components. The page is protected by an Authorization Scheme and the referenced buttons are configured with the same Authorization Scheme; the report appears to be a false positive. In addition, access to the button is inherently constrained by page access, since a user must already satisfy authentication and page authorization before the button can be rendered or invoked.",
-      "exception_count": 21,
-      "exception_score": 5,
-      "score_reason": "The justification directly addresses the access control concern by explaining how equivalent or stronger authorization is enforced at the relevant boundary. It gives enough context to show the finding is a credible false positive or acceptable-by-design case."
    },
    {
       "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
@@ -593,13 +1419,6 @@
       "exception_count": 4,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly justify the access control exception and does not show a concrete authorization control that mitigates the risk. It is too vague, generic, or unsupported for a reviewer to accept."
-   },
-   {
-      "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
-      "exception": "The target page is not a literal value, but the target page is the same page and it's set to the same authorization as the component (Administrator)",
-      "exception_count": 3,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
    },
    {
       "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
@@ -666,13 +1485,6 @@
    },
    {
       "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
-      "exception": "False Flag - Item is set to same AuthZ as Page",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
-   },
-   {
-      "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
       "exception": "False Positive, This application is used internally by our team. A fine-tuned model is integrated, so this behavior is added as an exception.",
       "exception_count": 1,
       "exception_score": 1,
@@ -687,24 +1499,10 @@
    },
    {
       "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
-      "exception": "False positive. All elements on the page are protected by an authorization scheme.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
-   },
-   {
-      "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
       "exception": "False positive. Button and page have authorization level security implemented.",
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly justify the access control exception and does not show a concrete authorization control that mitigates the risk. It is too vague, generic, or unsupported for a reviewer to accept."
-   },
-   {
-      "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
-      "exception": "I can confirm both page and next button have the same Authorization scheme, Global_Base_Auth.",
-      "exception_count": 1,
-      "exception_score": 5,
-      "score_reason": "The justification directly addresses the access control concern by explaining how equivalent or stronger authorization is enforced at the relevant boundary. It gives enough context to show the finding is a credible false positive or acceptable-by-design case."
    },
    {
       "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
@@ -848,13 +1646,6 @@
    },
    {
       "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
-      "exception": "button set to same as page, which is set to same as menu",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
-   },
-   {
-      "rule_key": "BUTTON_AUTHZ_INCONSISTENCY",
       "exception": "button set to same as screen, which is set to same as menu",
       "exception_count": 1,
       "exception_score": 1,
@@ -866,20 +1657,6 @@
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly justify the access control exception and does not show a concrete authorization control that mitigates the risk. It is too vague, generic, or unsupported for a reviewer to accept."
-   },
-   {
-      "rule_key": "CARDS_SQLI",
-      "exception": "SQL operates on data already loaded into APEX memory, not querying DB directly. No exploitable SQL injection risk.",
-      "exception_count": 1,
-      "exception_score": 5,
-      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
-   },
-   {
-      "rule_key": "CARDS_SQLI",
-      "exception": "This is a false flag, this error is flagging #WORKSPACE_FILES# which is a protected substitution string",
-      "exception_count": 1,
-      "exception_score": 5,
-      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
    },
    {
       "rule_key": "CARD_ACTION_AUTHZ_INCONSISTENCY",
@@ -1002,13 +1779,6 @@
    },
    {
       "rule_key": "CLASSIC_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
-      "exception": "IR column is authz is set to same as page, app_access.\r\nLink is to external app, new tab, jira, which imposes it's own authn/authz",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
       "exception": "Intended as the target page is shared between multiple views /Pages",
       "exception_count": 1,
       "exception_score": 1,
@@ -1037,52 +1807,10 @@
    },
    {
       "rule_key": "CLASSIC_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
-      "exception": "authz on column in report is same as page and menu",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
       "exception": "report level protection is more strict than page level protection as a subset of users that possess elevated privileges can see greater detail on the page.",
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly justify the access control exception and does not show a concrete authorization control that mitigates the risk. It is too vague, generic, or unsupported for a reviewer to accept."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
-      "exception": "Using the Escaped character option removes the Hyper link so I have to leave this option off like suggested in the Help section.",
-      "exception_count": 54,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
-      "exception": "Cannot apply Escaped Character option because makes links unreadable so per the Help screen left option off",
-      "exception_count": 51,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
-      "exception": "Accepted exception. These reports intentionally renders developer controlled HTML for icons, badges, and action buttons; all data driven values are escaped (HTML, attribute, and URL) so untrusted input cannot execute, and disabling column escaping is required for correct formatting.",
-      "exception_count": 49,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
-      "exception": "Unescaped column does not contain user-entered data; no XSS risk",
-      "exception_count": 30,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
-      "exception": "Column contains mix of static HTML and user-entered data; escaping user-entered content with APEX_ESCAPE.STRIPHTML",
-      "exception_count": 21,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
    },
    {
       "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
@@ -1100,45 +1828,10 @@
    },
    {
       "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
-      "exception": "Using APEX_ESCAPE.STRIPHTML to sanitize page item values in column; no XSS risk",
-      "exception_count": 8,
-      "exception_score": 5,
-      "score_reason": "The justification directly addresses the XSS concern by explaining that untrusted content is escaped, sanitized, or otherwise not rendered in an executable way. It provides concrete mitigation detail that makes the exception credible."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
-      "exception": "EXC-009: End user entered data escaped in query; no XSS risk",
-      "exception_count": 6,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
       "exception": "HTML required due to product limitation",
       "exception_count": 6,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the XSS risk and does not show a concrete escaping, sanitization, or false-positive basis. It is too vague or incomplete to support the exception."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
-      "exception": "Columns are escaped in the region source",
-      "exception_count": 3,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
-      "exception": "No end user entered data; no XSS risk",
-      "exception_count": 2,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
-      "exception": "EXC-008: No end user entered data; no XSS risk",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
    },
    {
       "rule_key": "CLASSIC_REPORT_COLUMN_ESCAPED",
@@ -1153,27 +1846,6 @@
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the XSS risk and does not show a concrete escaping, sanitization, or false-positive basis. It is too vague or incomplete to support the exception."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_SQLI",
-      "exception": "EXC-004: Code contains & character which is not part of &ITEM. syntax. No risk of SQL Injection.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation suggests the flagged SQL injection pattern may be a false positive or otherwise low risk, but it does not provide enough technical detail to prove the query path is safe. A reviewer would need clearer evidence that user input cannot influence executable SQL."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_SQLI",
-      "exception": "False Flag: URL parameters are getting flagged (\"&body=\")",
-      "exception_count": 1,
-      "exception_score": 5,
-      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
-   },
-   {
-      "rule_key": "CLASSIC_REPORT_SQLI",
-      "exception": "False flag, this error is flagging \"&nbsp;\" in an HTML allowlist",
-      "exception_count": 1,
-      "exception_score": 5,
-      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
    },
    {
       "rule_key": "COMPATIBILITY_MODE",
@@ -1289,20 +1961,6 @@
    },
    {
       "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "False Positive, This application is used internally by our team. A fine-tuned model is integrated, so this behavior is added as an exception.",
-      "exception_count": 9,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "EXC-009: End user entered data escaped in query; no XSS risk",
-      "exception_count": 8,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
       "exception": "This application is used internally by our team. A fine-tuned model is integrated, so this behavior is added as an exception.",
       "exception_count": 8,
       "exception_score": 1,
@@ -1310,45 +1968,10 @@
    },
    {
       "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "EXC-008: No end user entered data; no XSS risk",
-      "exception_count": 6,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "Text is escaped in region source",
-      "exception_count": 6,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "Input already escaped.",
-      "exception_count": 3,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
       "exception": "this is need to preview dynamic email content.",
       "exception_count": 3,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the XSS risk and does not show a concrete escaping, sanitization, or false-positive basis. It is too vague or incomplete to support the exception."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "Accepted exception. These Dynamic Content regions intentionally use bind variables and server-side PL/SQL to build HTML for runtime status and log output (for example, “no job selected”, job identifiers, and the tail of an ingestion log). This is display-only functionality to improve UX and does not create an execution path for script injection. Any values that originate from page items or external responses are treated as untrusted and are explicitly output-escaped using APEX_ESCAPE.HTML (and APEX_ESCAPE.HTML_ATTRIBUTE where applicable) before being concatenated into HTML. Bind variables are used only to parameterize the output and service calls, and the rendered content is controlled and sanitized, so this SERT finding is accepted for these components.",
-      "exception_count": 2,
-      "exception_score": 5,
-      "score_reason": "The justification directly addresses the XSS concern by explaining that untrusted content is escaped, sanitized, or otherwise not rendered in an executable way. It provides concrete mitigation detail that makes the exception credible."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "All dynamic data displayed in the HTML is processed using the apex_escape.html function, which prevents XSS. The Apex-sert alert does not apply in this case, as there is no actual risk.",
-      "exception_count": 2,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
    },
    {
       "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
@@ -1373,34 +1996,6 @@
    },
    {
       "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "This is a default page, but dynamic content cannot be escaped.",
-      "exception_count": 2,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "APEX_ESCAPE.HTML escapes all the necessary special characters in the l_summary content. Even after escaping all special characters in the bind variable, it's not getting auto resolved. Hence, raising an exception.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "Acknowledge the risk and leave the code as is. The code is already escaped. False positive? apex_lang.message (\r\n           'APEX.FEATURE.ACL.BULK_USER.CREATE_CONFIRM',\r\n           apex_escape.html(:P10014_VALID_COUNT),\r\n           apex_escape.html(:P10014_ROLE)",
-      "exception_count": 1,
-      "exception_score": 5,
-      "score_reason": "The justification directly addresses the XSS concern by explaining that untrusted content is escaped, sanitized, or otherwise not rendered in an executable way. It provides concrete mitigation detail that makes the exception credible."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "Bind variable is escaped",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
       "exception": "Binds are not returned",
       "exception_count": 1,
       "exception_score": 1,
@@ -1408,45 +2003,10 @@
    },
    {
       "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "False positive (page contains binds, yes, but they're escaped)",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
       "exception": "Old unused page.",
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the XSS risk and does not show a concrete escaping, sanitization, or false-positive basis. It is too vague or incomplete to support the exception."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "Return values in question actually are escaped, as noted on this default APEX page:return '<p>' ||\r\n       apex_lang.message (\r\n           'APEX.FEATURE.ACL.BULK_USER.CREATE_CONFIRM',\r\n           apex_escape.html(:P10044_VALID_COUNT),\r\n           apex_escape.html(:P10044_ROLE)\r\n       ) ||\r\n       '</p>';",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "Returning Bind variables are escaped using apex.escape.html function\r\napex_escape.html(:P10044_VALID_COUNT), apex_escape.html(:P10044_ROLE)",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "Returning Bind variables are escaped using apex.escape.html function.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
-      "exception": "These bind variables are now escaped before being passed to apex_lang.message(). But still it's not getting auto resolved. Hence, raising an exception.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
    },
    {
       "rule_key": "DYNAMIC_CONTENT_CONTAINS_BINDS",
@@ -1475,27 +2035,6 @@
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the XSS risk and does not show a concrete escaping, sanitization, or false-positive basis. It is too vague or incomplete to support the exception."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_SQLI",
-      "exception": "False Flag: This error is flagging &lt; and &gt;",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation suggests the flagged SQL injection pattern may be a false positive or otherwise low risk, but it does not provide enough technical detail to prove the query path is safe. A reviewer would need clearer evidence that user input cannot influence executable SQL."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_SQLI",
-      "exception": "False Flag: URL parameters are getting flagged (\"&URLD=\")",
-      "exception_count": 1,
-      "exception_score": 5,
-      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
-   },
-   {
-      "rule_key": "DYNAMIC_CONTENT_SQLI",
-      "exception": "False Flag: URL parameters are getting flagged (\"&session=\", \"&share_id=\") and REGEXP/Replace functions are getting flagged (\"f\\?p=&APP_ID\\.:\", \"&HC\\.\", \"&SESSION. > replaced by :APP_SESSION\")",
-      "exception_count": 1,
-      "exception_score": 5,
-      "score_reason": "The justification directly addresses the SQL injection concern by explaining why the flagged pattern does not result in executable, user-influenced SQL. It gives a concrete false-positive or mitigation rationale that a security reviewer can validate."
    },
    {
       "rule_key": "ERROR_HANDLING_FUNCTION",
@@ -1541,24 +2080,10 @@
    },
    {
       "rule_key": "ERROR_HANDLING_FUNCTION",
-      "exception": "No additional Error handling needed as there is no input data traffic form the users. Read only or mac some info input.",
-      "exception_count": 1,
-      "exception_score": 4,
-      "score_reason": "The explanation is clearly relevant to the misconfiguration concern and provides a plausible mitigation or false-positive basis. It is strong overall, but it would be more defensible with one more concrete detail about the control or scope."
-   },
-   {
-      "rule_key": "ERROR_HANDLING_FUNCTION",
       "exception": "No need of a custom Error Handling Function.",
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "ERROR_HANDLING_FUNCTION",
-      "exception": "Not applicable. No errors raised using pl/sql",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "ERROR_HANDLING_FUNCTION",
@@ -1580,20 +2105,6 @@
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "ERROR_HANDLING_FUNCTION",
-      "exception": "We have an error capture methodology using a dedicated package. The only issue to deploying it immediately is the required to internally test. This will be considered a top task during the future remediation sprint.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "ERROR_HANDLING_FUNCTION",
-      "exception": "We have different error handling functions at every level. We have used PL/SQL, Javascript, user input validation present at every point of the application. So no need to keep any default error handling function at application level",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "ERROR_HANDLING_FUNCTION",
@@ -1632,27 +2143,6 @@
    },
    {
       "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "Bulk Process, some of these are false flags. Others are used via PPR/AJAX and therefore can't be protected",
-      "exception_count": 671,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "These are False flags and/or business justified APEX-SERT doen's pick up on the new way that APEX stores hidden items",
-      "exception_count": 202,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "Hidden item is already value protected or its value is modified via dynamic action or javascript.",
-      "exception_count": 96,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
       "exception": "Hidden Item needs to be altered by JavaScript or a Dynamic Action.",
       "exception_count": 82,
       "exception_score": 1,
@@ -1674,20 +2164,6 @@
    },
    {
       "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "Item is modified via dynamic action or Java script or on page load and Value Protected is Set as No. It should be added as an Exception.",
-      "exception_count": 31,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "SERT Error: Item value is protected!",
-      "exception_count": 31,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
       "exception": "This hidden item needs to be altered by JavaScript.",
       "exception_count": 25,
       "exception_score": 1,
@@ -1695,38 +2171,10 @@
    },
    {
       "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "Accepted exception. Multiple hidden items are intentionally not Value Protected because they are used as temporary runtime placeholders to pass non-sensitive values between Dynamic Actions, JavaScript, and AJAX/PL/SQL callbacks. These items are not used for authentication, authorization, or other security decisions, and all server-side processes validate input values and enforce access checks independently.",
-      "exception_count": 22,
-      "exception_score": 4,
-      "score_reason": "The explanation is clearly relevant to the misconfiguration concern and provides a plausible mitigation or false-positive basis. It is strong overall, but it would be more defensible with one more concrete detail about the control or scope."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "All items flagged as Hidden Item Value Projected, have been confirm to Item Setting - Value Protected set to On/Yes.\r\n\r\nThis apparently is know issue with Apex-Sert, it does not recognize setting is on.",
-      "exception_count": 16,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "Hidden item is already value protected.",
-      "exception_count": 14,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
       "exception": "Page item submitted in DA/IR/IG; page item value not saved to database",
       "exception_count": 10,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "hidden item is protected, sert does not recognize",
-      "exception_count": 8,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
@@ -1765,13 +2213,6 @@
    },
    {
       "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "False flag - Value is set to \"Value Protected\"",
-      "exception_count": 2,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
       "exception": "Hidden Item Value Protect, is in fact set. Apex-sert does not pick this up.",
       "exception_count": 2,
       "exception_score": 1,
@@ -1783,20 +2224,6 @@
       "exception_count": 2,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "Value is protected, sert does not recognize.",
-      "exception_count": 2,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "All Hidden Item Value Protected that I have seen are false positives.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
@@ -1835,34 +2262,6 @@
    },
    {
       "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "Page uses icons (thumbs ups and thumbs down) to help user make a decision. DA stores resulting value in a hidden page item that must remain unprotected to accept the value of the thumbs selection. Can remediate, with additional time required.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "Per Fail Result document. Hidden item must have Value Protected, On. Verified it is in fact on.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "Required for functionality",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "Result details state hidden values must have Value Protected on, verified setting is on.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
       "exception": "Result details states, hidden item to have Value Protect on. Verified setting is on.",
       "exception_count": 1,
       "exception_score": 1,
@@ -1877,24 +2276,10 @@
    },
    {
       "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "This is a known bug. The value is protected.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
       "exception": "This page item accepts input from a javascript driven page action. It cannot be changed at this time.",
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
-      "exception": "Value is set to protected. sert does not recognize.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "HIDDEN_ITEM_VALUE_PROTECTED",
@@ -1909,13 +2294,6 @@
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "INCLUDE_JQUERY_MIGRATE",
-      "exception": "I am requesting an exception for the Include jQuery Migrate requirement because some legacy pages in the tool rely on older JavaScript code for key features such as buttons and links. Removing jQuery Migrate at this stage would disrupt existing functionality. I recognize the importance of updating legacy code and plan to refactor these components in the future to improve security and compatibility.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "INTERACTIVE_GRID_COLUMN_AUTHZ_INCONSISTENCY",
@@ -1947,13 +2325,6 @@
    },
    {
       "rule_key": "INTERACTIVE_GRID_COLUMN_AUTHZ_INCONSISTENCY",
-      "exception": "IR column is authz is set to same as page, app_access.\r\nLink is to external app, new tab, jira, which imposes it's own authn/authz",
-      "exception_count": 2,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
-   },
-   {
-      "rule_key": "INTERACTIVE_GRID_COLUMN_AUTHZ_INCONSISTENCY",
       "exception": "A link on the report has elevated privileges (admin) relative to page access privileges (contributor). This is an inherent benefit and built-in feature of APEX.\r\n\r\nIf the APEX security body has a recommended and reasonable remediation, please share.",
       "exception_count": 1,
       "exception_score": 1,
@@ -1979,13 +2350,6 @@
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly justify the access control exception and does not show a concrete authorization control that mitigates the risk. It is too vague, generic, or unsupported for a reviewer to accept."
-   },
-   {
-      "rule_key": "INTERACTIVE_GRID_COLUMN_AUTHZ_INCONSISTENCY",
-      "exception": "Menu, page, grid, column are all in fact set to same authz, app access.\r\nColumn is link to external app, new tab, jira, which in turn imposes it's own authn/authz",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
    },
    {
       "rule_key": "INTERACTIVE_GRID_COLUMN_AUTHZ_INCONSISTENCY",
@@ -2035,13 +2399,6 @@
       "exception_count": 7,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly justify the access control exception and does not show a concrete authorization control that mitigates the risk. It is too vague, generic, or unsupported for a reviewer to accept."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
-      "exception": "Accepted exception. This “Interactive Report Column Authorization Inconsistency” finding is not applicable for the listed components. The affected pages are protected by the configured Authorization Scheme, and the referenced report columns are not used as an independent access control boundary. A review of the page and component settings confirms the same Authorization Scheme is applied as intended. The report output appears to be a SERT false positive, and no unintended access is introduced because the page-level authorization remains the controlling security check.",
-      "exception_count": 6,
-      "exception_score": 5,
-      "score_reason": "The justification directly addresses the access control concern by explaining how equivalent or stronger authorization is enforced at the relevant boundary. It gives enough context to show the finding is a credible false positive or acceptable-by-design case."
    },
    {
       "rule_key": "INTERACTIVE_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
@@ -2122,20 +2479,6 @@
    },
    {
       "rule_key": "INTERACTIVE_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
-      "exception": "Menu, Page, Grid and Column are all set to same authz.\r\nColumn is link to another page in app, which in turn imposes it's own authz",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
-      "exception": "Menu, Page, Grid, and Column are in fact all set to same Authz, App Access\r\nThis column is link to external system, new tab, jira, which imposes it's own authn, authz",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
       "exception": "Menu, page, grid, and column are in fact all set to App Access authz",
       "exception_count": 1,
       "exception_score": 1,
@@ -2213,13 +2556,6 @@
    },
    {
       "rule_key": "INTERACTIVE_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
-      "exception": "column set to same as grid, set to same as page, and menu",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_AUTHZ_INCONSISTENCY",
       "exception": "controlled external link",
       "exception_count": 1,
       "exception_score": 1,
@@ -2231,34 +2567,6 @@
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly justify the access control exception and does not show a concrete authorization control that mitigates the risk. It is too vague, generic, or unsupported for a reviewer to accept."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
-      "exception": "No end user entered data; no XSS risk",
-      "exception_count": 124,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
-      "exception": "Editing the D-Link to use the suggested Escaped selection makes the hyperlinks disappear so have to leave this option off.",
-      "exception_count": 115,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
-      "exception": "Column is escaped within region source",
-      "exception_count": 46,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
-      "exception": "Not able to use Escaped Character option due to it not making the link readable. So per the Help screen I left option off",
-      "exception_count": 45,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
    },
    {
       "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
@@ -2276,52 +2584,10 @@
    },
    {
       "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
-      "exception": "Display of some HTML is intentional; escaped column in SQL query using APEX_ESCAPE.HTML_ALLOWLIST",
-      "exception_count": 4,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
-      "exception": "Accepted exception. This Interactive Report column intentionally renders developer-controlled HTML (icons, badges, buttons, and formatted status text) for correct UI presentation. All data-driven values are escaped using APEX_ESCAPE.HTML and APEX_ESCAPE.HTML_ATTRIBUTE (and URLs are generated via APEX_UTIL.PREPARE_URL), so untrusted input cannot inject executable script. Disabling column escaping is required for the intended formatting and does not introduce additional XSS risk for this region.",
-      "exception_count": 3,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
-      "exception": "No end user entered data; no XSS risk.",
-      "exception_count": 3,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
       "exception": "System Page",
       "exception_count": 3,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the XSS risk and does not show a concrete escaping, sanitization, or false-positive basis. It is too vague or incomplete to support the exception."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
-      "exception": "No HTML possible; page item type is Percent graph; no Escape special characters setting on column",
-      "exception_count": 2,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
-      "exception": "Using APEX_ESCAPE.HTML_ALLOWLIST to allow minimal HTML but protect against XSS",
-      "exception_count": 2,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
-      "exception": "EXC-008: No end user entered data; no XSS risk",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
    },
    {
       "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
@@ -2339,13 +2605,6 @@
    },
    {
       "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
-      "exception": "The default feature produces HTML output that is not compatible with the report when 'Escape Special Characters' is turned off, resulting in rendering issues.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
       "exception": "These items primarily arise from constraints related to our current business requirements and operational dependencies",
       "exception_count": 1,
       "exception_score": 1,
@@ -2357,13 +2616,6 @@
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the XSS risk and does not show a concrete escaping, sanitization, or false-positive basis. It is too vague or incomplete to support the exception."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
-      "exception": "This is a standard page, but Status column contains HTML code which cannot be escaped.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
    },
    {
       "rule_key": "INTERACTIVE_REPORT_COLUMN_ESCAPED",
@@ -2444,13 +2696,6 @@
    },
    {
       "rule_key": "INTERACTIVE_REPORT_LINK_AUTHZ_INCONSISTENCY",
-      "exception": "IR column is authz is set to same as page, app_access.\r\nLink is to external app, new tab, jira, which imposes it's own authn/authz",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the access control finding, but it is too brief to prove that equivalent authorization is consistently enforced. A reviewer would need clearer detail about the control boundary and why the recommended fix adds no meaningful protection."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_LINK_AUTHZ_INCONSISTENCY",
       "exception": "Report is for Viewer. The Link is for editing and non-Viewer",
       "exception_count": 1,
       "exception_score": 1,
@@ -2485,20 +2730,6 @@
       "score_reason": "The explanation does not credibly justify the access control exception and does not show a concrete authorization control that mitigates the risk. It is too vague, generic, or unsupported for a reviewer to accept."
    },
    {
-      "rule_key": "INTERACTIVE_REPORT_LINK_TEXT_ITEM_SYNTAX",
-      "exception": "EXC-005:  False positive: Link contains an ampersand but not a substitution string",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "INTERACTIVE_REPORT_LINK_TEXT_ITEM_SYNTAX",
-      "exception": "IDs of some entity are passed and they are always escaped.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
       "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
       "exception": "older copy , not used on current version",
       "exception_count": 324,
@@ -2518,13 +2749,6 @@
       "exception_count": 135,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
-      "exception": "Items are used via JS/AJAX/PPR so they cannot have session protection in the smae way. Additional server side validation takes place.",
-      "exception_count": 75,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
@@ -2563,27 +2787,6 @@
    },
    {
       "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
-      "exception": "Needed for PPR/AJAX",
-      "exception_count": 18,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
-      "exception": "By design.  This is a page item used to pass in data that is then validated by pl/sql to ensure user has access to it.",
-      "exception_count": 10,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
-      "exception": "Needed for deep linking",
-      "exception_count": 10,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
       "exception": "Page item is a client side variable, which is managed through Javascript on the client. This item needs to be available on the client and server side, which is not possible with a checksum, since it does not work when setting the item in JS. I tried multiple approaches to get it to work with AJAX PL/SQL callbacks but the features were not behaving as expected (or throwing checksum/state errors)",
       "exception_count": 10,
       "exception_score": 1,
@@ -2595,13 +2798,6 @@
       "exception_count": 9,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
-      "exception": "Accepted exception. The listed items must use Session State Protection = Unrestricted because their values are set at runtime by Dynamic Actions and AJAX callbacks (for example, passing a selected document ID or an object storage bucket name during upload and create flows). These items do not grant access or privileges on their own. All server-side processes that use these values independently validate the inputs and enforce authorization checks, so changing the protection level would break required functionality without reducing actual risk.",
-      "exception_count": 7,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
@@ -2626,20 +2822,6 @@
    },
    {
       "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
-      "exception": "Required for partial page refresh of configuration settings.",
-      "exception_count": 6,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
-      "exception": "Accepted exception. On Page 40 (Tool Simulator), items P40_TOOLS_MD, P40_JSON_PAYLOAD, P40_FULL_RESPONSE, P40_MODEL_USED, and P40_OUTPUT are intentionally configured with Session State Protection = Unrestricted because they are populated and updated at runtime by page Dynamic Actions and AJAX callbacks as part of the tool execution flow. These items act only as transient state holders for request/response payloads and UI rendering, they do not store credentials or privileged flags, and they are not used for authentication or authorization decisions. All server-side processes that consume these values validate inputs and enforce access checks independently, so restricting SSP would break required functionality without improving security.",
-      "exception_count": 5,
-      "exception_score": 4,
-      "score_reason": "The explanation is clearly relevant to the misconfiguration concern and provides a plausible mitigation or false-positive basis. It is strong overall, but it would be more defensible with one more concrete detail about the control or scope."
-   },
-   {
-      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
       "exception": "EXC-011: Page item value set client-side; countermeasures unnecessary",
       "exception_count": 4,
       "exception_score": 1,
@@ -2647,24 +2829,10 @@
    },
    {
       "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
-      "exception": "Accepted exception. On the ACE Assistant Chat page, the flagged items must remain Session State Protection = Unrestricted because their values are updated at runtime by Dynamic Actions and AJAX callbacks as part of the chat flow while the user is already on the page. These items function only as transient client-side state for UI updates and request/response handling, they do not store credentials or privileged flags, and they are not used to make authentication or authorization decisions. All server-side processes that consume these values validate inputs and enforce access checks independently, so restricting SSP would break required chat functionality without improving security.",
-      "exception_count": 3,
-      "exception_score": 4,
-      "score_reason": "The explanation is clearly relevant to the misconfiguration concern and provides a plausible mitigation or false-positive basis. It is strong overall, but it would be more defensible with one more concrete detail about the control or scope."
-   },
-   {
-      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
       "exception": "EXC-011: Page item value set client-side; countermeasures unncecessary",
       "exception_count": 2,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
-      "exception": "item is protected sert does not recognize",
-      "exception_count": 2,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
@@ -2689,24 +2857,10 @@
    },
    {
       "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
-      "exception": "Session State Protection is set to Default provided by the APEX application framework. Raising an exception.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
       "exception": "This is known, and an alternative approach will include adding a cs to the hyperlinks that point back to this page id. Doing so will enable the page item to support application level checksum.",
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
-      "exception": "This is noted. it is required to be unprotected as the page item source is a function body with a dynamic action 'set value'. It can be remediated by changing the approach.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "ITEM_SESSION_STATE_PROTECTION_LEVEL",
@@ -2728,13 +2882,6 @@
       "exception_count": 3,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "LEGACY_REGION_TYPES",
-      "exception": "The Region is required to display the dynamic content using PL/SQL and this is the only option. Hence this should be an exception.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "LEGACY_REGION_TYPES",
@@ -2891,53 +3038,11 @@
       "score_reason": "The explanation does not credibly address the XSS risk and does not show a concrete escaping, sanitization, or false-positive basis. It is too vague or incomplete to support the exception."
    },
    {
-      "rule_key": "LIST_ENTRY_DOES_NOT_CONTAIN_ITEM_SYNTAX",
-      "exception": "Item is escaped",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "LIST_ENTRY_DOES_NOT_CONTAIN_ITEM_SYNTAX",
-      "exception": "This is escaped via !HTML syntax",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation is relevant to the XSS finding, but it does not provide enough detail to confirm that untrusted content is consistently escaped or sanitized. A reviewer would need clearer evidence of the output-encoding or data-safety control."
-   },
-   {
-      "rule_key": "LIST_SQLI",
-      "exception": "False Flag: REGEXP/Replace functions are getting flagged (\"f\\?p=&APP_ID\\.:\", \"&HC\\.\")",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation suggests the flagged SQL injection pattern may be a false positive or otherwise low risk, but it does not provide enough technical detail to prove the query path is safe. A reviewer would need clearer evidence that user input cannot influence executable SQL."
-   },
-   {
-      "rule_key": "LIST_SQLI",
-      "exception": "False Flags: Static URL parameters \"&param=\" are getting flagged",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The explanation suggests the flagged SQL injection pattern may be a false positive or otherwise low risk, but it does not provide enough technical detail to prove the query path is safe. A reviewer would need clearer evidence that user input cannot influence executable SQL."
-   },
-   {
       "rule_key": "MAXIMUM_ROW_COUNT",
       "exception": "This is being limited on the table side with a Active Y/N flag that is in the query. so this is not set on the page.",
       "exception_count": 101,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "MAXIMUM_ROW_COUNT",
-      "exception": "Maximum Row Count is intentionally left NULL or set to a high number; page is available to privileged users only and there is a legitimate business need to be able to produce reports for analysis that are not limited to a specific set of rows.",
-      "exception_count": 86,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "MAXIMUM_ROW_COUNT",
-      "exception": "EXC-013: Maximum Row Count is intentionally left NULL or set to a high number; page is available to privileged users only and there is a legitimate business need to be able to produce reports for analysis that are not limited to a specific set of rows",
-      "exception_count": 41,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "MAXIMUM_ROW_COUNT",
@@ -2959,13 +3064,6 @@
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "MAXIMUM_ROW_COUNT",
-      "exception": "The recommended limitation of processing only 500 rows is impractical for this audit table, which can contain thousands of rows. Limiting the processing to 500 rows would result in valuable records being excluded from the report, which is not acceptable. Users will typically leverage facets to filter data.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "MAXIMUM_ROW_COUNT",
@@ -3018,13 +3116,6 @@
    },
    {
       "rule_key": "MAXIMUM_SESSION_LENGTH",
-      "exception": "The default session length which is 8 hours is fine. This cannot be reduced as the user may need to use the application for more time . This should be an exception.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "MAXIMUM_SESSION_LENGTH",
       "exception": "These items primarily arise from constraints related to our current business requirements and operational dependencies",
       "exception_count": 1,
       "exception_score": 1,
@@ -3046,24 +3137,10 @@
    },
    {
       "rule_key": "MAX_ROWS_TO_QUERY_CLASSIC_REPORT",
-      "exception": "Business justified, these reports require a large number of rows",
-      "exception_count": 4,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "MAX_ROWS_TO_QUERY_CLASSIC_REPORT",
       "exception": "System Page",
       "exception_count": 3,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "MAX_ROWS_TO_QUERY_CLASSIC_REPORT",
-      "exception": "Page was created default by the APEX create wizard. Everything is set to default. Raising an exception.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "MAX_ROWS_TO_QUERY_CLASSIC_REPORT",
@@ -3123,13 +3200,6 @@
    },
    {
       "rule_key": "PAGE_ACCESS_PROTECTION",
-      "exception": "Access is controlled from a page level this Authorization Scheme and validation query.",
-      "exception_count": 69,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "PAGE_ACCESS_PROTECTION",
       "exception": "older copy , not used on current version",
       "exception_count": 54,
       "exception_score": 1,
@@ -3137,24 +3207,10 @@
    },
    {
       "rule_key": "PAGE_ACCESS_PROTECTION",
-      "exception": "These pages are set as unrestricted to allow for HC and MID routing, these items are validated server side",
-      "exception_count": 29,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "PAGE_ACCESS_PROTECTION",
       "exception": "These items primarily arise from constraints related to our current business requirements and operational dependencies",
       "exception_count": 2,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "PAGE_ACCESS_PROTECTION",
-      "exception": "By design.  This is the one page where we allow links with request IDs, providing required functionality for people to directly respond to email alerts.  We have pl/sql verifying that the user has the correct authorization before forwarding them to the appropriate request page.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    },
    {
       "rule_key": "PAGE_ACCESS_PROTECTION",
@@ -3284,13 +3340,6 @@
    },
    {
       "rule_key": "PAGE_ITEM_ENCRYPTION",
-      "exception": "Data is only visible to the Admin group and users who have the right Authorization Scheme such as Senior Leadership",
-      "exception_count": 420,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "PAGE_ITEM_ENCRYPTION",
       "exception": "These items primarily arise from constraints related to our current business requirements and operational dependencies",
       "exception_count": 22,
       "exception_score": 1,
@@ -3326,13 +3375,6 @@
    },
    {
       "rule_key": "PAGE_ITEM_ENCRYPTION",
-      "exception": "False Flag - Already set to Yes",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "PAGE_ITEM_ENCRYPTION",
       "exception": "False Positive, This application is used internally by our team. A fine-tuned model is integrated, so this behavior is added as an exception.",
       "exception_count": 1,
       "exception_score": 1,
@@ -3351,20 +3393,6 @@
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "PAGE_PROCESS_SQLI",
-      "exception": "These are false flags, SERT is picking up strings with \"&\" in them. These are getting flagged becuase we use \"REGEXP_SUBSTR(apex_page_path, 'f\\?p=&APP_ID\\.:(\\d+):'\" or \"&nbsp;\" in a process",
-      "exception_count": 24,
-      "exception_score": 3,
-      "score_reason": "The explanation suggests the flagged SQL injection pattern may be a false positive or otherwise low risk, but it does not provide enough technical detail to prove the query path is safe. A reviewer would need clearer evidence that user input cannot influence executable SQL."
-   },
-   {
-      "rule_key": "PAGE_PROCESS_SQLI",
-      "exception": "EXC-004: Code contains & character which is not part of &ITEM. syntax. No risk of SQL Injection.",
-      "exception_count": 6,
-      "exception_score": 3,
-      "score_reason": "The explanation suggests the flagged SQL injection pattern may be a false positive or otherwise low risk, but it does not provide enough technical detail to prove the query path is safe. A reviewer would need clearer evidence that user input cannot influence executable SQL."
    },
    {
       "rule_key": "PAGE_PROCESS_SQLI",
@@ -3564,13 +3592,6 @@
    },
    {
       "rule_key": "RUN_AUTHORIZATION_ON_PUBLIC_PAGES",
-      "exception": "Accepted exception. This application does not expose public pages. All pages require the configured authentication scheme and are protected by page-level authorization, so “Run Authorization on Public Pages” is not applicable here. Review confirms there are no intended unauthenticated entry points in this app, and access is always enforced before any page processing is executed.",
-      "exception_count": 1,
-      "exception_score": 4,
-      "score_reason": "The explanation is clearly relevant to the misconfiguration concern and provides a plausible mitigation or false-positive basis. It is strong overall, but it would be more defensible with one more concrete detail about the control or scope."
-   },
-   {
-      "rule_key": "RUN_AUTHORIZATION_ON_PUBLIC_PAGES",
       "exception": "Confirmed there are no public pages in application.",
       "exception_count": 1,
       "exception_score": 1,
@@ -3585,20 +3606,6 @@
    },
    {
       "rule_key": "RUN_AUTHORIZATION_ON_PUBLIC_PAGES",
-      "exception": "SERT Error.  This is coming from the global page, which has no content at all and no option to change run authorization.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "RUN_AUTHORIZATION_ON_PUBLIC_PAGES",
-      "exception": "The default Authorization scheme is defined at application level. Hence this is an exception.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
-   },
-   {
-      "rule_key": "RUN_AUTHORIZATION_ON_PUBLIC_PAGES",
       "exception": "false positive",
       "exception_count": 1,
       "exception_score": 1,
@@ -3610,12 +3617,5 @@
       "exception_count": 1,
       "exception_score": 1,
       "score_reason": "The explanation does not credibly address the misconfiguration concern and does not show a concrete mitigation or valid false-positive basis. It is too vague, irrelevant, or internally inconsistent to support accepting the exception as written."
-   },
-   {
-      "rule_key": "SESSION_STATE_PROTECTION",
-      "exception": "Tied to session state protection of page 15 and page 15 item p15_id. Following rebuild of hyperlinks to include cs protection, this setting will revert to 'enabled'. Additional time is needed to refactor all code under get_url that generates hyperlinks for approved users.",
-      "exception_count": 1,
-      "exception_score": 3,
-      "score_reason": "The justification is directionally relevant to the misconfiguration finding, but it does not provide enough detail to fully validate the exception. A reviewer would need clearer evidence of the control, scope, or reason the recommended fix is unnecessary."
    }
 ]
