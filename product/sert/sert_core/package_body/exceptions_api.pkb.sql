@@ -455,7 +455,7 @@ begin
 
          -- substitute rule context block into system prompt template
          l_system_prompt := replace(
-            to_clob(reports_pkg.get_pref_value(p_pref_key => 'AI_EXCEPTION_PROMPT')),
+            reports_pkg.get_pref_value(p_pref_key => 'AI_EXCEPTION_PROMPT'),
             '{RULE_CONTEXT}',
             l_rule_context
          );
