@@ -365,8 +365,10 @@ end approve_or_reject_exception;
 -- Using AI, generates a score and reason for a specific exception
 -- get_exception_score
 -- purpose: use an AI service to assign a score and reason to an exception for a specific rule.
--- behavior: when AI is enabled (pref AI_ENABLED='Y'), fetches rule's valid_exceptions; calls apex_ai.generate using
---   prompts drawn from prefs; logs full response; extracts $.score and $.reason into OUT params.
+-- behavior: when AI is enabled (pref AI_ENABLED='Y'), fetches rule context (info, fix, valid_exceptions,
+--   category, risk, severity); skips scoring when both info and valid_exceptions are null; builds a
+--   structured rule context block; substitutes {RULE_CONTEXT} in system prompt pref; calls apex_ai.generate;
+--   extracts $.score and $.reason into OUT params.
 -- parameters:
 --   p_rule_id                - rule identifier
 --   p_exception              - exception text to evaluate
@@ -386,22 +388,82 @@ procedure get_exception_score (
    ,p_exception_score       out number
    ,p_exception_score_reason out varchar2 )
 is
+   l_rule_name        varchar2(250);
+   l_info             clob;
+   l_fix              clob;
    l_valid_exceptions varchar2(4000);
+   l_category_name    varchar2(250);
+   l_risk_code        varchar2(250);
+   l_risk_name        varchar2(250);
+   l_severity_key     varchar2(250);
+   l_rule_context     clob;
+   l_system_prompt    clob;
    l_summary          clob;
 begin
    -- determine score of exception using AI
    if reports_pkg.get_pref_value(p_pref_key => 'AI_ENABLED') = 'Y' then
-      -- get the list of valid exceptions
-      select valid_exceptions
-        into l_valid_exceptions
-        from rules
-       where rule_id = p_rule_id;
+      -- fetch all rule context fields needed to build the scoring prompt
+      select r.rule_name
+            ,r.info
+            ,r.fix
+            ,r.valid_exceptions
+            ,c.category_name
+            ,rs.risk_code
+            ,rs.risk_name
+            ,rsev.rule_severity_key
+        into l_rule_name
+            ,l_info
+            ,l_fix
+            ,l_valid_exceptions
+            ,l_category_name
+            ,l_risk_code
+            ,l_risk_name
+            ,l_severity_key
+        from rules              r
+        join categories         c    on c.category_id        = r.category_id
+        left join risks         rs   on rs.risk_id           = r.risk_id
+        join rule_severity      rsev on rsev.rule_severity_id = r.rule_severity_id
+       where r.rule_id = p_rule_id;
 
-      -- prepare the prompt and send to AI
-      if l_valid_exceptions is not null then
+      -- skip when there is no security context to evaluate against
+      if l_info is not null or l_valid_exceptions is not null then
+         -- build context block; metadata header always included
+         l_rule_context := '## Security Rule Context' || chr(10)
+            || 'Rule: ' || l_rule_name || '  |  Category: ' || l_category_name || chr(10)
+            || case when l_risk_code is not null
+                    then 'OWASP: ' || l_risk_code || ' - ' || l_risk_name || '  |  '
+               end
+            || 'Severity: ' || l_severity_key || chr(10);
+
+         if l_info is not null then
+            l_rule_context := l_rule_context || chr(10)
+               || '### What This Rule Checks' || chr(10)
+               || l_info || chr(10);
+         end if;
+
+         if l_fix is not null then
+            l_rule_context := l_rule_context || chr(10)
+               || '### Recommended Remediation' || chr(10)
+               || l_fix || chr(10);
+         end if;
+
+         if l_valid_exceptions is not null then
+            l_rule_context := l_rule_context || chr(10)
+               || '### Example Acceptable Exceptions' || chr(10)
+               || l_valid_exceptions || chr(10);
+         end if;
+
+         -- substitute rule context block into system prompt template
+         l_system_prompt := replace(
+            reports_pkg.get_pref_value(p_pref_key => 'AI_EXCEPTION_PROMPT'),
+            '{RULE_CONTEXT}',
+            l_rule_context
+         );
+
+         -- call AI service
          l_summary := apex_ai.generate(
-            p_prompt            => 'Evaluate the quality of the following exception: ' || p_exception
-            ,p_system_prompt     => replace(reports_pkg.get_pref_value(p_pref_key => 'AI_EXCEPTION_PROMPT'), '{VALID_EXCEPTIONS}', l_valid_exceptions)
+            p_prompt             => 'Evaluate the quality of the following exception justification: ' || p_exception
+            ,p_system_prompt     => l_system_prompt
             ,p_service_static_id => reports_pkg.get_pref_value(p_pref_key => 'AI_STATIC_ID')
          );
 
