@@ -1,5 +1,4 @@
-*.log
 .DS_Store
+*.log
 .vscode/settings.json
-development/.DS_Store
 docs
