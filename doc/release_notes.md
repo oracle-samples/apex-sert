@@ -1,5 +1,14 @@
 # Release Notes
 
+## 24.2.26
+
+### improved AI behaviour for Exception scoring
+
+Redesigned the AI-powered exception scoring feature in to produce richer, more contextually accurate scores.
+Scoring now uses rule name, info, fix guidance, valid exceptions, category, OWASP risk code/name, and severity - previously it only used sample exception reasons to evaluate against, now the system will use the available information to score, in addition to any examples.
+
+Smarter skip logic: scoring is skipped when both info and valid_exceptions are null, avoiding low-quality AI calls
+
 ## 24.2.25 
 
 ### Updated Security Rule: Unprotected Substitution Variables

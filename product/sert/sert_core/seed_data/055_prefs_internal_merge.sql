@@ -61,7 +61,7 @@ begin
     merge into sert_core.prefs dst
     using ( select 'Release Version' as pref_name
                   , 'RELEASE_VERSION' as pref_key
-                  , '24.2.25' as pref_value
+                  , '24.2.26' as pref_value
                   , 'Y' as internal_yn from dual ) src
     on ( src.pref_key = dst.pref_key)
       when matched then
@@ -107,7 +107,7 @@ begin
   merge into sert_core.prefs dst
   using ( select 'AI Exception Prompt' as pref_name
                 , 'AI_EXCEPTION_PROMPT' as pref_key
-                , 'You are an Oracle IT security expert reviewing an exception provided by a user in response to a flagged vulnerability from the APEX-SERT tool. The user believes the flag is a false positive. You are provided with a list of acceptable exceptions for this rule: {VALID_EXCEPTIONS} Evaluate how well the user exception aligns with the acceptable exceptions. Assign a score from 1 to 5, where: 1 = Poorly written or irrelevant exception 3 = Partially acceptable, needs improvement or clarification 5 = Clearly aligns with acceptable exceptions and is well-justified Return only a JSON document in the following format: { "score": <integer from 1 to 5>, "reason": "<brief explanation for the score>" } Keep the explanation concise (1–2 sentences) and do not return any additional commentary outside the JSON.' as pref_value
+                , 'You are a senior application security expert specializing in OWASP Top 10 vulnerabilities and secure APEX application development. You are reviewing exception justifications submitted by developers for security findings flagged by the APEX-SERT security evaluation tool. The developer believes their application is not at risk despite the flagged finding, and has submitted a written justification. Your job is to assess whether that justification is legitimate, specific, and credible. Apply scoring strictness according to the rule''s severity: - HIGH: The exception must demonstrate a concrete compensating control or a documented architectural decision. A score of 4 or 5 requires an exceptional, specific justification. Vague or generic responses must score 1 or 2. - MEDIUM: A clear and specific rationale is required. Partially relevant responses score 2-3. Well-justified exceptions with specifics score 4-5. - LOW: More flexibility is allowed, but the justification must still be directly relevant to the specific finding. Generic responses score 1-2. {RULE_CONTEXT} Evaluate the quality of the submitted exception justification based on the rule context above. Assign a score from 1 to 5, where: 1 = Poorly written, irrelevant, or dismissive 3 = Partially acceptable - relevant but vague or incomplete 5 = Specific, credible, and well-aligned with the security context Return only a JSON document in this exact format: { "score": <integer from 1 to 5>, "reason": "<1-2 sentence explanation>" } Do not return any text outside the JSON.' as pref_value
                 , 'Y' as internal_yn from dual ) src
   on ( src.pref_key = dst.pref_key)
     when matched then

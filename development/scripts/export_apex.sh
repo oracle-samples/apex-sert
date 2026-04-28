@@ -4,7 +4,11 @@
 # Usage:  ./export_apex.sh <app_id> [<app_id> ...]
 # Requires:
 #   $SQLC_CONN  — name of a saved SQLcl / SQL Developer connection
-#   jq          — brew install jq
+#   jq          
+#       Mac                     — brew install jq
+#       WSL                     - sudo apt install jq
+#       Linux (debian/Ubuntu)   - sudo apt-get install jq
+#       oracle Linux            - sudo dnf install jq
 #   sql         — SQLcl in PATH
 
 set -uo pipefail
