@@ -1,12 +1,12 @@
--- file_checksum: EFF7504542EC011B5573E70D272F9E8BB275749AD22D1946105A6E3C6013BEA8
+-- file_checksum: 87B420052294F5D60F97FAD19C881312945863B42BC4E01427DF53312D120E08
 prompt --application/shared_components/user_interface/templates/page/wizard_modal_dialog
 begin
 --   Manifest
 --     TEMPLATE: WIZARD_MODAL_DIALOG
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

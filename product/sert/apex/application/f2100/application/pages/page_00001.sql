@@ -3,7 +3,8 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 53105C8036FEC0045CCD5F3FD36649EBC2EA3D6B286293E1FEF19B798BFDEA6D
+prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
+-- file_checksum: B57B23BB76040E5E60A0AE2CC989DF998BC4D045F3BFFDB60AEA6A809D79D4A3
 prompt --application/pages/page_00001
 begin
 --   Manifest
@@ -11,7 +12,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2100
 ,p_default_id_offset=>43721417861278263
@@ -752,7 +753,9 @@ wwv_flow_imp_page.create_page_da_action(
 '-- loop through the view so that if P1_DELETE_EVAL_ID was spoofed, it will not execute the delete procedure',
 'for x in (select * from evals_pub_v where eval_id = :P1_DELETE_EVAL_ID)',
 'loop',
-'  eval_pkg.delete_eval(p_eval_id => :P1_DELETE_EVAL_ID);',
+'  eval_pkg.delete_eval (',
+'     p_eval_id         => :P1_DELETE_EVAL_ID',
+'    ,p_delete_comments => :G_DELETE_EVAL_EXCEPTIONS );',
 'end loop;'))
 ,p_attribute_02=>'P1_DELETE_EVAL_ID'
 ,p_attribute_05=>'PLSQL'

@@ -1,12 +1,13 @@
--- file_checksum: 058C993A0FD5B68E6CC7FE403CA209DF8922467792379C94F28D3CC9603B543F
-prompt --application/comments
+prompt app_checksum: 8F8731917A0435ECB64029293CE8ADA7F9A127EC84A6C907C03DC4A0522EABF3
+-- file_checksum: C2C6C8525C228627EF15D855B2E20D7C48B8BA3F3803017CBECEB5AF63E97945
+prompt --application/deployment/definition
 begin
 --   Manifest
---     APPLICATION COMMENTS: 2102
+--     INSTALL: 2102
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

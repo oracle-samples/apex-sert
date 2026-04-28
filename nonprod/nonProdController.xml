@@ -6,10 +6,10 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
 >
   <!-- Development Properties -->
-  <include
+  <!-- <include
     relativeToChangelogFile="true"
     file="development_properties.sql"
-  />
+  /> -->
 
   <!-- Product sert -->
   <includeAll
@@ -18,10 +18,9 @@
     path="sert/db/_dba"
   />
 
-  <includeAll
+  <include
     relativeToChangelogFile="true"
-    errorIfMissingOrEmpty="false"
-    path="sert/db/unit_test"
+    file="sert/db/unit_test/schemaController.xml"
   />
   <include
     context="@apex"

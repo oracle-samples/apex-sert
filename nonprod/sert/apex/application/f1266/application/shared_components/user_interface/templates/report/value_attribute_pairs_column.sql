@@ -1,12 +1,12 @@
--- file_checksum: 7869A122B86AEFE46CB3F07E51C66D594555802E8DE947BCF9CA054C4EABED67
+-- file_checksum: 61EDBA9D1CBE135F502E33C1DD2DB8BCDC6833F4BFA41E289C870B02E4A0ADBD
 prompt --application/shared_components/user_interface/templates/report/value_attribute_pairs_column
 begin
 --   Manifest
 --     ROW TEMPLATE: VALUE_ATTRIBUTE_PAIRS_COLUMN
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

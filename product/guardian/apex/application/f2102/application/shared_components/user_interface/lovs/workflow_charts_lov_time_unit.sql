@@ -1,4 +1,5 @@
--- file_checksum: 0B1440235E23E4EA30C13A58CF6DBC86BE188FE776710D24B7F7633AE1576E6D
+prompt app_checksum: 8F8731917A0435ECB64029293CE8ADA7F9A127EC84A6C907C03DC4A0522EABF3
+-- file_checksum: 6C02DCD7406F554B99B020BF6BF90176A4D5226A2DB2E11941C7B226AAD05D3D
 prompt --application/shared_components/user_interface/lovs/workflow_charts_lov_time_unit
 begin
 --   Manifest
@@ -6,7 +7,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

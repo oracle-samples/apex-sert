@@ -1,4 +1,5 @@
--- file_checksum: 576E785DF9256A2E13A19510459E3143ABB9B533937BF5396178583E73D0E8C0
+prompt app_checksum: 8F8731917A0435ECB64029293CE8ADA7F9A127EC84A6C907C03DC4A0522EABF3
+-- file_checksum: 9BE1083D5B315ED49157214B624FF00E5B0C9A76F05BDE251799D0E1C96A9219
 prompt --application/shared_components/navigation/breadcrumbentry
 begin
 --   Manifest
@@ -6,7 +7,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2102
 ,p_default_id_offset=>69907164856017883

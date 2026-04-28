@@ -1,12 +1,12 @@
--- file_checksum: C665A07460CB92565EDC1D27035CD4B0F68F39CFCB4B403DD81FAF973D8FAE0D
+-- file_checksum: A4A0B606E1E59CE8421FCEC2CDE8AF404621BC11C058B8943A0F907A1BA64450
 prompt --application/shared_components/user_interface/templates/list/wizard_progress
 begin
 --   Manifest
 --     REGION TEMPLATE: WIZARD_PROGRESS
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

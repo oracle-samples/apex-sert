@@ -1,12 +1,12 @@
--- file_checksum: 2ED447E7787857EC6EB602F9BF88172F0296CAA2DF98C892C089C91840C2E17C
+-- file_checksum: 12047BE6389C30108CA9840BE2191B75FD6B37915B34FB938CA50B3102F30B7C
 prompt --application/shared_components/user_interface/templates/region/interactive_report
 begin
 --   Manifest
 --     REGION TEMPLATE: INTERACTIVE_REPORT
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

@@ -1,12 +1,12 @@
--- file_checksum: CEA8A0A603169EA481F9E66C6314F7316AC75937748B6C235AEBE2B5BD74AF5A
+-- file_checksum: 92C462402C214DBC9B4179CBE03C127B142BF3CB2113FD763C6C34798E888F66
 prompt --application/shared_components/user_interface/template_opt_groups
 begin
 --   Manifest
 --     THEME OPTION GROUPS: 1266
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

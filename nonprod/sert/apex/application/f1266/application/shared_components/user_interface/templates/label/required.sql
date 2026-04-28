@@ -1,12 +1,12 @@
--- file_checksum: E4B15DB080A3293EEC22121424788078492F3202982DB3178CFFD934038CB3D9
+-- file_checksum: 29AB18015CD7C21C112F51DFFA12A3A036CDD112A68CE90A8B7518E1D6D5F04C
 prompt --application/shared_components/user_interface/templates/label/required
 begin
 --   Manifest
 --     LABEL TEMPLATE: REQUIRED
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

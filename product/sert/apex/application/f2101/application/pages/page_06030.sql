@@ -3,7 +3,8 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 3328F98B1063E540D2DCFB3D3DD1F0CE1DD391176DBB99A8D235BC5BA1E1F5AF
+prompt app_checksum: E617569B1FE376F5908F222125ECF01717D1CFD85D7168B02EA64312089B60BE
+-- file_checksum: 352FB3F639668A6B187632B05D2CCD383BA7B0C008B1E01D840270AA48E0A77D
 prompt --application/pages/page_06030
 begin
 --   Manifest
@@ -11,7 +12,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>2101
 ,p_default_id_offset=>43724842417270742
@@ -98,14 +99,27 @@ wwv_flow_imp_page.create_report_region(
 ,p_query_type=>'SQL'
 ,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select ',
-'  substr',
-'    (',
-'     j.repeat_interval',
-'    ,instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY='')',
-'    ,instr(j.repeat_interval || '';'', '';'', instr(j.repeat_interval, ''BYDAY='')) - (instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY=''))',
-'    ) ',
-'    || '' at '' || TO_CHAR(TO_TIMESTAMP_TZ(TO_CHAR(j.next_run_date, ''YYYY-MM-DD HHPM:MI:SS TZH:TZM''),''YYYY-MM-DD HHPM:MI:SS TZH:TZM'') at time zone sessiontimezone, ''HH:MIPM'') ',
-'  as schedule',
+'  case',
+'    when instr(j.repeat_interval, ''FREQ=DAILY'') > 0 then',
+'      ''Daily at '' || to_char(to_timestamp_tz(to_char(j.next_run_date, ''YYYY-MM-DD HH24:MI:SS TZH:TZM''),''YYYY-MM-DD HH24:MI:SS TZH:TZM'') at time zone sessiontimezone, ''HH24:MI'')',
+'    when instr(j.repeat_interval, ''FREQ=WEEKLY'') > 0 then',
+'      ''Weekly on '' ||',
+'      substr',
+'      (',
+'         j.repeat_interval',
+'        ,instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY='')',
+'        ,instr(j.repeat_interval || '';'', '';'', instr(j.repeat_interval, ''BYDAY='')) - (instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY=''))',
+'      )',
+'      || '' at '' || to_char(to_timestamp_tz(to_char(j.next_run_date, ''YYYY-MM-DD HH24:MI:SS TZH:TZM''),''YYYY-MM-DD HH24:MI:SS TZH:TZM'') at time zone sessiontimezone, ''HH24:MI'')',
+'    else',
+'      substr',
+'      (',
+'         j.repeat_interval',
+'        ,instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY='')',
+'        ,instr(j.repeat_interval || '';'', '';'', instr(j.repeat_interval, ''BYDAY='')) - (instr(j.repeat_interval, ''BYDAY='') + length(''BYDAY=''))',
+'      )',
+'      || '' at '' || to_char(to_timestamp_tz(to_char(j.next_run_date, ''YYYY-MM-DD HH24:MI:SS TZH:TZM''),''YYYY-MM-DD HH24:MI:SS TZH:TZM'') at time zone sessiontimezone, ''HH24:MI'')',
+'  end as schedule',
 'FROM ',
 '  user_scheduler_jobs j',
 'where ',
@@ -215,25 +229,30 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(119623707960710535)
 ,p_name=>'P6030_FREQUENCY'
-,p_is_required=>true
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
-,p_prompt=>'Frequency'
-,p_display_as=>'NATIVE_CHECKBOX'
+,p_prompt=>'Days of week'
+,p_display_as=>'NATIVE_POPUP_LOV'
 ,p_lov=>'STATIC2:Mon;MON,Tue;TUE,Wed;WED,Thu;THU,Fri;FRI,Sat;SAT,Sun;SUN'
+,p_lov_display_null=>'YES'
+,p_cSize=>30
 ,p_field_template=>wwv_flow_imp.id(394561407168760174)
 ,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs:t-Form-fieldContainer--indicatorLabel:t-Form-fieldContainer--radioButtonGroup'
 ,p_lov_display_extra=>'YES'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'number_of_columns', '7')).to_clob
+  'case_sensitive', 'N',
+  'display_as', 'POPUP',
+  'fetch_on_search', 'Y',
+  'initial_fetch', 'FIRST_ROWSET',
+  'manual_entry', 'N',
+  'match_type', 'CONTAINS',
+  'min_chars', '0')).to_clob
 ,p_multi_value_type=>'SEPARATED'
 ,p_multi_value_separator=>','
-,p_ai_enabled=>false
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(119623919520710537)
 ,p_name=>'P6030_HOUR'
-,p_is_required=>true
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
 ,p_prompt=>'Hour'
@@ -244,14 +263,13 @@ wwv_flow_imp_page.create_page_item(
 ,p_field_template=>wwv_flow_imp.id(394561407168760174)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_lov_display_extra=>'NO'
+,p_required_patch=>wwv_flow_imp.id(394385489811759930)
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'page_action_on_selection', 'NONE')).to_clob
-,p_ai_enabled=>false
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(119624078634710538)
 ,p_name=>'P6030_MIN'
-,p_is_required=>true
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
 ,p_prompt=>'Min'
@@ -263,14 +281,13 @@ wwv_flow_imp_page.create_page_item(
 ,p_field_template=>wwv_flow_imp.id(394561407168760174)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_lov_display_extra=>'NO'
+,p_required_patch=>wwv_flow_imp.id(394385489811759930)
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'page_action_on_selection', 'NONE')).to_clob
-,p_ai_enabled=>false
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(119624115157710539)
 ,p_name=>'P6030_AMPM'
-,p_is_required=>true
 ,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
 ,p_prompt=>'AM/PM'
@@ -282,9 +299,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_field_template=>wwv_flow_imp.id(394561407168760174)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_lov_display_extra=>'NO'
+,p_required_patch=>wwv_flow_imp.id(394385489811759930)
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'page_action_on_selection', 'NONE')).to_clob
-,p_ai_enabled=>false
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(120729367752915279)
@@ -298,7 +315,7 @@ wwv_flow_imp_page.create_page_item(
 ' ,application_id',
 'from',
 '  apex_applications',
-'where workspace not in(''INTERNAL'',''TOWER'',''COM.ORACLE.CUST.REPOSITORY'')  ',
+'where workspace not in(''INTERNAL'',''COM.ORACLE.CUST.REPOSITORY'')  ',
 'and application_name not in (''APEX-SERT'',''APEX-SERT Administration'')  ',
 'union all',
 'select',
@@ -337,6 +354,60 @@ wwv_flow_imp_page.create_page_item(
 ,p_lov_display_extra=>'NO'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'page_action_on_selection', 'NONE')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(970603000000000001)
+,p_name=>'P6030_SCHEDULE_MODE'
+,p_item_sequence=>5
+,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
+,p_prompt=>'Schedule Mode'
+,p_display_as=>'NATIVE_RADIOGROUP'
+,p_lov=>'STATIC2:Daily;DAILY,Weekly;WEEKLY'
+,p_field_template=>wwv_flow_imp.id(394561407168760174)
+,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs:t-Form-fieldContainer--radioButtonGroup'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'number_of_columns', '2',
+  'page_action_on_selection', 'NONE')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(970603000000000002)
+,p_name=>'P6030_HOUR24'
+,p_item_sequence=>15
+,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
+,p_prompt=>'Hour (24hr)'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>'STATIC2:00;0,01;1,02;2,03;3,04;4,05;5,06;6,07;7,08;8,09;9,10;10,11;11,12;12,13;13,14;14,15;15,16;16,17;17,18;18,19;19,20;20,21;21,22;22,23;23'
+,p_lov_display_null=>'YES'
+,p_lov_null_text=>'- Random -'
+,p_cHeight=>1
+,p_colspan=>2
+,p_field_template=>wwv_flow_imp.id(394561407168760174)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+,p_ai_enabled=>false
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(970603000000000003)
+,p_name=>'P6030_MINUTE'
+,p_item_sequence=>25
+,p_item_plug_id=>wwv_flow_imp.id(119623047158710502)
+,p_prompt=>'Minute'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>'STATIC2:00;0,05;5,10;10,15;15,20;20,25;25,30;30,35;35,40;40,45;45,50;50,55;55'
+,p_lov_display_null=>'YES'
+,p_lov_null_text=>'- Random -'
+,p_cHeight=>1
+,p_begin_on_new_line=>'N'
+,p_colspan=>2
+,p_field_template=>wwv_flow_imp.id(394561407168760174)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+,p_ai_enabled=>false
 );
 wwv_flow_imp_page.create_page_validation(
  p_id=>wwv_flow_imp.id(69667456510499044)
@@ -419,7 +490,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'Add Schedule Job'
 ,p_attribute_01=>'PLSQL_PACKAGE'
 ,p_attribute_03=>'SCHEDULE_API'
-,p_attribute_04=>'ADD_SCHEDULE_JOB'
+,p_attribute_04=>'ADD_SCHEDULE_JOB_FLEX'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(69651130595378425)
 ,p_process_success_message=>'Scheduled evaluation added'
@@ -430,49 +501,49 @@ wwv_flow_imp_shared.create_invokeapi_comp_param(
  p_id=>wwv_flow_imp.id(69655235561378479)
 ,p_page_process_id=>wwv_flow_imp.id(69654697269378474)
 ,p_page_id=>6030
-,p_name=>'p_frequency'
+,p_name=>'p_schedule_mode'
 ,p_direction=>'IN'
 ,p_data_type=>'VARCHAR2'
 ,p_has_default=>false
 ,p_display_sequence=>10
 ,p_value_type=>'ITEM'
-,p_value=>'P6030_FREQUENCY'
+,p_value=>'P6030_SCHEDULE_MODE'
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
  p_id=>wwv_flow_imp.id(69655681787378482)
 ,p_page_process_id=>wwv_flow_imp.id(69654697269378474)
 ,p_page_id=>6030
-,p_name=>'p_hour'
+,p_name=>'p_weekdays'
 ,p_direction=>'IN'
-,p_data_type=>'NUMBER'
+,p_data_type=>'VARCHAR2'
 ,p_has_default=>false
 ,p_display_sequence=>20
 ,p_value_type=>'ITEM'
-,p_value=>'P6030_HOUR'
+,p_value=>'P6030_FREQUENCY'
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
  p_id=>wwv_flow_imp.id(69656229068378483)
 ,p_page_process_id=>wwv_flow_imp.id(69654697269378474)
 ,p_page_id=>6030
-,p_name=>'p_min'
+,p_name=>'p_hour24'
 ,p_direction=>'IN'
 ,p_data_type=>'NUMBER'
 ,p_has_default=>false
 ,p_display_sequence=>30
 ,p_value_type=>'ITEM'
-,p_value=>'P6030_MIN'
+,p_value=>'P6030_HOUR24'
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
  p_id=>wwv_flow_imp.id(69656726181378484)
 ,p_page_process_id=>wwv_flow_imp.id(69654697269378474)
 ,p_page_id=>6030
-,p_name=>'p_ampm'
+,p_name=>'p_minute'
 ,p_direction=>'IN'
-,p_data_type=>'VARCHAR2'
+,p_data_type=>'NUMBER'
 ,p_has_default=>false
 ,p_display_sequence=>40
 ,p_value_type=>'ITEM'
-,p_value=>'P6030_AMPM'
+,p_value=>'P6030_MINUTE'
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
  p_id=>wwv_flow_imp.id(69657150305378484)
@@ -584,12 +655,12 @@ wwv_flow_imp_page.create_page_process(
 '',
 '  end if;',
 '',
-'  sert_core.schedule_api.schedule_jobs (',
-'    p_frequency => :P6030_FREQUENCY,',
-'    p_hour      => :P6030_HOUR,',
-'    p_min       => :P6030_MIN,',
-'    p_ampm      => :P6030_AMPM,',
-'    p_rule_set_key => :P6030_RULE_SET_KEY',
+'  sert_core.schedule_api.schedule_jobs_flex (',
+'    p_schedule_mode => :P6030_SCHEDULE_MODE,',
+'    p_weekdays      => :P6030_FREQUENCY,',
+'    p_hour24        => :P6030_HOUR24,',
+'    p_minute        => :P6030_MINUTE,',
+'    p_rule_set_key  => :P6030_RULE_SET_KEY',
 '  );',
 '',
 '',

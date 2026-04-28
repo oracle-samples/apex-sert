@@ -3,19 +3,20 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: 82DE8FEA58AADA631CA5ACA7267B755557D134F89DDC7567DC802D0D34B9E715
-prompt --application/comments
+prompt app_checksum: E617569B1FE376F5908F222125ECF01717D1CFD85D7168B02EA64312089B60BE
+-- file_checksum: 86769E9C54FB04D9A6C41A0A908D5B9B337A241D26FFBF91C853172489B7CD59
+prompt --application/deployment/buildoptions
 begin
 --   Manifest
---     APPLICATION COMMENTS: 2100
+--     INSTALL BUILD OPTIONS: 2101
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
-,p_release=>'24.2.11'
+,p_release=>'24.2.15'
 ,p_default_workspace_id=>32049826282261068
-,p_default_application_id=>2100
-,p_default_id_offset=>43721417861278263
-,p_default_owner=>'SERT_PUB'
+,p_default_application_id=>2101
+,p_default_id_offset=>43724842417270742
+,p_default_owner=>'SERT_CORE'
 );
 null;
 wwv_flow_imp.component_end;

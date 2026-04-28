@@ -1,12 +1,12 @@
--- file_checksum: ACCD41F4A595527A1EC77BE4B864C7202EB39315203C41D00674219D5700077F
+-- file_checksum: 69468037AD7968C0D67C4EEB695B5B15CF47342204C3D15074362ECA171C5673
 prompt --application/shared_components/plugins/template_component/theme_42_media_list
 begin
 --   Manifest
 --     PLUGIN: THEME_42$MEDIA_LIST
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

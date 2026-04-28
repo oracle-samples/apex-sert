@@ -1,12 +1,12 @@
--- file_checksum: B4F364D084F34E6E67ED7458B7DD47CA28C2B35A856C6548BA60E3834A751F51
+-- file_checksum: E96A8A7E5239A4300C519F43F118C461A3E7B01B5EC046F3B35638528A5DD363
 prompt --application/shared_components/logic/application_items/a_app_computation_condition_expression
 begin
 --   Manifest
 --     APPLICATION ITEM: A_APP_COMPUTATION_CONDITION_EXPRESSION
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

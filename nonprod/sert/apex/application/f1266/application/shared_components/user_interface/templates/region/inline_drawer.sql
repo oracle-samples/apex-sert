@@ -1,12 +1,12 @@
--- file_checksum: 3364858860F2886650311E37A7ECCA7D052D483A3FDF846A6296D5616FA76F41
+-- file_checksum: E0246939893E5937EDEC6B90989A9D8DD4F569390BB14E320F126DD6EA70221A
 prompt --application/shared_components/user_interface/templates/region/inline_drawer
 begin
 --   Manifest
 --     REGION TEMPLATE: INLINE_DRAWER
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

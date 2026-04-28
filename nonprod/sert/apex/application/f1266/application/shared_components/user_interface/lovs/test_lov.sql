@@ -1,12 +1,12 @@
--- file_checksum: 8828402C5EA3F3D3FBB883BA66685C6FE0BC36C159CE419D6ECA9BAA707E74B0
+-- file_checksum: 4A4CC1B10F4DD32C17053E4B7E24FE0B88587175AF2F2BADCC8507302D11D240
 prompt --application/shared_components/user_interface/lovs/test_lov
 begin
 --   Manifest
 --     TEST_LOV
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

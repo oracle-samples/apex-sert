@@ -1,12 +1,12 @@
--- file_checksum: EEFBDCC107E7423CAA9E46BB4089511525215A4FC099A8C6F571932788AA416B
+-- file_checksum: 5F8A2CBD9AD420A97326A044E0BB63E02F5817546DED1F1044D0EEC072025A56
 prompt --application/shared_components/navigation/lists/list_sv_chk_list_entry_cond_never
 begin
 --   Manifest
 --     LIST: LIST SV_CHK_LIST_ENTRY_COND_NEVER
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

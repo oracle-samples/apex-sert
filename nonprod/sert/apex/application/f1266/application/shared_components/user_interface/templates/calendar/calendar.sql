@@ -1,12 +1,12 @@
--- file_checksum: 765D69E6B1A06F5D264FE5D76F8B76E5173C9426B2A4D47CA20397009B77B85B
+-- file_checksum: 19A0AFB4EB5EDB4BAC1EF44F16ADDEE1ADA683B7F5E822DAF71EB0F52701E4DE
 prompt --application/shared_components/user_interface/templates/calendar/calendar
 begin
 --   Manifest
 --     CALENDAR TEMPLATES: CALENDAR
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

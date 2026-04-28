@@ -1,12 +1,12 @@
--- file_checksum: BEE296EF74CEFA77C988FEE0143884ECC2B3B07E714C99FC8416C45737250492
+-- file_checksum: 29133BABB45D6BF2B48DB1204EB1B740C1A4741416CAEFB1883EAAA809B87108
 prompt --application/shared_components/security/authorizations/special_authz_scheme
 begin
 --   Manifest
 --     SECURITY SCHEME: Special AUTHZ scheme
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

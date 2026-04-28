@@ -1,12 +1,12 @@
--- file_checksum: 26FE5AA2D6D0C6FC495863428445585D401DFE6C0498F99B88C155F413681641
+-- file_checksum: 57F8F682FD02A741B38E2CD1810C37D083B3AF0D72E93ECAE1561251ED1F3C6A
 prompt --application/shared_components/user_interface/templates/region/carousel_container
 begin
 --   Manifest
 --     REGION TEMPLATE: CAROUSEL_CONTAINER
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

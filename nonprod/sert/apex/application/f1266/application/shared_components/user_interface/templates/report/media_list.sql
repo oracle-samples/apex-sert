@@ -1,12 +1,12 @@
--- file_checksum: A1AAC1761B8352A491F64FDD9F4CCBC7E17A62125438B1210181D394771BDF65
+-- file_checksum: 94F674CDB33C9EF05EF9C43ED7A59DE3B3685BF32462DD18B97155B533BB1B94
 prompt --application/shared_components/user_interface/templates/report/media_list
 begin
 --   Manifest
 --     ROW TEMPLATE: MEDIA_LIST
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

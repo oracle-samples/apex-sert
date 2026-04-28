@@ -8,389 +8,415 @@
 --changeset mipotter:create_package_body_sert_core.exceptions_api_1721803513628 stripComments:false endDelimiter:/ runOnChange:true runAlways:false rollbackEndDelimiter:/
 create or replace package body sert_core.exceptions_api
 as
-  ----------------------------------------------------------------------------------------------------------------------------
-  -- FUNCTION: S H O W _ E X C E P T I O N.
-  -- Determines whether or not to show items/regions/buttons for an evaluation result based on the status
-  -- show_exception
-  -- purpose: determine if an evaluation result should surface an exception-driven UI element (item/region/button).
-  -- behavior: reads result from eval_results_v; returns false for 'PASS', true otherwise.
-  -- parameters:
-  --   p_eval_result_id - target eval_results identifier
-  -- returns: boolean
-  ----------------------------------------------------------------------------------------------------------------------------
-  function show_exception
-    (
-    p_eval_result_id in number
-    )
-  return boolean
-  is
-    l_result varchar2(100);
-  begin
+----------------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: S H O W _ E X C E P T I O N.
+-- Determines whether or not to show items/regions/buttons for an evaluation result based on the status
+-- show_exception
+-- purpose: determine if an evaluation result should surface an exception-driven UI element (item/region/button).
+-- behavior: reads result from eval_results_v; returns false for 'PASS', true otherwise.
+-- parameters:
+--   p_eval_result_id - target eval_results identifier
+-- returns: boolean
+----------------------------------------------------------------------------------------------------------------------------
+function show_exception (
+   p_eval_result_id in number )
+   return boolean
+is
+   l_result varchar2(100);
+begin
+   select result
+     into l_result
+     from eval_results_v
+    where eval_result_id = p_eval_result_id;
 
-    select result into l_result from eval_results_v where eval_result_id = p_eval_result_id;
-    if l_result = 'PASS' then return false;
-      else return true;
-    end if; -- l_result = 'PASS'
-  end show_exception;
+   if l_result = 'PASS' then
+      return false;
+   else
+      return true;
+   end if; -- l_result = 'PASS'
+end show_exception;
 
-  ----------------------------------------------------------------------------------------------------------------------------
-  -- FUNCTION: E X C E P T I O N _ S T A T U S
-  -- Return the status of the exception
-  -- exception_status
-  -- purpose: return the current status of a specific exception.
-  -- behavior: selects result from exceptions; returns null when no_data_found; otherwise re-raises errors.
-  -- parameters:
-  --   p_exception_id - exception identifier
-  -- returns: varchar2 status e.g. PENDING/APPROVED/REJECTED/STALE
-  ----------------------------------------------------------------------------------------------------------------------------
-    function exception_status
-      (
-      p_exception_id in number
-      )
-    return varchar2
-    is
-      l_result varchar2(100);
-    begin
-      select result into l_result from exceptions where exception_id = p_exception_id;
-      return l_result;
-    exception
-      when no_data_found then
-        return null;
-      when others then
-        raise;
-    end exception_status;
+----------------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: E X C E P T I O N _ S T A T U S
+-- Return the status of the exception
+-- exception_status
+-- purpose: return the current status of a specific exception.
+-- behavior: selects result from exceptions; returns null when no_data_found; otherwise re-raises errors.
+-- parameters:
+--   p_exception_id - exception identifier
+-- returns: varchar2 status e.g. PENDING/APPROVED/REJECTED/STALE
+----------------------------------------------------------------------------------------------------------------------------
+function exception_status (
+   p_exception_id in number )
+   return varchar2
+is
+   l_result varchar2(100);
+begin
+   select result
+     into l_result
+     from exceptions
+    where exception_id = p_exception_id;
 
-  ----------------------------------------------------------------------------------------------------------------------------
-  -- FUNCTION: I S _ S T A L E
-  -- Return TRUE if exception is stale
-  -- is_stale
-  -- purpose: convenience boolean check for whether an exception is marked STALE.
-  -- behavior: delegates to exception_status and compares to 'STALE'.
-  -- parameters:
-  --   p_exception_id - exception identifier
-  -- returns: boolean
-  ----------------------------------------------------------------------------------------------------------------------------
-    function is_stale(p_exception_id in number)
-    return boolean
-    is
-    begin
-      return exception_status(p_exception_id) = 'STALE';
-    end is_stale;
-  ----------------------------------------------------------------------------------------------------------------------------
-  -- FUNCTION: S H O W _ E X C E P T I O N S _ F O R M
-  -- Determines whether or not to show the Exceptions form
-  -- show_exceptions_form
-  -- purpose: decide whether to show the Exceptions form for a given context.
-  -- behavior: if p_stale_eval = 'Y' returns false; otherwise returns false when an exception already exists
-  --   for p_exception_key; returns true when no exception exists.
-  -- parameters:
-  --   p_stale_eval    - 'Y' when evaluation is on an older APEX version
-  --   p_exception_key - composite key uniquely identifying the exception context
-  -- returns: boolean
-  ----------------------------------------------------------------------------------------------------------------------------
-  function show_exceptions_form
-    (
-    p_stale_eval    in varchar2
-    ,p_exception_key in varchar2
-    )
-  return boolean
-  is
-  begin
+   return l_result;
+exception
+   when no_data_found then
+      return null;
+   when others then
+      raise;
+end exception_status;
 
-    if p_stale_eval = 'Y' then
+----------------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: I S _ S T A L E
+-- Return TRUE if exception is stale
+-- is_stale
+-- purpose: convenience boolean check for whether an exception is marked STALE.
+-- behavior: delegates to exception_status and compares to 'STALE'.
+-- parameters:
+--   p_exception_id - exception identifier
+-- returns: boolean
+----------------------------------------------------------------------------------------------------------------------------
+function is_stale (
+   p_exception_id in number )
+   return boolean
+is
+begin
+   return exception_status(p_exception_id) = 'STALE';
+end is_stale;
+----------------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: S H O W _ E X C E P T I O N S _ F O R M
+-- Determines whether or not to show the Exceptions form
+-- show_exceptions_form
+-- purpose: decide whether to show the Exceptions form for a given context.
+-- behavior: if p_stale_eval = 'Y' returns false; otherwise returns false when an exception already exists
+--   for p_exception_key; returns true when no exception exists.
+-- parameters:
+--   p_stale_eval    - 'Y' when evaluation is on an older APEX version
+--   p_exception_key - composite key uniquely identifying the exception context
+-- returns: boolean
+----------------------------------------------------------------------------------------------------------------------------
+function show_exceptions_form (
+   p_stale_eval     in varchar2
+   ,p_exception_key in varchar2 )
+   return boolean
+is
+begin
+   if p_stale_eval = 'Y' then
       -- evaluation is on an older version of APEX; do not display the form
       return false;
-    else
+   else
       -- check to see if an exception exists
-      for y in (select 1 from exceptions_pub_v where exception_key = p_exception_key)
+      for y in (
+         select 1
+           from exceptions_pub_v
+          where exception_key = p_exception_key )
       loop
-        -- there is an exception; do not display the form
-        return false;
+         -- there is an exception; do not display the form
+         return false;
       end loop;
-    end if; -- p_stale_eval = 'Y'
-    -- no exception found; display the form
-    return true;
+   end if; -- p_stale_eval = 'Y'
 
-  end show_exceptions_form;
+   -- no exception found; display the form
+   return true;
+end show_exceptions_form;
 
 
-  ----------------------------------------------------------------------------------------------------------------------------
-  -- FUNCTION: S H O W _ A D D _ E X C E P T I O N _ B U T T O N
-  -- Determines whether or not to show the Add Exception button
-  -- show_add_exception_button
-  -- purpose: decide whether to show the Add Exception action for a context.
-  -- behavior: hides the button when an exception already exists for p_exception_key; shows otherwise.
-  -- parameters:
-  --   p_exception_key - composite key uniquely identifying the exception context
-  -- returns: boolean
-  ----------------------------------------------------------------------------------------------------------------------------
-  function show_add_exception_button
-    (
-    p_exception_key in varchar2
-    )
-  return boolean
-  is
-  begin
-
-    -- check to see if an exception exists
-    for y in (select 1 from exceptions_pub_v where exception_key = p_exception_key)
-    loop
+----------------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: S H O W _ A D D _ E X C E P T I O N _ B U T T O N
+-- Determines whether or not to show the Add Exception button
+-- show_add_exception_button
+-- purpose: decide whether to show the Add Exception action for a context.
+-- behavior: hides the button when an exception already exists for p_exception_key; shows otherwise.
+-- parameters:
+--   p_exception_key - composite key uniquely identifying the exception context
+-- returns: boolean
+----------------------------------------------------------------------------------------------------------------------------
+function show_add_exception_button (
+   p_exception_key in varchar2 )
+   return boolean
+is
+begin
+   -- check to see if an exception exists
+   for y in (
+      select 1
+        from exceptions_pub_v
+       where exception_key = p_exception_key )
+   loop
       -- there is an exception; do not display the button
       return false;
-    end loop;
+   end loop;
 
-    -- no exception found; display the button
-    return true;
+   -- no exception found; display the button
+   return true;
+end show_add_exception_button;
 
-  end show_add_exception_button;
 
-
-  ----------------------------------------------------------------------------------------------------------------------------
-  -- FUNCTION: S H O W _ W I T H D R A W _ E X C E P T I O N _ B U T T O N
-  -- Determines whether or not to show the Withdraw Exception button
-  -- show_withdraw_exception_button
-  -- purpose: decide whether to show the Withdraw Exception action for a context and user.
-  -- behavior: when p_stale_eval = 'Y' hides the button; otherwise shows only if an exception exists for the key and
-  --   the current user created it (or the status is REJECTED/STALE) for the provided exception_id.
-  -- parameters:
-  --   p_stale_eval    - 'Y' when evaluation is on an older APEX version
-  --   p_exception_key - context key
-  --   p_exception_id  - specific exception id
-  --   p_app_user      - current app user
-  -- returns: boolean
-  ----------------------------------------------------------------------------------------------------------------------------
-  function show_withdraw_exception_button
-    (
-    p_stale_eval    in varchar2
-    ,p_exception_key in varchar2
-    ,p_exception_id  in number
-    ,p_app_user      in varchar2
-    )
-  return boolean
-  is
-  begin
-
-    if p_stale_eval = 'Y' then
+----------------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: S H O W _ W I T H D R A W _ E X C E P T I O N _ B U T T O N
+-- Determines whether or not to show the Withdraw Exception button
+-- show_withdraw_exception_button
+-- purpose: decide whether to show the Withdraw Exception action for a context and user.
+-- behavior: when p_stale_eval = 'Y' hides the button; otherwise shows only if an exception exists for the key and
+--   the current user created it (or the status is REJECTED/STALE) for the provided exception_id.
+-- parameters:
+--   p_stale_eval    - 'Y' when evaluation is on an older APEX version
+--   p_exception_key - context key
+--   p_exception_id  - specific exception id
+--   p_app_user      - current app user
+-- returns: boolean
+----------------------------------------------------------------------------------------------------------------------------
+function show_withdraw_exception_button (
+   p_stale_eval     in varchar2
+   ,p_exception_key in varchar2
+   ,p_exception_id  in number
+   ,p_app_user      in varchar2 )
+   return boolean
+is
+begin
+   if p_stale_eval = 'Y' then
       -- evaluation is on an older version of APEX; do not display the button
       return false;
-    else
+   else
       -- check to see if an exception exists
-      for y in
-        (
-        select
-          1
-        from
-          exceptions_pub_v
-        where
-          exception_key = p_exception_key
-            and 1 = (select 1 from exceptions_pub_v
-                  where exception_id = p_exception_id
-                  and (created_by = p_app_user or result in ('REJECTED','STALE') )
-                )
-        )
+      for y in (
+         select 1
+           from exceptions_pub_v
+          where exception_key = p_exception_key
+            and 1 = (
+               select 1
+                 from exceptions_pub_v
+                where exception_id = p_exception_id
+                  and ( created_by = p_app_user or result in ('REJECTED', 'STALE') )
+            ) )
       loop
-        -- there is an exception by the current user; display the button
-        return true;
+         -- there is an exception by the current user; display the button
+         return true;
       end loop;
-    end if; -- p_stale_eval = 'Y'
-    -- no exception found from the current user or exception is from another user; do not display the button
-    return false;
+   end if; -- p_stale_eval = 'Y'
 
-  end show_withdraw_exception_button;
+   -- no exception found from the current user or exception is from another user; do not display the button
+   return false;
+end show_withdraw_exception_button;
 
-  ----------------------------------------------------------------------------------------------------------------------------
-  -- PROCEDURE: R E S U B M I T _ E X C E P T I O N
-  -- resubmit a stale exception
-  -- ONLY stale exception wil be resubmitted.
-  -- purpose: resubmit an exception that has become STALE by setting its status back to PENDING and refreshing current_value.
-  -- behavior: validates that the exception's latest result is 'STALE'; updates result to PENDING and sets current_value
-  --   from eval_results for the given p_eval_result_id; raises -20001 when not STALE.
-  -- parameters:
-  --   p_exception_id   - exception id to resubmit
-  --   p_eval_result_id - eval_results id used to refresh current_value
-  ----------------------------------------------------------------------------------------------------------------------------
-  procedure resubmit_stale_exception
-    ( p_exception_id in number
-    ,p_eval_result_id in number
-    )
-  is
-    l_result  sert_core.exceptions.result%type;
-  begin
-    select max(result) into l_result from exceptions where exception_id = p_exception_id;
-    if ( l_result = 'STALE' ) then
-      -- we have something to do!
+----------------------------------------------------------------------------------------------------------------------------
+-- PROCEDURE: R E S U B M I T _ E X C E P T I O N
+-- resubmit a stale exception
+-- ONLY stale exception wil be resubmitted.
+-- purpose: resubmit an exception that has become STALE by setting its status back to PENDING and refreshing current_value.
+-- behavior: validates that the exception's latest result is 'STALE'; updates result to PENDING and sets current_value
+--   from eval_results for the given p_eval_result_id; raises -20001 when not STALE.
+-- parameters:
+--   p_exception_id   - exception id to resubmit
+--   p_eval_result_id - eval_results id used to refresh current_value
+-- usage:
+--   exceptions_api.resubmit_stale_exception(
+--      p_exception_id    => p_exception_id,
+--      p_eval_result_id  => p_eval_result_id
+--   );
+----------------------------------------------------------------------------------------------------------------------------
+procedure resubmit_stale_exception (
+   p_exception_id   in number
+   ,p_eval_result_id in number )
+is
+   l_result sert_core.exceptions.result%type;
+begin
+   select max(result)
+     into l_result
+     from exceptions
+    where exception_id = p_exception_id;
+
+   if ( l_result = 'STALE' ) then
+      -- we have something to do
       update exceptions
-      set result = 'PENDING'
-        ,current_value = (select substr(current_value,1,2000) from eval_results where eval_result_id = p_eval_result_id)
-      where exception_id = p_exception_id;
-    else
-      raise_application_error( -20001,'only a STALE exception can be resubmitted');
-    end if;
-  exception
-    when others then
+         set result        = 'PENDING'
+            ,current_value = (
+               select substr(current_value, 1, 2000)
+                 from eval_results
+                where eval_result_id = p_eval_result_id )
+       where exception_id = p_exception_id;
+   else
+      raise_application_error(-20001, 'only a STALE exception can be resubmitted');
+   end if;
+exception
+   when others then
       raise;
-  end resubmit_stale_exception;
+end resubmit_stale_exception;
 
-  ----------------------------------------------------------------------------------------------------------------------------
-  -- FUNCTION: W I T H D R A W _ E X C E P T I O N
-  -- Withdraws an exception, stopping any workflows
-  -- purpose: remove an exception and stop any related workflows.
-  -- behavior: deletes the exception row by id; scoring recalculation is intentionally left to caller.
-  -- parameters:
-  --   p_exception_id - exception identifier
-  --   p_eval_id      - evaluation id associated (reserved for scoring recalculation)
-  ----------------------------------------------------------------------------------------------------------------------------
-  procedure withdraw_exception
-    (
-    p_exception_id in number
-    ,p_eval_id      in number
-    )
-  is
-  begin
+----------------------------------------------------------------------------------------------------------------------------
+-- PROCEDURE: W I T H D R A W _ E X C E P T I O N
+-- Withdraws an exception, stopping any workflows
+-- withdraw_exception
+-- purpose: remove an exception and stop any related workflows.
+-- behavior: deletes the exception row by id; scoring recalculation is intentionally left to caller.
+-- parameters:
+--   p_exception_id - exception identifier
+--   p_eval_id      - evaluation id associated (reserved for scoring recalculation)
+-- usage:
+--   exceptions_api.withdraw_exception(
+--      p_exception_id => p_exception_id,
+--      p_eval_id      => p_eval_id
+--   );
+----------------------------------------------------------------------------------------------------------------------------
+procedure withdraw_exception (
+   p_exception_id in number
+   ,p_eval_id     in number )
+is
+begin
+   delete
+     from exceptions
+    where exception_id = p_exception_id;
 
-    delete from exceptions where exception_id = p_exception_id;
-    -- calculate the scores
-    -- eval_pkg.calc_score(p_eval_id => p_eval_id);
-  end withdraw_exception;
+   -- calculate the scores
+   -- eval_pkg.calc_score(p_eval_id => p_eval_id);
+end withdraw_exception;
 
-  ----------------------------------------------------------------------------------------------------------------------------
-  -- PROCEDURE: A P P R O V E _ O R _ R E J E C T _ E X C E P T I O N
-  -- Either approve or reject an exception
-  -- purpose: change an exception's status to the supplied result with reason and audit info.
-  -- behavior: updates exceptions with p_result, p_reason, actioned_by, actioned_on for the provided id.
-  -- parameters:
-  --   p_exception_id - target exception
-  --   p_result       - new status ('APPROVED'|'REJECTED'|...)
-  --   p_reason       - rationale for the change
-  --   p_app_user     - acting user (used when APEX session user is not set)
-  --   p_eval_id      - evaluation id associated (reserved for scoring recalculation)
-  ----------------------------------------------------------------------------------------------------------------------------
-  procedure approve_or_reject_exception
-    (
-    p_exception_id in number
-    ,p_result       in varchar2
-    ,p_reason       in varchar2
-    ,p_app_user     in varchar2
-    ,p_eval_id      in number
-    )
-  is
-  begin
+----------------------------------------------------------------------------------------------------------------------------
+-- PROCEDURE: A P P R O V E _ O R _ R E J E C T _ E X C E P T I O N
+-- Either approve or reject an exception
+-- approve_or_reject_exception
+-- purpose: change an exception's status to the supplied result with reason and audit info.
+-- behavior: updates exceptions with p_result, p_reason, actioned_by, actioned_on for the provided id.
+-- parameters:
+--   p_exception_id - target exception
+--   p_result       - new status ('APPROVED'|'REJECTED'|...)
+--   p_reason       - rationale for the change
+--   p_app_user     - acting user (used when APEX session user is not set)
+--   p_eval_id      - evaluation id associated (reserved for scoring recalculation)
+-- usage:
+--   exceptions_api.approve_or_reject_exception(
+--      p_exception_id => p_exception_id,
+--      p_result       => p_result,
+--      p_reason       => p_reason,
+--      p_app_user     => p_app_user,
+--      p_eval_id      => p_eval_id
+--   );
+----------------------------------------------------------------------------------------------------------------------------
+procedure approve_or_reject_exception (
+   p_exception_id in number
+   ,p_result      in varchar2
+   ,p_reason      in varchar2
+   ,p_app_user    in varchar2
+   ,p_eval_id     in number )
+is
+begin
+   update exceptions
+      set result      = p_result
+         ,reason      = p_reason
+         ,actioned_by = upper(coalesce(p_app_user, sys_context('APEX$SESSION', 'APP_USER')))
+         ,actioned_on = systimestamp
+    where exception_id = p_exception_id;
 
-    update exceptions set
-      result = p_result
-      ,reason = p_reason
-      ,actioned_by = upper(coalesce(p_app_user,sys_context('APEX$SESSION','APP_USER') ) )
-      ,actioned_on = systimestamp
-    where
-      exception_id = p_exception_id;
+   -- calculate the scores
+   -- eval_pkg.calc_score(p_eval_id => p_eval_id);
+end approve_or_reject_exception;
 
-    -- calculate the scores
-    -- eval_pkg.calc_score(p_eval_id => p_eval_id);
+----------------------------------------------------------------------------------------------------------------------------
+-- PROCEDURE: A P P R O V E _ O R _ R E J E C T _ E X C E P T I O N
+-- BULK ACTION : either approve or reject an exception in builk based on rule_id
+-- approve_or_reject_exception
+-- purpose: change an exception's status to the supplied result with reason and audit info.
+-- behavior: updates exceptions with p_result, p_reason, actioned_by, actioned_on for the provided rule scope.
+-- parameters:
+--   p_rule_id   - target rule for bulk update
+--   p_result    - new status ('APPROVED'|'REJECTED'|...)
+--   p_reason    - rationale for the change
+--   p_app_user  - acting user (used when APEX session user is not set)
+--   p_eval_id   - evaluation id associated (reserved for scoring recalculation)
+-- usage:
+--   exceptions_api.approve_or_reject_exception(
+--      p_rule_id   => p_rule_id,
+--      p_result    => p_result,
+--      p_reason    => p_reason,
+--      p_app_user  => p_app_user,
+--      p_eval_id   => p_eval_id
+--   );
+----------------------------------------------------------------------------------------------------------------------------
+procedure approve_or_reject_exception (
+   p_rule_id  in number
+   ,p_result   in varchar2
+   ,p_reason   in varchar2
+   ,p_app_user in varchar2
+   ,p_eval_id  in number )
+is
+begin
+   merge into exceptions e
+   using (
+      select exception_id
+        from eval_results_exc_pub_v
+       where result = 'PENDING'
+         and rule_id = p_rule_id
+         and upper(exception_created_by) <> upper(coalesce(p_app_user, sys_context('APEX$SESSION', 'APP_USER')))
+         and eval_id = p_eval_id
+   ) src
+      on ( e.exception_id = src.exception_id )
+   when matched then
+      update
+         set e.result      = p_result
+            ,e.reason      = p_reason
+            ,e.actioned_by = upper(coalesce(p_app_user, sys_context('APEX$SESSION', 'APP_USER')))
+            ,e.actioned_on = systimestamp;
 
-  end approve_or_reject_exception;
-
-  ----------------------------------------------------------------------------------------------------------------------------
-  -- PROCEDURE: A P P R O V E _ O R _ R E J E C T _ E X C E P T I O N
-  -- BULK ACTION : either approve or reject an exception in builk based on rule_id
-  -- purpose: change an exception's status to the supplied result with reason and audit info.
-  -- behavior: updates exceptions with p_result, p_reason, actioned_by, actioned_on for the provided id.
-  -- parameters:
-  --   p_rule_id      - target rule for bulk update
-  --   p_result       - new status ('APPROVED'|'REJECTED'|...)
-  --   p_reason       - rationale for the change
-  --   p_app_user     - acting user (used when APEX session user is not set)
-  --   p_eval_id      - evaluation id associated (reserved for scoring recalculation)
-  ----------------------------------------------------------------------------------------------------------------------------
-
-  procedure approve_or_reject_exception
-    (   p_rule_id   in number
-      , p_result    in varchar2
-      , p_reason    in varchar2
-      , p_app_user  in varchar2
-      , p_eval_id   in number )
-  is
-  begin
-
-    merge into exceptions e
-    using (
-        select exception_id
-        from   eval_results_exc_pub_v
-        where  result = 'PENDING'
-          and  rule_id = p_rule_id
-          and  upper(exception_created_by) <> upper(coalesce(p_app_user,sys_context('APEX$SESSION','APP_USER') ) )
-          and  eval_id = p_eval_id
-    ) src
-    on (e.exception_id = src.exception_id)
-    when matched then update set
-        e.result      = p_result,
-        e.reason      = p_reason,
-        e.actioned_by = upper(coalesce(p_app_user,sys_context('APEX$SESSION','APP_USER') ) ),
-        e.actioned_on = SYSTIMESTAMP;
-
-    -- calculate the scores
-    -- eval_pkg.calc_score(p_eval_id => p_eval_id);
-
-  end approve_or_reject_exception;
+   -- calculate the scores
+   -- eval_pkg.calc_score(p_eval_id => p_eval_id);
+end approve_or_reject_exception;
 
 
-  ----------------------------------------------------------------------------------------------------------------------------
-  -- PROCEDURE: G E T _ E X C E P T I O N _ S C O R E
-  -- Using AI, generates a score and reason for a specific exception
-  -- purpose: use an AI service to assign a score and reason to an exception for a specific rule.
-  -- behavior: when AI is enabled (pref AI_ENABLED='Y'), fetches rule's valid_exceptions; calls apex_ai.generate using
-  --   prompts drawn from prefs; logs full response; extracts $.score and $.reason into OUT params.
-  -- parameters:
-  --   p_rule_id                - rule identifier
-  --   p_exception              - exception text to evaluate
-  --   p_exception_score        - OUT score (number)
-  --   p_exception_score_reason - OUT reason (varchar2)
-  ----------------------------------------------------------------------------------------------------------------------------
-  procedure get_exception_score
-    (
-    p_rule_id                in number
-    ,p_exception              in varchar2
-    ,p_exception_score        out number
-    ,p_exception_score_reason out varchar2
-    )
-  is
-    l_valid_exceptions        varchar2(4000);
-    l_summary                 clob;
-  begin
-
-    -- determine score of exception using AI
-    if reports_pkg.get_pref_value(p_pref_key => 'AI_ENABLED') = 'Y' then
-
+----------------------------------------------------------------------------------------------------------------------------
+-- PROCEDURE: G E T _ E X C E P T I O N _ S C O R E
+-- Using AI, generates a score and reason for a specific exception
+-- get_exception_score
+-- purpose: use an AI service to assign a score and reason to an exception for a specific rule.
+-- behavior: when AI is enabled (pref AI_ENABLED='Y'), fetches rule's valid_exceptions; calls apex_ai.generate using
+--   prompts drawn from prefs; logs full response; extracts $.score and $.reason into OUT params.
+-- parameters:
+--   p_rule_id                - rule identifier
+--   p_exception              - exception text to evaluate
+--   p_exception_score        - OUT score (number)
+--   p_exception_score_reason - OUT reason (varchar2)
+-- usage:
+--   exceptions_api.get_exception_score(
+--      p_rule_id                => p_rule_id,
+--      p_exception              => p_exception,
+--      p_exception_score        => p_exception_score,
+--      p_exception_score_reason => p_exception_score_reason
+--   );
+----------------------------------------------------------------------------------------------------------------------------
+procedure get_exception_score (
+   p_rule_id                in number
+   ,p_exception             in varchar2
+   ,p_exception_score       out number
+   ,p_exception_score_reason out varchar2 )
+is
+   l_valid_exceptions varchar2(4000);
+   l_summary          clob;
+begin
+   -- determine score of exception using AI
+   if reports_pkg.get_pref_value(p_pref_key => 'AI_ENABLED') = 'Y' then
       -- get the list of valid exceptions
-      select valid_exceptions into l_valid_exceptions from rules where rule_id = p_rule_id;
+      select valid_exceptions
+        into l_valid_exceptions
+        from rules
+       where rule_id = p_rule_id;
 
       -- prepare the prompt and send to AI
       if l_valid_exceptions is not null then
+         l_summary := apex_ai.generate(
+            p_prompt            => 'Evaluate the quality of the following exception: ' || p_exception
+            ,p_system_prompt     => replace(reports_pkg.get_pref_value(p_pref_key => 'AI_EXCEPTION_PROMPT'), '{VALID_EXCEPTIONS}', l_valid_exceptions)
+            ,p_service_static_id => reports_pkg.get_pref_value(p_pref_key => 'AI_STATIC_ID')
+         );
 
-        l_summary := apex_ai.generate
-          (
-          p_prompt            => 'Evaluate the quality of the following exception: ' || p_exception
-          ,p_system_prompt     => replace(reports_pkg.get_pref_value(p_pref_key => 'AI_EXCEPTION_PROMPT'), '{VALID_EXCEPTIONS}', l_valid_exceptions)
-          ,p_service_static_id => reports_pkg.get_pref_value(p_pref_key => 'AI_STATIC_ID')
-          );
+         -- log the results
+         apex_debug.message(l_summary);
 
-        -- log the results
-        apex_debug.message(l_summary);
-
-        -- parse the AI response to get the score and reason
-        select
-          json_value(l_summary, '$.score')  as score
-          ,json_value(l_summary, '$.reason') as reason
-        into
-          p_exception_score
-          ,p_exception_score_reason
-        from
-          dual;
-
+         -- parse the AI response to get the score and reason
+         select json_value(l_summary, '$.score')  as score
+               ,json_value(l_summary, '$.reason') as reason
+           into p_exception_score
+               ,p_exception_score_reason
+           from dual;
       end if;
-
-    end if;
-
-  end get_exception_score;
+   end if;
+end get_exception_score;
 
   procedure bulk_add_exception
     (

@@ -1,12 +1,12 @@
--- file_checksum: 26142D7B75FC98AE169C94812D7F736CE2C6415A2118200EE7B4D094749708EE
+-- file_checksum: 69DD8C07F7B200CA6A09A909CC287CAB31FCAC7ED64683771BB4DC367799FBE3
 prompt --application/shared_components/user_interface/templates/label/required_above
 begin
 --   Manifest
 --     LABEL TEMPLATE: REQUIRED_ABOVE
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

@@ -1,12 +1,12 @@
--- file_checksum: 89625C10AC34B0BBF174E9DFDB5A702BD32948114129E649B03E50838EEA1647
+-- file_checksum: BA1E5CC5D561554D0596A09D266C23C7D3D56F0291A7DE03830FDF719ACB6C0B
 prompt --application/shared_components/user_interface/templates/region/title_bar
 begin
 --   Manifest
 --     REGION TEMPLATE: TITLE_BAR
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

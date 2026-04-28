@@ -1,12 +1,12 @@
--- file_checksum: A19AC2977A7A0E7B88D1CB3B3721E6B1BCC2AE98413D669141FFE1E4769B8A0D
+-- file_checksum: 6A7AAA6EDD12ACC61AD9A5495C29F565968574D7A58550A0F505B3D35BF354CF
 prompt --application/shared_components/plugins/template_component/theme_42_button
 begin
 --   Manifest
 --     PLUGIN: THEME_42$BUTTON
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

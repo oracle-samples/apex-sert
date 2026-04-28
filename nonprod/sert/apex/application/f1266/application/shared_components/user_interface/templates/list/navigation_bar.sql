@@ -1,12 +1,12 @@
--- file_checksum: B751A4E9826AF51080927D279F2252320963892434C78FBBF074DE8E9E31F472
+-- file_checksum: 06EA0E269A1F7E58ACD574B45351DEB46EC8EBB11695950408F7DABD022924CF
 prompt --application/shared_components/user_interface/templates/list/navigation_bar
 begin
 --   Manifest
 --     REGION TEMPLATE: NAVIGATION_BAR
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

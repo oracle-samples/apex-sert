@@ -1,12 +1,12 @@
--- file_checksum: 29D1B806A47F5D72EFC6C59389CD765FF7852AC76A3A624886DFD7C622356762
+-- file_checksum: 49E553F4CA06E1A1F5F4921C1D0135E46B8DA1097D77816384F73A9663D9CCA6
 prompt --application/shared_components/user_interface/shortcuts/delete_confirm_msg
 begin
 --   Manifest
 --     SHORTCUT: DELETE_CONFIRM_MSG
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083

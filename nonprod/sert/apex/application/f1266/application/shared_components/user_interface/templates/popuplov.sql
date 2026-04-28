@@ -1,12 +1,12 @@
--- file_checksum: A6F63430128367D884C567537F659CF13AF1050E573BC6FB8F3EBEA4ED6E40F0
+-- file_checksum: 5C25FEE4EFB9740C3D772042EB2A66CA8910D8C0A6250E42BCBBDF2244AE43A1
 prompt --application/shared_components/user_interface/templates/popuplov
 begin
 --   Manifest
 --     LOV TEMPLATES: 1266
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2024.05.31'
-,p_release=>'24.1.7'
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.14'
 ,p_default_workspace_id=>32049826282261068
 ,p_default_application_id=>1266
 ,p_default_id_offset=>11322785363014083
