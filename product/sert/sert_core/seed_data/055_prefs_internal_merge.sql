@@ -58,17 +58,6 @@ begin
         insert (pref_name, pref_key, pref_value,internal_yn)
         values (src.pref_name,src.pref_key,src.pref_value,src.internal_yn);
 
-    merge into sert_core.prefs dst
-    using ( select 'Release Version' as pref_name
-                  , 'RELEASE_VERSION' as pref_key
-                  , '24.2.26' as pref_value
-                  , 'Y' as internal_yn from dual ) src
-    on ( src.pref_key = dst.pref_key)
-      when matched then
-        update set dst.pref_value = src.pref_value ,dst.internal_yn = src.internal_yn
-      when not matched then
-        insert (pref_name, pref_key, pref_value,internal_yn)
-        values (src.pref_name,src.pref_key,src.pref_value,src.internal_yn);
 end;
 /
 

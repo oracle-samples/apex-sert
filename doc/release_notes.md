@@ -1,5 +1,11 @@
 # Release Notes
 
+## 24.2.27
+### Bulk Comments
+
+- Add a Bulk Add Comment action to the evaluation results page (App 2100) that lets a user apply a single comment to all findings for a selected rule, with an optional filter by finding status.
+- ensure user can see fix/info data for a rule, when doing bulk operations 
+
 ## 24.2.26
 
 ### improved AI behaviour for Exception scoring
