@@ -6,6 +6,11 @@
 - Add a Bulk Add Comment action to the evaluation results page (App 2100) that lets a user apply a single comment to all findings for a selected rule, with an optional filter by finding status.
 - ensure user can see fix/info data for a rule, when doing bulk operations 
 
+### release version refactor
+
+A housekeeping measure to put the statement setting SERT version, into it's own file and changeset for easier management
+`product/sert/sert_core/seed_data/052_prefs_release.sql` now contains the preference `RELEASE_VERSION`
+
 ## 24.2.26
 
 ### improved AI behaviour for Exception scoring
