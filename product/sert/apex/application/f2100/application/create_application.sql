@@ -1,5 +1,9 @@
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
--- file_checksum: E55227F950173447DE3FF5C49DDA64C61C33C8A6CBBF83F0C5C7386C81A83F95
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024-2026 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
+-- file_checksum: EE535D1A4438E46F74C7D2E36D2F1177AE3D9D1C279316E5439C969F92F7472A
 prompt --application/create_application
 begin
 --   Manifest
@@ -54,10 +58,10 @@ wwv_imp_workspace.create_flow(
 ,p_auto_time_zone=>'Y'
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'APEX-SERT'
-,p_last_updated_on=>wwv_flow_imp.dz('20260417165034Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20260502004449Z')
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>204
-,p_version_scn=>5245951
+,p_version_scn=>7420983
 ,p_print_server_type=>'INSTANCE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'Y'

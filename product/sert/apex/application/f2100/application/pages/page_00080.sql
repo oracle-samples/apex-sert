@@ -3,8 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
--- file_checksum: 0A0C4ABE874724C1165657C541112F09F4C8E0B0FB40EF4BB9F9EB4F8F3CA40A
+-- file_checksum: DE533E0FB47FD64343D9B9EA85BABBB549A28DD6C2A78D931C55E39A17DCB773
 prompt --application/pages/page_00080
 begin
 --   Manifest
@@ -31,28 +30,33 @@ wwv_flow_imp_page.create_page(
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'27'
+,p_last_updated_on=>wwv_flow_imp.dz('20260502004449Z')
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(530531340683036660)
 ,p_plug_name=>'Comments Form'
 ,p_region_template_options=>'#DEFAULT#:margin-left-md:margin-right-md'
 ,p_plug_template=>wwv_flow_imp.id(511920605950949485)
-,p_plug_display_sequence=>30
+,p_plug_display_sequence=>42
+,p_location=>null
 ,p_ai_enabled=>false
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'expand_shortcuts', 'N',
   'output_as', 'HTML')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260502002807Z')
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(531512882738303458)
 ,p_plug_name=>'Comments Button'
 ,p_region_template_options=>'#DEFAULT#:t-ButtonRegion--noUI'
 ,p_plug_template=>wwv_flow_imp.id(511923385421949487)
-,p_plug_display_sequence=>40
+,p_plug_display_sequence=>52
+,p_location=>null
 ,p_ai_enabled=>false
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'expand_shortcuts', 'N',
   'output_as', 'HTML')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260502002807Z')
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(539046859167455828)
@@ -61,7 +65,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_css_classes=>'refreshMe'
 ,p_region_template_options=>'#DEFAULT#:margin-bottom-lg:margin-left-lg:margin-right-lg'
 ,p_plug_template=>wwv_flow_imp.id(511921980148949486)
-,p_plug_display_sequence=>50
+,p_plug_display_sequence=>62
 ,p_query_type=>'SQL'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select EVAL_RESULT_ID,',
@@ -107,16 +111,19 @@ wwv_flow_imp_page.create_page_plug(
 ' where rule_id = :P80_SELECT_RULE ',
 '   and application_id = :G_APPLICATION_ID',
 '   and workspace_id = :G_WORKSPACE_ID',
-'   and RESULT = :P80_RESULT',
-' order by page_id, rule_name, description'))
+'   and RESULT = coalesce (:P80_RESULT,result)',
+'--  order by page_id, rule_name, description'))
+,p_query_order_by_type=>'STATIC'
+,p_query_order_by=>'page_id, rule_name, description'
 ,p_template_component_type=>'REPORT'
 ,p_lazy_loading=>false
 ,p_plug_source_type=>'TMPL_THEME_42$CONTENT_ROW'
 ,p_ajax_items_to_submit=>'P80_SELECT_RULE,P80_RESULT'
-,p_plug_query_num_rows=>10
+,p_plug_query_num_rows=>15
 ,p_plug_query_num_rows_type=>'SET'
 ,p_show_total_row_count=>true
 ,p_landmark_type=>'region'
+,p_row_selection_type=>'FOCUS'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'APPLY_THEME_COLORS', 'Y',
   'BADGE_COL_WIDTH', 't-ContentRow-badge--md',
@@ -130,6 +137,7 @@ wwv_flow_imp_page.create_page_plug(
   'HIDE_BORDERS', 'N',
   'MISC', '<span class="&COMMENT_ICON."</span>&nbsp;&COMMENT_CNT.',
   'REMOVE_PADDING', 'Y')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260502004347Z')
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(123883157031939318)
@@ -261,7 +269,8 @@ wwv_flow_imp_page.create_region_column(
 ,p_display_sequence=>10
 ,p_is_group=>false
 ,p_use_as_row_header=>false
-,p_is_primary_key=>false
+,p_is_primary_key=>true
+,p_updated_on=>wwv_flow_imp.dz('20260502002915Z')
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(539049257044455852)
@@ -694,24 +703,29 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_id=>wwv_flow_imp.id(512260466204949620)
 ,p_button_image_alt=>'Exception'
 ,p_button_position=>'CREATE'
-,p_button_redirect_url=>'f?p=&APP_ID.:70:&SESSION.::&DEBUG.:::'
+,p_button_redirect_url=>'f?p=&APP_ID.:70:&SESSION.::&DEBUG.::P70_BULK_ACTION:RAISE'
 ,p_icon_css_classes=>'fa-workflow'
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
+,p_updated_on=>wwv_flow_imp.dz('20260502001018Z')
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(101018434118760170)
 ,p_name=>'P80_RESULT'
 ,p_is_required=>true
-,p_item_sequence=>20
-,p_item_default=>'FAIL'
-,p_prompt=>'Result'
+,p_item_sequence=>32
+,p_prompt=>'Filter Result'
 ,p_display_as=>'NATIVE_SELECT_LIST'
 ,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select distinct result d, result r from eval_results_pub_v ',
-'where application_id = :G_APPLICATION_ID',
-'  and workspace_id = :G_WORKSPACE_ID',
+'select ''All Statuses'' d',
+'      , null r ',
+'from dual ',
+'-- union all select distinct json_value(result, ''$.result'') d, json_value(result, ''$.result'') r ',
+'union all select distinct result d, result r',
+'from sert_core.eval_results_v',
+'where eval_id = :P10_EVAL_ID ',
 '  and rule_id = :P80_SELECT_RULE',
-'  and result not in (''PASS'',''APPROVED'')'))
+'and application_id = :G_APPLICATION_ID ',
+'order by 1'))
 ,p_lov_cascade_parent_items=>'P80_SELECT_RULE'
 ,p_ajax_optimize_refresh=>'Y'
 ,p_cHeight=>1
@@ -720,21 +734,26 @@ wwv_flow_imp_page.create_page_item(
 ,p_lov_display_extra=>'NO'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'page_action_on_selection', 'NONE')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260502004449Z')
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(110673788043950664)
 ,p_name=>'P80_SELECT_RULE'
-,p_item_sequence=>10
+,p_item_sequence=>22
 ,p_prompt=>'Select Rule'
 ,p_display_as=>'NATIVE_POPUP_LOV'
 ,p_named_lov=>'RULES_LOV'
 ,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'Select distinct category_name ||'' - ''|| rule_name d, rule_id r ',
-'from eval_results_pub_v ',
+'select category_name || '' - '' || rule_name || '' ('' || count(*) || '')'' d, ',
+'       rule_id r ',
+'from sert_core.rules_by_category_eval_v  ',
 'where application_id = :G_APPLICATION_ID',
 '  and workspace_id = :G_WORKSPACE_ID',
-'  and RESULT not in (''PASS'',''APPROVED'')',
-'order by 1 '))
+'  and eval_id = :P10_EVAL_ID',
+'group by category_name, rule_name, rule_id',
+'order by count(*) desc, ',
+'category_name, rule_name',
+''))
 ,p_lov_display_null=>'YES'
 ,p_cSize=>30
 ,p_field_template=>wwv_flow_imp.id(512259205067949615)
@@ -748,6 +767,7 @@ wwv_flow_imp_page.create_page_item(
   'manual_entry', 'N',
   'match_type', 'CONTAINS',
   'min_chars', '0')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260502002807Z')
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(526649572994754840)
@@ -865,59 +885,66 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_sequence=>10
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_PLSQL'
-,p_process_name=>'Add comments'
+,p_process_name=>'Bulk Add comments'
 ,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'begin',
-'for i in(',
-'select',
-'   workspace_id',
-'  ,application_id',
-'  ,page_id',
-'  ,rule_id',
-'  ,rule_set_id',
-'  ,component_id',
-'  ,component_name',
-'  ,column_name',
-'  ,item_name',
-'  ,shared_comp_name',
-'  ,current_value',
-'  ,eval_id',
-'from ',
-'  eval_results_pub_v',
-'where',
-'      rule_id = :P80_SELECT_RULE',
-'  and application_id = :G_APPLICATION_ID',
-'  and workspace_id = :G_WORKSPACE_ID',
-'  and RESULT = :P80_RESULT)',
-'loop',
-'',
-'comments_api.add_comment',
-'  (',
-'   p_rule_set_id      => i.rule_set_id',
-'  ,p_rule_id          => :P80_SELECT_RULE',
-'  ,p_workspace_id     => i.workspace_id',
-'  ,p_application_id   => i.application_id',
-'  ,p_page_id          => i.page_id',
-'  ,p_component_id     => i.component_id',
-'  ,p_component_name   => i.component_name',
-'  ,p_column_name      => i.column_name',
-'  ,p_item_name        => i.item_name',
-'  ,p_shared_comp_name => i.shared_comp_name',
-'  ,p_comments        => :P80_COMMENTS',
+'  comments_api.bulk_add_comment(',
+'     p_eval_id        => :P10_EVAL_ID',
+'    ,p_workspace_id   => :G_WORKSPACE_ID',
+'    ,p_application_id => :G_APPLICATION_ID',
+'    ,p_rule_id        => :P80_SELECT_RULE',
+'    ,p_comment        => :P80_COMMENTS',
+'    ,p_result_filter  => :P80_RESULT',
 '  );',
-'',
-'',
-'end loop;',
 'end;',
 '',
+'-- begin',
+'-- for i in(',
+'-- select',
+'--    workspace_id',
+'--   ,application_id',
+'--   ,page_id',
+'--   ,rule_id',
+'--   ,rule_set_id',
+'--   ,component_id',
+'--   ,component_name',
+'--   ,column_name',
+'--   ,item_name',
+'--   ,shared_comp_name',
+'--   ,current_value',
+'--   ,eval_id',
+'-- from ',
+'--   eval_results_pub_v',
+'-- where',
+'--       rule_id = :P80_SELECT_RULE',
+'--   and application_id = :G_APPLICATION_ID',
+'--   and workspace_id = :G_WORKSPACE_ID',
+'--   and RESULT = :P80_RESULT)',
+'-- loop',
 '',
+'-- comments_api.add_comment',
+'--   (',
+'--    p_rule_set_id      => i.rule_set_id',
+'--   ,p_rule_id          => :P80_SELECT_RULE',
+'--   ,p_workspace_id     => i.workspace_id',
+'--   ,p_application_id   => i.application_id',
+'--   ,p_page_id          => i.page_id',
+'--   ,p_component_id     => i.component_id',
+'--   ,p_component_name   => i.component_name',
+'--   ,p_column_name      => i.column_name',
+'--   ,p_item_name        => i.item_name',
+'--   ,p_shared_comp_name => i.shared_comp_name',
+'--   ,p_comments        => :P80_COMMENTS',
+'--   );',
 '',
-'  '))
+'-- end loop;',
+'-- end;'))
 ,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(111308350291895010)
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_internal_uid=>12548265747979449
+,p_updated_on=>wwv_flow_imp.dz('20260501234904Z')
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(111318090221895065)
@@ -938,14 +965,18 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'Select Rule'
 ,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'begin',
-'IF :P70_BULK_ACTION = ''RAISE'' THEN',
-'   :P80_SELECT_RULE := :P70_SELECT_RULE_RAISE;',
-' ELSIF :P70_BULK_ACTION = ''AR'' THEN',
-'   :P80_SELECT_RULE := :P70_SELECT_RULE_AR;',
-'END IF;',
+'  if ( :P70_SELECT_RULE_RAISE is not null ) then  ',
+'    :P80_SELECT_RULE := :P70_SELECT_RULE_RAISE;',
+'  elsif ( :P70_SELECT_RULE_AR is not null ) then',
+'    :P80_SELECT_RULE := :P70_SELECT_RULE_AR;',
+'--   else ',
+'--         :P80_SELECT_RULE := null;',
+'  end if;',
+'',
 'end;'))
 ,p_process_clob_language=>'PLSQL'
 ,p_internal_uid=>15578826710044408
+,p_updated_on=>wwv_flow_imp.dz('20260502003948Z')
 );
 wwv_flow_imp.component_end;
 end;

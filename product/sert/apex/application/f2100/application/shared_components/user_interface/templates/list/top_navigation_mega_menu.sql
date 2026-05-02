@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 7DC160D2FCA93A5910B6B3E005B924A7E567A196535514A4F85E797E1DEA4418
 prompt --application/shared_components/user_interface/templates/list/top_navigation_mega_menu
 begin

@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 434098BDD0132CC4FBF00D117AE4B8A400DAA0959C85C3163D4984CCE2807B7E
 prompt --application/shared_components/reports/report_layouts/is_evaluation_summary_report_template
 begin

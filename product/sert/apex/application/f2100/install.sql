@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
+prompt app_checksum: 4A24649D3D89846191FE6519A209E9C890A63801E601D21AB899CB561AB09D70
 -- file_checksum: 59E941EA6F1EB5CB149251C6E53D560F6F3D34B3ED3A397D6D41D83CE2B82464
 prompt --install
 @@application/set_environment.sql

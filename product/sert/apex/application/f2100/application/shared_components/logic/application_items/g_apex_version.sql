@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 5FD0C3F2383CCAE468FCF82E31F7300378375078E8D69C022E07D3733B5FF9DB
 prompt --application/shared_components/logic/application_items/g_apex_version
 begin

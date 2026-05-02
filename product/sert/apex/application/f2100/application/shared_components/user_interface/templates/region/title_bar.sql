@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: BAF896C992BE73E52BE6105EFF707F63E4193F509B55E6AE6F9E1199887ACD03
 prompt --application/shared_components/user_interface/templates/region/title_bar
 begin

@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: EFF429C133264334EB8B7E65DF17CFD3E7E371FE0E5F8E1DC570150A774F0540
 prompt --application/shared_components/user_interface/templates/region/inline_popup
 begin

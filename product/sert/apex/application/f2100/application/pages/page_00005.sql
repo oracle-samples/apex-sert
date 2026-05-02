@@ -1,4 +1,8 @@
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
+-------------------------------------------------------------------------------
+-- Copyright (c) 2024-2026 Oracle and/or its affiliates.
+-- Licensed under the Universal Permissive License v 1.0 as shown
+-- at https://oss.oracle.com/licenses/upl/
+--------------------------------------------------------------------------------
 -- file_checksum: CAF99B056CD1C112E73459306CDAC37770DAD81462F8CE7CF74A64511DAE6059
 prompt --application/pages/page_00005
 begin

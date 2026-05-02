@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 1E5D65FACD918F80B844A245AB6A1FB36B56C8D35A2F01AF67EFF5CA0A273572
 prompt --application/shared_components/logic/application_items/g_icon
 begin

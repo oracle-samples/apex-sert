@@ -3,8 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
--- file_checksum: 7F680A0A5E141F6D839EB9C7D259C7A474B2A3F88A56B075D4016FDA50A6A4B3
+-- file_checksum: 8F5F8172594DBF8C96C0AD7A29AF4A5FDC73C5FF8E851762D3996DFC861A2124
 prompt --application/pages/page_00070
 begin
 --   Manifest
@@ -27,17 +26,36 @@ wwv_flow_imp_page.create_page(
 ,p_allow_duplicate_submissions=>'N'
 ,p_autocomplete_on_off=>'OFF'
 ,p_step_template=>wwv_flow_imp.id(511884707145949411)
-,p_page_template_options=>'#DEFAULT#:js-dialog-class-t-Drawer--pullOutEnd'
+,p_page_template_options=>'#DEFAULT#:js-dialog-class-t-Drawer--pullOutEnd:js-dialog-class-t-Drawer--md'
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'27'
+,p_last_updated_on=>wwv_flow_imp.dz('20260502003106Z')
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(8155815258992119)
+,p_plug_name=>'BULK-ADD-COMMENT'
+,p_title=>'Add Comments (Bulk)'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_imp.id(511987240355949540)
+,p_plug_display_sequence=>40
+,p_location=>null
+,p_plug_display_condition_type=>'VAL_OF_ITEM_IN_COND_EQ_COND2'
+,p_plug_display_when_condition=>'P70_BULK_ACTION'
+,p_plug_display_when_cond2=>'COMMENT'
+,p_required_patch=>wwv_flow_imp.id(511883277556949400)
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260501032109Z')
+,p_updated_on=>wwv_flow_imp.dz('20260501235528Z')
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(110674287828950669)
 ,p_plug_name=>'Evaluation Results-Failed'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(511921980148949486)
-,p_plug_display_sequence=>50
+,p_plug_display_sequence=>60
 ,p_query_type=>'SQL'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select EVAL_RESULT_ID,',
@@ -114,6 +132,7 @@ wwv_flow_imp_page.create_page_plug(
   'OVERLINE', '&RULE_NAME.',
   'REMOVE_PADDING', 'N',
   'TITLE', '&DESCRIPTION.')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260501032109Z')
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(111480546010027320)
@@ -600,7 +619,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_name=>'Evaluation Results-Pending'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(511921980148949486)
-,p_plug_display_sequence=>70
+,p_plug_display_sequence=>90
 ,p_query_type=>'SQL'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select EVAL_RESULT_ID,',
@@ -680,6 +699,7 @@ wwv_flow_imp_page.create_page_plug(
   'OVERLINE', '&RULE_NAME.',
   'REMOVE_PADDING', 'N',
   'TITLE', '&DESCRIPTION.')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260501032109Z')
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(126832733531995941)
@@ -1219,7 +1239,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_name=>'Exceptions Form'
 ,p_region_template_options=>'#DEFAULT#:margin-left-md:margin-right-md'
 ,p_plug_template=>wwv_flow_imp.id(511920605950949485)
-,p_plug_display_sequence=>40
+,p_plug_display_sequence=>50
 ,p_location=>null
 ,p_plug_display_condition_type=>'VAL_OF_ITEM_IN_COND_EQ_COND2'
 ,p_plug_display_when_condition=>'P70_BULK_ACTION'
@@ -1228,6 +1248,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'expand_shortcuts', 'N',
   'output_as', 'HTML')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260501032109Z')
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(564348900672657655)
@@ -1246,7 +1267,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_name=>'Reviews'
 ,p_region_template_options=>'#DEFAULT#:t-ContentBlock--h3:margin-left-sm:margin-right-sm'
 ,p_plug_template=>wwv_flow_imp.id(511949340714949511)
-,p_plug_display_sequence=>60
+,p_plug_display_sequence=>70
 ,p_location=>null
 ,p_plug_display_condition_type=>'EXPRESSION'
 ,p_plug_display_when_condition=>'( :G_STALE_EVAL = ''N'' and :P70_BULK_ACTION = ''AR'' )'
@@ -1255,6 +1276,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'expand_shortcuts', 'N',
   'output_as', 'HTML')).to_clob
+,p_updated_on=>wwv_flow_imp.dz('20260501032109Z')
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(566072767751613468)
@@ -1300,6 +1322,24 @@ wwv_flow_imp_page.create_page_button(
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
 );
 wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(8156211113992123)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(8155815258992119)
+,p_button_name=>'ADD_COMMENTS'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(512260372386949620)
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Add Comments'
+,p_button_position=>'CREATE'
+,p_button_condition=>'P70_BULK_ACTION'
+,p_button_condition2=>'COMMENT'
+,p_button_condition_type=>'VAL_OF_ITEM_IN_COND_EQ_COND2'
+,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
+,p_created_on=>wwv_flow_imp.dz('20260501032915Z')
+,p_updated_on=>wwv_flow_imp.dz('20260501204115Z')
+);
+wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(102790159389523288)
 ,p_button_sequence=>10
 ,p_button_plug_id=>wwv_flow_imp.id(566072767751613468)
@@ -1323,11 +1363,12 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_action=>'REDIRECT_PAGE'
 ,p_button_template_options=>'#DEFAULT#:t-Button--noUI:t-Button--iconLeft'
 ,p_button_template_id=>wwv_flow_imp.id(512260466204949620)
-,p_button_image_alt=>'Result Details'
+,p_button_image_alt=>'Rule Details'
 ,p_button_position=>'CREATE'
 ,p_button_redirect_url=>'f?p=&APP_ID.:90:&SESSION.::&DEBUG.:::'
 ,p_icon_css_classes=>'fa-info-circle-o'
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
+,p_updated_on=>wwv_flow_imp.dz('20260502003106Z')
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(111092574030344070)
@@ -1373,6 +1414,100 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-workflow'
 ,p_button_cattributes=>'style="font-weight:bold; border-top: 4px green solid;"'
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(8155954824992120)
+,p_name=>'P70_SELECT_RULE_COMMENT'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(8155815258992119)
+,p_prompt=>'Select Rule'
+,p_display_as=>'NATIVE_POPUP_LOV'
+,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select category_name || '' - '' || rule_name || '' ('' || count(*) || '')'' d, ',
+'       rule_id r ',
+'from sert_core.rules_by_category_eval_v ',
+'where eval_id = :P10_EVAL_ID ',
+'and application_id = :G_APPLICATION_ID ',
+'and workspace_id = :G_WORKSPACE_ID ',
+'group by category_name, rule_name, rule_id',
+'order by count(*) desc, ',
+'category_name, rule_name'))
+,p_lov_display_null=>'YES'
+,p_cSize=>30
+,p_display_when=>'P70_BULK_ACTION'
+,p_display_when2=>'COMMENT'
+,p_display_when_type=>'VAL_OF_ITEM_IN_COND_EQ_COND2'
+,p_field_template=>wwv_flow_imp.id(512259205067949615)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'case_sensitive', 'N',
+  'display_as', 'POPUP',
+  'fetch_on_search', 'N',
+  'initial_fetch', 'FIRST_ROWSET',
+  'manual_entry', 'N',
+  'match_type', 'CONTAINS',
+  'min_chars', '0')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260501032109Z')
+,p_updated_on=>wwv_flow_imp.dz('20260501032159Z')
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(8156020362992121)
+,p_name=>'P70_RESULT_FILTER'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(8155815258992119)
+,p_prompt=>'Status Filter'
+,p_display_as=>'NATIVE_POPUP_LOV'
+,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select ''All Statuses'' d',
+'      , null r ',
+'from dual ',
+'-- union all select distinct json_value(result, ''$.result'') d, json_value(result, ''$.result'') r ',
+'union all select distinct result d, result r',
+'from sert_core.eval_results_v',
+'where eval_id = :P10_EVAL_ID ',
+'and application_id = :G_APPLICATION_ID ',
+'order by 1'))
+,p_cSize=>30
+,p_display_when=>'P70_BULK_ACTION'
+,p_display_when2=>'COMMENT'
+,p_display_when_type=>'VAL_OF_ITEM_IN_COND_EQ_COND2'
+,p_field_template=>wwv_flow_imp.id(512257901776949613)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'case_sensitive', 'N',
+  'display_as', 'POPUP',
+  'fetch_on_search', 'N',
+  'initial_fetch', 'FIRST_ROWSET',
+  'manual_entry', 'N',
+  'match_type', 'CONTAINS',
+  'min_chars', '0')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260501032613Z')
+,p_updated_on=>wwv_flow_imp.dz('20260501203805Z')
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(8156124011992122)
+,p_name=>'P70_COMMENT'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(8155815258992119)
+,p_prompt=>'Comment'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>30
+,p_cMaxlength=>4000
+,p_cHeight=>5
+,p_display_when=>'P70_BULK_ACTION'
+,p_display_when2=>'COMMENT'
+,p_display_when_type=>'VAL_OF_ITEM_IN_COND_EQ_COND2'
+,p_field_template=>wwv_flow_imp.id(512259205067949615)
+,p_item_template_options=>'#DEFAULT#'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'auto_height', 'N',
+  'character_counter', 'N',
+  'resizable', 'Y',
+  'trim_spaces', 'BOTH')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20260501032754Z')
+,p_updated_on=>wwv_flow_imp.dz('20260501032754Z')
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(101018278168760169)
@@ -1663,8 +1798,31 @@ wwv_flow_imp_page.create_page_process(
 ,p_internal_uid=>12546184118979428
 );
 wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(8156312417992124)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Bulk Add Comments'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'  comments_api.bulk_add_comment(',
+'     p_eval_id        => :P10_EVAL_ID',
+'    ,p_workspace_id   => :G_WORKSPACE_ID',
+'    ,p_application_id => :G_APPLICATION_ID',
+'    ,p_rule_id        => :P70_SELECT_RULE_COMMENT',
+'    ,p_comment        => :P70_COMMENT',
+'    ,p_result_filter  => :P70_RESULT_FILTER',
+'  );',
+'end;'))
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_internal_uid=>8156312417992124
+,p_created_on=>wwv_flow_imp.dz('20260501033015Z')
+,p_updated_on=>wwv_flow_imp.dz('20260501203420Z')
+);
+wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(102808332919528121)
-,p_process_sequence=>50
+,p_process_sequence=>30
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'Approve/Reject Exceptions'
@@ -1693,10 +1851,11 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_when2=>'AR'
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_internal_uid=>15365497196971595
+,p_updated_on=>wwv_flow_imp.dz('20260501203420Z')
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(111101591158344126)
-,p_process_sequence=>70
+,p_process_sequence=>40
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'Close Dialog after Exception'
@@ -1704,6 +1863,35 @@ wwv_flow_imp_page.create_page_process(
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_internal_uid=>12975656163372907
+,p_updated_on=>wwv_flow_imp.dz('20260501203420Z')
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(14187422307577581)
+,p_process_sequence=>50
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Select Rule'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'',
+'begin',
+'    if (:P70_BULK_ACTION = ''RAISE'') then ',
+'',
+'        if (:P80_SELECT_RULE is not null ) then ',
+'            :P70_SELECT_RULE_RAISE := :P80_SELECT_RULE;',
+'        end if;',
+'    elsif (:P70_BULK_ACTION = ''AR'') then ',
+'',
+'        if (:P80_SELECT_RULE is not null ) then ',
+'            :P70_SELECT_RULE_AR := :P80_SELECT_RULE;',
+'        end if;',
+'',
+'    end if;',
+'    ',
+'end;'))
+,p_process_clob_language=>'PLSQL'
+,p_internal_uid=>14187422307577581
+,p_created_on=>wwv_flow_imp.dz('20260502000336Z')
+,p_updated_on=>wwv_flow_imp.dz('20260502000826Z')
 );
 wwv_flow_imp.component_end;
 end;

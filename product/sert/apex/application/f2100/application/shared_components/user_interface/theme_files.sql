@@ -3,8 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
--- file_checksum: 8BBA35D93BCA954DF03618EC3AB4BD4DB3E41386D19511327C68B4B1E3DAB983
+-- file_checksum: D39196E5DAA9580C545F9C4E76F72731DBDE284F418AD455D3C617DDDA68EBE4
 prompt --application/shared_components/user_interface/theme_files
 begin
 --   Manifest
@@ -27,8 +26,8 @@ wwv_flow_imp_shared.create_theme_file(
 ,p_mime_type=>'text/css'
 ,p_file_charset=>'utf-8'
 ,p_file_content => wwv_flow_imp.varchar2_to_blob(wwv_flow_imp.g_varchar2_table)
-,p_created_on=>wwv_flow_imp.dz('20260412021313Z')
-,p_updated_on=>wwv_flow_imp.dz('20260412021313Z')
+,p_created_on=>wwv_flow_imp.dz('20260418174534Z')
+,p_updated_on=>wwv_flow_imp.dz('20260418174534Z')
 );
 wwv_flow_imp.component_end;
 end;

@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: F5519C3341E73176344A13AD38DB9AA8E131E8E4B1571B2A81CC4F8083C0EF48
 prompt --application/shared_components/files/is_evaluation_exception_report_template_docx
 begin
