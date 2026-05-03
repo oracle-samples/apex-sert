@@ -134,7 +134,17 @@ begin
     and    e.workspace_id    = p_workspace_id
     and    er.eval_id        = p_eval_id
     and    ( p_result_filter is null
-             or json_value(er.result, '$.result' returning varchar2(10)) = p_result_filter );
+             or case
+                  when json_value(er.result, '$.result' returning varchar2(100)) = 'PASS'
+                    then json_value(er.result, '$.result' returning varchar2(100))
+                  else nvl(
+                    ( select exc.result
+                      from   sert_core.exception_cnt_v exc
+                      where  exc.eval_result_id = er.eval_result_id
+                      and    rownum             = 1 )
+                   ,json_value(er.result, '$.result' returning varchar2(100))
+                  )
+                end = p_result_filter );
 end bulk_add_comment; -- bulk_add_comment
 
 end comments_api;

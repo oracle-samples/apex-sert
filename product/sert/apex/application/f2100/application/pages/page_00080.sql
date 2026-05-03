@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: DE533E0FB47FD64343D9B9EA85BABBB549A28DD6C2A78D931C55E39A17DCB773
+-- file_checksum: 88DAA78F5C501A789EE218C4D6C74C3459443A76E0F224174BD513B6649A308D
 prompt --application/pages/page_00080
 begin
 --   Manifest
@@ -30,7 +30,7 @@ wwv_flow_imp_page.create_page(
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'27'
-,p_last_updated_on=>wwv_flow_imp.dz('20260502004449Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20260502221951Z')
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(530531340683036660)
@@ -711,15 +711,13 @@ wwv_flow_imp_page.create_page_button(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(101018434118760170)
 ,p_name=>'P80_RESULT'
-,p_is_required=>true
 ,p_item_sequence=>32
 ,p_prompt=>'Filter Result'
 ,p_display_as=>'NATIVE_SELECT_LIST'
 ,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select ''All Statuses'' d',
+'select '' All Statuses'' d',
 '      , null r ',
 'from dual ',
-'-- union all select distinct json_value(result, ''$.result'') d, json_value(result, ''$.result'') r ',
 'union all select distinct result d, result r',
 'from sert_core.eval_results_v',
 'where eval_id = :P10_EVAL_ID ',
@@ -729,12 +727,12 @@ wwv_flow_imp_page.create_page_item(
 ,p_lov_cascade_parent_items=>'P80_SELECT_RULE'
 ,p_ajax_optimize_refresh=>'Y'
 ,p_cHeight=>1
-,p_field_template=>wwv_flow_imp.id(512259205067949615)
-,p_item_template_options=>'#DEFAULT#:margin-left-sm:margin-right-sm'
+,p_field_template=>wwv_flow_imp.id(512257901776949613)
+,p_item_template_options=>'#DEFAULT#'
 ,p_lov_display_extra=>'NO'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'page_action_on_selection', 'NONE')).to_clob
-,p_updated_on=>wwv_flow_imp.dz('20260502004449Z')
+,p_updated_on=>wwv_flow_imp.dz('20260502221951Z')
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(110673788043950664)
@@ -896,55 +894,13 @@ wwv_flow_imp_page.create_page_process(
 '    ,p_comment        => :P80_COMMENTS',
 '    ,p_result_filter  => :P80_RESULT',
 '  );',
-'end;',
-'',
-'-- begin',
-'-- for i in(',
-'-- select',
-'--    workspace_id',
-'--   ,application_id',
-'--   ,page_id',
-'--   ,rule_id',
-'--   ,rule_set_id',
-'--   ,component_id',
-'--   ,component_name',
-'--   ,column_name',
-'--   ,item_name',
-'--   ,shared_comp_name',
-'--   ,current_value',
-'--   ,eval_id',
-'-- from ',
-'--   eval_results_pub_v',
-'-- where',
-'--       rule_id = :P80_SELECT_RULE',
-'--   and application_id = :G_APPLICATION_ID',
-'--   and workspace_id = :G_WORKSPACE_ID',
-'--   and RESULT = :P80_RESULT)',
-'-- loop',
-'',
-'-- comments_api.add_comment',
-'--   (',
-'--    p_rule_set_id      => i.rule_set_id',
-'--   ,p_rule_id          => :P80_SELECT_RULE',
-'--   ,p_workspace_id     => i.workspace_id',
-'--   ,p_application_id   => i.application_id',
-'--   ,p_page_id          => i.page_id',
-'--   ,p_component_id     => i.component_id',
-'--   ,p_component_name   => i.component_name',
-'--   ,p_column_name      => i.column_name',
-'--   ,p_item_name        => i.item_name',
-'--   ,p_shared_comp_name => i.shared_comp_name',
-'--   ,p_comments        => :P80_COMMENTS',
-'--   );',
-'',
-'-- end loop;',
-'-- end;'))
+'end;'))
 ,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(111308350291895010)
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_internal_uid=>12548265747979449
-,p_updated_on=>wwv_flow_imp.dz('20260501234904Z')
+,p_updated_on=>wwv_flow_imp.dz('20260502220719Z')
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(111318090221895065)

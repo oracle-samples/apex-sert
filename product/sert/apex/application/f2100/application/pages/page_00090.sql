@@ -3,7 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
--- file_checksum: E65BA13A7F5D604982B7005756CDA6947AA8AAE415E26B1CA4C699B7C088FB2C
+-- file_checksum: 38D6038DC9F70D3C524A6748D615DDCF468EE78D427A6013E24981EB1C8F2EF5
 prompt --application/pages/page_00090
 begin
 --   Manifest
@@ -35,7 +35,7 @@ wwv_flow_imp_page.create_page(
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'03'
-,p_last_updated_on=>wwv_flow_imp.dz('20260502004254Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20260502222120Z')
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(528478626114465887)
@@ -309,35 +309,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_protection_level=>'S'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'value_protected', 'Y')).to_clob
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(104164966138521156)
-,p_name=>'P90_SELECT_RULE'
-,p_item_sequence=>10
-,p_prompt=>'Select Rule'
-,p_display_as=>'NATIVE_POPUP_LOV'
-,p_named_lov=>'RULES_LOV'
-,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'Select distinct category_name ||'' - ''|| rule_name d, rule_id r ',
-'from eval_results_pub_v ',
-'where application_id = :G_APPLICATION_ID',
-'  and workspace_id = :G_WORKSPACE_ID',
-'  and RESULT not in (''PASS'',''APPROVED'')',
-'order by 1 '))
-,p_lov_display_null=>'YES'
-,p_cSize=>30
-,p_display_when_type=>'NEVER'
-,p_field_template=>wwv_flow_imp.id(512259205067949615)
-,p_item_template_options=>'#DEFAULT#'
-,p_lov_display_extra=>'NO'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'case_sensitive', 'N',
-  'display_as', 'POPUP',
-  'fetch_on_search', 'N',
-  'initial_fetch', 'FIRST_ROWSET',
-  'manual_entry', 'N',
-  'match_type', 'CONTAINS',
-  'min_chars', '0')).to_clob
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(102985001907498638)

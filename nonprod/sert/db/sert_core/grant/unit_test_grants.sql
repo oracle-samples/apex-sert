@@ -33,3 +33,7 @@ grant insert on sert_core.eval_results to unit_test;
 --changeset mipotter:grant_select_on_sert_core.comments_to_unit_test_1746144000006 endDelimiter:; runOnChange:true runAlways:false rollbackEndDelimiter:;
 grant select on sert_core.comments to unit_test;
 --rollback not required
+
+--changeset mipotter:grant_select_on_sert_core.exception_cnt_v_to_unit_test_1746144000007 endDelimiter:; runOnChange:true runAlways:false rollbackEndDelimiter:;
+grant select on sert_core.exception_cnt_v to unit_test;
+--rollback not required
