@@ -3,8 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
--- file_checksum: D88FEAEC77431A238D3ED0154B25C49DF7D03BEE1FB5FCC7F90B5DA435973668
+-- file_checksum: 956F96819A541EF211267DDD7534DD117B0A38B312A19CBCC4F3FDAE4A1FB47E
 prompt --application/shared_components/user_interface/lovs/rules_lov
 begin
 --   Manifest
@@ -22,12 +21,16 @@ wwv_flow_imp_shared.create_list_of_values(
  p_id=>wwv_flow_imp.id(111110891776426049)
 ,p_lov_name=>'RULES_LOV'
 ,p_lov_query=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'Select distinct category_name ||'' - ''|| rule_name d, rule_id r ',
-'from eval_results_pub_v ',
+'select category_name || '' - '' || rule_name || '' ('' || count(*) || '')'' d, ',
+'       rule_id r ',
+'from sert_core.rules_by_category_eval_v  ',
 'where application_id = :G_APPLICATION_ID',
 '  and workspace_id = :G_WORKSPACE_ID',
-'  and RESULT not in (''PASS'',''APPROVED'')',
-'order by 1 '))
+'  and eval_id = :P10_EVAL_ID',
+'group by category_name, rule_name, rule_id',
+'order by count(*) desc, ',
+'category_name, rule_name',
+''))
 ,p_source_type=>'SQL'
 ,p_location=>'LOCAL'
 ,p_query_owner=>'SERT_CORE'
@@ -35,7 +38,8 @@ wwv_flow_imp_shared.create_list_of_values(
 ,p_display_column_name=>'D'
 ,p_group_sort_direction=>'ASC'
 ,p_default_sort_direction=>'ASC'
-,p_version_scn=>41953397247791
+,p_version_scn=>7383914
+,p_updated_on=>wwv_flow_imp.dz('20260501234039Z')
 );
 wwv_flow_imp.component_end;
 end;

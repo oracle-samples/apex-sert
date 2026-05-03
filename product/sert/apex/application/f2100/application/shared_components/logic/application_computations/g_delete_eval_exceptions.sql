@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: A76D32A80F235AB48C6F5EEF2BA6D63EE0906FD728FA29961841DAD3559CC059
 prompt --application/shared_components/logic/application_computations/g_delete_eval_exceptions
 begin

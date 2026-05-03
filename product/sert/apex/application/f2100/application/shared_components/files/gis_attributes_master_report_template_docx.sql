@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: DF0883860D441E4D1BDC6932B60514268CB4C1D25B7045400FCFD9787D71B66C
 prompt --application/shared_components/files/gis_attributes_master_report_template_docx
 begin

@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 7F3DB69C385DA1670EFA1A46418AF5F78F258DAC8895755D5832FA1335D0E087
 prompt --application/shared_components/logic/application_computations/g_oci_bucket_output_folder
 begin

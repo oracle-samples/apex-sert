@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: E77D53D23724343FA3E138547898C990D99194220E6EB368737039436936F1F9
 prompt --application/shared_components/user_interface/lovs/rules_lov_exceptions_ar
 begin

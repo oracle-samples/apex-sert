@@ -17,6 +17,14 @@
     errorIfMissingOrEmpty="false"
     path="sert/db/_dba"
   />
+  <include
+    relativeToChangelogFile="true"
+    file="sert/db/sert_core/schemaController.xml"
+  />
+  <include
+    relativeToChangelogFile="true"
+    file="sert/db/sert_pub/schemaController.xml"
+  />
 
   <include
     relativeToChangelogFile="true"

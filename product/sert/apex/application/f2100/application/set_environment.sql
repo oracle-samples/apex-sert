@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 48B77883D24BCE38AA97D734AAD9C3CC47A0380737B87CDB842ACF7556272B4E
 prompt --application/set_environment
 set define off verify off feedback off

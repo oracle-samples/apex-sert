@@ -1,7 +1,7 @@
 #!/bin/bash
 # export_apex.sh — Export APEX applications to source control via SQLcl
 #
-# Usage:  ./export_apex.sh <app_id> [<app_id> ...]
+# Usage:  ./export_apex.sh [-l|--licence] <app_id> [<app_id> ...]
 # Requires:
 #   $SQLC_CONN  — name of a saved SQLcl / SQL Developer connection
 #   jq          
@@ -16,6 +16,19 @@ set -uo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 CONFIG_FILE="${REPO_ROOT}/apex_config.json"
+LICENCE_FILE="${REPO_ROOT}/development/licence_snip.txt"
+
+# ── Flag parsing ──────────────────────────────────────────────────────────────
+ADD_LICENCE=false
+APP_IDS=()
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -l|--licence) ADD_LICENCE=true; shift ;;
+        -*) echo "Unknown option: $1" >&2; echo "Usage: $(basename "$0") [-l|--licence] <app_id> [<app_id> ...]"; exit 1 ;;
+        *) APP_IDS+=("$1"); shift ;;
+    esac
+done
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 err()  { echo "ERROR: $*" >&2; exit 1; }
@@ -71,11 +84,12 @@ stamp_checksums() {
     app_checksum=$(sha256_string "$combined")
     info "App checksum: $app_checksum"
 
-    # Prepend headers to each file
+    # Prepend headers to each file; app_checksum line only goes into install.sql
+    local install_sql="${app_dir}/install.sql"
     while IFS=$'\t' read -r f fc; do
         [[ -z "$f" ]] && continue
         {
-            printf 'prompt app_checksum: %s\n' "$app_checksum"
+            [[ "$f" == "$install_sql" ]] && printf 'prompt app_checksum: %s\n' "$app_checksum"
             printf '%s\n' "-- file_checksum: ${fc}"
             cat "$f"
         } > "${f}.tmp" && mv "${f}.tmp" "$f"
@@ -85,12 +99,27 @@ stamp_checksums() {
     info "Checksums stamped."
 }
 
+# prefix_licence <app_dir>
+# Prepends licence_snip.txt to every .sql file under <app_dir>
+prefix_licence() {
+    local app_dir=$1
+    local licence_text
+    licence_text=$(cat "$LICENCE_FILE")
+    local count=0
+    while IFS= read -r -d '' f; do
+        { printf '%s\n' "$licence_text"; cat "$f"; } > "${f}.tmp" && mv "${f}.tmp" "$f"
+        (( count++ )) || true
+    done < <(find "$app_dir" -name "*.sql" -print0 | sort -z)
+    info "Licence header prepended to $count .sql file(s)."
+}
+
 # ── Prerequisites ─────────────────────────────────────────────────────────────
-[[ -z "${SQLC_CONN:-}" ]]  && err "SQLC_CONN environment variable is not set."
-[[ $# -eq 0 ]]             && { echo "Usage: $(basename "$0") <app_id> [<app_id> ...]"; exit 1; }
-command -v jq  &>/dev/null || err "jq is required — brew install jq"
-command -v sql &>/dev/null || err "sqlcl (sql) not found in PATH."
-[[ -f "$CONFIG_FILE" ]]    || err "Config file not found: $CONFIG_FILE"
+[[ -z "${SQLC_CONN:-}" ]]       && err "SQLC_CONN environment variable is not set."
+[[ ${#APP_IDS[@]} -eq 0 ]]      && { echo "Usage: $(basename "$0") [-l|--licence] <app_id> [<app_id> ...]"; exit 1; }
+command -v jq  &>/dev/null      || err "jq is required — brew install jq"
+command -v sql &>/dev/null      || err "sqlcl (sql) not found in PATH."
+[[ -f "$CONFIG_FILE" ]]         || err "Config file not found: $CONFIG_FILE"
+$ADD_LICENCE && [[ ! -f "$LICENCE_FILE" ]] && err "Licence file not found: $LICENCE_FILE"
 
 # ── Config lookup ─────────────────────────────────────────────────────────────
 # get_config <app_id> <field>
@@ -137,7 +166,7 @@ echo
 # ── Export each application ───────────────────────────────────────────────────
 export_failed=0
 
-for app_id in "$@"; do
+for app_id in "${APP_IDS[@]}"; do
     printf '═%.0s' {1..60}; echo
     echo "Exporting APEX application $app_id"
     printf '═%.0s' {1..60}; echo
@@ -207,6 +236,9 @@ SQLEOF
 
     # ── Stamp checksums ───────────────────────────────────────────────────────
     stamp_checksums "$app_dir"
+
+    # ── Prepend licence header (only when -l|--licence is set) ───────────────
+    $ADD_LICENCE && prefix_licence "$app_dir"
 
     echo "  App $app_id exported successfully."
     echo

@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: AB13B1595E3F104987B2EC030FBCBF523F341EECF046D28058D288234CDADC5A
 prompt --application/shared_components/logic/application_computations/g_stale_eval
 begin

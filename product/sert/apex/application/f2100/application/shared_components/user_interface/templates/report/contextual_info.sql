@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: F260CFB97959954BDC55D26F4AAF17824DFAEA5CF1AC9D31D8B0041738B4C01C
 prompt --application/shared_components/user_interface/templates/report/contextual_info
 begin

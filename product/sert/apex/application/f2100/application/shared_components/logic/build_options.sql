@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: EA0EF8E7F8B3992C21507AD553D67A1565A4A76C9DC5804E548901B8D5EF2E42
 prompt --application/shared_components/logic/build_options
 begin

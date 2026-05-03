@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 16DDEE9C04146542BA78E54D187A268E6F4291EE1781BF53EE374B8687E8FC60
 prompt --application/shared_components/security/authentications/builder_extension_authn
 begin

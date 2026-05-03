@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 8947F1A636536415F46B6FCC3327979D9B8F99ECAAB9DA180D34D17C4AD6BBCF
 prompt --application/shared_components/user_interface/templates/label/optional_floating
 begin
