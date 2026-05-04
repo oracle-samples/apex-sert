@@ -48,6 +48,21 @@ as
     p_from_workspace in varchar2
   );
 
+-- ---------------------------------------------------------------------------
+-- Creates a DBMS_SCHEDULER job that runs every 10 minutes to grant APEX
+-- builder extension workspace access to p_to_workspace from all other
+-- workspaces. Idempotent: drops and recreates the job if it already exists.
+-- Must be called as the APEX instance administrator schema.
+-- ---------------------------------------------------------------------------
+  procedure create_extension_grant_job(
+    p_to_workspace in varchar2
+  );
+
+-- ---------------------------------------------------------------------------
+-- Drops the SERT_EXTENSION_GRANT_JOB scheduler job if it exists.
+-- Succeeds silently when the job is not present.
+-- ---------------------------------------------------------------------------
+  procedure remove_extension_grant_job;
 
 end extension_xapi;
 /
