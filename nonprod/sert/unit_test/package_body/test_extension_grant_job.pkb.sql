@@ -50,15 +50,12 @@ begin
 end create_with_bad_workspace_raises;
 
 ------------------------------------------------------------
--- create_and_remove_lifecycle
--- Verifies the scheduler job lifecycle: creates the job
--- directly via dbms_scheduler (bypassing workspace validation
--- which requires an APEX session), then confirms
--- remove_extension_grant_job drops it cleanly.
--- NOTE: requires unit_test to have CREATE JOB privilege
--- (see nonprod/sert/_dba/grant_system_privs_unit_test.sql)
+-- create_and_remove_default_interval
+-- Verifies create_extension_grant_job creates the scheduler
+-- job with default repeat_interval when not specified.
+-- Tests the default parameter behavior.
 ------------------------------------------------------------
-procedure create_and_remove_lifecycle
+procedure create_and_remove_default_interval
 as
   l_count  number;
   l_action varchar2(4000);
@@ -66,21 +63,11 @@ begin
   -- clean up in case a previous test run left the job
   sert_core.extension_xapi.remove_extension_grant_job;
 
-  -- create the job directly so we can test remove without
-  -- needing an APEX session for workspace validation
-  l_action := 'begin sert_core.extension_xapi.grant_extension_workspace'
-           || '(p_to_workspace => ''SERT''); end;';
+  -- create the job without specifying repeat_interval (uses default)
+  sert_core.extension_xapi.create_extension_grant_job(
+    p_to_workspace => 'SERT');
 
-  dbms_scheduler.create_job(
-    job_name        => 'SERT_EXTENSION_GRANT_JOB',
-    job_type        => 'PLSQL_BLOCK',
-    job_action      => l_action,
-    repeat_interval => 'FREQ=MINUTELY;INTERVAL=10',
-    enabled         => true,
-    auto_drop       => false,
-    comments        => 'Grants APEX builder extension workspace access to SERT' );
-
-  -- verify job exists with correct repeat interval
+  -- verify job exists with default repeat interval
   select count(*), max(job_action)
     into l_count, l_action
     from user_scheduler_jobs
@@ -100,7 +87,71 @@ begin
    where job_name = 'SERT_EXTENSION_GRANT_JOB';
 
   ut.expect(l_count).to_equal(0);
-end create_and_remove_lifecycle;
+end create_and_remove_default_interval;
+
+------------------------------------------------------------
+-- create_with_custom_frequency_interval
+-- Verifies create_extension_grant_job honors a custom
+-- repeat_interval string passed as parameter.
+-- Tests: FREQ=HOURLY;INTERVAL=6
+------------------------------------------------------------
+procedure create_with_custom_frequency_interval
+as
+  l_count  number;
+  l_repeat varchar2(100);
+begin
+  -- clean up
+  sert_core.extension_xapi.remove_extension_grant_job;
+
+  -- create with custom frequency/interval
+  sert_core.extension_xapi.create_extension_grant_job(
+    p_to_workspace    => 'SERT',
+    p_repeat_interval => 'FREQ=HOURLY;INTERVAL=6');
+
+  -- verify job was created with the custom repeat_interval
+  select count(*), max(repeat_interval)
+    into l_count, l_repeat
+    from user_scheduler_jobs
+   where job_name = 'SERT_EXTENSION_GRANT_JOB';
+
+  ut.expect(l_count).to_equal(1);
+  ut.expect(l_repeat).to_equal('FREQ=HOURLY;INTERVAL=6');
+
+  -- clean up
+  sert_core.extension_xapi.remove_extension_grant_job;
+end create_with_custom_frequency_interval;
+
+------------------------------------------------------------
+-- create_with_daily_frequency
+-- Verifies create_extension_grant_job works with DAILY
+-- frequency and a custom interval.
+-- Tests: FREQ=DAILY;INTERVAL=1
+------------------------------------------------------------
+procedure create_with_daily_frequency
+as
+  l_count  number;
+  l_repeat varchar2(100);
+begin
+  -- clean up
+  sert_core.extension_xapi.remove_extension_grant_job;
+
+  -- create with daily frequency
+  sert_core.extension_xapi.create_extension_grant_job(
+    p_to_workspace    => 'SERT',
+    p_repeat_interval => 'FREQ=DAILY;INTERVAL=1');
+
+  -- verify job was created
+  select count(*), max(repeat_interval)
+    into l_count, l_repeat
+    from user_scheduler_jobs
+   where job_name = 'SERT_EXTENSION_GRANT_JOB';
+
+  ut.expect(l_count).to_equal(1);
+  ut.expect(l_repeat).to_equal('FREQ=DAILY;INTERVAL=1');
+
+  -- clean up
+  sert_core.extension_xapi.remove_extension_grant_job;
+end create_with_daily_frequency;
 
 end test_extension_grant_job;
 /
