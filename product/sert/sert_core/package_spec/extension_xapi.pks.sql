@@ -48,6 +48,24 @@ as
     p_from_workspace in varchar2
   );
 
+-- ---------------------------------------------------------------------------
+-- Creates a DBMS_Scheduler job that grants APEX builder extension workspace
+-- access to p_to_workspace from all other workspaces.
+-- p_repeat_interval: Oracle scheduler repeat_interval string (e.g., 'FREQ=MINUTELY;INTERVAL=10')
+--                    Defaults to every 10 minutes if not specified.
+-- Idempotent: drops and recreates the job if it already exists.
+-- Must be called as the APEX instance administrator schema.
+-- ---------------------------------------------------------------------------
+  procedure create_extension_grant_job(
+    p_to_workspace    in varchar2,
+    p_repeat_interval in varchar2 := 'FREQ=MINUTELY;INTERVAL=10'
+  );
+
+-- ---------------------------------------------------------------------------
+-- Drops the SERT_EXTENSION_GRANT_JOB scheduler job if it exists.
+-- Succeeds silently when the job is not present.
+-- ---------------------------------------------------------------------------
+  procedure remove_extension_grant_job;
 
 end extension_xapi;
 /

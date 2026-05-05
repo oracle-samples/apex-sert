@@ -37,3 +37,7 @@ grant select on sert_core.comments to unit_test;
 --changeset mipotter:grant_select_on_sert_core.exception_cnt_v_to_unit_test_1746144000007 endDelimiter:; runOnChange:true runAlways:false rollbackEndDelimiter:;
 grant select on sert_core.exception_cnt_v to unit_test;
 --rollback not required
+
+--changeset mipotter:grant_execute_on_sert_core.extension_xapi_to_unit_test_1746750000000 endDelimiter:; runOnChange:true runAlways:false rollbackEndDelimiter:;
+grant execute on sert_core.extension_xapi to unit_test;
+--rollback not required

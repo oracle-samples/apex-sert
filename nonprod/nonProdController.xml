@@ -15,20 +15,20 @@
   <includeAll
     relativeToChangelogFile="true"
     errorIfMissingOrEmpty="false"
-    path="sert/db/_dba"
+    path="sert/_dba"
   />
   <include
     relativeToChangelogFile="true"
-    file="sert/db/sert_core/schemaController.xml"
+    file="sert/sert_core/schema.xml"
   />
   <include
     relativeToChangelogFile="true"
-    file="sert/db/sert_pub/schemaController.xml"
+    file="sert/sert_pub/schema.xml"
   />
 
   <include
     relativeToChangelogFile="true"
-    file="sert/db/unit_test/schemaController.xml"
+    file="sert/unit_test/schema.xml"
   />
   <include
     context="@apex"
@@ -38,6 +38,6 @@
   <includeAll
     relativeToChangelogFile="true"
     errorIfMissingOrEmpty="false"
-    path="sert/db/post_install"
+    path="sert/post_install"
   />
 </databaseChangeLog>
