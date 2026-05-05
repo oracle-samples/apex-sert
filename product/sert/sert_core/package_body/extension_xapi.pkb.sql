@@ -189,13 +189,16 @@ end remove_extension_grant_job;
 
 ----------------------------------------------------------------------------------------------------------------------------
 -- C R E A T E _ E X T E N S I O N _ G R A N T _ J O B
--- Creates a DBMS_SCHEDULER job that runs every 10 minutes to grant APEX
--- builder extension workspace access to p_to_workspace from all other workspaces.
+-- Creates a DBMS_Scheduler job that grants APEX builder extension workspace
+-- access to p_to_workspace from all other workspaces.
+-- p_repeat_interval: Oracle scheduler repeat_interval string (e.g., 'FREQ=HOURLY;INTERVAL=6')
+--                    Defaults to 'FREQ=MINUTELY;INTERVAL=10' if not specified.
 -- Idempotent: drops the existing job before creating a new one.
 -- AUTHID CURRENT_USER: must be called as the APEX instance administrator schema.
 ----------------------------------------------------------------------------------------------------------------------------
 procedure create_extension_grant_job(
-   p_to_workspace in varchar2 )
+   p_to_workspace    in varchar2,
+   p_repeat_interval in varchar2 := 'FREQ=MINUTELY;INTERVAL=10' )
 is
    l_workspace  varchar2(255) := upper(p_to_workspace);
    l_id         number;
@@ -215,7 +218,7 @@ begin
       job_name        => 'SERT_EXTENSION_GRANT_JOB',
       job_type        => 'PLSQL_BLOCK',
       job_action      => l_job_action,
-      repeat_interval => 'FREQ=MINUTELY;INTERVAL=10',
+      repeat_interval => p_repeat_interval,
       enabled         => true,
       auto_drop       => false,
       comments        => 'Grants APEX builder extension workspace access to ' || l_workspace );
