@@ -1,6 +1,10 @@
 # Release Notes
 
 ## 24.2.27
+### Automate extension subscription for new workspaces
+
+- Optionally allow installer to configure a scheduled job that will subscribe all workspaces that have not been subscribed. After the job executes ALL existing workspaces (not SERT or APEX product) will be subscribed.  reference [install guide](install_guide.md)
+
 ### Bulk Comments
 
 - Add a Bulk Add Comment action to the evaluation results page (App 2100) that lets a user apply a single comment to all findings for a selected rule, with an optional filter by finding status.
