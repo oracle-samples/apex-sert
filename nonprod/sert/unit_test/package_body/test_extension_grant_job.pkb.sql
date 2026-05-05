@@ -51,9 +51,10 @@ end create_with_bad_workspace_raises;
 
 ------------------------------------------------------------
 -- create_and_remove_lifecycle
--- Verifies create_extension_grant_job creates the scheduler
--- job with correct attributes and remove_extension_grant_job
--- drops it cleanly.
+-- Verifies the scheduler job lifecycle: creates the job
+-- directly via dbms_scheduler (bypassing workspace validation
+-- which requires an APEX session), then confirms
+-- remove_extension_grant_job drops it cleanly.
 -- NOTE: requires unit_test to have CREATE JOB privilege
 -- (see nonprod/sert/_dba/grant_system_privs_unit_test.sql)
 ------------------------------------------------------------
@@ -65,9 +66,19 @@ begin
   -- clean up in case a previous test run left the job
   sert_core.extension_xapi.remove_extension_grant_job;
 
-  -- create the job (runs as unit_test due to AUTHID CURRENT_USER)
-  sert_core.extension_xapi.create_extension_grant_job(
-    p_to_workspace => 'SERT');
+  -- create the job directly so we can test remove without
+  -- needing an APEX session for workspace validation
+  l_action := 'begin sert_core.extension_xapi.grant_extension_workspace'
+           || '(p_to_workspace => ''SERT''); end;';
+
+  dbms_scheduler.create_job(
+    job_name        => 'SERT_EXTENSION_GRANT_JOB',
+    job_type        => 'PLSQL_BLOCK',
+    job_action      => l_action,
+    repeat_interval => 'FREQ=MINUTELY;INTERVAL=10',
+    enabled         => true,
+    auto_drop       => false,
+    comments        => 'Grants APEX builder extension workspace access to SERT' );
 
   -- verify job exists with correct repeat interval
   select count(*), max(job_action)

@@ -11,6 +11,7 @@ as
 
    --%suite(extension_grant_job)
    --%suitepath(sert_core)
+   --%rollback(manual)
 
    --%test(remove_extension_grant_job succeeds silently when job does not exist)
    procedure remove_when_no_job_is_silent;

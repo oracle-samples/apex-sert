@@ -168,6 +168,59 @@ end grant_extension_workspace;
 -- Adds a new scheduled job for a specific app / rule set combination
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------------------------
+-- R E M O V E _ E X T E N S I O N _ G R A N T _ J O B
+-- Drops the SERT_EXTENSION_GRANT_JOB scheduler job owned by the current user.
+-- Uses a cursor loop so the call is a no-op when the job does not exist.
+----------------------------------------------------------------------------------------------------------------------------
+procedure remove_extension_grant_job
+is
+begin
+   for rec in ( select job_name
+                  from user_scheduler_jobs
+                 where job_name = 'SERT_EXTENSION_GRANT_JOB' )
+   loop
+      dbms_scheduler.drop_job(
+         job_name => rec.job_name,
+         force    => true );
+   end loop;
+end remove_extension_grant_job;
+
+----------------------------------------------------------------------------------------------------------------------------
+-- C R E A T E _ E X T E N S I O N _ G R A N T _ J O B
+-- Creates a DBMS_SCHEDULER job that runs every 10 minutes to grant APEX
+-- builder extension workspace access to p_to_workspace from all other workspaces.
+-- Idempotent: drops the existing job before creating a new one.
+-- AUTHID CURRENT_USER: must be called as the APEX instance administrator schema.
+----------------------------------------------------------------------------------------------------------------------------
+procedure create_extension_grant_job(
+   p_to_workspace in varchar2 )
+is
+   l_workspace  varchar2(255) := upper(p_to_workspace);
+   l_id         number;
+   l_job_action varchar2(4000);
+begin
+   l_id := apex_util.find_security_group_id(l_workspace);
+   if l_id is null then
+      raise no_data_found;
+   end if;
+
+   remove_extension_grant_job;
+
+   l_job_action := 'begin sert_core.extension_xapi.grant_extension_workspace'
+                || '(p_to_workspace => ''' || l_workspace || '''); end;';
+
+   dbms_scheduler.create_job(
+      job_name        => 'SERT_EXTENSION_GRANT_JOB',
+      job_type        => 'PLSQL_BLOCK',
+      job_action      => l_job_action,
+      repeat_interval => 'FREQ=MINUTELY;INTERVAL=10',
+      enabled         => true,
+      auto_drop       => false,
+      comments        => 'Grants APEX builder extension workspace access to ' || l_workspace );
+end create_extension_grant_job;
+
 end extension_xapi;
 /
 --rollback not required
