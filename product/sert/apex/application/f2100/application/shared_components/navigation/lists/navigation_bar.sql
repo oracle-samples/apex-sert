@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 02F40388205838F6B10EE456D1DAADEF2DE55CBAF5CDB7F0231E083030B0BAD0
 prompt --application/shared_components/navigation/lists/navigation_bar
 begin

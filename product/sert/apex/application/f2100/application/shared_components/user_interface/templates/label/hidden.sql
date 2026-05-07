@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: B0F906D90CC8502C0A0A0DE4257BDF94F8AAD7C11C1D36DAD98D7921C4D42BA9
 prompt --application/shared_components/user_interface/templates/label/hidden
 begin

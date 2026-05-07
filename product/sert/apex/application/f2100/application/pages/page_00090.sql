@@ -3,8 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
--- file_checksum: CFCF18269215A9B371F4902C5E9F6934827E1DB3895785E12B48F84D1672ED55
+-- file_checksum: 38D6038DC9F70D3C524A6748D615DDCF468EE78D427A6013E24981EB1C8F2EF5
 prompt --application/pages/page_00090
 begin
 --   Manifest
@@ -36,6 +35,7 @@ wwv_flow_imp_page.create_page(
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'03'
+,p_last_updated_on=>wwv_flow_imp.dz('20260502222120Z')
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(528478626114465887)
@@ -255,9 +255,10 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_id=>wwv_flow_imp.id(512260466204949620)
 ,p_button_image_alt=>'Comments'
 ,p_button_position=>'CREATE'
-,p_button_redirect_url=>'f?p=&APP_ID.:80:&SESSION.::&DEBUG.:::'
+,p_button_redirect_url=>'f?p=&APP_ID.:80:&SESSION.::&DEBUG.::P80_SELECT_RULE:&P90_SELECTED_RULE.'
 ,p_icon_css_classes=>'fa-comments-o'
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
+,p_updated_on=>wwv_flow_imp.dz('20260502004254Z')
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(102972714189498576)
@@ -309,35 +310,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'value_protected', 'Y')).to_clob
 );
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(104164966138521156)
-,p_name=>'P90_SELECT_RULE'
-,p_item_sequence=>10
-,p_prompt=>'Select Rule'
-,p_display_as=>'NATIVE_POPUP_LOV'
-,p_named_lov=>'RULES_LOV'
-,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'Select distinct category_name ||'' - ''|| rule_name d, rule_id r ',
-'from eval_results_pub_v ',
-'where application_id = :G_APPLICATION_ID',
-'  and workspace_id = :G_WORKSPACE_ID',
-'  and RESULT not in (''PASS'',''APPROVED'')',
-'order by 1 '))
-,p_lov_display_null=>'YES'
-,p_cSize=>30
-,p_display_when_type=>'NEVER'
-,p_field_template=>wwv_flow_imp.id(512259205067949615)
-,p_item_template_options=>'#DEFAULT#'
-,p_lov_display_extra=>'NO'
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'case_sensitive', 'N',
-  'display_as', 'POPUP',
-  'fetch_on_search', 'N',
-  'initial_fetch', 'FIRST_ROWSET',
-  'manual_entry', 'N',
-  'match_type', 'CONTAINS',
-  'min_chars', '0')).to_clob
-);
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(102985001907498638)
 ,p_name=>'Close Dialog'
@@ -370,6 +342,8 @@ wwv_flow_imp_page.create_page_process(
 ' ELSIF :P70_BULK_ACTION = ''AR'' THEN',
 '   :P90_SELECTED_RULE := :P70_SELECT_RULE_AR;',
 '   :P90_ICON := ''fa-warning u-warning'';',
+' ELSIF :P80_SELECT_RULE is not null then ',
+'   :P90_SELECTED_RULE := :P80_SELECT_RULE;',
 ' END IF;',
 ' begin',
 ' select distinct rule_name, category_name ',
@@ -384,6 +358,7 @@ wwv_flow_imp_page.create_page_process(
 ''))
 ,p_process_clob_language=>'PLSQL'
 ,p_internal_uid=>15578172112044401
+,p_updated_on=>wwv_flow_imp.dz('20260502003355Z')
 );
 wwv_flow_imp.component_end;
 end;

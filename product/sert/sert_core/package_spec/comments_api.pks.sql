@@ -30,6 +30,16 @@ procedure delete_comment
   ,p_created_by in varchar2 default v('APP_USER')
   );
 
+procedure bulk_add_comment
+  (
+   p_eval_id        in number
+  ,p_workspace_id   in number
+  ,p_application_id in number
+  ,p_rule_id        in number
+  ,p_comment        in varchar2
+  ,p_result_filter  in varchar2 default null
+  );
+
 end comments_api;
 /
 --rollback not required

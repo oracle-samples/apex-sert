@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: BC3D148DE9A22EECE66F1DA024360902CF9EECA7669FE15AFC0B9DF44F6201CB
 prompt --application/shared_components/logic/application_computations/g_email_from
 begin

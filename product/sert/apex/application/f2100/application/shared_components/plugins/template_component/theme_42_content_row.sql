@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 5CE3AB966C2E51B32CD4D180C8CE25E40A33E059D77812BE7993E32BAA199D02
 prompt --application/shared_components/plugins/template_component/theme_42_content_row
 begin

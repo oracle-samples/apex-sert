@@ -3,8 +3,7 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
--- file_checksum: 33934BBC5D214BF49E0CC360FA9669DBF45FAC142ABE962F0796EBD335CBC8A2
+-- file_checksum: B0D9BE09722B14011210356CC422F6A608DB8D3D4CB5540B7F6749361FDFD932
 prompt --application/shared_components/navigation/lists/exceptions
 begin
 --   Manifest
@@ -22,7 +21,8 @@ wwv_flow_imp_shared.create_list(
  p_id=>wwv_flow_imp.id(136301758012484256)
 ,p_name=>'EXCEPTIONS'
 ,p_list_status=>'PUBLIC'
-,p_version_scn=>45172060544566
+,p_version_scn=>7411591
+,p_updated_on=>wwv_flow_imp.dz('20260502001839Z')
 );
 wwv_flow_imp_shared.create_list_item(
  p_id=>wwv_flow_imp.id(28940987997545384)
@@ -81,6 +81,17 @@ wwv_flow_imp_shared.create_list_item(
 ,p_list_item_icon=>'fa-table-check'
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(13393669802079378)
+,p_list_item_display_sequence=>80
+,p_list_item_link_text=>'Bulk Comments'
+,p_list_item_link_target=>'f?p=&APP_ID.:80:&SESSION.::&DEBUG.:70,80,90:::'
+,p_list_item_icon=>'fa-comment-o'
+,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
+,p_list_item_current_type=>'TARGET_PAGE'
+,p_created_on=>wwv_flow_imp.dz('20260501031354Z')
+,p_updated_on=>wwv_flow_imp.dz('20260502001839Z')
 );
 wwv_flow_imp.component_end;
 end;

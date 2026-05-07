@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: CCEEA69F21DF223974C36811D82F03CDED5EC1592F1F684EAA3D8A525DBF1016
 prompt --application/shared_components/files/icons_app_icon_144_rounded_png
 begin

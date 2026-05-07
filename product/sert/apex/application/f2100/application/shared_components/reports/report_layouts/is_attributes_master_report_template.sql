@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 72C51CC8003F6544F24B32CF19B5E451FAA0867F7DEBCB87E0109EEEF4B89C61
 prompt --application/shared_components/reports/report_layouts/is_attributes_master_report_template
 begin

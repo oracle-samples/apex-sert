@@ -28,7 +28,15 @@ sql -list                  # list saved connection names
 export SQLC_CONN=my_dev_db
 ./development/scripts/export_apex.sh 2100
 ./development/scripts/export_apex.sh 2100 2101 2102   # multiple apps
+./development/scripts/export_apex.sh -l 2100          # include licence header in every .sql file
+./development/scripts/export_apex.sh --licence 2100 2101
 ```
+
+### Flags
+
+| Flag              | Default | Effect                                                                  |
+|-------------------|---------|-------------------------------------------------------------------------|
+| `-l`, `--licence` | off     | Prepends `development/licence_snip.txt` to every exported `.sql` file   |
 
 ---
 

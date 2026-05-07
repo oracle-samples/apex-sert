@@ -22,15 +22,17 @@ is
    l_sql varchar2(4000);
    l_id number;
 begin
-   -- validate p_workspace. this helps to make the execute immediate safe
-   l_id := apex_util.find_security_group_id(p_workspace);
-   if ( l_id is not null ) then
-      l_sql := 'apex_instance_admin.set_workspace_parameter('''||upper(p_workspace)||''',''ALLOW_HOSTING_EXTENSIONS'', ''Y'');';
-      execute immediate ( 'begin '||l_sql||' end;' );
-   else
-      raise no_data_found;
-   end if;
+   -- validate p_workspace by querying apex_workspaces directly
+   -- (apex_util.find_security_group_id doesn't work from all schemas)
+   select workspace_id into l_id
+   from apex_workspaces
+   where workspace = upper(p_workspace);
+
+   l_sql := 'apex_instance_admin.set_workspace_parameter('''||upper(p_workspace)||''',''ALLOW_HOSTING_EXTENSIONS'', ''Y'');';
+   execute immediate ( 'begin '||l_sql||' end;' );
 exception
+   when no_data_found then
+      raise;
    when others then
       raise;
 end allow_hosting;
@@ -109,11 +111,12 @@ procedure grant_extension_workspace (
    p_to_workspace in varchar2 default 'SERT' )
 is
    l_sql varchar2(4000);
+   l_id number;
 begin
-   -- verify the to_workspace exists
-   if ( apex_util.find_security_group_id(p_to_workspace) is null ) then
-      raise no_data_found;
-   end if;
+   -- verify the to_workspace exists by querying apex_workspaces directly
+   select workspace_id into l_id
+   from apex_workspaces
+   where workspace = upper(p_to_workspace);
 
    for rec in ( select workspace
                   from apex_workspaces aw
@@ -127,9 +130,6 @@ begin
                   from apex_workspace_extension_grant
                  where grantee_workspace = upper(p_to_workspace ) )
    loop
-      --
-      -- apex_instance_admin.grant_extension_workspace ( p_from_workspace => rec.workspace,
-      --   p_to_workspace => upper(p_to_workspace),p_read_access => true, p_menu_label => 'APEX SERT');
       l_sql := 'apex_instance_admin.grant_extension_workspace( p_from_workspace => :from_workspace, p_to_workspace => upper(:to_workspace), p_read_access => true, p_menu_label => ''APEX SERT'');';
       execute immediate ( 'begin '||l_sql||' end;' ) using rec.workspace,p_to_workspace;
    end loop;
@@ -144,16 +144,17 @@ procedure grant_extension_workspace (
    p_from_workspace in varchar2 )
 is
    l_sql varchar2(4000);
+   l_id number;
 begin
-   -- verify the to_workspace exists
-   if ( apex_util.find_security_group_id(p_to_workspace) is null ) then
-      raise no_data_found;
-   end if;
+   -- verify the to_workspace exists by querying apex_workspaces directly
+   select workspace_id into l_id
+   from apex_workspaces
+   where workspace = upper(p_to_workspace);
 
-   -- validate the FROM workspace
-   if ( apex_util.find_security_group_id(p_from_workspace) is null ) then
-      raise no_data_found;
-   end if;
+   -- validate the FROM workspace by querying apex_workspaces directly
+   select workspace_id into l_id
+   from apex_workspaces
+   where workspace = upper(p_from_workspace);
 
    l_sql := 'apex_instance_admin.grant_extension_workspace( p_from_workspace =>'''
       ||p_from_workspace||''', p_to_workspace => upper(''' ||p_to_workspace||''' ), p_read_access => true);';
@@ -168,6 +169,62 @@ end grant_extension_workspace;
 -- Adds a new scheduled job for a specific app / rule set combination
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------------------------
+-- R E M O V E _ E X T E N S I O N _ G R A N T _ J O B
+-- Drops the SERT_EXTENSION_GRANT_JOB scheduler job owned by the current user.
+-- Uses a cursor loop so the call is a no-op when the job does not exist.
+----------------------------------------------------------------------------------------------------------------------------
+procedure remove_extension_grant_job
+is
+begin
+   for rec in ( select job_name
+                  from user_scheduler_jobs
+                 where job_name = 'SERT_EXTENSION_GRANT_JOB' )
+   loop
+      dbms_scheduler.drop_job(
+         job_name => rec.job_name,
+         force    => true );
+   end loop;
+end remove_extension_grant_job;
+
+----------------------------------------------------------------------------------------------------------------------------
+-- C R E A T E _ E X T E N S I O N _ G R A N T _ J O B
+-- Creates a DBMS_Scheduler job that grants APEX builder extension workspace
+-- access to p_to_workspace from all other workspaces.
+-- p_repeat_interval: Oracle scheduler repeat_interval string (e.g., 'FREQ=HOURLY;INTERVAL=6')
+--                    Defaults to 'FREQ=MINUTELY;INTERVAL=10' if not specified.
+-- Idempotent: drops the existing job before creating a new one.
+-- AUTHID CURRENT_USER: must be called as the APEX instance administrator schema.
+----------------------------------------------------------------------------------------------------------------------------
+procedure create_extension_grant_job(
+   p_to_workspace    in varchar2,
+   p_repeat_interval in varchar2 := 'FREQ=MINUTELY;INTERVAL=10' )
+is
+   l_workspace  varchar2(255) := upper(p_to_workspace);
+   l_id         number;
+   l_job_action varchar2(4000);
+begin
+   -- verify the workspace exists by querying apex_workspaces directly
+   select workspace_id into l_id
+   from apex_workspaces
+   where workspace = l_workspace;
+
+   remove_extension_grant_job;
+
+   l_job_action := 'begin sert_core.extension_xapi.grant_extension_workspace'
+                || '(p_to_workspace => ''' || l_workspace || '''); end;';
+
+   dbms_scheduler.create_job(
+      job_name        => 'SERT_EXTENSION_GRANT_JOB',
+      job_type        => 'PLSQL_BLOCK',
+      job_action      => l_job_action,
+      repeat_interval => p_repeat_interval,
+      enabled         => true,
+      auto_drop       => false,
+      comments        => 'Grants APEX builder extension workspace access to ' || l_workspace );
+end create_extension_grant_job;
+
 end extension_xapi;
 /
 --rollback not required

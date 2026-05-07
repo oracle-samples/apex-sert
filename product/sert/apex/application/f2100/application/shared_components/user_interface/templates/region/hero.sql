@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 6218598684E70281D938E31037886C2080C64594742AFCED17B23B149B5AB68B
 prompt --application/shared_components/user_interface/templates/region/hero
 begin

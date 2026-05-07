@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 12DF9B0752B39D82A6ABF63131019C402A4E991B4EFB507218F04CCE9A7C052F
 prompt --application/shared_components/logic/application_processes/saveapexlink
 begin

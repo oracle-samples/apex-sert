@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: EF5D765BF7F34879EF1CD9FE28FAB42C56A28973E66319C1C7C61AF41D8CB068
 prompt --application/shared_components/user_interface/templates/page/left_and_right_side_columns
 begin

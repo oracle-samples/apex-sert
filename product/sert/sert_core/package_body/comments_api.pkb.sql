@@ -83,6 +83,70 @@ begin
        and created_by = p_created_by;
 end delete_comment; -- delete_comment
 
+-- ----------------------------------------------------------------------------
+-- procedure: bulk_add_comment
+-- purpose: Create comment entries for all results matching the given filters.
+-- parameters:
+--   p_eval_id        - Identifier of the evaluation.
+--   p_workspace_id   - Workspace identifier.
+--   p_application_id - Application identifier.
+--   p_rule_id        - Rule identifier.
+--   p_comment        - Comment text to add to all matching results.
+--   p_result_filter  - Optional filter on result status (e.g., 'FAIL').
+-- ----------------------------------------------------------------------------
+procedure bulk_add_comment (
+    p_eval_id        in number,
+    p_workspace_id   in number,
+    p_application_id in number,
+    p_rule_id        in number,
+    p_comment        in varchar2,
+    p_result_filter  in varchar2 default null)
+is
+begin
+    insert into comments (
+        rule_set_id,
+        rule_id,
+        workspace_id,
+        application_id,
+        page_id,
+        component_id,
+        component_name,
+        column_name,
+        item_name,
+        shared_comp_name,
+        comments
+    )
+    select e.rule_set_id,
+           er.rule_id,
+           e.workspace_id,
+           er.application_id,
+           er.page_id,
+           er.component_id,
+           er.component_name,
+           er.column_name,
+           er.item_name,
+           er.shared_comp_name,
+           p_comment
+    from   sert_core.eval_results er
+    join   sert_core.evals e on e.eval_id = er.eval_id
+    where  er.rule_id        = p_rule_id
+    and    er.application_id = p_application_id
+    and    e.workspace_id    = p_workspace_id
+    and    er.eval_id        = p_eval_id
+    and    ( p_result_filter is null
+             or case
+                  when json_value(er.result, '$.result' returning varchar2(100)) = 'PASS'
+                    then json_value(er.result, '$.result' returning varchar2(100))
+                  else nvl(
+                    ( select exc.result
+                      from   sert_core.exception_cnt_v exc
+                      where  exc.eval_result_id = er.eval_result_id
+                      and    rownum             = 1 )
+                   ,json_value(er.result, '$.result' returning varchar2(100))
+                  )
+                end = p_result_filter );
+end bulk_add_comment; -- bulk_add_comment
+
 end comments_api;
 
 /

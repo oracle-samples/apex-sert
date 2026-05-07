@@ -47,20 +47,20 @@ SQL Macros for table expressions were made generally available in 21c
 
 Minimum APEX version: 24.2
 
-APEX-SERT 24.2 is supported only on Oracle APEX 24.2 and higher. If you are using an APEX version prior to 24.2, you need to upgrade your instance to use APEX-SERT.
+APEX-SERT 24.2 is supported only on Oracle APEX 24.2 and higher. If you are using an APEX version prior to 24.2, you need to upgrade your instance to use APEX-SERT.
 
 > [!NOTE]
 >This version of APEX-SERT is a complete rewrite from the ground up. It can be installed independently of an existing APEX-SERT, but there is no migration of historical scans, nor of exceptions.
 
 #### 2.1.1.3 Requirements for AOP
 
-To use the AOP report pages, you MUST have your own APEX Office Print Server. 
+To use the AOP report pages, you MUST have your own APEX Office Print Server. 
 
 #### 2.1.1.4 Requirements for DocGen
 
-APEX-SERT provides the capability to make use of DocGen, provided you have already setup and configured DocGen for your service.
+APEX-SERT provides the capability to make use of DocGen, provided you have already setup and configured DocGen for your service.
 
-APEX-SERT does not install or configure DocGen.  you must seperately configure your instance use DocGen.
+APEX-SERT does not install or configure DocGen.  you must seperately configure your instance use DocGen.
 
 some links:
 
@@ -78,7 +78,7 @@ In order to install APEX-SERT, you will need access to the following system reso
   - SYS is used ONLY in non ADB installs, to create a privileged installer schema
 * For Autonomous installs, use ADMIN or create an [installer account](#221-acdc-installing-schema-creation-script)
 * Oracle APEX instance administration account
-* SQLCL  24.2 or higher
+* SQLCL  24.2 or higher
 
 If you do not have access to all of the above, then it is not possible to install APEX-SERT. Please consult with your local system administrators and/or DBAs for assistance.
 
@@ -94,13 +94,13 @@ For AUTONOMOUS, use DATA as your tablespace
 
 #### 2.2.1 ACDC installing schema creation script
 
-Access the "acdc" setup scripts from the sert_latest.zip file, located in product/sert/pre-install/acdc.  refer to the [README.md](ACDC_README.md) for details of installation
+Access the "acdc" setup scripts from the sert_latest.zip file, located in product/sert/pre-install/acdc.  refer to the [README.md](ACDC_README.md) for details of installation
 
 As the `ADMIN` or `SYS` user, use the supplied script create_acdc_schema.sql using sqlcl.
 
-you MUST use this schema (or some adequately privileged schema you already have) in non autonomous environments, liquibase will not run as SYS.  Currently we observe that ADMIN can be used successfully in ADB.
+you MUST use this schema (or some adequately privileged schema you already have) in non autonomous environments, liquibase will not run as SYS.  Currently we observe that ADMIN can be used successfully in ADB.
 
-for AUTONOMOUS databases, user the LOW service.  use of other services like HIGH, will use parallelisation, which causes liquibase to fail with an ora-12838 error.
+for AUTONOMOUS databases, user the LOW service.  use of other services like HIGH, will use parallelisation, which causes liquibase to fail with an ora-12838 error.
 
 ```sql
 -- from product/sert/pre-install
@@ -114,9 +114,9 @@ SQL> @create_acdc_schema.sql ACDC <password> DATA
 
 Now, you have a validly configured account that can install APEX-SERT
 
-#### 2.3 Installation
+#### 2.3 Installation
 
-APEX-SERT installs via a single installation script. This script must be run as the installing schema ( we will reference ACDC), and only takes a few minutes to complete if you are executing the installation locally to the database. 
+APEX-SERT installs via a single installation script. This script must be run as the installing schema ( we will reference ACDC), and only takes a few minutes to complete if you are executing the installation locally to the database. 
 
 Prior to installation, EDIT the `sert.properties` file to define your configuration.
 
@@ -131,7 +131,7 @@ Configuration options include:
 
 If you wish to pre-specify the Application ID for the SERT application, and it's companion Administration application, then put a valid, available application ID against sert_app_id and sert_admin_id
 
-Define your desired AOP server:  You can simply define as localhost if you do not have or intend to use AOP.
+Define your desired AOP server:  You can simply define as localhost if you do not have or intend to use AOP.
 
 ```bash
 ########################################################################
@@ -197,9 +197,9 @@ The installation will create two schema in your database:
 
 It also creates an APEX workspace called SERT (or the name you supplied in the sert.properties). This is where the APEX-SERT APEX applications will be installed. The SERT workspace will not contain any developer users or workspace administrators, as it is not necessary nor required that any APEX developer access this workspace.
 
-##### To install SERT: 
+##### To install SERT
 
-> [!IMPORTANT] for AUTONOMOUS databases, user the LOW service.  use of other services like HIGH, will use parallelisation, which causes liquibase to fail with ora-12838 error.
+> [!IMPORTANT] for AUTONOMOUS databases, user the LOW service.  use of other services like HIGH, will use parallelisation, which causes liquibase to fail with ora-12838 error.
 >
 > you MUST use SQLCL, as we rely on liquibase and liquibase must be used via the built-in commands in SQLCL 24.2 and higher
 >
@@ -218,14 +218,48 @@ It also creates an APEX workspace called SERT (or the name you supplied in the s
 
 ## 3 POST-INSTALLATION
 
-### 3.1 Publish the extension to all current workspaces
+### 3.1 Configure and publish the builder extension
 
-The design of the builder extension menu means that we *cannot* have the extension automatically available to all workspaces. Each workspace must **subscribe** to the SERT extension link.  Luckily, we have code that will find and enable all workspaces that do not have the link.
+The design of the builder extension menu means that we *cannot* have the extension automatically available to all workspaces. Each workspace must **subscribe** to the SERT extension link.
 
-This should be run as the "acdc" or equivalent user.  (admin should work too in ADB)
+APEX-SERT provides two ways to manage extension subscriptions:
 
-> [!TIP]
-> this is a useful block of code for a periodic job to automate subscription for new workspaces created after installation
+#### 3.1.1 Optional: Automatic Extension Publishing via Scheduled Job
+
+APEX-SERT can create a scheduled DBMS_Scheduler job (run at install time) that automatically grants extension workspace access to all workspaces on a configurable schedule. This is useful when you expect new workspaces to be created after SERT installation.
+
+**To enable the automatic extension job:**
+
+Edit `sert.properties` before installation and set the following properties:
+
+```properties
+# Enable the automated extension grant job
+# Valid values: active (create job) or none / absent (skip job)
+# Default: none (job not created)
+builder_extension_job = active
+
+# Job execution frequency
+# Valid values: MINUTELY, HOURLY, DAILY (case-insensitive)
+# Default: MINUTELY
+builder_extension_job_frequency = MINUTELY
+
+# Job execution interval (1-99 within the frequency unit)
+# Defaults: 10 for MINUTELY, 1 for HOURLY, 1 for DAILY
+# Examples: MINUTELY with interval 5 runs every 5 minutes
+#           HOURLY with interval 2 runs every 2 hours
+builder_extension_job_interval = 10
+```
+
+**Notes on Behavior:**
+
+* The job grants extension access from all non-SERT workspaces to the SERT workspace
+* Invalid or missing frequency or interval values silently fall back to defaults; installation never fails due to misconfiguration
+* The job can be safely re-run without duplicating grants
+* Job name: `SERT_EXTENSION_GRANT_JOB` (one per installation)
+
+#### 3.1.2 Manual Extension Publishing
+
+If you do not want to enable the automatic job, or to immediately (one-time) publish the extension without re-installing, run the following code as the "acdc" or equivalent user (admin should work in ADB):
 
 ```sql
 BEGIN
@@ -248,6 +282,9 @@ BEGIN
 end;
 /
 ```
+
+> [!TIP]
+> The automatic extension job (section 3.1.1) is useful if you expect new workspaces to be created after installation. The manual code (above) can also be stored as a periodic job if you prefer to manage scheduling separately.
 
 ### 3.2 Manually subscribe a workspace
 

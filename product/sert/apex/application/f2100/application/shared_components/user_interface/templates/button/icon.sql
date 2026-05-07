@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 7914B7B67168BF7027B390CAC7A1C13DF8D01A0940D6B4E61A28C3EBB2151E3E
 prompt --application/shared_components/user_interface/templates/button/icon
 begin

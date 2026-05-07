@@ -3,7 +3,6 @@
 -- Licensed under the Universal Permissive License v 1.0 as shown
 -- at https://oss.oracle.com/licenses/upl/
 --------------------------------------------------------------------------------
-prompt app_checksum: 724104F68834CFAF367DA7B77370A7E0E21684D6DFDF87EFB0FB3503F1C21867
 -- file_checksum: 89E5250103D584A226BF117ACA53CEE77FC6624AD1747A59CA96053FD690C8E9
 prompt --application/shared_components/navigation/breadcrumbs/breadcrumb
 begin
